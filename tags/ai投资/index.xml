@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>AI投资 on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/ai%E6%8A%95%E8%B5%84/</link>
+        <description>Recent content in AI投资 on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/ai%E6%8A%95%E8%B5%84/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[每日AI·0501]GitHub 版 Devin，Transformer的强力挑战者 Mamba，Sora 制作细节与踩坑，OpenAI 记忆功能</title>
+        <link>https://ntopic.cn/p/ai20240501/</link>
+        <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240501/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240501/20240501-01.png" alt="Featured image of post [每日AI·0501]GitHub 版 Devin，Transformer的强力挑战者 Mamba，Sora 制作细节与踩坑，OpenAI 记忆功能" /&gt;&lt;h2 id=&#34;ai-资讯&#34;&gt;AI 资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;国资委：加快人工智能等新技术与制造全过程、全要素深度融合&lt;/li&gt;
+&lt;li&gt;GitHub版 Devin 上线，会打字就能开发应用，微软 CEO：重新定义 IDE&lt;/li&gt;
+&lt;li&gt;在12个视频理解任务中，Mamba 先打败了 Transformer&lt;/li&gt;
+&lt;li&gt;Sora 会颠覆电影制作吗？3 人团队使用 Sora 制作短片完整技术细节&amp;amp;踩坑分享&lt;/li&gt;
+&lt;li&gt;小红书让智能体们吵起来了！联合复旦推出大模型专属群聊工具&lt;/li&gt;
+&lt;li&gt;OpenAI：记忆功能现已对所有ChatGPT Plus用户开放&lt;/li&gt;
+&lt;li&gt;Phi-3 notebook发布，Phi的调优速度提高了2倍，且VRAM使用减少了50%&lt;/li&gt;
+&lt;li&gt;使用张量并行技术进行自动驾驶感知模型训练&lt;/li&gt;
+&lt;li&gt;Meta 宣布在旧金山举办首届 Llama 3 黑客马拉松，与 Cerebral Valley 和 SHACK15sf 合作，提供超过1 0K 美元的现金奖励和合作伙伴积分以启动 AI 项目。这一事件强调了 Meta 在促进 AI 社区创新方面的承诺。&lt;/li&gt;
+&lt;li&gt;Google 推出了 Transformer 2 模型，该模型将注意力、递归、检索和前馈网络（FFN）集成到单一模块中，与原始 Transformer 的性能相当，但计算效率提高了 20 倍，并能有效处理高达 100M 上下文长度。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;国资委加快人工智能等新技术与制造全过程全要素深度融合&#34;&gt;国资委：加快人工智能等新技术与制造全过程、全要素深度融合&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cls.cn/detail/1665289&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;国务院国资委召开中央企业大规模设备更新工作推进会，深入学习贯彻总书记重要讲话精神和党中央决策部署，落实国务院推动大规模设备更新和消费品以旧换新工作会议精神，对中央企业推进大规模设备更新工作作出部署。&lt;/p&gt;
+&lt;p&gt;国务院国资委党委书记、主任张玉卓出席会议并讲话。国家发展改革委党组成员、副主任赵辰昕出席会议并介绍了推动大规模设备更新和消费品以旧换新工作进展和下一步工作考虑。国务院国资委党委委员、副主任苟坪主持会议。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240501/20240501-01.png&#34;
+	width=&#34;1280&#34;
+	height=&#34;1280&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240501/20240501-01_huea0d199b913a010c4b2085833d1b487c_2450338_480x0_resize_box_3.png 480w, https://ntopic.cn/p/ai20240501/20240501-01_huea0d199b913a010c4b2085833d1b487c_2450338_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;github版-devin-上线会打字就能开发应用微软ceo重新定义-ide&#34;&gt;GitHub版 Devin 上线，会打字就能开发应用，微软CEO：重新定义 IDE&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.blog/2024-04-29-github-copilot-workspace&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;博客地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;微软的“GitHub 版 Devin” - Copilot WorkSpace，终于上线了！WorkSpace是一种“Copilot 原生”的全新开发环境，目的是让所有开发者都可以用自然语言，把脑海里的创意转化成应用。也就是说，只要有想法，而且会打字，就可以搞软件开发了。&lt;/p&gt;
+&lt;h3 id=&#34;在12个视频理解任务中mamba-先打败了-transformer&#34;&gt;在12个视频理解任务中，Mamba 先打败了 Transformer&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2403.09626&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;论文链接&lt;/a&gt;  &lt;a class=&#34;link&#34; href=&#34;https://github.com/OpenGVLab/video-mamba-suite&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;探索视频理解的新境界，Mamba 模型引领计算机视觉研究新潮流！传统架构的局限已被打破，状态空间模型 Mamba 以其在长序列处理上的独特优势，为视频理解领域带来了革命性的变革。&lt;/p&gt;
+&lt;p&gt;来自南京大学、上海人工智能实验室、复旦大学、浙江大学的研究团队发布了一项开创性工作。他们全面审视了 Mamba 在视频建模中的多重角色，提出了针对 14 种模型/模块的 Video Mamba Suite，在 12 项视频理解任务中对其进行了深入评估。&lt;/p&gt;
+&lt;p&gt;结果令人振奋：Mamba 在视频专用和视频 - 语言任务中均展现出强劲的潜力，实现了效率与性能的理想平衡。这不仅是技术上的飞跃，更是对未来视频理解研究的有力推动。&lt;/p&gt;
+&lt;h3 id=&#34;sora-会颠覆电影制作吗3人团队使用-sora-制作短片完整技术细节踩坑分享&#34;&gt;Sora 会颠覆电影制作吗？3人团队使用 Sora 制作短片完整技术细节&amp;amp;踩坑分享&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/3nIucMzFqNruhlV0rDtpGA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;原文地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;今年2月份，OpenAI 发布了人工智能文生视频大模型 Sora，并放出了第一批视频片段，掀起了 AI 生成视频浪潮。目前，Sora 仍未进行公测，只有一些视觉艺术家、设计师、电影制作人等获得了 Sora 的访问权限。他们发布了一些 Sora 生成的视频短片，其连贯、逼真的生成效果令人惊艳。&lt;/p&gt;
+&lt;p&gt;最近，被誉为「朋克摇滚皮克斯」的加拿大多媒体制作公司 Shy Kids 发布了一段借助 Sora 制作的视频短片《Air Head》，在社交媒体上迅速引起广泛关注。本周，知名视觉特效总监 Mike Seymour 采访了 Patrick Cederberg，就《Air Head》制作过程、技术难点等信息展开了提问，并在 fxguide 上发布一篇文章介绍了 Sora 在视频实际制作过程中发挥的作用和存在的问题。&lt;/p&gt;
+&lt;h3 id=&#34;小红书让智能体们吵起来了联合复旦推出大模型专属群聊工具&#34;&gt;小红书让智能体们吵起来了！联合复旦推出大模型专属群聊工具&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/xqcpu78avAPigLzw9M2wlw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;原文地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;语言，不仅仅是文字的堆砌，更是表情包的狂欢，是梗的海洋，是键盘侠的战场。语言如何塑造我们的社会行为？我们的社会结构又是如何在不断的言语交流中演变的？近期，来自复旦大学和小红书的研究者们通过引入一种名为AgentGroupChat的模拟平台，对这些问题进行了深入探讨。&lt;/p&gt;
+&lt;h3 id=&#34;openai记忆功能现已对所有-chatgpt-plus-用户开放&#34;&gt;OpenAI：记忆功能现已对所有 ChatGPT Plus 用户开放&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/OpenAI/status/1784992796669096181&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;推特地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;记忆功能现已对所有 ChatGPT Plus 用户开放。使用记忆功能很简单：只需开始新的聊天并告诉 ChatGPT 您希望它记住的任何内容。&lt;/p&gt;
+&lt;p&gt;记忆功能可以在设置中开启或关闭，并且目前在欧洲或韩国不可用。团队、企业版和未来的 GPT 产品将陆续推出。&lt;/p&gt;
+&lt;h3 id=&#34;phi-3-notebook-发布phi-的调优速度提高了-2-倍且vram使用减少了50&#34;&gt;Phi-3 notebook 发布，Phi 的调优速度提高了 2 倍，且VRAM使用减少了50%&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/danielhanchen/status/1785040680106234225&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;推特地址&lt;/a&gt;  &lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/unsloth/Phi-3-mini-4k-instruct&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;模型地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Phi-3 notebook 发布了！使用 @UnslothAI，相比于 HF+FA2，Phi 的调优速度提高了 2 倍，且 VRAM 使用减少了 50%！&lt;/p&gt;
+&lt;p&gt;由于采用了滑动窗口注意力机制，不得不对其进行 Mistral 化，并修复了 2048/2047 的 SWA（滑动窗口注意力）错误。还解除了注意力机制与 MLP（多层感知机）的融合，因此 QLoRA 损失有所不同，但 16 位的表现相同。&lt;/p&gt;
+&lt;h3 id=&#34;nvidia-与蔚来联合研究使用张量并行技术进行自动驾驶感知模型训练&#34;&gt;NVIDIA 与蔚来联合研究：使用张量并行技术进行自动驾驶感知模型训练&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/695224618&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;原文地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;文章探讨了 NVIDIA 与蔚来合作，利用张量并行技术优化自动驾驶感知模型的 GPU 内存使用。通过分片处理卷积神经网络（CNN）的输入和中间激活值，将它们均匀分配到多个 GPU 上，显著降低了对单个 GPU 的内存占用。&lt;/p&gt;
+&lt;p&gt;此外，文章详述了在 PyTorch 2.0 中使用 DTensor 实现张量并行的细节，包括模型参数和优化器状态的处理方式，以及卷积操作中必要的数据交换和通信。这种方法不仅提高了 GPU 的利用率，还允许使用更深的模型和更高的分辨率输入，从而提升自动驾驶感知模型的精度和训练效率。&lt;/p&gt;
+&lt;h2 id=&#34;产品投资&#34;&gt;产品投资&lt;/h2&gt;
+&lt;h3 id=&#34;星元ai获数千万天使轮投资&#34;&gt;「星元AI」获数千万天使轮投资&lt;/h3&gt;
+&lt;p&gt;近日，星元先创网络有限责任公司旗下产品「星元AI」完成了数千万的天使轮融资，此次成功融资为星元先创的发展注入新的活力，本轮资金将重点投向星元先创旗下系统升级和市场推广，为广大服务商提供更多机会。&lt;/p&gt;
+&lt;p&gt;对于星元先创而言，意味着有望将领先的数字化营销系统和人工智能领域的成就在现有基础上再上新台阶，增强核心竞争力，迅速扩大新兴市场的市场份额；合作也标志着星元先创进一步强化“人工智能+营销系统”的战略，星元先创将加速产品升级和业务全国布局。&lt;/p&gt;
+&lt;h3 id=&#34;微软宣布在印尼的云计算和-ai-领域投资-17-亿美元&#34;&gt;微软宣布在印尼的云计算和 AI 领域投资 17 亿美元&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://news.microsoft.com/apac/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方报道&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;微软计划在接下来的四年内在印尼投资17亿美元，用于新的云计算和人工智能（AI）基础设施，以及为84万人提供AI技能培训，并支持该国日益增长的开发者社区。这是微软在印尼29年历史中的最大单笔投资。此举旨在帮助实现印尼政府的“2045年黄金印尼愿景”，该愿景旨在将印尼转变为全球经济强国。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我的本博客原地址：&lt;a class=&#34;link&#34; href=&#34;https://ntopic.cn/p/ai20240501/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ntopic.cn/p/ai20240501&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/PythonCS/LOGO12.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：Python禅师&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>[每日AI·0430]首个自主更新的多模态大模型，马斯克访华，文本一键转3D数字人骨骼动画，创新的虚拟试衣模型</title>
+        <link>https://ntopic.cn/p/ai20240430/</link>
+        <pubDate>Tue, 30 Apr 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240430/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240430/20240430-01.png" alt="Featured image of post [每日AI·0430]首个自主更新的多模态大模型，马斯克访华，文本一键转3D数字人骨骼动画，创新的虚拟试衣模型" /&gt;&lt;h2 id=&#34;ai-资讯&#34;&gt;AI 资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;AGI 加速降临！人大系多模态模型首次实现自主更新，写真视频生成力压 Sora&lt;/li&gt;
+&lt;li&gt;支付宝推出的智能助理你用了吗？&lt;/li&gt;
+&lt;li&gt;文本一键转 3D 数字人骨骼动画，阿尔伯塔大学提出 MoMask 框架&lt;/li&gt;
+&lt;li&gt;IDM-VTON：一种创新的虚拟试衣模型&lt;/li&gt;
+&lt;li&gt;亚马逊研究奖获奖名单出炉：谢赛宁、Mamba 作者 Albert Gu 等入选&lt;/li&gt;
+&lt;li&gt;马斯克周末突然访华！为世界最大 AI 项目 —— 特斯拉 FSD 以及 Robotaxi 业务做好准备&lt;/li&gt;
+&lt;li&gt;奥特曼：学会用 30 秒说出大多数人需要 5 分钟才能表达的内容，是一个重大的突破，基本上就是大语言模型的工作原理&lt;/li&gt;
+&lt;li&gt;本地在 H100 GPU 上运行 VSCode Llama3 Copilot&lt;/li&gt;
+&lt;li&gt;AdvPrompter: 快速自适应生成 LLM 对抗提示词方法&lt;/li&gt;
+&lt;li&gt;ScrapeGraphAI：爬虫库，使用 LLM 自动爬取&lt;/li&gt;
+&lt;li&gt;欧盟委员会投资 1.12 亿欧元用于 AI 和量子研究及创新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;agi加速降临人大系多模态模型首次实现自主更新写真视频生成力压-sora&#34;&gt;AGI加速降临！人大系多模态模型首次实现自主更新，写真视频生成力压 Sora&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ifanr.com/1583512&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;原文地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;AGI（通用人工智能）是整个 AI 行业的圣杯。AGI 并非终点，而是人类发展史一个新的起点。在通往 AGI 的路上要考虑的事情还有很多，而中国的 AI 行业也是不可忽视的一股力量。&lt;/p&gt;
+&lt;p&gt;在4月27日召开的中关村论坛通用人工智能平行论坛上，人大系初创公司智子引擎隆重发布全新的多模态大模型 Awaker 1.0，向 AGI 迈出至关重要的一步。&lt;/p&gt;
+&lt;p&gt;相对于智子引擎前代的 ChatImg 序列模型，Awaker 1.0 采用全新的 MOE 架构并具备自主更新能力，是业界首个实现「真正」自主更新的多模态大模型。在视觉生成方面，Awaker 1.0 采用完全自研的视频生成底座 VDT，在写真视频生成上取得好于 Sora 的效果，打破大模型「最后一公里」落地难的困境。&lt;/p&gt;
+&lt;h3 id=&#34;亚马逊研究奖获奖名单出炉谢赛宁mamba-作者-albert-gu-等入选&#34;&gt;亚马逊研究奖获奖名单出炉：谢赛宁、Mamba 作者 Albert Gu 等入选&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.amazon.science/research-awards/program-updates/99-amazon-research-awards-recipients-announced&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;完整名单&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;近日，亚马逊研究奖（Amazon Research Awards，ARA）获奖名单公布，今年共有 98 名获得者，来自 15 个国家 51 所大学。亚马逊研究奖 (ARA) 成立于 2015 年，该计划旨在为多个学科研究主题的学术研究人员提供不受限制的资金。获奖者可以公开访问 300 多个亚马逊公共数据集，并可以使用亚马逊的 AI/ML 服务和工具。除此以外，获奖者还将与亚马逊专家建立联系，以获得咨询和建议，还可以参加亚马逊举办的活动、培训课程等。&lt;/p&gt;
+&lt;p&gt;获奖者来自以下研究领域：人工智能信息安全、自动推理、AWS 人工智能、AWS 加密和隐私、AWS 数据库服务、可持续发展。值得注意的是，今年的获奖名单中出现了很多华人学者。&lt;/p&gt;
+&lt;h3 id=&#34;文本一键转-3d-数字人骨骼动画阿尔伯塔大学提出-momask-框架&#34;&gt;文本一键转 3D 数字人骨骼动画，阿尔伯塔大学提出 MoMask 框架&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2312.00063&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;论文链接&lt;/a&gt;   &lt;a class=&#34;link&#34; href=&#34;https://github.com/EricGuo5513/momask-codes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub 地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;想象一下，你仅需要输入一段简单的文本描述，就可以生成对应的 3D 数字人动画的骨骼动作。而以往，这通常需要昂贵的动作捕捉设备或是专业的动画师逐帧绘制。这些骨骼动作可以进一步的用于游戏开发，影视制作，或者虚拟现实应用。来自阿尔伯塔大学的研究团队提出的新一代 Text2Motion 框架，MoMask，正在让这一切变得可能。&lt;/p&gt;
+&lt;h3 id=&#34;马斯克周末突然访华为世界最大-ai-项目--特斯拉-fsd-以及-robotaxi-业务做好准备&#34;&gt;马斯克周末突然访华！为世界最大 AI 项目 —— 特斯拉 FSD 以及 Robotaxi 业务做好准备&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/3XyfNbHHeuEzpPddzNV0HA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;原文地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;4 月 28 日下午，应中国贸促会邀请，马斯克的私人飞机湾流 G550 飞机抵达北京，并会见了中国总理李强及其他高级官员，包括中国国际贸易促进委员会主任，随行的还包括特斯拉高管朱晓彤。马斯克上次访华是在 2023 年 5 月。在他 44 小时的访问期间，先后与中国外交部、工业和信息化部、商务部、中国国际贸易促进委员会的相关领导会面，还在深夜前往上海特斯拉超级工厂，随后与上海市的相关领导见面，这次是他时隔 11 个月后再次来到中国。&lt;/p&gt;
+&lt;h3 id=&#34;本地在-h100-gpu-上运行-vscode-llama3-copilot&#34;&gt;本地在 H100 GPU 上运行 VSCode Llama3 Copilot&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/dani_avila7/status/1784685190000070819&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;推特地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240430/20240430-01.png&#34;
+	width=&#34;1400&#34;
+	height=&#34;783&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240430/20240430-01_hu14f3ba29a88a821e8bac76c653652693_1759688_480x0_resize_box_3.png 480w, https://ntopic.cn/p/ai20240430/20240430-01_hu14f3ba29a88a821e8bac76c653652693_1759688_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;429px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在 VSCode 中引入 Llama3 作为 Copilot，现在使用 @NVIDIAAI 的 TensorRT 和 Triton 推理服务器在本地 GPU 上运行。
+在本地和私下运行自己的 Copilot 已经非常棒了，但更令人瞩目的是能够在 H100 GPU 上运行它。现在，通过 CodeGPT 中的“自定义”连接，这种集成已经成为可能。在我们团队撰写的这篇文章中，我们将逐步指导您执行和部署模型，然后将其与 VSCode 连接起来。&lt;/p&gt;
+&lt;p&gt;链接：&lt;a class=&#34;link&#34; href=&#34;https://medium.com/@vokturz/notes-about-running-a-chat-completion-api-endpoint-with-tensorrt-llm-and-meta-llama-3-8b-instruct-d2ec62a64b9c&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://medium.com/@vokturz/notes-about-running-a-chat-completion-api-endpoint-with-tensorrt-llm-and-meta-llama-3-8b-instruct-d2ec62a64b9c&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;软件开发的未来将看到 AI 代理直接在您的计算机上编写和执行代码……所有这些都由 GPU 的计算能力加速。&lt;/p&gt;
+&lt;h3 id=&#34;奥特曼学会用-30-秒说出大多数人需要-5-分钟才能表达的内容是一个重大的突破基本上就是大语言模型的工作原理&#34;&gt;奥特曼：学会用 30 秒说出大多数人需要 5 分钟才能表达的内容，是一个重大的突破，基本上就是大语言模型的工作原理&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/sama/status/1784643737525837935&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;推特原文&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240430/20240430-02.png&#34;
+	width=&#34;1196&#34;
+	height=&#34;704&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240430/20240430-02_huacbf268a70de3de9f9846f93cdd8b226_100923_480x0_resize_box_3.png 480w, https://ntopic.cn/p/ai20240430/20240430-02_huacbf268a70de3de9f9846f93cdd8b226_100923_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;407px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;论文与开源&#34;&gt;论文与开源&lt;/h2&gt;
+&lt;h3 id=&#34;advprompter-快速自适应生成-llm-对抗提示词方法&#34;&gt;AdvPrompter: 快速自适应生成 LLM 对抗提示词方法&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2404.16873&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;论文地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;摘要：&lt;/b&gt;最近，大语言模型（LLMs）取得了显著成就，但它们容易受到某些越狱攻击的影响，导致生成不当或有害内容。手动红组测试需要找到导致越狱的敌对提示，例如在给定指令后附加后缀，效率低且耗时。在另一方面，自动敌对提示生成通常导致语义无意义的攻击，可以轻松被感知度过滤器检测到，可能需要来自TargetLLM的梯度信息，或由于耗时的离散优化过程而无法很好地扩展。&lt;/p&gt;
+&lt;p&gt;在本文中，我们提出了一种新方法，使用另一个LLM，称为AdvPrompter，仅需几秒钟生成人类可读的敌对提示，比现有基于优化的方法快约800倍。我们使用一种无需访问目标LLM梯度的新算法对AdvPrompter进行训练。此过程交替进行两个步骤：&lt;/p&gt;
+&lt;p&gt;（1）通过优化AdvPrompter预测生成高质量的目标敌对后缀，以及&lt;/p&gt;
+&lt;p&gt;（2）使用生成的敌对后缀对AdvPrompter进行低秩微调。经过训练的AdvPrompter生成的后缀掩盖了输入指令而不改变其含义，因此TargetLLM被诱导提供有害响应。对流行的开源TargetLLMs的实验结果显示AdvBench数据集上的最新成果，也可转移到闭源的黑盒LLM API。&lt;/p&gt;
+&lt;p&gt;此外，我们证明通过对AdvPrompter生成的合成数据集进行微调，可以使LLMs更加抵御越狱攻击而保持性能，即高MMLU得分。&lt;/p&gt;
+&lt;h3 id=&#34;idm-vton一种创新的虚拟试衣模型&#34;&gt;IDM-VTON：一种创新的虚拟试衣模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/yisol/IDM-VTON&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub地址&lt;/a&gt;  &lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/spaces/yisol/IDM-VTON&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugging Face&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;它通过融合服装图像的高低层语义特征以及提供详细的文本提示，生成比之前的方法更加自然和真实的虚拟试衣图像。此外，它还提出了一种基于用户输入的定制方法，进一步提高了生成图像的保真度和真实感，在保留服装细节方面也有出色的表现。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240430/20240430-03.png&#34;
+	width=&#34;1280&#34;
+	height=&#34;568&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240430/20240430-03_hu554dd63dee0b0a44ad9b4dab47f1fc9f_1102764_480x0_resize_box_3.png 480w, https://ntopic.cn/p/ai20240430/20240430-03_hu554dd63dee0b0a44ad9b4dab47f1fc9f_1102764_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;225&#34;
+		data-flex-basis=&#34;540px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;scrapegraphai爬虫库使用-llm-自动爬取&#34;&gt;ScrapeGraphAI：爬虫库，使用 LLM 自动爬取&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/LangChainAI/status/1784590140444176592&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;推特原文&lt;/a&gt;  &lt;a class=&#34;link&#34; href=&#34;https://github.com/VinciGit00/Scrapegraph-ai&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ScrapeGraphAI 是一个网络爬虫 Python 库，它使用大型语言模型(LLM)为网站、文档和 XML 文件创建爬取流水线。只需说明你想提取哪些信息，该库就会为你完成!&lt;/p&gt;
+&lt;h2 id=&#34;投资&#34;&gt;投资&lt;/h2&gt;
+&lt;h3 id=&#34;欧盟委员会投资-112-亿欧元用于-ai-和量子研究及创新&#34;&gt;欧盟委员会投资 1.12 亿欧元用于 AI 和量子研究及创新&lt;/h3&gt;
+&lt;p&gt;欧盟委员会宣布将投资 1.12 亿欧元，支持人工智能（AI）和量子技术的研究和创新。这笔资金将通过“地平线欧洲”2023-2024年度的数字、工业和空间工作计划来调配。其中，6500 万欧元将用于AI领域，包括 5000 万欧元专门用于开发新的数据组合方式和扩大大型AI模型的能力，1500 万欧元将投资于开发健壮且透明的 AI 系统。另外，4000万欧元将用于推动尖端量子技术的研究，包括创建全欧洲量子重力仪网络的 2500 万欧元投资，以及 1500 万欧元用于跨国量子技术的下一代研发项目。此外，还有 750 万欧元将用于支持欧洲价值观和加强欧盟在全球ICT标准化中的影响力的项目。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我的本博客原地址：&lt;a class=&#34;link&#34; href=&#34;https://ntopic.cn/p/ai20240430/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ntopic.cn/p/ai20240430&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/PythonCS/LOGO12.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：Python禅师&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

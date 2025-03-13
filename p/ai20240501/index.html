@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='AI 资讯 国资委：加快人工智能等新技术与制造全过程、全要素深度融合 GitHub版 Devin 上线，会打字就能开发应用，微软 CEO：重新定义 IDE 在12个视频理'>
+<title>[每日AI·0501]GitHub 版 Devin，Transformer的强力挑战者 Mamba，Sora 制作细节与踩坑，OpenAI 记忆功能</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/ai20240501/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='[每日AI·0501]GitHub 版 Devin，Transformer的强力挑战者 Mamba，Sora 制作细节与踩坑，OpenAI 记忆功能'>
+<meta property='og:description' content='AI 资讯 国资委：加快人工智能等新技术与制造全过程、全要素深度融合 GitHub版 Devin 上线，会打字就能开发应用，微软 CEO：重新定义 IDE 在12个视频理'>
+<meta property='og:url' content='https://ntopic.cn/p/ai20240501/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI资讯' /><meta property='article:tag' content='AI论文与开源' /><meta property='article:tag' content='AI投资' /><meta property='article:tag' content='Sora' /><meta property='article:published_time' content='2024-05-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-05-01T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/ai20240501/20240501-01.png' />
+<meta name="twitter:title" content="[每日AI·0501]GitHub 版 Devin，Transformer的强力挑战者 Mamba，Sora 制作细节与踩坑，OpenAI 记忆功能">
+<meta name="twitter:description" content="AI 资讯 国资委：加快人工智能等新技术与制造全过程、全要素深度融合 GitHub版 Devin 上线，会打字就能开发应用，微软 CEO：重新定义 IDE 在12个视频理"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/ai20240501/20240501-01.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#ai-资讯">AI 资讯</a>
+      <ol>
+        <li><a href="#国资委加快人工智能等新技术与制造全过程全要素深度融合">国资委：加快人工智能等新技术与制造全过程、全要素深度融合</a></li>
+        <li><a href="#github版-devin-上线会打字就能开发应用微软ceo重新定义-ide">GitHub版 Devin 上线，会打字就能开发应用，微软CEO：重新定义 IDE</a></li>
+        <li><a href="#在12个视频理解任务中mamba-先打败了-transformer">在12个视频理解任务中，Mamba 先打败了 Transformer</a></li>
+        <li><a href="#sora-会颠覆电影制作吗3人团队使用-sora-制作短片完整技术细节踩坑分享">Sora 会颠覆电影制作吗？3人团队使用 Sora 制作短片完整技术细节&amp;踩坑分享</a></li>
+        <li><a href="#小红书让智能体们吵起来了联合复旦推出大模型专属群聊工具">小红书让智能体们吵起来了！联合复旦推出大模型专属群聊工具</a></li>
+        <li><a href="#openai记忆功能现已对所有-chatgpt-plus-用户开放">OpenAI：记忆功能现已对所有 ChatGPT Plus 用户开放</a></li>
+        <li><a href="#phi-3-notebook-发布phi-的调优速度提高了-2-倍且vram使用减少了50">Phi-3 notebook 发布，Phi 的调优速度提高了 2 倍，且VRAM使用减少了50%</a></li>
+        <li><a href="#nvidia-与蔚来联合研究使用张量并行技术进行自动驾驶感知模型训练">NVIDIA 与蔚来联合研究：使用张量并行技术进行自动驾驶感知模型训练</a></li>
+      </ol>
+    </li>
+    <li><a href="#产品投资">产品投资</a>
+      <ol>
+        <li><a href="#星元ai获数千万天使轮投资">「星元AI」获数千万天使轮投资</a></li>
+        <li><a href="#微软宣布在印尼的云计算和-ai-领域投资-17-亿美元">微软宣布在印尼的云计算和 AI 领域投资 17 亿美元</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/ai20240501/">
+                <img src="/p/ai20240501/20240501-01_huea0d199b913a010c4b2085833d1b487c_2450338_800x0_resize_box_3.png"
+                        srcset="/p/ai20240501/20240501-01_huea0d199b913a010c4b2085833d1b487c_2450338_800x0_resize_box_3.png 800w, /p/ai20240501/20240501-01_huea0d199b913a010c4b2085833d1b487c_2450338_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="800" 
+                        loading="lazy"
+                        alt="Featured image of post [每日AI·0501]GitHub 版 Devin，Transformer的强力挑战者 Mamba，Sora 制作细节与踩坑，OpenAI 记忆功能" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">[每日AI·0501]GitHub 版 Devin，Transformer的强力挑战者 Mamba，Sora 制作细节与踩坑，OpenAI 记忆功能</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%AF%8F%E6%97%A5ai/" >
+                每日AI
+            </a>
+        
+            <a href="/categories/ai%E5%A4%A7%E6%A8%A1%E5%9E%8B/" >
+                AI大模型
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-05-01
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：6 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <h2 id="ai-资讯">AI 资讯</h2>
+<ul>
+<li>国资委：加快人工智能等新技术与制造全过程、全要素深度融合</li>
+<li>GitHub版 Devin 上线，会打字就能开发应用，微软 CEO：重新定义 IDE</li>
+<li>在12个视频理解任务中，Mamba 先打败了 Transformer</li>
+<li>Sora 会颠覆电影制作吗？3 人团队使用 Sora 制作短片完整技术细节&amp;踩坑分享</li>
+<li>小红书让智能体们吵起来了！联合复旦推出大模型专属群聊工具</li>
+<li>OpenAI：记忆功能现已对所有ChatGPT Plus用户开放</li>
+<li>Phi-3 notebook发布，Phi的调优速度提高了2倍，且VRAM使用减少了50%</li>
+<li>使用张量并行技术进行自动驾驶感知模型训练</li>
+<li>Meta 宣布在旧金山举办首届 Llama 3 黑客马拉松，与 Cerebral Valley 和 SHACK15sf 合作，提供超过1 0K 美元的现金奖励和合作伙伴积分以启动 AI 项目。这一事件强调了 Meta 在促进 AI 社区创新方面的承诺。</li>
+<li>Google 推出了 Transformer 2 模型，该模型将注意力、递归、检索和前馈网络（FFN）集成到单一模块中，与原始 Transformer 的性能相当，但计算效率提高了 20 倍，并能有效处理高达 100M 上下文长度。</li>
+</ul>
+<h3 id="国资委加快人工智能等新技术与制造全过程全要素深度融合">国资委：加快人工智能等新技术与制造全过程、全要素深度融合</h3>
+<p><a class="link" href="https://www.cls.cn/detail/1665289"  target="_blank" rel="noopener"
+    >报道地址</a></p>
+<p>国务院国资委召开中央企业大规模设备更新工作推进会，深入学习贯彻总书记重要讲话精神和党中央决策部署，落实国务院推动大规模设备更新和消费品以旧换新工作会议精神，对中央企业推进大规模设备更新工作作出部署。</p>
+<p>国务院国资委党委书记、主任张玉卓出席会议并讲话。国家发展改革委党组成员、副主任赵辰昕出席会议并介绍了推动大规模设备更新和消费品以旧换新工作进展和下一步工作考虑。国务院国资委党委委员、副主任苟坪主持会议。</p>
+<p><img src="/p/ai20240501/20240501-01.png"
+	width="1280"
+	height="1280"
+	srcset="/p/ai20240501/20240501-01_huea0d199b913a010c4b2085833d1b487c_2450338_480x0_resize_box_3.png 480w, /p/ai20240501/20240501-01_huea0d199b913a010c4b2085833d1b487c_2450338_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<h3 id="github版-devin-上线会打字就能开发应用微软ceo重新定义-ide">GitHub版 Devin 上线，会打字就能开发应用，微软CEO：重新定义 IDE</h3>
+<p><a class="link" href="https://github.blog/2024-04-29-github-copilot-workspace"  target="_blank" rel="noopener"
+    >博客地址</a></p>
+<p>微软的“GitHub 版 Devin” - Copilot WorkSpace，终于上线了！WorkSpace是一种“Copilot 原生”的全新开发环境，目的是让所有开发者都可以用自然语言，把脑海里的创意转化成应用。也就是说，只要有想法，而且会打字，就可以搞软件开发了。</p>
+<h3 id="在12个视频理解任务中mamba-先打败了-transformer">在12个视频理解任务中，Mamba 先打败了 Transformer</h3>
+<p><a class="link" href="https://arxiv.org/abs/2403.09626"  target="_blank" rel="noopener"
+    >论文链接</a>  <a class="link" href="https://github.com/OpenGVLab/video-mamba-suite"  target="_blank" rel="noopener"
+    >GitHub地址</a></p>
+<p>探索视频理解的新境界，Mamba 模型引领计算机视觉研究新潮流！传统架构的局限已被打破，状态空间模型 Mamba 以其在长序列处理上的独特优势，为视频理解领域带来了革命性的变革。</p>
+<p>来自南京大学、上海人工智能实验室、复旦大学、浙江大学的研究团队发布了一项开创性工作。他们全面审视了 Mamba 在视频建模中的多重角色，提出了针对 14 种模型/模块的 Video Mamba Suite，在 12 项视频理解任务中对其进行了深入评估。</p>
+<p>结果令人振奋：Mamba 在视频专用和视频 - 语言任务中均展现出强劲的潜力，实现了效率与性能的理想平衡。这不仅是技术上的飞跃，更是对未来视频理解研究的有力推动。</p>
+<h3 id="sora-会颠覆电影制作吗3人团队使用-sora-制作短片完整技术细节踩坑分享">Sora 会颠覆电影制作吗？3人团队使用 Sora 制作短片完整技术细节&amp;踩坑分享</h3>
+<p><a class="link" href="https://mp.weixin.qq.com/s/3nIucMzFqNruhlV0rDtpGA"  target="_blank" rel="noopener"
+    >原文地址</a></p>
+<p>今年2月份，OpenAI 发布了人工智能文生视频大模型 Sora，并放出了第一批视频片段，掀起了 AI 生成视频浪潮。目前，Sora 仍未进行公测，只有一些视觉艺术家、设计师、电影制作人等获得了 Sora 的访问权限。他们发布了一些 Sora 生成的视频短片，其连贯、逼真的生成效果令人惊艳。</p>
+<p>最近，被誉为「朋克摇滚皮克斯」的加拿大多媒体制作公司 Shy Kids 发布了一段借助 Sora 制作的视频短片《Air Head》，在社交媒体上迅速引起广泛关注。本周，知名视觉特效总监 Mike Seymour 采访了 Patrick Cederberg，就《Air Head》制作过程、技术难点等信息展开了提问，并在 fxguide 上发布一篇文章介绍了 Sora 在视频实际制作过程中发挥的作用和存在的问题。</p>
+<h3 id="小红书让智能体们吵起来了联合复旦推出大模型专属群聊工具">小红书让智能体们吵起来了！联合复旦推出大模型专属群聊工具</h3>
+<p><a class="link" href="https://mp.weixin.qq.com/s/xqcpu78avAPigLzw9M2wlw"  target="_blank" rel="noopener"
+    >原文地址</a></p>
+<p>语言，不仅仅是文字的堆砌，更是表情包的狂欢，是梗的海洋，是键盘侠的战场。语言如何塑造我们的社会行为？我们的社会结构又是如何在不断的言语交流中演变的？近期，来自复旦大学和小红书的研究者们通过引入一种名为AgentGroupChat的模拟平台，对这些问题进行了深入探讨。</p>
+<h3 id="openai记忆功能现已对所有-chatgpt-plus-用户开放">OpenAI：记忆功能现已对所有 ChatGPT Plus 用户开放</h3>
+<p><a class="link" href="https://twitter.com/OpenAI/status/1784992796669096181"  target="_blank" rel="noopener"
+    >推特地址</a></p>
+<p>记忆功能现已对所有 ChatGPT Plus 用户开放。使用记忆功能很简单：只需开始新的聊天并告诉 ChatGPT 您希望它记住的任何内容。</p>
+<p>记忆功能可以在设置中开启或关闭，并且目前在欧洲或韩国不可用。团队、企业版和未来的 GPT 产品将陆续推出。</p>
+<h3 id="phi-3-notebook-发布phi-的调优速度提高了-2-倍且vram使用减少了50">Phi-3 notebook 发布，Phi 的调优速度提高了 2 倍，且VRAM使用减少了50%</h3>
+<p><a class="link" href="https://twitter.com/danielhanchen/status/1785040680106234225"  target="_blank" rel="noopener"
+    >推特地址</a>  <a class="link" href="https://huggingface.co/unsloth/Phi-3-mini-4k-instruct"  target="_blank" rel="noopener"
+    >模型地址</a></p>
+<p>Phi-3 notebook 发布了！使用 @UnslothAI，相比于 HF+FA2，Phi 的调优速度提高了 2 倍，且 VRAM 使用减少了 50%！</p>
+<p>由于采用了滑动窗口注意力机制，不得不对其进行 Mistral 化，并修复了 2048/2047 的 SWA（滑动窗口注意力）错误。还解除了注意力机制与 MLP（多层感知机）的融合，因此 QLoRA 损失有所不同，但 16 位的表现相同。</p>
+<h3 id="nvidia-与蔚来联合研究使用张量并行技术进行自动驾驶感知模型训练">NVIDIA 与蔚来联合研究：使用张量并行技术进行自动驾驶感知模型训练</h3>
+<p><a class="link" href="https://zhuanlan.zhihu.com/p/695224618"  target="_blank" rel="noopener"
+    >原文地址</a></p>
+<p>文章探讨了 NVIDIA 与蔚来合作，利用张量并行技术优化自动驾驶感知模型的 GPU 内存使用。通过分片处理卷积神经网络（CNN）的输入和中间激活值，将它们均匀分配到多个 GPU 上，显著降低了对单个 GPU 的内存占用。</p>
+<p>此外，文章详述了在 PyTorch 2.0 中使用 DTensor 实现张量并行的细节，包括模型参数和优化器状态的处理方式，以及卷积操作中必要的数据交换和通信。这种方法不仅提高了 GPU 的利用率，还允许使用更深的模型和更高的分辨率输入，从而提升自动驾驶感知模型的精度和训练效率。</p>
+<h2 id="产品投资">产品投资</h2>
+<h3 id="星元ai获数千万天使轮投资">「星元AI」获数千万天使轮投资</h3>
+<p>近日，星元先创网络有限责任公司旗下产品「星元AI」完成了数千万的天使轮融资，此次成功融资为星元先创的发展注入新的活力，本轮资金将重点投向星元先创旗下系统升级和市场推广，为广大服务商提供更多机会。</p>
+<p>对于星元先创而言，意味着有望将领先的数字化营销系统和人工智能领域的成就在现有基础上再上新台阶，增强核心竞争力，迅速扩大新兴市场的市场份额；合作也标志着星元先创进一步强化“人工智能+营销系统”的战略，星元先创将加速产品升级和业务全国布局。</p>
+<h3 id="微软宣布在印尼的云计算和-ai-领域投资-17-亿美元">微软宣布在印尼的云计算和 AI 领域投资 17 亿美元</h3>
+<p><a class="link" href="https://news.microsoft.com/apac/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions"  target="_blank" rel="noopener"
+    >官方报道</a></p>
+<p>微软计划在接下来的四年内在印尼投资17亿美元，用于新的云计算和人工智能（AI）基础设施，以及为84万人提供AI技能培训，并支持该国日益增长的开发者社区。这是微软在印尼29年历史中的最大单笔投资。此举旨在帮助实现印尼政府的“2045年黄金印尼愿景”，该愿景旨在将印尼转变为全球经济强国。</p>
+<hr>
+<p>我的本博客原地址：<a class="link" href="https://ntopic.cn/p/ai20240501/"  target="_blank" rel="noopener"
+    >https://ntopic.cn/p/ai20240501</a></p>
+<hr>
+<p><img src="/PythonCS/LOGO12.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：Python禅师"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai%E8%B5%84%E8%AE%AF/">AI资讯</a>
+        
+            <a href="/tags/ai%E8%AE%BA%E6%96%87%E4%B8%8E%E5%BC%80%E6%BA%90/">AI论文与开源</a>
+        
+            <a href="/tags/ai%E6%8A%95%E8%B5%84/">AI投资</a>
+        
+            <a href="/tags/sora/">Sora</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/ai20240430/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ai20240430/20240430-01.ed3073fad768b211632e6847b2524574_hu14f3ba29a88a821e8bac76c653652693_1759688_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [每日AI·0430]首个自主更新的多模态大模型，马斯克访华，文本一键转3D数字人骨骼动画，创新的虚拟试衣模型"
+                        data-key="ai20240430" 
+                        data-hash="md5-7TBz&#43;tdoshFjLmhHslJFdA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[每日AI·0430]首个自主更新的多模态大模型，马斯克访华，文本一键转3D数字人骨骼动画，创新的虚拟试衣模型</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai20240506/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ai20240506/20240506-01.eb625b247510beba5856f2af33dd6738_hu120142c005cc345d297ddb948c21020f_668408_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [每日AI·0506]巴菲特谈 AI，李飞飞创业，苹果或将推出 AI 功能，ChatGPT 版搜索引擎"
+                        data-key="ai20240506" 
+                        data-hash="md5-62JbJHUQvrpYVvKvM91nOA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[每日AI·0506]巴菲特谈 AI，李飞飞创业，苹果或将推出 AI 功能，ChatGPT 版搜索引擎</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024050401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024050401/00.16ae2fa048fb0e419a325d12560b7d6e_hua04b28422bbb4c6a12cc5f607adbb1af_304554_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 国内免费的AI工具出色地帮我辅导女儿的小学英语作业"
+                        data-key="2024050401" 
+                        data-hash="md5-Fq4voEj7DkGaMl0SVgt9bg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">国内免费的AI工具出色地帮我辅导女儿的小学英语作业</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

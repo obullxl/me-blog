@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文详细介绍如何本地 Ollama 和国内大模型资源，在本地环境中快速部署和使用 Bolt.new，结合 Ollama 和 Qwen2.5-Coder，轻松实现从代码编写到自动部署的全流程。适合所有希望提升开发效率的开发者……'>
+<title>Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024120701/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）'>
+<meta property='og:description' content='本文详细介绍如何本地 Ollama 和国内大模型资源，在本地环境中快速部署和使用 Bolt.new，结合 Ollama 和 Qwen2.5-Coder，轻松实现从代码编写到自动部署的全流程。适合所有希望提升开发效率的开发者……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024120701/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Bolt.new' /><meta property='article:tag' content='Ollama' /><meta property='article:tag' content='Qwen' /><meta property='article:published_time' content='2024-12-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024120701/00.jpg' />
+<meta name="twitter:title" content="Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）">
+<meta name="twitter:description" content="本文详细介绍如何本地 Ollama 和国内大模型资源，在本地环境中快速部署和使用 Bolt.new，结合 Ollama 和 Qwen2.5-Coder，轻松实现从代码编写到自动部署的全流程。适合所有希望提升开发效率的开发者……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024120701/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#准备本地大模型">准备本地大模型</a></li>
+    <li><a href="#下载和配置-boltnew">下载和配置 Bolt.new</a></li>
+    <li><a href="#boltnew-项目部署">Bolt.new 项目部署</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024120701/">
+                <img src="/p/2024120701/00_hu31ac7d48ee715cbdbcf6bcc64e7e1d4c_130069_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024120701/00_hu31ac7d48ee715cbdbcf6bcc64e7e1d4c_130069_800x0_resize_q75_box.jpg 800w, /p/2024120701/00_hu31ac7d48ee715cbdbcf6bcc64e7e1d4c_130069_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="400" 
+                        loading="lazy"
+                        alt="Featured image of post Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>本文详细介绍如何本地 Ollama 和国内大模型资源，在本地环境中快速部署和使用 Bolt.new，结合 Ollama 和 Qwen2.5-Coder，轻松实现从代码编写到自动部署的全流程。适合所有希望提升开发效率的开发者……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-12-07
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：6 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>随着 AI 编程工具的迅猛发展，从早期的 Code Copilot（代码辅助）到如今备受瞩目的 Cursor、v0、Windsurf 和 <strong>Bolt.new</strong> 等全栈开发平台。这些创新工具旨在加速项目开发、简化工作流程并提高研发效率。然而，访问这些工具通常依赖于“通畅的网络”和海外 LLM 模型，在某些情况下可能成为使用这些工具的障碍。</p>
+<p>作为一位大模型的爱好者和学习者，老牛同学今天分享一条不同的路径——<strong>如何利用本地 Ollama 和国内的大模型 API，在本地部署和使用 Bolt.new？</strong></p>
+<p>以下是老牛同学录制的本地部署和使用 <strong>Bolt.new</strong> 的视频：通过一句话，即可自动完成整个小项目的代码编写和部署预览。</p>
+<p>【微信公众号视频链接】</p>
+<h1 id="1-boltnew-概览">1. Bolt.new 概览</h1>
+<p><strong>Bolt.new</strong>是由 StackBlitz 推出的一款革新性的 AI 驱动全栈开发平台，它以几个关键特性脱颖而出：</p>
+<ul>
+<li><strong>即时全栈环境</strong>：借助 WebContainer 技术，Bolt.new 能够在浏览器中直接运行真实的 Node.js 环境，支持 npm 包安装、服务器配置及第三方 API 交互，为开发者提供了前所未有的便捷性。</li>
+<li><strong>智能 AI 助手</strong>：内置的强大 AI 功能可以理解并执行复杂的指令，无论是创建文件、编辑代码还是解决问题，都能显著提高工作效率。特别是其一键修复错误的功能，能够自动处理编译或运行时出现的问题，极大地节省了时间。</li>
+<li><strong>简易部署流程</strong>：集成的聊天界面让用户可以直接上传代码至云端，并选择合适的托管服务（如 Vercel）进行部署。生成的应用程序可以通过 URL 轻松分享，促进团队协作和成果展示。</li>
+</ul>
+<p>尽管 Bolt.new 带来了诸多便利，但也存在一些局限：</p>
+<ul>
+<li><strong>缺乏版本控制</strong>：代码调整可能导致原有版本被覆盖，增加了数据丢失的风险。</li>
+<li><strong>频繁重新生成和部署</strong>：每次修改需求时，Bolt.new 会重新生成整个代码库并部署，需要较长时间。</li>
+</ul>
+<p>对于快速原型设计和全栈功能开发，Bolt.new 凭借其完整的开发环境、智能化的辅助工具和简便的协作机制，是一个不错的选择。</p>
+<h1 id="2-本地部署-boltnew">2. 本地部署 Bolt.new</h1>
+<h2 id="准备本地大模型">准备本地大模型</h2>
+<p>Bolt.new 底层依赖 LLM，我们先准备 2 个 LLM 选项：本地运行 Ollama，和 API 调用的远程 LLM 服务（非必须）</p>
+<ul>
+<li><strong>本地 Ollama</strong>：关于 Ollama 详细使用教程，请参考之前文章（<a class="link" href="https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q"  target="_blank" rel="noopener"
+    >Ollama 完整教程</a>），建议下载和启动<strong>Qwen2.5-Coder-7B</strong>模型：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ollama run qwen2.5-coder:7b
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>LLM 服务 API</strong>：Ollama 依赖电脑硬件配置，如果电脑硬件条件有限，我们还可以直接用户大模型服务 API，只需要兼容 OpenAPI 接口标准即可（老牛同学用的是百炼平台 Qwen2.5-Coder-32B 大模型）。</li>
+</ul>
+<h2 id="下载和配置-boltnew">下载和配置 Bolt.new</h2>
+<p>官方提供的 Bolt.new 并不直接支持本地 LLM 或自定义 API 设置。幸运的是，社区牛人<strong>coleam00</strong>基于官方版本开发了一个增强版——<a class="link" href="https://github.com/stackblitz/bolt.new"  target="_blank" rel="noopener"
+    >bolt.new-any-llm</a>，该版本不仅兼容多种 LLM，还能灵活配置 API 接口。</p>
+<ol>
+<li><strong>克隆项目仓库</strong>：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/coleam00/bolt.new-any-llm bolt.new-any-LLM
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> bolt.new-any-LLM
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><strong>配置环境变量</strong>：复制<code>.env.example</code>为<code>.env</code>，然后根据实际情况编辑<code>.env</code>配置文件中的 API 地址和密钥。例如，Ollama 需要设置<code>OLLAMA_API_BASE_URL</code>参数，国内模型 API 服务，则需要设置<code>OPENAI_LIKE_API_BASE_URL</code>和<code>OPENAI_LIKE_API_KEY</code>这 2 个参数。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 复制配置文件</span>
+</span></span><span class="line"><span class="cl">cp .env.example .env
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，打开<code>.env</code>配置文件，可以看到支持的模型列表，包括 GROQ、HuggingFace、Open AI 等，根据需要进行内容修改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl"># Ollama配置
+</span></span><span class="line"><span class="cl">OLLAMA_API_BASE_URL=http://localhost:11434
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 【可选】 老牛同学使用的是百炼平台
+</span></span><span class="line"><span class="cl">OPENAI_LIKE_API_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+</span></span><span class="line"><span class="cl">OPENAI_LIKE_API_KEY=真实Key内容
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>说明</strong>：<code>OPENAI_LIKE_API_BASE_URL</code>和<code>OPENAI_LIKE_API_KEY</code>意思就是兼容 OpenAI 接口标准的大模型地址和 API Key，目前国内厂商基本都支持 OpenAPI 接口标准。</p>
+<h2 id="boltnew-项目部署">Bolt.new 项目部署</h2>
+<p>为了加快 Node.js 包下载速度，我们可以设置一下镜像源（老牛同学使用的是淘宝镜像）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm config <span class="nb">set</span> registry https://registry.npmmirror.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其他镜像源如下列表，请按需选择：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">NPM官方: https://registry.npmjs.org
+</span></span><span class="line"><span class="cl">淘宝镜像: http://registry.npmmirror.com
+</span></span><span class="line"><span class="cl">阿里云镜像: https://npm.aliyun.com
+</span></span><span class="line"><span class="cl">腾讯云: https://mirrors.cloud.tencent.com/npm
+</span></span><span class="line"><span class="cl">华为云: https://mirrors.huaweicloud.com/repository/npm
+</span></span><span class="line"><span class="cl">网易: https://mirrors.163.com/npm
+</span></span><span class="line"><span class="cl">中科大: http://mirrors.ustc.edu.cn
+</span></span><span class="line"><span class="cl">清华: https://mirrors.tuna.tsinghua.edu.cn
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，我们执行以下命令来安装依赖并启动 Bolt.new：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 安装pnpm包管理工具</span>
+</span></span><span class="line"><span class="cl">npm install -g pnpm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装项目依赖包</span>
+</span></span><span class="line"><span class="cl">pnpm install
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动Bolt.new</span>
+</span></span><span class="line"><span class="cl">pnpm run dev
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动成功后，我们可以看到如下输出信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;pnpm run dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt; bolt@ dev D:<span class="se">\C</span>odeSpace<span class="se">\b</span>olt.new
+</span></span><span class="line"><span class="cl">&gt; remix vite:dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  ➜  Local:   http://localhost:5173/
+</span></span><span class="line"><span class="cl">  ➜  Network: use --host to expose
+</span></span><span class="line"><span class="cl">  ➜  press h + enter to show <span class="nb">help</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，我们开始体验本地化的 Bolt.new！</p>
+<h1 id="3-使用-boltnew-进行开发">3. 使用 Bolt.new 进行开发</h1>
+<p>通过浏览器打开 Bolt.new 本地地址：<a class="link" href="http://localhost:5173"  target="_blank" rel="noopener"
+    >http://localhost:5173</a></p>
+<p>首先可以看到如下页面，与官方相比，多了一个<strong>Model Settings</strong>的选项，在这里我们可以选择自己的模型：</p>
+<p><img src="/p/2024120701/31.jpg"
+	width="1020"
+	height="988"
+	srcset="/p/2024120701/31_hu9477948d34bd4d2c15bb2dbe15809e56_85332_480x0_resize_q75_box.jpg 480w, /p/2024120701/31_hu9477948d34bd4d2c15bb2dbe15809e56_85332_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Bolt.new设置模型"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="103"
+		data-flex-basis="247px"
+	
+></p>
+<p>我们可以选择 Ollama 模型（如上图），也可以选择配置过<strong>OPENAI_LIKE_API</strong>尝试模型（如老牛同学百炼平台 API 模型）：</p>
+<p><img src="/p/2024120701/32.jpg"
+	width="996"
+	height="825"
+	srcset="/p/2024120701/32_hu802f84a813b980fdab9c8d74c9bb9dce_62633_480x0_resize_q75_box.jpg 480w, /p/2024120701/32_hu802f84a813b980fdab9c8d74c9bb9dce_62633_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="OpenAI接口模型"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="120"
+		data-flex-basis="289px"
+	
+></p>
+<p>选择完模型，我可以输入我们的需求：<code>写一个计算器页面</code></p>
+<p>接下来的过程，就是老牛同学上面录制的视频所示了。</p>
+<p>Bolt.new 可以根据我们的一句话内容，自动拆分成不同的小步骤：</p>
+<p><img src="/p/2024120701/91.jpg"
+	width="985"
+	height="1006"
+	srcset="/p/2024120701/91_hua37bb5ea70b40a2d99acb7b32878cf30_97340_480x0_resize_q75_box.jpg 480w, /p/2024120701/91_hua37bb5ea70b40a2d99acb7b32878cf30_97340_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="拆分实现步骤"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="97"
+		data-flex-basis="234px"
+	
+></p>
+<p>然后，自动生成完整的项目结构和执行步骤，包括文件名等：</p>
+<p><img src="/p/2024120701/92.jpg"
+	width="822"
+	height="798"
+	srcset="/p/2024120701/92_hufae3bc8dbabe05cf8b7de8d85444b594_42833_480x0_resize_q75_box.jpg 480w, /p/2024120701/92_hufae3bc8dbabe05cf8b7de8d85444b594_42833_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="项目结构和步骤"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="103"
+		data-flex-basis="247px"
+	
+></p>
+<p>在右侧，显示源文件列表和动态展示每个文件生成过程：</p>
+<p><img src="/p/2024120701/93.jpg"
+	width="1290"
+	height="1326"
+	srcset="/p/2024120701/93_hu13709eb150c5a69a13b107a5dec56fc6_108379_480x0_resize_q75_box.jpg 480w, /p/2024120701/93_hu13709eb150c5a69a13b107a5dec56fc6_108379_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="源文件列表和内容"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="97"
+		data-flex-basis="233px"
+	
+></p>
+<p>最终，所有源代码研发完成，自动部署整个和提供预览：</p>
+<p><img src="/p/2024120701/94.jpg"
+	width="1282"
+	height="1327"
+	srcset="/p/2024120701/94_hu612bbd794967ab483ed00619009bf697_79497_480x0_resize_q75_box.jpg 480w, /p/2024120701/94_hu612bbd794967ab483ed00619009bf697_79497_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="项目部署和预览"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="96"
+		data-flex-basis="231px"
+	
+></p>
+<p>接下来，如果我们觉得哪里需要修改、或者有什么报错，直接提问，Bolt.new 会自动进行修改并部署和预览！</p>
+<h1 id="4-总结">4. 总结</h1>
+<p><strong>Bolt.new</strong>只需通过自然语音，就能实现全栈研发和自动部署的能力，对于追求高效开发和快速交付的团队而言，这是一个值得尝试的工具。</p>
+<p><strong>友情提示</strong>：对于保密性较高、或数据安全要求较高的项目，通过调用外部大模型 API 服务使用 Bolt.new 工具时，请注意数据安全问题！</p>
+<hr>
+<p>Pipeline 任务：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA"  target="_blank" rel="noopener"
+    >Transformers 框架任务概览：从零开始掌握 Pipeline（管道）与 Task（任务）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg"  target="_blank" rel="noopener"
+    >Transformers 框架 Pipeline 任务详解：文本转音频（text-to-audio 或 text-to-speech）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w"  target="_blank" rel="noopener"
+    >Transformers 框架 Pipeline 任务详解：文本分类（text-classification）</a></small></p>
+<p>往期推荐文章：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw"  target="_blank" rel="noopener"
+    >深入解析 Transformers 框架（一）：包和对象加载中的设计巧思与实用技巧</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow"  target="_blank" rel="noopener"
+    >深入解析 Transformers 框架（二）：AutoModel 初始化及 Qwen2.5 模型加载全流程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg"  target="_blank" rel="noopener"
+    >深入解析 Transformers 框架（三）：Qwen2.5 大模型的 AutoTokenizer 技术细节</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w"  target="_blank" rel="noopener"
+    >深入解析 Transformers 框架（四）：Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/bolt.new/">Bolt.new</a>
+        
+            <a href="/tags/ollama/">Ollama</a>
+        
+            <a href="/tags/qwen/">Qwen</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024062901/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024062901/02.d3ac7de955dee43eb9bbd789df78503a_hu1fa0aae459ee14b2d05b63839e018423_44026_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程"
+                        data-key="2024062901" 
+                        data-hash="md5-06x96VXe5D65u9eJ33hQOg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025020901/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020901/00.bd904e836f1f55b5f6204ef73662e639_hu8a5434afd7142d25bc7a2119bc98b479_227024_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？"
+                        data-key="2025020901" 
+                        data-hash="md5-vZBOg28fVbX2IE73NmLmOQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025011201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025011201/00.5d0cfc3bb62e18d88e6e74f2a54f2d78_hu883d5e381d46374d51c67d277ad5095c_219525_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序"
+                        data-key="2025011201" 
+                        data-hash="md5-XQz8O7YuGNiObnTypU8teA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

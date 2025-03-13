@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='上海人工智能实验室发布了书生·浦语（InternLM）新开源版本，增强了在复杂场景下的推理能力，本文介绍在本地进行部署和推理……'>
+<title>InternLM 2.5 书生·浦语 开源大模型本地部署体验</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024082301/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='InternLM 2.5 书生·浦语 开源大模型本地部署体验'>
+<meta property='og:description' content='上海人工智能实验室发布了书生·浦语（InternLM）新开源版本，增强了在复杂场景下的推理能力，本文介绍在本地进行部署和推理……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024082301/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='InternLM' /><meta property='article:tag' content='Ollama' /><meta property='article:published_time' content='2024-08-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-23T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024082301/InternLM.jpg' />
+<meta name="twitter:title" content="InternLM 2.5 书生·浦语 开源大模型本地部署体验">
+<meta name="twitter:description" content="上海人工智能实验室发布了书生·浦语（InternLM）新开源版本，增强了在复杂场景下的推理能力，本文介绍在本地进行部署和推理……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024082301/InternLM.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024082301/">
+                <img src="/p/2024082301/InternLM_hu41c4c6995ceabd0c37456922e7c82507_79554_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024082301/InternLM_hu41c4c6995ceabd0c37456922e7c82507_79554_800x0_resize_q75_box.jpg 800w, /p/2024082301/InternLM_hu41c4c6995ceabd0c37456922e7c82507_79554_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="367" 
+                        loading="lazy"
+                        alt="Featured image of post InternLM 2.5 书生·浦语 开源大模型本地部署体验" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">InternLM 2.5 书生·浦语 开源大模型本地部署体验</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>上海人工智能实验室发布了书生·浦语（InternLM）新开源版本，增强了在复杂场景下的推理能力，本文介绍在本地进行部署和推理……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-08-23
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：4 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>老牛同学之前偶尔刷到过<strong>InternLM</strong>大模型相关的介绍文章，因为在老牛同学心中，<strong>Qwen2</strong>千问才是国内开源模型中最适合自己的大模型，原因是自己在本地部署和应用<strong>Qwen2</strong>都非常满意，所以没有在意<strong>InternLM</strong>大模型，也就没有动力去了解它。</p>
+<p>今天老牛同学又刷到<strong>InternLM</strong>大模型发布<strong>1.8B</strong>新开源版本的文章，同时还知道了<strong>书生·浦语</strong>是它的中文名。因老牛同学在上海生活了十几年了，当看到<strong>浦</strong>字时有点敏感，猜测想是不是代表<strong>上海浦东</strong>的意思？所以特意去查了一下，官网介绍：书生·浦语（InternLM）大语言模型由上海人工智能实验室联合多家机构共同推出。官网并没有解释<strong>浦</strong>字的含义，因此老牛同学就算自己的猜测是对的了。</p>
+<p>既然是自己生活的城市发布的大语音模型，那就没有理由不去了解一下了，顺便部署体验一翻：</p>
+<ul>
+<li><strong>InternLM</strong> 大模型的简单介绍，顺便介绍一下官网的评测数据，方便大家阅读</li>
+<li>通过 Ollama 本地部署 <strong>InternLM</strong> 大模型，同时通过不同方式进行推理调用，包括 API 调用、WebUI 等</li>
+</ul>
+<h1 id="书生浦语internlm介绍">书生·浦语（InternLM）介绍</h1>
+<p><strong>书生·浦语</strong>系列大模型主页：<a class="link" href="https://internlm.intern-ai.org.cn"  target="_blank" rel="noopener"
+    >https://internlm.intern-ai.org.cn</a></p>
+<p><strong>书生·浦语（InternLM）</strong> 由上海人工智能实验室（上海 AI 实验室）联合推出，上海 AI 实验室是我国人工智能领域的新型科研机构，它的研究方向包括：人工智能基础理论、人工智能开放平台、人工智能基础软件和基础硬件系统、人工智能应用、人工智能核心技术和人工智能伦理与政策。感觉就是个政府机构，老牛同学生活了这么多年竟然都不知道！</p>
+<p><strong>书生·浦语（InternLM）</strong> 自 2023 年 6 月 7 日发布第 1 个大模型，到本月 8 月 4 号，开源发布<strong>InternLM 2.5 1.8B</strong>小尺寸模型，目前<strong>InternLM 2.5</strong>有 3 个不同尺寸：<strong>1.8B</strong>、<strong>7B</strong>和<strong>20B</strong></p>
+<p>同时，针对<strong>20B</strong>参数量版本，官网提供了一些评测数据：<a class="link" href="https://github.com/InternLM/InternLM"  target="_blank" rel="noopener"
+    >https://github.com/InternLM/InternLM</a>。<strong>InternLM-20B</strong>显著领先主流的 13B 量级开源模型，在语言、知识学科综合评测上都超越 Llama2-70B，在推理能力评测上和 Llama2-70B 持平，而知识方面则仍有一定差距。</p>
+<p><img src="/p/2024082301/01.jpg"
+	width="1356"
+	height="1303"
+	srcset="/p/2024082301/01_hub98e112e57706562f9bab17915cbe0e3_195356_480x0_resize_q75_box.jpg 480w, /p/2024082301/01_hub98e112e57706562f9bab17915cbe0e3_195356_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="InternLM能力评测"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="104"
+		data-flex-basis="249px"
+	
+></p>
+<h1 id="本地部署-internlm-25-大模型">本地部署 InternLM 2.5 大模型</h1>
+<p>目前 Ollama 已经支持<strong>InternLM 2.5</strong>大模型了：<a class="link" href="https://ollama.com/internlm/internlm2.5:1.8b-chat"  target="_blank" rel="noopener"
+    >https://ollama.com/internlm/internlm2.5:1.8b-chat</a></p>
+<p><img src="/p/2024082301/02.jpg"
+	width="1218"
+	height="898"
+	srcset="/p/2024082301/02_hu48f049dcd9eff203995955877df01ba5_92835_480x0_resize_q75_box.jpg 480w, /p/2024082301/02_hu48f049dcd9eff203995955877df01ba5_92835_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Ollama选择不同版本"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="325px"
+	
+></p>
+<p>关于 Ollama 详细介绍，老牛同学之前有专门的文章，本文不在累赘：<a class="link" href="https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q"  target="_blank" rel="noopener"
+    >Ollama 完整教程：本地 LLM 管理、WebUI 对话、Python/Java 客户端 API 应用</a></p>
+<p>我们可以根据自己的需要选择不同的参数版本，老牛同学选择的最新发布的<strong>1.8B</strong>参数量版本。</p>
+<p><strong>下载模型权重文件</strong>：<code>ollama run internlm/internlm2.5:1.8b-chat</code></p>
+<p>下载完成之后，其实我们已经有了个控制台的对话界面了：</p>
+<p><img src="/p/2024082301/03.jpg"
+	width="1537"
+	height="1288"
+	srcset="/p/2024082301/03_hu7c82a5cb93d9808dc9af60bbb269dad0_191392_480x0_resize_q75_box.jpg 480w, /p/2024082301/03_hu7c82a5cb93d9808dc9af60bbb269dad0_191392_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Ollama对话界面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="119"
+		data-flex-basis="286px"
+	
+></p>
+<p>接下来，我们就可以通过多种方式使用推理服务了，包括：HTTP、Python 客户端、Java 客户端、WebUI 等，老牛同学简单介绍以下 WebUI 方式：</p>
+<p>Ollama 自带控制台对话界面体验总归是不太好，接下来部署 Web 可视化聊天界面：</p>
+<ol>
+<li>下载并安装 Node.js 工具：<a class="link" href="https://nodejs.org/zh-cn"  target="_blank" rel="noopener"
+    >https://nodejs.org/zh-cn</a></li>
+<li>下载<code>ollama-webui</code>工程代码：<code>git clone https://github.com/ollama-webui/ollama-webui-lite ollama-webui</code></li>
+<li>切换<code>ollama-webui</code>代码的目录：<code>cd ollama-webui</code></li>
+<li>设置 Node.js 工具包镜像源（下载提速）：<code>npm config set registry http://mirrors.cloud.tencent.com/npm/</code></li>
+<li>安装 Node.js 依赖的工具包：<code>npm install</code></li>
+<li>最后，启动 Web 可视化界面：<code>npm run dev</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;npm run dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt; ollama-webui-lite@0.0.1 dev
+</span></span><span class="line"><span class="cl">&gt; vite dev --host --port <span class="m">3000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  VITE v4.5.2  ready in <span class="m">16023</span> ms
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  ➜  Local:   http://localhost:3000/
+</span></span><span class="line"><span class="cl">  ➜  Network: http://192.168.101.35:3000/
+</span></span><span class="line"><span class="cl">  ➜  Network: http://172.27.112.1:3000/
+</span></span><span class="line"><span class="cl">  ➜  Network: http://172.25.64.1:3000/
+</span></span><span class="line"><span class="cl">  ➜  press h to show <span class="nb">help</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果看到以上输出，代表 Web 可视化界面已经成功了！</p>
+<p>浏览器打开 Web 可视化界面：<a class="link" href="http://localhost:3000"  target="_blank" rel="noopener"
+    >http://localhost:3000/</a></p>
+<p><img src="/p/2024082301/04.jpg"
+	width="1261"
+	height="1351"
+	srcset="/p/2024082301/04_hu375d01e32970dcf6165092ccfae7d2b4_173055_480x0_resize_q75_box.jpg 480w, /p/2024082301/04_hu375d01e32970dcf6165092ccfae7d2b4_173055_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Ollam WebUI对话界面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="93"
+		data-flex-basis="224px"
+	
+></p>
+<h1 id="总结internlm-其他能力">总结：InternLM 其他能力</h1>
+<p>以上是老牛同学介绍如何部署和推理<strong>书生·浦语（InternLM）</strong> 大模型，并进行最简单的对话推理，<strong>InternLM</strong>的其他能力相关介绍，我们在官网都可以查到，包括：复杂的多步推理、多轮对话意图理解、对输出格式的控制和操作和复杂指令的理解。大家可以在本地进行体验。</p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/x2RKTvFeKgRvi982X5cymA"  target="_blank" rel="noopener"
+    >MiniCPM-V 2.6 面壁“小钢炮”，多图、视频理解多模态模型，部署和推理实战教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/internlm/">InternLM</a>
+        
+            <a href="/tags/ollama/">Ollama</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024120701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024120701/00.b0064924678861a86e4ba7a5864945d8_hu31ac7d48ee715cbdbcf6bcc64e7e1d4c_130069_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）"
+                        data-key="2024120701" 
+                        data-hash="md5-sAZJJGeIYahuS6elhklF2A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024071001/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024071001/00.3c639664d6273aa836b2e56d75b2c267_hu05111b7ea7e9ad676e8c99270aa3a526_147425_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Ollama完整教程：本地LLM管理、WebUI对话、Python/Java客户端API应用"
+                        data-key="2024071001" 
+                        data-hash="md5-PGOWZNYnOqg2suVtdbLCZw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Ollama完整教程：本地LLM管理、WebUI对话、Python/Java客户端API应用</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024070201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024070201/00.ccff7b67d4c55b161b21bd9816444edb_hu2f8b94c83031de6e5bc3f44f06111c68_362582_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Google 发布了最新的开源大模型 Gemma 2，本地快速部署和体验"
+                        data-key="2024070201" 
+                        data-hash="md5-zP97Z9TFWxYbIb2YFkRO2w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Google 发布了最新的开源大模型 Gemma 2，本地快速部署和体验</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024062901/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024062901/02.d3ac7de955dee43eb9bbd789df78503a_hu1fa0aae459ee14b2d05b63839e018423_44026_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程"
+                        data-key="2024062901" 
+                        data-hash="md5-06x96VXe5D65u9eJ33hQOg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024062501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024062501/00.bc61e2a15ecc11d43ef0c14a6bd692e6_hue8f2b43a6b2bdcc173d28e82d448d264_1557957_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama等）"
+                        data-key="2024062501" 
+                        data-hash="md5-vGHioV7MEdQ&#43;8MFKa9aS5g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama等）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>编程 on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/%E7%BC%96%E7%A8%8B/</link>
+        <description>Recent content in 编程 on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sat, 06 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>房产中介开始自学编程(AIGC)</title>
+        <link>https://ntopic.cn/p/2023050601/</link>
+        <pubDate>Sat, 06 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2023050601/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2023050601/images/00.jpg" alt="Featured image of post 房产中介开始自学编程(AIGC)" /&gt;&lt;p&gt;2023年5月6日，五一假期刚过，我惠南的房子开始去交易中心过户。聊天过程中，竟然发现买家是和我同行，房产经理和我们都是同龄人，一路都在聊编程的事情。&lt;/p&gt;
+&lt;p&gt;业务办完回去后，房产经理给我发消息，他想自学编程，让我推荐给他一些资料：
+&lt;img src=&#34;https://ntopic.cn/p/2023050601/images/01.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2023050601/images/01_hu9622a5169846de6dc5c6098a3e06ddc6_687355_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2023050601/images/01_hu9622a5169846de6dc5c6098a3e06ddc6_687355_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;自学编程资料&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;【开发网站，最快速使用范围最广的语言：PHP】https://www.runoob.com/php/php-tutorial.html
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;【开发服务端语言很多，使用最广：Java】https://www.runoob.com/java/java-tutorial.html
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Java最好配合SpringBoot研发框架，加速研发效率：https://docs.spring.io/spring-framework/docs/current/reference/html/overview.html#overview
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;【手机App跨平台的研发框架：Flutter】https://book.flutterchina.club
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;它只是研发App，APP后端还是需要如Java/C++/Go等
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;咨询&lt;strong&gt;文心一言&lt;/strong&gt;：如何看待房产中介自学编程这件事情：&lt;/p&gt;
+&lt;p&gt;在当今快速变化的科技行业中，学习编程已经成为了越来越多的人的选择。然而，对于一位已经三十岁的房产中介来说，这个决定并不容易。这篇文章将探讨这个决定背后的原因以及可能的优缺点。&lt;/p&gt;
+&lt;p&gt;首先，为什么一位三十岁的房产中介开始自学编程？可能是因为他意识到互联网技术在未来的发展趋势中具有重要地位，并且他认为这是实现职业发展的必经之路。此外，学习编程需要付出大量时间和精力，但他相信这是实现自我提升和职业转型的关键步骤。&lt;/p&gt;
+&lt;p&gt;然而，这个决定也存在一些潜在的优缺点。首先，学习编程需要投入大量时间和精力，因此这可能会影响到他的日常工作。但是，如果他真正热爱编程并决心将其作为自己的事业来发展，那么这些投入是值得的。其次，学习编程可以帮助他提高自己的技能水平，增强自己在职场中的竞争力。这也可能会使他在未来找到更好的工作机会。&lt;/p&gt;
+&lt;p&gt;此外，虽然三十岁对于很多人来说已经是职业发展的晚期，但这并不意味着不能学习编程并取得成功。事实上，很多成功的人都有晚年学习新技能的经历。因此，只要他有热情和决心，就可以实现自己的职业目标。&lt;/p&gt;
+&lt;p&gt;总之，对于一位三十岁的房产中介来说，开始自学编程是一个值得考虑的决定。虽然这可能会影响到他的日常工作，但如果他真正热爱编程并决心将其作为自己的事业来发展，那么这些投入是值得的。同时，学习编程可以帮助他提高自己的技能水平，增强自己在职场中的竞争力。只要他有热情和决心，就可以实现自己的职业目标。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

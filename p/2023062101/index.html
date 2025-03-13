@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='业务数据的存储，少不了数据记录的id序列，id序列（或称序列）的生成方式有很多种，比如当前时间戳、数据库的序列值（Oracle的序列，MySQL的自增ID等）、UUID等方式，但这些生成方式均存在一定的局限性，本文介绍一种通用高性能的分布式id序列的设计思路……'>
+<title>开源通用高性能的分布式id序列组件</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2023062101/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='开源通用高性能的分布式id序列组件'>
+<meta property='og:description' content='业务数据的存储，少不了数据记录的id序列，id序列（或称序列）的生成方式有很多种，比如当前时间戳、数据库的序列值（Oracle的序列，MySQL的自增ID等）、UUID等方式，但这些生成方式均存在一定的局限性，本文介绍一种通用高性能的分布式id序列的设计思路……'>
+<meta property='og:url' content='https://ntopic.cn/p/2023062101/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Java' /><meta property='article:tag' content='id序列' /><meta property='article:tag' content='高性能' /><meta property='article:published_time' content='2023-06-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-06-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2023062101/01.jpg' />
+<meta name="twitter:title" content="开源通用高性能的分布式id序列组件">
+<meta name="twitter:description" content="业务数据的存储，少不了数据记录的id序列，id序列（或称序列）的生成方式有很多种，比如当前时间戳、数据库的序列值（Oracle的序列，MySQL的自增ID等）、UUID等方式，但这些生成方式均存在一定的局限性，本文介绍一种通用高性能的分布式id序列的设计思路……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2023062101/01.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#分布式id序列说明">分布式id序列说明</a></li>
+    <li><a href="#通用分布式id序列组件">通用分布式id序列组件</a></li>
+    <li><a href="#分布式id序列组件设计">分布式id序列组件设计</a>
+      <ol>
+        <li><a href="#组件接口设计">组件接口设计</a></li>
+        <li><a href="#组件可控参数">组件可控参数</a></li>
+        <li><a href="#序列组件使用">序列组件使用</a></li>
+      </ol>
+    </li>
+    <li><a href="#分布式id序列测试用例">分布式id序列测试用例</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2023062101/">
+                <img src="/p/2023062101/01_huc82d7b839fc53b7a5c86bd3cdfedcac6_138083_800x0_resize_q75_box.jpg"
+                        srcset="/p/2023062101/01_huc82d7b839fc53b7a5c86bd3cdfedcac6_138083_800x0_resize_q75_box.jpg 800w, /p/2023062101/01_huc82d7b839fc53b7a5c86bd3cdfedcac6_138083_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="437" 
+                        loading="lazy"
+                        alt="Featured image of post 开源通用高性能的分布式id序列组件" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">开源通用高性能的分布式id序列组件</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%B8%93%E4%B8%9A%E6%8A%80%E6%9C%AF/" >
+                专业技术
+            </a>
+        
+            <a href="/categories/%E5%BC%80%E6%BA%90%E7%BB%84%E4%BB%B6/" >
+                开源组件
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>业务数据的存储，少不了数据记录的id序列，id序列（或称序列）的生成方式有很多种，比如当前时间戳、数据库的序列值（Oracle的序列，MySQL的自增ID等）、UUID等方式，但这些生成方式均存在一定的局限性，本文介绍一种通用高性能的分布式id序列的设计思路……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2023-06-21
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：5 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <ul>
+<li>Gitee源代码仓库：<a class="link" href="https://gitee.com/obullxl/sequence-jdbc"  target="_blank" rel="noopener"
+    >https://gitee.com/obullxl/sequence-jdbc</a></li>
+<li>GitHub源代码仓库：<a class="link" href="https://github.com/obullxl/sequence-jdbc"  target="_blank" rel="noopener"
+    >https://github.com/obullxl/sequence-jdbc</a></li>
+</ul>
+<hr>
+<h2 id="分布式id序列说明">分布式id序列说明</h2>
+<p>业务数据的存储，少不了数据记录的id序列。</p>
+<p>id序列（或称序列）的生成方式有很多种，比如当前时间戳、数据库的序列值（Oracle的序列，MySQL的自增ID等）、UUID等方式。</p>
+<p>这些生成方式都有一定的局限性，如时间戳在业务量较大时容易重复、Oracle序列和MySQL的自增ID限定了数据库类型（且MySQL的自增ID只能保证单库唯一，在分库分表的场景下也不适用）、UUID容易重复且无法保证递增等。</p>
+<p>同时，一般业务数据的id序列通常会带上一些业务信息，比如增加业务标识前缀、增加年月日等信息。业务id序列的处理变得多样，则进一步要求业务id序列的生成通用且高效。</p>
+<h2 id="通用分布式id序列组件">通用分布式id序列组件</h2>
+<p>为了屏蔽业务获取id序列因数据库类型、分库分表等带来的研发和维护成本，我们把分布式id序列的获取抽取为一个通用组件，对业务统一接口和规范。</p>
+<p>通用分布式id序列实现方式有很多，本文主要介绍一种基于数据表的实现方式，通过一张表记录所有的业务序列名和值，业务根据序列名获取下一个序列值（和Oracle序列类型，但是无需为每个序列创建序列，因此更简单）：</p>
+<p><img src="/p/2023062101/01.jpg"
+	width="1994"
+	height="1088"
+	srcset="/p/2023062101/01_huc82d7b839fc53b7a5c86bd3cdfedcac6_138083_480x0_resize_q75_box.jpg 480w, /p/2023062101/01_huc82d7b839fc53b7a5c86bd3cdfedcac6_138083_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<p>本方案的设计主要考量点：</p>
+<ul>
+<li><code>通用性：</code>仅依赖一张序列数据表，JDBC支持的数据库均可使用，包括SQLite、MySQL、Oracle、OceanBase等。</li>
+<li><code>高性能：</code>本地缓存一个序列区间，缓存使用完之前无DB交互；缓存的区间可设置，区间越大，DB访问越少，性能越高。</li>
+<li><code>分布式：</code>受益于集中式的序列数据表，保证了序列全局唯一。</li>
+</ul>
+<h2 id="分布式id序列组件设计">分布式id序列组件设计</h2>
+<h3 id="组件接口设计">组件接口设计</h3>
+<p>组件接口只有1个，就是获取序列：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Author: obullxl@163.com
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Copyright (c) 2020-2023 All Rights Reserved.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">package</span><span class="w"> </span><span class="nn">cn.ntopic.sequence</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 分布式序列服务
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author obullxl 2023年06月21日: 新增
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">NTSequence</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 默认序列名称
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">DEFAULT_SEQUENCE_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;DEFAULT&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 序列名称最大长度
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_SEQUENCE_NAME_LENGTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">64</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 获取下一个序列值
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 获取默认序列的新的唯一的序列值 {@link #DEFAULT_SEQUENCE_NAME}
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @throws IllegalArgumentException 参数非法
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">next</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">next</span><span class="p">(</span><span class="n">DEFAULT_SEQUENCE_NAME</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 获取下一个序列值
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param sequenceName 序列名称，非空，1~64字符，业务可随意指定（如：用户模块为`USER`，订单模块为`ORDER`等）
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 新的唯一的序列值
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @throws IllegalArgumentException 参数非法
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="nf">next</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">sequenceName</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="组件可控参数">组件可控参数</h3>
+<p>在追求通用性和性能的同时，以参数的方式供个性化调控：</p>
+<ul>
+<li><code>id序列数据表名：</code>默认值为nt_sequence；但对于不同的业务，对数据表名有要求规范（如：表名前置等），因此序列数据表名可设置</li>
+<li><code>id序列起始值：</code>默认值为1，即序列值从1开始递增；但对于存量业务，id值起始值需要比存量最大值要大，否则容易重复</li>
+<li><code>id序列最大值：</code>默认值为99999999，序列值递增到最大值，则循环从起始值开始</li>
+<li><code>序列更新重试次数：</code>默认值为10，当缓存序列用尽，需要查询和更新序列数据表，比较存在网络通讯和DB操作，不可避免存在异常失败，失败后会进行重试</li>
+<li><code>序列缓存大小：</code>默认值为1000，值越大，访问DB越少，性能越高，序列的连续性越差（如：缓存大小为1000，当序列用到400时，服务器重启了，那么401~1000直接的序列就丢失了）；相反，值越小，访问DB越多，性能越低，序列的连续性越好。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 属性-数据源
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">DataSource</span><span class="w"> </span><span class="n">ntDataSource</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 属性-重试次数
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">retryTimes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">10</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 属性-数据表名
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">tableName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;nt_sequence&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 属性-序列获取步长（即序列缓存大小）
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1000L</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 属性-序列最小值
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">minValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1L</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 属性-序列最大值
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">maxValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">99999999L</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="序列组件使用">序列组件使用</h3>
+<ul>
+<li>Gitee源代码仓库：<a class="link" href="https://gitee.com/obullxl/sequence-jdbc"  target="_blank" rel="noopener"
+    >https://gitee.com/obullxl/sequence-jdbc</a></li>
+<li>GitHub源代码仓库：<a class="link" href="https://github.com/obullxl/sequence-jdbc"  target="_blank" rel="noopener"
+    >https://github.com/obullxl/sequence-jdbc</a></li>
+</ul>
+<p>目前JAR包已经发布，通过Gitee进行仓库托管，也可直接使用，2步即可：</p>
+<ul>
+<li>第一步：在项目源代码的根<code>pom.xml</code>中，设置仓库地址：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repositories&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&lt;repository&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;id&gt;</span>Gitee-obullxl<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;url&gt;</span>https://gitee.com/obullxl/maven-repository/master/repository<span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&lt;/repository&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/repositories&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>第二步：引用JAR包，仅需要依赖本JAR包，无其他JAR包依赖：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>cn.ntopic<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>sequence-jdbc<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>1.0.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在业务代码中调用序列组件样例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 1. 构建数据源</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">DruidDataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DruidDataSource</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dataSource</span><span class="p">.</span><span class="na">setUrl</span><span class="p">(</span><span class="s">&#34;jdbc:sqlite:/Users/obullxl/CodeSpace/sequence-jdbc/SequenceJDBC.sqlite&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dataSource</span><span class="p">.</span><span class="na">setDriverClassName</span><span class="p">(</span><span class="s">&#34;org.sqlite.JDBC&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dataSource</span><span class="p">.</span><span class="na">setPoolPreparedStatements</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dataSource</span><span class="p">.</span><span class="na">setMaxPoolPreparedStatementPerConnectionSize</span><span class="p">(</span><span class="o">-</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dataSource</span><span class="p">.</span><span class="na">setTestOnBorrow</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dataSource</span><span class="p">.</span><span class="na">setTestOnReturn</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dataSource</span><span class="p">.</span><span class="na">setTestWhileIdle</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dataSource</span><span class="p">.</span><span class="na">setValidationQuery</span><span class="p">(</span><span class="s">&#34;SELECT &#39;1&#39; FROM sqlite_master LIMIT 1&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 2. 初始化序列组件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">NTSequenceImpl</span><span class="w"> </span><span class="n">ntSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NTSequenceImpl</span><span class="p">(</span><span class="n">dataSource</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ntSequence</span><span class="p">.</span><span class="na">setTableName</span><span class="p">(</span><span class="n">tableName</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ntSequence</span><span class="p">.</span><span class="na">createTable</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ntSequence</span><span class="p">.</span><span class="na">init</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 3. 获取序列值</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Autowire</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Qualifier</span><span class="p">(</span><span class="s">&#34;ntSequence&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="n">NTSequence</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 获取`DEFAULT`默认序列ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">newId1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">newId2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">newId3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 获取`USER`用户ID：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">newUserId1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">.</span><span class="na">next</span><span class="p">(</span><span class="s">&#34;USER&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">newUserId2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">.</span><span class="na">next</span><span class="p">(</span><span class="s">&#34;USER&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">newUserId3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">.</span><span class="na">next</span><span class="p">(</span><span class="s">&#34;USER&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 获取`ORDER`订单ID：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">newOrderId1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">.</span><span class="na">next</span><span class="p">(</span><span class="s">&#34;ORDER&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">newOrderId2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">.</span><span class="na">next</span><span class="p">(</span><span class="s">&#34;ORDER&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">newOrderId3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntSequence</span><span class="p">.</span><span class="na">next</span><span class="p">(</span><span class="s">&#34;ORDER&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>完整的使用方法，可参数源代码仓库说明文档（<code>README.md</code>）：</p>
+<ul>
+<li>Gitee源代码仓库：<a class="link" href="https://gitee.com/obullxl/sequence-jdbc"  target="_blank" rel="noopener"
+    >https://gitee.com/obullxl/sequence-jdbc</a></li>
+<li>GitHub源代码仓库：<a class="link" href="https://github.com/obullxl/sequence-jdbc"  target="_blank" rel="noopener"
+    >https://github.com/obullxl/sequence-jdbc</a></li>
+</ul>
+<h2 id="分布式id序列测试用例">分布式id序列测试用例</h2>
+<p>因为代码较大，请直接查看源代码：</p>
+<ul>
+<li>Gitee测试源代码：<a class="link" href="https://gitee.com/obullxl/sequence-jdbc/blob/master/src/test/java/cn/ntopic/sequence/NTSequenceTest.java"  target="_blank" rel="noopener"
+    >https://gitee.com/obullxl/sequence-jdbc/blob/master/src/test/java/cn/ntopic/sequence/NTSequenceTest.java</a></li>
+<li>GitHub测试源代码：<a class="link" href="https://github.com/obullxl/sequence-jdbc/blob/master/src/test/java/cn/ntopic/sequence/NTSequenceTest.java"  target="_blank" rel="noopener"
+    >https://github.com/obullxl/sequence-jdbc/blob/master/src/test/java/cn/ntopic/sequence/NTSequenceTest.java</a></li>
+</ul>
+<hr>
+<p>我的本博客原地址：<a class="link" href="https://ntopic.cn/p/2023062101/"  target="_blank" rel="noopener"
+    >https://ntopic.cn/p/2023062101</a></p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/java/">Java</a>
+        
+            <a href="/tags/id%E5%BA%8F%E5%88%97/">Id序列</a>
+        
+            <a href="/tags/%E9%AB%98%E6%80%A7%E8%83%BD/">高性能</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2023062201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023062201/01.902b3fdbc92d9d558d39b8cf4d6053d9_huf923c7ced42b0cdac23869393834d473_15259_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 使用Gitee或GitHub托管Maven仓库JAR包的便捷方法"
+                        data-key="2023062201" 
+                        data-hash="md5-kCs/28ktnVWNObjPTWBT2Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Gitee或GitHub托管Maven仓库JAR包的便捷方法</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023052001/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023052001/images/01.fee7e240d341cd8a91a9ced81243d72d_hu1f2ced91771ffa736a99e93a73a6b369_227088_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Mockito测试框架在SpringBoot集成测试中的介绍和实战"
+                        data-key="2023052001" 
+                        data-hash="md5-/ufiQNNBzYqRqc7YEkPXLQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mockito测试框架在SpringBoot集成测试中的介绍和实战</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023051301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023051301/images/01.f47345138240b965be4e2716702541f0_hu841d0111d96665be72149f0ea52abb94_55425_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Java ForkJoin框架分析和实战"
+                        data-key="2023051301" 
+                        data-hash="md5-9HNFE4JAuWW&#43;TicWcCVB8A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java ForkJoin框架分析和实战</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024062201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024062201/00.f074a500185aacf83c400e49be969b75_hua04b28422bbb4c6a12cc5f607adbb1af_216292_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post ngrok内网穿透，实现外网访问ChatTTS/Qwen2等大模型应用"
+                        data-key="2024062201" 
+                        data-hash="md5-8HSlABharPg8QA5JvpabdQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ngrok内网穿透，实现外网访问ChatTTS/Qwen2等大模型应用</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023112001/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023112001/00.b31e8cb86581e961c1da3409fadf5f3d_huc7364261a6c3c41a27a56f1135847b5b_18512_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post FlutterApp实战·第01天：Flutter安装和配置"
+                        data-key="2023112001" 
+                        data-hash="md5-sx6MuGWB6WHB2jQJ&#43;t9fPQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">FlutterApp实战·第01天：Flutter安装和配置</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文深入浅出地介绍了3D游戏开发中常用的旋转工具——欧拉角和四元数。通过生动的例子和代码演示，详细解释了它们的基本概念、应用场景以及如何解决万向锁、插值和计算效率等问题。无论你是初学者还是有经验的开发者，都能从中获得实用的知识和技巧……'>
+<title>欧拉角和四元数，3D 游戏开发中“旋转”难题的通俗讲解和应用实战</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2025021401/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='欧拉角和四元数，3D 游戏开发中“旋转”难题的通俗讲解和应用实战'>
+<meta property='og:description' content='本文深入浅出地介绍了3D游戏开发中常用的旋转工具——欧拉角和四元数。通过生动的例子和代码演示，详细解释了它们的基本概念、应用场景以及如何解决万向锁、插值和计算效率等问题。无论你是初学者还是有经验的开发者，都能从中获得实用的知识和技巧……'>
+<meta property='og:url' content='https://ntopic.cn/p/2025021401/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='欧拉角' /><meta property='article:tag' content='四元数' /><meta property='article:tag' content='旋转' /><meta property='article:published_time' content='2025-02-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-14T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2025021401/00.jpg' />
+<meta name="twitter:title" content="欧拉角和四元数，3D 游戏开发中“旋转”难题的通俗讲解和应用实战">
+<meta name="twitter:description" content="本文深入浅出地介绍了3D游戏开发中常用的旋转工具——欧拉角和四元数。通过生动的例子和代码演示，详细解释了它们的基本概念、应用场景以及如何解决万向锁、插值和计算效率等问题。无论你是初学者还是有经验的开发者，都能从中获得实用的知识和技巧……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2025021401/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2025021401/">
+                <img src="/p/2025021401/00_hu38a63772fa259397b2f70878a2b36caa_40924_800x0_resize_q75_box.jpg"
+                        srcset="/p/2025021401/00_hu38a63772fa259397b2f70878a2b36caa_40924_800x0_resize_q75_box.jpg 800w, /p/2025021401/00_hu38a63772fa259397b2f70878a2b36caa_40924_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post 欧拉角和四元数，3D 游戏开发中“旋转”难题的通俗讲解和应用实战" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">欧拉角和四元数，3D 游戏开发中“旋转”难题的通俗讲解和应用实战</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>本文深入浅出地介绍了3D游戏开发中常用的旋转工具——欧拉角和四元数。通过生动的例子和代码演示，详细解释了它们的基本概念、应用场景以及如何解决万向锁、插值和计算效率等问题。无论你是初学者还是有经验的开发者，都能从中获得实用的知识和技巧……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2025-02-14
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：10 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>春节期间，老牛同学学习使用 Cocos Creator 研发了一款 3D 小游戏。开发过程中遇到了一些全新概念和用法，虽然借助大模型最终完成了小游戏功能的开发，但对这些概念却一知半解。</p>
+<p>其中，在需要 3D 组件旋转的功能中，“<strong>欧拉角</strong>”和“<strong>四元数</strong>”就是研发过程中遇到的一个全新的概念。如下代码是大模型帮忙实现的“左右水平滑动”功能：</p>
+<p><img src="/p/2025021401/01.jpg"
+	width="1170"
+	height="991"
+	srcset="/p/2025021401/01_huff4b67a1a143f0a2fdad339d86c2c85f_120825_480x0_resize_q75_box.jpg 480w, /p/2025021401/01_huff4b67a1a143f0a2fdad339d86c2c85f_120825_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="旋转代码样例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="283px"
+	
+></p>
+<p>本文将对“欧拉角”和“四元数”进行尽可能详细的总结，尽可能不涉及数学证明公式，希望能给像我一样有困惑的朋友一些帮助：</p>
+<ul>
+<li>基本概念：为什么对于 3D 物体旋转，大家都采用<strong>欧拉角</strong>和<strong>四元数</strong>来表示？为什么 1 个概念还不够，还需要 2 个？他们分别解决什么主要问题？</li>
+<li>如何应用：在不同场景下，<strong>欧拉角</strong>和<strong>四元数</strong>如何应用旋转？它们如何应用到物体旋转？</li>
+<li>实际应用：最后，用一个“让立方体的对角线垂直于地面并旋转”功能，演示如何让物体旋转后并不停的旋转起来。</li>
+</ul>
+<p>本文代码和小游戏源代码均可免费下载：打开“<strong>老牛同学</strong>”微信小程序-&gt;点击“<strong>更多</strong>”Tab-&gt;“<strong>源代码</strong>”获取下载链接。</p>
+<p><img src="/CX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信小程序：老牛同学"
+	
+	
+></p>
+<h1 id="欧拉角和四元数存在的意义是什么">欧拉角和四元数存在的意义是什么？</h1>
+<p>首先，欧拉角和四元数都是用于<strong>描述三维空间中物体旋转</strong>的常用工具，它们只是工具，核心就是<strong>三维</strong>和<strong>旋转</strong>。</p>
+<p><strong>欧拉角</strong>最早由瑞士数学家<strong>莱昂哈德·欧拉（Leonhard Euler）<strong>于 18 世纪提出，他认为：三维空间中物体的任意</strong>姿态</strong>，都可以通过三个连续的旋转角度来描述（即：第一步绕某个轴旋转，第二步绕另一个轴旋转，第三步绕第三个轴旋转）。用 3 个数就可以表示旋转姿态，确实一种非常直观且易于理解的方法。</p>
+<p>那么，对应到游戏开发中，欧拉角的就是我们最常见的<strong>X 轴</strong>、<strong>Y 轴</strong>和<strong>Z 轴</strong>旋转属性来表示了。如下所示，把一个长方体按照 X/Y/Z 旋转后的姿态：</p>
+<p><img src="/p/2025021401/11.jpg"
+	width="1620"
+	height="1011"
+	srcset="/p/2025021401/11_hu2010b360f0a11483cd63a4aaa7fa2106_113235_480x0_resize_q75_box.jpg 480w, /p/2025021401/11_hu2010b360f0a11483cd63a4aaa7fa2106_113235_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="长方体旋转之后的姿态"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="384px"
+	
+></p>
+<p>注意的是，在三维空间中，我们一般用<strong>姿态</strong>或<strong>位姿</strong>来表示物体的当前旋转，它有两层含义：</p>
+<ol>
+<li>物体方向，或者朝向</li>
+<li>物体局部坐标系相当于世界坐标系的偏移量</li>
+</ol>
+<p><strong>四元数</strong>由爱尔兰数学家**威廉·罗文·汉密尔顿（William Rowan Hamilton）**于 1843 年提出。汉密尔顿希望找到一种用于描述三维空间旋转的数系。据说，汉密尔顿有一次在散步时突然想到了四元数的基本公式，并将其刻在了一座桥上。</p>
+<p>四元数由一个实部和三个虚部组成，形式为：<code>Q = W + Xi + Yj + Zk</code>，其中<code>W</code>,<code>X</code>,<code>Y</code>,<code>Z</code>是实数，<code>i</code>,<code>j</code>,<code>k</code>是虚数单位。</p>
+<p>既然欧拉角表示旋转已经足够优秀了，为什么还需要引入四元数呢？</p>
+<p>原因在于，欧拉角虽然简单直观，但存在三个问题：<strong>万向锁</strong>问题（Gimbal Lock）、旋转过程中<strong>插值</strong>困难、<strong>计算效率</strong>较低的问题。</p>
+<p>接下来，老牛同学根据自己的理解，逐一介绍欧拉角的这几个问题，同时看看四元数是如何解决的。</p>
+<h1 id="什么是旋转什么是坐标系">什么是旋转，什么是坐标系？</h1>
+<p>在介绍欧拉角和四元数之前，先了解一下旋转和坐标系。</p>
+<p><strong>旋转</strong>是指物体在三维空间中绕某个<strong>轴</strong>进行<strong>角度</strong>变化的<strong>运动</strong>：</p>
+<ul>
+<li>轴：在三维空间中，我们一般 X 轴、Y 轴和 Z 轴表示。</li>
+<li>角度：通常用角度或弧度来表示。</li>
+<li>运动方向：分为<strong>右手</strong>坐标系或者<strong>左手</strong>坐标系。Cocos 3D 使用右手坐标系，Unity 3D 使用左手坐标系。默认情况下，轴默认配置：X 轴向右为正，Y 轴 向上为正，Z 轴朝屏幕外为正。</li>
+</ul>
+<p><strong>右手</strong>坐标系旋转方向：伸出右手，大拇指指向轴的正方向（如：围绕 X 轴旋转+30°，则大拇指指向 X 轴的正方向）；弯曲四指，四指弯曲的方向为旋转正方向（如：+30°），反过来手背方向便是负方向。</p>
+<p><strong>左手</strong>坐标系旋转方向：类似于右手坐标系，伸出左手即可。</p>
+<p><img src="/p/2025021401/21.jpg"
+	width="1605"
+	height="1386"
+	srcset="/p/2025021401/21_huf164ef63e8b91a43b7ba71477ca961ae_103833_480x0_resize_q75_box.jpg 480w, /p/2025021401/21_huf164ef63e8b91a43b7ba71477ca961ae_103833_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="左手和右手坐标系"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="115"
+		data-flex-basis="277px"
+	
+></p>
+<p><strong>世界坐标系：</strong> 三维空间的参考框架，所有物体的参考标准，它是固定不变的。</p>
+<p><strong>本地坐标系：</strong> 每个物体都有的自己的坐标系，用于描述其自身的姿态。</p>
+<p><img src="/p/2025021401/22.jpg"
+	width="946"
+	height="1008"
+	srcset="/p/2025021401/22_hu5e5b1ee7320df32b13d94f703fc889ae_54136_480x0_resize_q75_box.jpg 480w, /p/2025021401/22_hu5e5b1ee7320df32b13d94f703fc889ae_54136_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="世界和局部坐标系"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="93"
+		data-flex-basis="225px"
+	
+></p>
+<p>一般情况下，我们所说的旋转指的是<strong>局部</strong>坐标系，当然也可以相对于全局坐标系。</p>
+<h1 id="万向锁问题和解法">万向锁问题和解法</h1>
+<p>万向节常用在汽车动力传输上，它是汽车驱动系统关节，它可以围绕不同方向旋转：</p>
+<p><img src="/p/2025021401/31.jpg"
+	width="2322"
+	height="819"
+	srcset="/p/2025021401/31_huc2be1a61fda9443dbf264cf8713f7bf2_94162_480x0_resize_q75_box.jpg 480w, /p/2025021401/31_huc2be1a61fda9443dbf264cf8713f7bf2_94162_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="万向节"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="283"
+		data-flex-basis="680px"
+	
+></p>
+<p>在解释万向锁问题之前，有三个非常重要的概念<strong>必须</strong>理解：</p>
+<ol>
+<li>无论是欧拉角还是四元数，它们表示的是物体旋转后的姿态，是一个<strong>描述</strong>，它不是一个连续的动作。比如：欧拉角<code>(90,0,0)</code>代表围绕 X 轴旋转+90°，它表示的是这个物体旋转+90° 后的姿态，而不是表示物体围绕 X 轴，从 0°-&gt;1°-&gt;2°-&gt;……-&gt;90° 这个过程。因此，这里的“旋转”它<strong>不是</strong>指一个连续的动作！</li>
+<li>物体姿态与旋转的顺序密切相关，相同的角度，不同的旋转顺序，物体的姿态是不相同的。我们可以拿个快递盒子，做个简单的实验就能明白。如：围绕 X 轴旋转 90°，Y 轴 45°，<strong>X→Y→Z</strong>旋转顺序，和<strong>Y→X→Z</strong>旋转顺序，快递盒子的姿态是不同的。</li>
+<li>物体按照某个顺序依次旋转，前面的轴旋转时，会带动后面的轴一同旋转，而后面轴旋转却不会影响前面的轴。如：X→Y→Z 旋转顺序，当围绕 X 轴旋转时，本地坐标系 Y 轴和 Z 轴一同旋转；当围绕 Y 轴旋转时，Z 轴会一同旋转，但 X 轴是<strong>不动</strong>的；最后，当围绕 Z 轴旋转时，X 轴和 Y 轴都不会动！</li>
+</ol>
+<p><strong>第 3 点</strong>感觉非常的诡异，老牛同学就被这个不可思议的概念折磨了好久，直到彻底理解了<strong>第 1 点</strong>：永远记住，欧拉角和四元数这些表示<strong>旋转</strong>的工具，它们只是描述旋转后的<strong>姿态</strong>，并不是旋转动作（旋转在这里当名称理解），它没有动作过程，只是最终的瞬时的姿态！</p>
+<p>如果大家理解了<strong>第 1 点</strong>，那么可以退一步想：X→Y→Z 旋转顺序，如果围绕 Y 轴旋转时，X 轴也跟着旋转，那么 X 轴最初的旋转不就白费了吗？</p>
+<p>如果<strong>第 3 点</strong>无法理解的话，那么万向锁的问题是无法理解，因为它就是万向锁产生的前提！</p>
+<p>至此，大家也可以到网上看看数学推导公式，在此老牛同学就不列举了！</p>
+<p><strong>万向锁</strong>定义：当两个旋转轴重合时，原本三个独立的旋转轴（X、Y、Z）变成了两个，导致自由度减少的现象。</p>
+<p>我们先来看看，万向锁发生的场景：物体的任意旋转顺序（如：X→Y→Z，Y→X→Z 等），当围绕第 2 个轴旋转的角度为 ±90° 时，那么第 3 个轴就会和第 1 个轴就会重合。这样当物体围绕第 1 个轴旋转或者第 3 个轴旋转，姿态都是一样的，无法区分，这种现象就是“万向锁”问题。</p>
+<p><img src="/p/2025021401/32.jpg"
+	width="1249"
+	height="697"
+	srcset="/p/2025021401/32_huc1dd5589ce905af488b5b249eeb84739_36051_480x0_resize_q75_box.jpg 480w, /p/2025021401/32_huc1dd5589ce905af488b5b249eeb84739_36051_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="万向锁问题"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="179"
+		data-flex-basis="430px"
+	
+></p>
+<p>如上图所示：X→Y→Z 旋转顺序，<code>(0, 90, 0)</code>旋转角度（X 轴和 Z 轴角度可以是任意值，此处便于理解设置为 0°），当围绕 Y 轴旋转 90° 之后，X 轴和 Z 轴重合了。这个时候，物体无论围绕 X 轴还是 Z 轴旋转，姿态都是一样的。</p>
+<p>那么，四元数是如何解决欧拉角万向锁问题的呢：由上述公式可以看出，它没有旋转轴的概念，而是由四个数值表示旋转，表示方式为<code>cos(θ/2)+sin(θ/2)(xi+yj+zk)</code>；其中，θ 代表旋转的角度，(x,y,z)代表旋转轴方向。</p>
+<h1 id="插值和计算效率问题">插值和计算效率问题</h1>
+<p><strong>插值</strong>问题的理解：插值是指物体旋转路径上的中间状态（即平滑过渡），欧拉角使用三个角度描述旋转，容易出现冗余或等效旋转的问题（如：<code>(0, 0, 0)</code>和<code>(360, 360, 360)</code>），导致旋转路径不自然，当发生万向锁问题的时候，就会发生异常。而四元数，它支持球面线性插值方法，能够生成平滑且自然的、稳定的旋转。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// 插值比例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">t</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 1. 欧拉角线性插值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">startEuler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">endEuler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vec3</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">interpolatedEuler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vec3</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">startEuler</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="p">(</span><span class="nx">endEuler</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">startEuler</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">startEuler</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">endEuler</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">startEuler</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">startEuler</span><span class="p">.</span><span class="nx">z</span> <span class="o">+</span> <span class="p">(</span><span class="nx">endEuler</span><span class="p">.</span><span class="nx">z</span> <span class="o">-</span> <span class="nx">startEuler</span><span class="p">.</span><span class="nx">z</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`欧拉角线性插值: </span><span class="si">${</span><span class="nx">interpolatedEuler</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 2. 四元数球面线性插值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">startQuat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Quat</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">endQuat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Quat</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Quat</span><span class="p">.</span><span class="nx">fromEuler</span><span class="p">(</span><span class="nx">startQuat</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Quat</span><span class="p">.</span><span class="nx">fromEuler</span><span class="p">(</span><span class="nx">endQuat</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">interpolatedQuat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Quat</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Quat</span><span class="p">.</span><span class="nx">slerp</span><span class="p">(</span><span class="nx">interpolatedQuat</span><span class="p">,</span> <span class="nx">startQuat</span><span class="p">,</span> <span class="nx">endQuat</span><span class="p">,</span> <span class="nx">t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`四元数球面线性插值: (</span><span class="si">${</span><span class="nx">interpolatedQuat</span><span class="p">.</span><span class="nx">w</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">interpolatedQuat</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">interpolatedQuat</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">interpolatedQuat</span><span class="p">.</span><span class="nx">z</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>计算效率</strong>问题：主要是运算复杂度高，涉及大量的三角函数运算，计算效率比较低。而四元数，可通过简单的向量点积和叉积实现计算，计算效率较高。</p>
+<h1 id="欧拉角和四元数转换">欧拉角和四元数转换</h1>
+<p>在 Cocos 3D 中，欧拉角的使用简单且直观，使用<code>Vec3</code>对象表示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// 1. 获取欧拉角（单位：度）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">euler</span>: <span class="kt">Vec3</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">eulerAngles</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`X: </span><span class="si">${</span><span class="nx">euler</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb">°`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Y: </span><span class="si">${</span><span class="nx">euler</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb">°`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Z: </span><span class="si">${</span><span class="nx">euler</span><span class="p">.</span><span class="nx">z</span><span class="si">}</span><span class="sb">°`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 2. 设置欧拉角（X/Y/Z，单位：度）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">eulerAngles</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vec3</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>四元数使用<code>Quat</code>对象表示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// 3. 获取四元数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">quat1</span>: <span class="kt">Quat</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">getRotation</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`四元数 w: </span><span class="si">${</span><span class="nx">quat1</span><span class="p">.</span><span class="nx">w</span><span class="si">}</span><span class="sb">, x: </span><span class="si">${</span><span class="nx">quat1</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb">, y: </span><span class="si">${</span><span class="nx">quat1</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb">, z: </span><span class="si">${</span><span class="nx">quat1</span><span class="p">.</span><span class="nx">z</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 4. 设置四元数（w, x, y, z）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">quat2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Quat</span><span class="p">(</span><span class="mf">0.707</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">setRotation</span><span class="p">(</span><span class="nx">quat2</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>欧拉角和四元数，也可以相互转换：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// 5. 欧拉角转四元数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">quat3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Quat</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Quat</span><span class="p">.</span><span class="nx">fromEuler</span><span class="p">(</span><span class="nx">quat3</span><span class="p">,</span> <span class="nx">euler</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">euler</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="nx">euler</span><span class="p">.</span><span class="nx">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`欧拉角转四元数 w: </span><span class="si">${</span><span class="nx">quat3</span><span class="p">.</span><span class="nx">w</span><span class="si">}</span><span class="sb">, x: </span><span class="si">${</span><span class="nx">quat3</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb">, y: </span><span class="si">${</span><span class="nx">quat3</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb">, z: </span><span class="si">${</span><span class="nx">quat3</span><span class="p">.</span><span class="nx">z</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 6. 四元数转欧拉角
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Quat</span><span class="p">.</span><span class="nx">toEuler</span><span class="p">(</span><span class="nx">euler</span><span class="p">,</span> <span class="nx">quat2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`四元数转欧拉角: X=</span><span class="si">${</span><span class="nx">euler</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb">°, Y=</span><span class="si">${</span><span class="nx">euler</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb">°, Z=</span><span class="si">${</span><span class="nx">euler</span><span class="p">.</span><span class="nx">z</span><span class="si">}</span><span class="sb">°`</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="实战垂直地面旋转立方体">实战：垂直地面旋转立方体</h1>
+<p>接下来，我们来一个应用实战：旋转立方体，让对角线垂直于地面，然后围绕对角线不停地旋转！</p>
+<p><img src="/p/2025021401/41.jpg"
+	width="640"
+	height="522"
+	srcset="/p/2025021401/41_huded87ca1a21b5a0b7bd6ee9bfbacf103_7464_480x0_resize_q75_box.jpg 480w, /p/2025021401/41_huded87ca1a21b5a0b7bd6ee9bfbacf103_7464_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="旋转的立方体"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="122"
+		data-flex-basis="294px"
+	
+></p>
+<p>让立方体的对角线垂直于地面，用欧拉角很难表示。从代码中可以看到，用四元数可以轻松实现。</p>
+<p>首先，让立方体的对角线垂直于地面立起来：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 初始化：立起来
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kr">protected</span> <span class="nx">start</span><span class="p">()</span><span class="o">:</span> <span class="k">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 立方体对角线顶点向量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kr">const</span> <span class="nx">scale</span>: <span class="kt">number</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">scale</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">localDiagonal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vec3</span><span class="p">(</span><span class="nx">scale</span><span class="p">,</span> <span class="nx">scale</span><span class="p">,</span> <span class="nx">scale</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 归一化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">Vec3</span><span class="p">.</span><span class="nx">normalize</span><span class="p">(</span><span class="nx">localDiagonal</span><span class="p">,</span> <span class="nx">localDiagonal</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 本地对角线旋转到Y轴的旋转
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kr">const</span> <span class="nx">targetDirection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">rotation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Quat</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Quat</span><span class="p">.</span><span class="nx">rotationTo</span><span class="p">(</span><span class="nx">rotation</span><span class="p">,</span> <span class="nx">localDiagonal</span><span class="p">,</span> <span class="nx">targetDirection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 应用旋转，立起来
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">setRotation</span><span class="p">(</span><span class="nx">rotation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，让立方体按照指定的弧度参数，沿着世界坐标系 Y 轴进行旋转（因为第一次旋转之后，立方体的本地坐标系已经发生了变化，但是世界坐标系是固定不变）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 帧更新：旋转
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">protected</span> <span class="nx">update</span><span class="p">(</span><span class="nx">dt</span>: <span class="kt">number</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">rotation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Quat</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Quat</span><span class="p">.</span><span class="nx">fromAxisAngle</span><span class="p">(</span><span class="nx">rotation</span><span class="p">,</span> <span class="nx">Vec3</span><span class="p">.</span><span class="nx">UNIT_Y</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">rotateSpeed</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">rotate</span><span class="p">(</span><span class="nx">rotation</span><span class="p">,</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">NodeSpace</span><span class="p">.</span><span class="nx">WORLD</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="最后简单总结">最后，简单总结</h1>
+<p>从上面分析我们可以看到，欧拉角和四元数这 2 个表示三维空间物体旋转的工具，它们有各自的使用场景：</p>
+<ul>
+<li>欧拉角：直观，便于理解；在属性编辑器等调试场景，用欧拉角旋转；同时，对于简单的旋转操作（如：单一轴旋转），使用欧拉角就非常方便。</li>
+<li>四元数：转换复杂，不直观；但它插值平滑，计算效率高，比较适合复杂的旋转场景。</li>
+</ul>
+<p>欧拉角这么好，那如何克服“万向锁”问题：把旋转顺序的第二个轴（如：X→Y→Z 旋转顺序的 Y 轴），设置为不太容易旋转+90° 的轴。如在 Cocos 3D 等游戏研发中，Y 轴是第二个轴，它垂直于地面，因为在游戏过程中，摄像头一般都不会垂直于地面或者垂直于天空。</p>
+<p><strong>提示：</strong> 以上示例源代码，老牛同学已经上传，打开“<strong>老牛同学</strong>”微信小程序-&gt;点击“<strong>更多</strong>”Tab-&gt;“<strong>源代码</strong>”获取下载链接。</p>
+<p><img src="/CX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信小程序：老牛同学"
+	
+	
+></p>
+<hr>
+<p>Cocos 3D 小游戏：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/TlgNKvGYMuGMmU0dIBPn4A"  target="_blank" rel="noopener"
+    >01.技术选型</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/qlOYpjREXBKb7vl1kuujlg"  target="_blank" rel="noopener"
+    >02.研发流程</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/V3CIhswW3CVcTY1aPaALTw"  target="_blank" rel="noopener"
+    >03.小游戏框架</a>丨 <a class="link" href="https://mp.weixin.qq.com/s/8f3GZNd7qjwIhfTcsVruYQ"  target="_blank" rel="noopener"
+    >04.核心架构设计</a>丨 <a class="link" href="https://mp.weixin.qq.com/s/8jxPxJ2-9UnFsLMGh9h0fQ"  target="_blank" rel="noopener"
+    >05.分包构建发布</a></small></p>
+<p>Transformers 框架序列：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw"  target="_blank" rel="noopener"
+    >01.包和对象加载中的设计巧思与实用技巧</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow"  target="_blank" rel="noopener"
+    >02.AutoModel 初始化及 Qwen2.5 模型加载全流程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg"  target="_blank" rel="noopener"
+    >03.Qwen2.5 大模型的 AutoTokenizer 技术细节</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w"  target="_blank" rel="noopener"
+    >04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA"  target="_blank" rel="noopener"
+    >05.嵌入（Embedding）机制和 Word2Vec 实战</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA"  target="_blank" rel="noopener"
+    >06.位置嵌入（Positional Embedding）</a></small></p>
+<p>Pipeline NLP 任务序列：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA"  target="_blank" rel="noopener"
+    >零·概述</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg"  target="_blank" rel="noopener"
+    >01.文本转音频</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w"  target="_blank" rel="noopener"
+    >02.文本分类</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ"  target="_blank" rel="noopener"
+    >03.词元分类和命名实体识别</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg"  target="_blank" rel="noopener"
+    >04.问答</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw"  target="_blank" rel="noopener"
+    >05.表格问答</a> | <a class="link" href="https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw"  target="_blank" rel="noopener"
+    >06.填充蒙版</a></small></p>
+<p>往期推荐文章：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/F-CUuaZwmqt6X7QkI_IrVA"  target="_blank" rel="noopener"
+    >Cline 免费插件 + Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ"  target="_blank" rel="noopener"
+    >使用 Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ"  target="_blank" rel="noopener"
+    >Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/%E6%AC%A7%E6%8B%89%E8%A7%92/">欧拉角</a>
+        
+            <a href="/tags/%E5%9B%9B%E5%85%83%E6%95%B0/">四元数</a>
+        
+            <a href="/tags/%E6%97%8B%E8%BD%AC/">旋转</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030301/00.ea08cfef206e5f94acfff72f27329886_hu42cdc8535b0a762ff23c72abe3e7986b_81971_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！"
+                        data-key="2025030301" 
+                        data-hash="md5-6gjP7yBuX5Ss//cvJzKYhg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025020901/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020901/00.bd904e836f1f55b5f6204ef73662e639_hu8a5434afd7142d25bc7a2119bc98b479_227024_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？"
+                        data-key="2025020901" 
+                        data-hash="md5-vZBOg28fVbX2IE73NmLmOQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025020501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020501/00.0e5cb41ccb45ab8d173277e89ab7b650_hu3d13c3dc5e08d50d569ae0711661da61_112189_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | Cocos 3D 微信小游戏（第5天）：分包构建和上传发布（完美收官）"
+                        data-key="2025020501" 
+                        data-hash="md5-Dly0HMtFq40XMnfomre2UA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">新春“码”启 | Cocos 3D 微信小游戏（第5天）：分包构建和上传发布（完美收官）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

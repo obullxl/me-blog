@@ -1,0 +1,2620 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Qwen on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/qwen/</link>
+        <description>Recent content in Qwen on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Fri, 07 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/qwen/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</title>
+        <link>https://ntopic.cn/p/2025030701/</link>
+        <pubDate>Fri, 07 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2025030701/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2025030701/00.jpg" alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量" /&gt;&lt;p&gt;本以为 &lt;strong&gt;QwQ-32B&lt;/strong&gt; 的发布定会“炸街”，毕竟它的评测结果与 &lt;strong&gt;DeepSeek-R1-671B&lt;/strong&gt; 满血版不相上下，而之前 &lt;strong&gt;DeepSeek-R1&lt;/strong&gt; 横扫了整个地球，还持续扫了这么久：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025030701/QwQ-32B.jpg&#34;
+	width=&#34;3035&#34;
+	height=&#34;1713&#34;
+	srcset=&#34;https://ntopic.cn/p/2025030701/QwQ-32B_hu31c0d40a88662f92c1b1828799715a7b_269889_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025030701/QwQ-32B_hu31c0d40a88662f92c1b1828799715a7b_269889_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;QwQ-32B: 领略强化学习之力&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;425px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;万万没有想到，冲出来的这匹强劲黑马竟然是 &lt;strong&gt;Manus&lt;/strong&gt; ，号称：&lt;strong&gt;全球首款通用型 AI 智能体&lt;/strong&gt;，它不仅能产出创意，更重要的是还能&lt;strong&gt;交付结果&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025030701/01.jpg&#34;
+	width=&#34;1790&#34;
+	height=&#34;586&#34;
+	srcset=&#34;https://ntopic.cn/p/2025030701/01_huea6c13e8a14b3b4905af40f3b4e3f2d7_74162_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025030701/01_huea6c13e8a14b3b4905af40f3b4e3f2d7_74162_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Manus介绍&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;305&#34;
+		data-flex-basis=&#34;733px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在官方介绍视频中，&lt;strong&gt;Manus&lt;/strong&gt; 在简历筛选评估、房地产信息检索和股票分析上，均表现出了惊人的能力。可惜的是，Manus 并未对所有人开放，需要有邀请码方可注册体验使用：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025030701/02.jpg&#34;
+	width=&#34;1224&#34;
+	height=&#34;602&#34;
+	srcset=&#34;https://ntopic.cn/p/2025030701/02_huf143963edf67aece68420aeaa5cad7f2_36361_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025030701/02_huf143963edf67aece68420aeaa5cad7f2_36361_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Manus注册&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;487px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;幸运的是，不管是 &lt;strong&gt;QwQ-32B&lt;/strong&gt; 还是 &lt;strong&gt;Manus&lt;/strong&gt;，它们都是我们中国人的产品，为这些产品背后的技术大佬们致敬！&lt;/p&gt;
+&lt;p&gt;下面是 1 个使用 &lt;strong&gt;Manus&lt;/strong&gt; 的样例：&lt;a class=&#34;link&#34; href=&#34;https://manus.im/share/kTEHmnYgfqqubhiSAUwZR7?replay=1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://manus.im/share/kTEHmnYgfqqubhiSAUwZR7?replay=1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;没有 &lt;strong&gt;Manus&lt;/strong&gt; 邀请码，我们就无法体验到 &lt;strong&gt;Manus&lt;/strong&gt; 强大能力。&lt;/p&gt;
+&lt;p&gt;但幸运的是，&lt;strong&gt;OpenManus&lt;/strong&gt; 为我们提供了一个开源的替代方案。接下来，我们就来使用 &lt;strong&gt;QwQ-32B&lt;/strong&gt; 大模型体验一下 &lt;strong&gt;OpenManus&lt;/strong&gt; 的能力：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;OpenManus 和 Manus 比较，源代码走读分析&lt;/li&gt;
+&lt;li&gt;OpenManus 本地部署和配置&lt;/li&gt;
+&lt;li&gt;使用与 &lt;strong&gt;Manus&lt;/strong&gt; 样例中相同的提示词，体验 OpenManus 功能&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;1-openmanus-源代码分析&#34;&gt;1. OpenManus 源代码分析&lt;/h1&gt;
+&lt;p&gt;OpenManus 源代码地址：&lt;a class=&#34;link&#34; href=&#34;https://github.com/mannaandpoem/OpenManus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mannaandpoem/OpenManus&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;OpenManus 研发成员来自 MetaGPT 智能体团队。关于 MetaGPT 的使用，可以参考老牛同学之前文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/ZfyCnCOqjtLGcPUfPq7JLQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;把源代码下载到本地：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/mannaandpoem/OpenManus.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; OpenManus
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其中，&lt;code&gt;main.py&lt;/code&gt;是主入口文件，它初始化&lt;code&gt;Manus&lt;/code&gt;代理类并处理输入的提示词；而&lt;code&gt;Manus&lt;/code&gt;代理使用工具集合，包括&lt;code&gt;PythonExecute&lt;/code&gt;、&lt;code&gt;BrowserUseTool&lt;/code&gt;、&lt;code&gt;FileSaver&lt;/code&gt;、&lt;code&gt;Terminate&lt;/code&gt;和&lt;code&gt;GoogleSearch&lt;/code&gt;等。&lt;/p&gt;
+&lt;p&gt;这些工具的功能，说明了 OpenManus 可以在本地执行 Python 代码、使用浏览器、操作本地文件、执行终端命令和搜索等。&lt;/p&gt;
+&lt;p&gt;我们可以打开源代码目录，看到这些工具定义：&lt;code&gt;./app/tool&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;同时，我们通过&lt;code&gt;requirements.txt&lt;/code&gt;文件可以看到，OpenManus 也依赖了一些组件：图像处理、文件操作、浏览器操作等。&lt;/p&gt;
+&lt;p&gt;由此可见，OpenManus 借助其他工具，执行并完成用户的任务！&lt;/p&gt;
+&lt;h1 id=&#34;2-openmanus-本地配置&#34;&gt;2. OpenManus 本地配置&lt;/h1&gt;
+&lt;p&gt;简单了解了 OpenManus 主要设计之后，接下来我们本地部署起来。&lt;/p&gt;
+&lt;p&gt;首先，安装 Conda 工具，用于管理 Python 虚拟环境。可以参考文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大模型应用研发基础环境配置&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然后，创建 Python 虚拟环境（环境名：&lt;code&gt;OpenManus&lt;/code&gt;），并激活环境：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 创建虚拟环境&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda create -n OpenManus &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;3.12
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 激活虚拟环境&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda activate OpenManus
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最后，安装 OpenManus 依赖：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下来，我们配置大模型 API，我们将使用 &lt;strong&gt;QwQ-32B&lt;/strong&gt; 作为 OpenManus 底层大模型。&lt;/p&gt;
+&lt;p&gt;先复制一份配置文件：&lt;code&gt;config/config.toml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp config/config.example.toml config/config.toml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后，修改配置文件内容，把其中基础大模型配置成 &lt;strong&gt;QwQ-32B&lt;/strong&gt; 基座模型，把视觉模型配置成 &lt;strong&gt;Qwen-Max&lt;/strong&gt; 最新模型：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# 全局模型配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;llm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;qwen-max-latest&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;base_url&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://dashscope.aliyuncs.com/compatible-mode/v1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;api_key&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;sk-...&amp;#34;&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;# 替换为真实 API 密钥&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;max_tokens&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;temperature&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# 视觉模型配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;llm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;vision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;qwen-max-latest&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;base_url&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://dashscope.aliyuncs.com/compatible-mode/v1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;api_key&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;sk-...&amp;#34;&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;# 替换为真实 API 密钥&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;code&gt;llm.model&lt;/code&gt;不能使用&lt;strong&gt;QwQ&lt;/strong&gt;模型（感觉有点翻车了），原因在于 QwQ 仅支持流式输出：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2025-03-07 21:00:32.259 | ERROR    | app.llm:ask_tool:250 - API error: Error code: 400 - {&amp;#39;error&amp;#39;: {&amp;#39;code&amp;#39;: &amp;#39;invalid_parameter_error&amp;#39;, &amp;#39;param&amp;#39;: None, &amp;#39;message&amp;#39;: &amp;#39;This model only support stream mode, please enable the stream parameter to access the model. &amp;#39;, &amp;#39;type&amp;#39;: &amp;#39;invalid_request_error&amp;#39;}, &amp;#39;id&amp;#39;: &amp;#39;chatcmpl-dbc286db-797d-9e3f-8cf1-b3adf15abc1a&amp;#39;, &amp;#39;request_id&amp;#39;: &amp;#39;dbc286db-797d-9e3f-8cf1-b3adf15abc1a&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;3-openmanus-功能体验&#34;&gt;3. OpenManus 功能体验&lt;/h1&gt;
+&lt;p&gt;配置完毕，就可以开始使用了：&lt;code&gt;python main.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt;python main.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;INFO     [browser_use] BrowserUse logging setup complete with level info
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Enter your prompt (or &amp;#39;exit&amp;#39; to quit):
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;为了和 &lt;strong&gt;Manus&lt;/strong&gt; 结果进行比较，我们输入提示词：&lt;code&gt;Identify 20 CRM companies in the market and gather their slogans along with their branding stories.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;从日志可以看出，总共分为&lt;strong&gt;30 个推理步骤&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2025-03-07 20:58:43.891 | WARNING  | __main__:main:15 - Processing your request...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2025-03-07 20:58:43.891 | INFO     | app.agent.base:run:137 - Executing step 1/30
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;执行完成之后，看到进行了总结：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;### Summary:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;We have now gathered the slogans and branding stories for the following CRM companies:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. Salesforce
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. HubSpot
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. Zoho CRM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;4. Microsoft Dynamics 365
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;5. SAP CRM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;6. Oracle CRM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;7. SugarCRM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;8. Pipedrive
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;9. Freshsales
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;10. Insightly
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;11. Nimble
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;12. Agile CRM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;13. Capsule CRM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;14. Copper (formerly ProsperWorks)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;15. Infusionsoft (by Keap)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;16. Zendesk Sell (formerly Base CRM)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;17. Really Simple Systems CRM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;18. Apptivo CRM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;19. Bitrix24
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;20. Vtiger CRM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;This information is saved in the file `crm_companies_info.txt`.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最终结果保存在本地文件：&lt;code&gt;crm_companies_info.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;打开本地结果文件，并且和 &lt;strong&gt;Manus&lt;/strong&gt; 结果进行简单对比：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025030701/31.jpg&#34;
+	width=&#34;2237&#34;
+	height=&#34;1280&#34;
+	srcset=&#34;https://ntopic.cn/p/2025030701/31_huef5cfa32a7fae30e34af7bb0132286a5_487986_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025030701/31_huef5cfa32a7fae30e34af7bb0132286a5_487986_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;结果比对&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;419px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;4-总结&#34;&gt;4. 总结&lt;/h1&gt;
+&lt;p&gt;从最终结果看，&lt;strong&gt;Manus&lt;/strong&gt; 的结果更加丰富一些，更像一份报告，包括：简介、目录，每个上市公司的品牌故事说明内容和格式也更加丰富和易于阅读；而 &lt;strong&gt;OpenManus&lt;/strong&gt; 的结果就简洁多了，每个公司就包括核心的 3 个主要信息：公司名、Slogan 和品牌故事。&lt;/p&gt;
+&lt;p&gt;目前还不好说谁更加优秀，但有一点可以肯定的是：通用智能体离我们越来越近了！&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/ZfyCnCOqjtLGcPUfPq7JLQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama等）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</title>
+        <link>https://ntopic.cn/p/2025022101/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2025022101/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2025022101/00.jpg" alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！" /&gt;&lt;p&gt;在&lt;strong&gt;Phi-3&lt;/strong&gt;大模型发布之际，我们基于&lt;strong&gt;Termux&lt;/strong&gt;应用，在我的小米手机部署了&lt;strong&gt;Phi-3&lt;/strong&gt;模型：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/bNxHM3B7HOLNvJtjwvt8iw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;文章地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Termux&lt;/strong&gt;应用是一个终端模拟器，它允许我们安装 Linux 操作系统，然后在 Linux 操作系统中安装 Ollama，最后基于 Ollama 下载和推理大模型，虽然方法可行，但是存在一些局限：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;操作步骤繁琐，用户体验较差：安装 Linux 操作系统、启动系统、安装和启动 Ollama 等操作，都需要通过命令行完成，体验较差。&lt;/li&gt;
+&lt;li&gt;资源消耗较大：手机内存有限，Termux 应用、Linux 操作系统、Ollama 框架等都需要消耗资源，推理速度较慢，资源吃紧&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DeepSeek R1 很火爆，导致在使用 DeepSeek R1 时，老牛同学经常会遇到“服务器繁忙，请稍后重试。”的问题：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/01.jpg&#34;
+	width=&#34;566&#34;
+	height=&#34;182&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/01_hu8dfacf6d4f06920cd818a08f4693906c_10424_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/01_hu8dfacf6d4f06920cd818a08f4693906c_10424_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DeepSeek R1服务器繁忙&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;310&#34;
+		data-flex-basis=&#34;746px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;今天老牛同学推荐一款更加先进的应用：&lt;strong&gt;MNN Chat&lt;/strong&gt;，它是由阿里巴巴开源的全功能多模态模型应用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;仅需一台手机即可运行： 完全在设备本地运行，确保数据隐私，无需将信息上传至外部服务器。&lt;/li&gt;
+&lt;li&gt;CPU 推理优化： 在安卓平台上，MNN-LLM 展现了卓越的 CPU 性能，预填充速度相较于 llama.cpp 提高了 8.6 倍，相较于 fastllm 提升了 20.5 倍，解码速度分别快了 2.3 倍和 8.9 倍。&lt;/li&gt;
+&lt;li&gt;多模态支持： 提供多种任务功能，包括文本生成文本、图像生成文本、音频转文本及文本生成图像。&lt;/li&gt;
+&lt;li&gt;广泛的模型兼容性： 支持多种领先的模型提供商，包括 Qwen、Gemma、Llama（涵盖 TinyLlama 与 MobileLLM）、Baichuan、Yi、DeepSeek、InternLM、Phi、ReaderLM 和 Smolm 等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;官网地址：&lt;a class=&#34;link&#34; href=&#34;https://www.mnn.zone&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.mnn.zone&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GitHub 源码地址：&lt;a class=&#34;link&#34; href=&#34;https://github.com/alibaba/MNN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/alibaba/MNN&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;接下来，我们在手机上部署试用一下，老牛同学的手机配置如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/02.jpg&#34;
+	width=&#34;712&#34;
+	height=&#34;1005&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/02_huc95a0497919936e5c491741bd7b771e7_39468_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/02_huc95a0497919936e5c491741bd7b771e7_39468_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;小米手机配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;70&#34;
+		data-flex-basis=&#34;170px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;1安装-mnn-应用&#34;&gt;1.安装 MNN 应用&lt;/h1&gt;
+&lt;p&gt;对于 Android 手机，我们可以直接下载和安装最新版本：&lt;a class=&#34;link&#34; href=&#34;https://meta.alicdn.com/data/mnn/mnn_chat_d_0_2_2.apk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/11.jpg&#34;
+	width=&#34;2000&#34;
+	height=&#34;368&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/11_hu3a066d216f050015d4bd686ebcc67043_40454_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/11_hu3a066d216f050015d4bd686ebcc67043_40454_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;MNN LLM&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;543&#34;
+		data-flex-basis=&#34;1304px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;或者，我们也可以按照以下步骤，自己编译 Android 和 iOS 应用：&lt;/p&gt;
+&lt;h2 id=&#34;android-编译和使用&#34;&gt;Android 编译和使用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;克隆 MNN 源代码：&lt;code&gt;git clone https://github.com/alibaba/MNN.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;构建库：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; project/android
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir build_64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;../build_64.sh &lt;span class=&#34;s2&#34;&gt;&amp;#34;-DMNN_LOW_MEMORY=true -DMNN_CPU_WEIGHT_DEQUANT_GEMM=true -DMNN_BUILD_LLM=true -DMNN_SUPPORT_TRANSFORMER_FUSE=true -DMNN_ARM82=true -DMNN_USE_LOGCAT=true -DMNN_OPENCL=true -DLLM_SUPPORT_VISION=true -DMNN_BUILD_OPENCV=true -DMNN_IMGCODECS=true -DLLM_SUPPORT_AUDIO=true -DMNN_BUILD_AUDIO=true -DMNN_BUILD_DIFFUSION=ON -DMNN_SEP_BUILD=ON&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;复制到 LLM Android 应用项目：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir -p ../../../apps/Android/MnnLlmChat/app/src/main/jniLibs/arm64-v8a
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find . -name &lt;span class=&#34;s2&#34;&gt;&amp;#34;*.so&amp;#34;&lt;/span&gt; -exec cp &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt; ../../../apps/Android/MnnLlmChat/app/src/main/jniLibs/arm64-v8a &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;构建 Android 应用项目并安装：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ../../../apps/Android/MnnLlmChat
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./gradlew installDebug
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;ios-应用编译和使用&#34;&gt;iOS 应用编译和使用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;克隆 MNN 源代码：&lt;code&gt;git clone https://github.com/alibaba/MNN.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;编译 MNN.framework:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; MNN/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh package_scripts/ios/buildiOS.sh &lt;span class=&#34;s2&#34;&gt;&amp;#34;-DMNN_ARM82=true -DMNN_LOW_MEMORY=true -DMNN_SUPPORT_TRANSFORMER_FUSE=true -DMNN_BUILD_LLM=true -DMNN_CPU_WEIGHT_DEQUANT_GEMM=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_METAL=ON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_BUILD_DIFFUSION=ON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_BUILD_OPENCV=ON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_IMGCODECS=ON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_OPENCL=OFF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_SEP_BUILD=OFF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_SUPPORT_TRANSFORMER_FUSE=ON&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;拷贝 framework 到 iOS 项目中：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mv MNN-iOS-CPU-GPU/Static/MNN.framework /apps/iOS/MNNLLMChat/MNN.framework
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;确保 Link Binary With Libraried 中包含 MNN.framework，和其他三个 Framework:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/12.jpg&#34;
+	width=&#34;2328&#34;
+	height=&#34;842&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/12_hu0fdb6d0d96e36d38a172428a28be1669_121767_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/12_hu0fdb6d0d96e36d38a172428a28be1669_121767_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Framework&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;276&#34;
+		data-flex-basis=&#34;663px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果没有包含，可以手动添加 MNN.framework:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/13.jpg&#34;
+	width=&#34;1422&#34;
+	height=&#34;1060&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/13_hu758df1afed2a31e83ede031957df0d99_101464_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/13_hu758df1afed2a31e83ede031957df0d99_101464_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;MNN.framework&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;321px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;修改 iOS 签名并编译项目&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /apps/iOS/MNNLLMChat
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;open MNNLLMiOS.xcodeproj
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在 Xcode 项目属性中 Signing &amp;amp; Capabilities &amp;gt; Team 输入自己的账号和 Bundle Identifier:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/14.jpg&#34;
+	width=&#34;1878&#34;
+	height=&#34;708&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/14_hu04f1f4966fb7feaa1bd8789d8e944495_91973_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/14_hu04f1f4966fb7feaa1bd8789d8e944495_91973_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;签名&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;265&#34;
+		data-flex-basis=&#34;636px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;等待 Swift Package 下载完成之后，进行编译使用。&lt;/p&gt;
+&lt;h1 id=&#34;2下载模型文件&#34;&gt;2.下载模型文件&lt;/h1&gt;
+&lt;p&gt;手机上安装好&lt;strong&gt;MNN Chat&lt;/strong&gt;应用之后，我们打开应用，就可以看到它所兼容的模型列表，包括文本、音频、图像等：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/21.jpg&#34;
+	width=&#34;696&#34;
+	height=&#34;1438&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/21_hua2394fed259d87acb14ca570c81ac937_117219_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/21_hua2394fed259d87acb14ca570c81ac937_117219_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;大模型列表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;48&#34;
+		data-flex-basis=&#34;116px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击即可下载，老牛同学想体验一下文本和图片识别，下载了&lt;strong&gt;DeepSeek-R1-7B-Qwen-MNN&lt;/strong&gt;和&lt;strong&gt;Qwen2-VL-2B-Instruct-MNN&lt;/strong&gt;这 2 个大模型，等待下载完成。&lt;/p&gt;
+&lt;h1 id=&#34;3-mnn-模型推理&#34;&gt;3. MNN 模型推理&lt;/h1&gt;
+&lt;p&gt;先试用一下&lt;strong&gt;DeepSeek-R1-7B-Qwen-MNN&lt;/strong&gt;文本模型，输入提示词：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;同样是一年，为什么阳历固定12个月，而阴历却有闰月？
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/31.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/31_huf0c5c2d4323b39dd591dd60be1f1c4e0_195967_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/31_huf0c5c2d4323b39dd591dd60be1f1c4e0_195967_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DeepSeek文本推理&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;DeepSeek R1 开始思考，分析阳历和阴历的计算方法，最终得出结论：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/32.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/32_hu9edca58c44217a952ac7b36d3917770c_209756_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/32_hu9edca58c44217a952ac7b36d3917770c_209756_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DeepSeek思考结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;从手机的推理速率来看，总体还算不错，比通过&lt;strong&gt;Termux&lt;/strong&gt;应用的方式推理效率高多了。&lt;/p&gt;
+&lt;p&gt;接下来，看看&lt;strong&gt;Qwen2-VL-2B-Instruct-MNN&lt;/strong&gt;图片多模态大模型，老牛同学让它进行车牌识别：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/33.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/33_hub9a48696cdd3e62e2fe1e0afc022b24c_110111_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/33_hub9a48696cdd3e62e2fe1e0afc022b24c_110111_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2-VL车牌识别&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看到，识别的结果是很不错的！&lt;/p&gt;
+&lt;p&gt;还有其他的大模型，包括音频、图片生成（Stable Diffusion）等，大家可以体验一下。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Cocos 3D 小游戏：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/TlgNKvGYMuGMmU0dIBPn4A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.技术选型&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qlOYpjREXBKb7vl1kuujlg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.研发流程&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/V3CIhswW3CVcTY1aPaALTw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.小游戏框架&lt;/a&gt;丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3GZNd7qjwIhfTcsVruYQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.核心架构设计&lt;/a&gt;丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8jxPxJ2-9UnFsLMGh9h0fQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.分包构建发布&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Transformers 框架序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.包和对象加载中的设计巧思与实用技巧&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.AutoModel 初始化及 Qwen2.5 模型加载全流程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.Qwen2.5 大模型的 AutoTokenizer 技术细节&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.嵌入（Embedding）机制和 Word2Vec 实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.位置嵌入（Positional Embedding）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Pipeline NLP 任务序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;零·概述&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.文本转音频&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.文本分类&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.词元分类和命名实体识别&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.问答&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.表格问答&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.填充蒙版&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/F-CUuaZwmqt6X7QkI_IrVA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cline 免费插件 + Qwen2.5 大模型，零经验也能开发“对联王”微信小程序&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</title>
+        <link>https://ntopic.cn/p/2025020901/</link>
+        <pubDate>Sun, 09 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2025020901/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2025020901/00.jpg" alt="Featured image of post DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？" /&gt;&lt;p&gt;整个春节假期，DeepSeek 与《哪吒 2》的消息接连不断，看完我总有种莫名的激动。一边是 DeepSeek 在基础技术领域的深耕细作，另一边则是《哪吒 2》对用户产品的精心打磨，两者多年来的默默努力和不懈追求，终于在今年春节实现了一飞冲天、一鸣惊人的突破！&lt;/p&gt;
+&lt;p&gt;老牛同学作为一名长期使用 Qwen 大模型Token服务的用户，目前余额所剩无几了，对购买的服务主要就三个追求：&lt;strong&gt;价格&lt;/strong&gt;、&lt;strong&gt;效率&lt;/strong&gt;、&lt;strong&gt;效果&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;接下来，老牛同学将根据自己使用大模型的实际情况，对&lt;strong&gt;DeepSeek&lt;/strong&gt;和&lt;strong&gt;Qwen&lt;/strong&gt;分别进行以下几个方面的测验，哪个得分高，老牛同学后续就用哪个的 Token 服务。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;价格：说实话，现在大模型厂商都很卷，价格都很实惠。同时，Token 数量与分词算法相关，因此价格只要不超过 50%，老牛同学觉得都差多不。&lt;/li&gt;
+&lt;li&gt;效率：敢作为服务拿出来卖，老牛同学觉得效率都不会差；同时，模型产出内容不一样，这里就没有一个严格标准，因此暂不做比较。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;效果&lt;/strong&gt;，这是老牛同学最关心的点，只有满足需求的服务，才是需要的服务。&lt;strong&gt;编程&lt;/strong&gt;是老牛同学使用大模型服务最多的地方，因此将通过&lt;strong&gt;Web 页面&lt;/strong&gt;、&lt;strong&gt;Python&lt;/strong&gt;、&lt;strong&gt;微信小程序&lt;/strong&gt;和&lt;strong&gt;Cocos 小游戏&lt;/strong&gt;这 4 个方面编程结果进行评测。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;为了消除历史消息对上下文的影响，每次编程老牛同学都使用全新的会话。&lt;/li&gt;
+&lt;li&gt;本次编程评测编程代码结果，老牛同学全部上传共享，大家可通过打开“&lt;strong&gt;老牛同学&lt;/strong&gt;”微信小程序-&amp;gt;点击“&lt;strong&gt;更多&lt;/strong&gt;”Tab-&amp;gt;“&lt;strong&gt;源代码&lt;/strong&gt;”获取下载链接进行复验：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/CX.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信小程序：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;qwen-和-deepseek-服务价格deepseek-更实惠&#34;&gt;Qwen 和 DeepSeek 服务价格（DeepSeek 更实惠）&lt;/h1&gt;
+&lt;p&gt;老牛同学将以&lt;strong&gt;Qwen-Max-Latest&lt;/strong&gt;和&lt;strong&gt;DeepSeek-Chat&lt;/strong&gt;进行比较（Token 数量统一为&lt;strong&gt;百万&lt;/strong&gt;），以下是 2 个大模型官网公布的价格：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Qwen 价格：输入**¥2.4**，输出**¥9.6**&lt;/li&gt;
+&lt;li&gt;DeepSeek 价格：输入缓存命中**¥0.5**，缓存未命中**¥2**，输出**¥8**&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/11.jpg&#34;
+	width=&#34;1515&#34;
+	height=&#34;444&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/11_huff2a968c98514115d4d9f452a168360f_60221_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/11_huff2a968c98514115d4d9f452a168360f_60221_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen价格&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;341&#34;
+		data-flex-basis=&#34;818px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/12.jpg&#34;
+	width=&#34;1446&#34;
+	height=&#34;456&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/12_hu9c2f94a349e6a4fca04046005ae8131a_55994_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/12_hu9c2f94a349e6a4fca04046005ae8131a_55994_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DeepSeek价格&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;317&#34;
+		data-flex-basis=&#34;761px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;虽然 Qwen 和 DeepSeek 采用的分词算法可能不一样，但是考虑到都是以&lt;strong&gt;百万&lt;/strong&gt;为单位，这些差异基本可以忽略。&lt;/p&gt;
+&lt;p&gt;从上述官网价格来看：&lt;strong&gt;DeepSeek 更实惠&lt;/strong&gt;！&lt;/p&gt;
+&lt;h1 id=&#34;qwen-和-deepseek-编程能力&#34;&gt;Qwen 和 DeepSeek 编程能力&lt;/h1&gt;
+&lt;p&gt;接下来，我们开始进行编程评测，分别通过&lt;strong&gt;Web 页面&lt;/strong&gt;、&lt;strong&gt;Python&lt;/strong&gt;、&lt;strong&gt;微信小程序&lt;/strong&gt;和&lt;strong&gt;Cocos 小游戏&lt;/strong&gt;这 4 个方面编程进行评测。&lt;/p&gt;
+&lt;h2 id=&#34;web-页面编程qwen-胜出&#34;&gt;Web 页面编程（Qwen 胜出）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;计算器&lt;/strong&gt;是一个很好的 Web 程序样例，老牛同学就选择它作为考题，提示词如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;写一个**计算器**静态Web页面，计算器的风格参考Apple手机自带的计算器App。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;对于CSS样式，请尽量复用现有的CSS框架，比如BootStrap、Tailwind CSS等等。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/21.jpg&#34;
+	width=&#34;2515&#34;
+	height=&#34;1533&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/21_hu22433e8b365837e2e9acfcad8e77a004_334410_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/21_hu22433e8b365837e2e9acfcad8e77a004_334410_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;计算器编程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;393px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最终，老牛同学复制 2 个模型的输出 HTML 代码，通过浏览器打开：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/22.jpg&#34;
+	width=&#34;1947&#34;
+	height=&#34;1044&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/22_hue657b10ee68a78495654889aef0ad2de_106452_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/22_hue657b10ee68a78495654889aef0ad2de_106452_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Web编程结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;186&#34;
+		data-flex-basis=&#34;447px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;2 个模型的 Web 编程结果分析：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;风格：Qwen 更接近 Apple 手机自带的计算器。&lt;/li&gt;
+&lt;li&gt;功能：对于基本的加、减、乘、除功能，Qwen 输入框只展示了计算结果，没有显示过程算式；而 DeepSeek 点击无反应，也没有结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结，老牛同学对 Web 页面编程评测结论：&lt;strong&gt;Qwen 胜出&lt;/strong&gt;！&lt;/p&gt;
+&lt;h2 id=&#34;python-编程qwen-胜出&#34;&gt;Python 编程（Qwen 胜出）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;贪吃蛇&lt;/strong&gt;是一款经典的单机游戏，也是很多一部分学习 Python 编程技术的第一个完整程序，我们就以它作为考题，提示词如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;使用Python，写一个带有GUI界面的**贪吃蛇**小游戏，要求：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. 游戏开始，有“开始”操作界面，用户点击开始游戏
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. 游戏过程中，在界面底部中间，展示当前分数
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. 游戏结束，有一个结束页面，页面展示游戏分数，并有“重新开始”操作界面
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/23.jpg&#34;
+	width=&#34;2512&#34;
+	height=&#34;1152&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/23_hu9312c8f69ceb477329a51b83f01c6c46_264351_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/23_hu9312c8f69ceb477329a51b83f01c6c46_264351_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;贪吃蛇编程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最终，老牛同学在本机分别运行这 2 个小游戏，界面如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/24.jpg&#34;
+	width=&#34;1506&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/24_hu5b7b15ae4d69d6baf970768e158dc115_51961_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/24_hu5b7b15ae4d69d6baf970768e158dc115_51961_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Python编程结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;520px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于最终编程结果，评测分析如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;功能：2 个大模型的结果，均能跑起来，有开始界面，正常展示。&lt;/li&gt;
+&lt;li&gt;游戏：Qwen 蛇的速度比较适中，基本还能玩起来。而 DeepSeek 蛇速度则很快，老牛同学手速没有那么快，基本玩不起来。&lt;/li&gt;
+&lt;li&gt;结果：Qwen 能正常展示中文，而 DeepSeek 展示就是乱码了（缺少&lt;code&gt;ttf&lt;/code&gt;字体文件）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结，Python 编程评测结果：&lt;strong&gt;Qwen 胜出&lt;/strong&gt;！&lt;/p&gt;
+&lt;h2 id=&#34;微信小程序编程势均力敌&#34;&gt;微信小程序编程（势均力敌）&lt;/h2&gt;
+&lt;p&gt;接下来，我们进行微信小程序编程评测，老牛同学感觉比上面 2 个编程要稍微难一点：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;写一个微信小程序页面，页面样式参考**微信**手机App中“我”Tab的样式。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;对于页面样式，请尽量复用现有成熟的框架，比如weui等。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/25.jpg&#34;
+	width=&#34;2520&#34;
+	height=&#34;1473&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/25_hu9edad9e84aa6f83b43c441e07c46e144_323929_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/25_hu9edad9e84aa6f83b43c441e07c46e144_323929_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;小程序代码&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;171&#34;
+		data-flex-basis=&#34;410px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于&lt;strong&gt;weui&lt;/strong&gt;框架的&lt;code&gt;app.wxss&lt;/code&gt;文件：Qwen 给的地址文件不存在，而 DeepSeek 给的是一个样例地址。老牛同学修复这个问题之后，最终小程序页面样式如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/26.jpg&#34;
+	width=&#34;1278&#34;
+	height=&#34;1011&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/26_hu0ad3ba640c3aee1c0a609406fa1cb591_102800_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/26_hu0ad3ba640c3aee1c0a609406fa1cb591_102800_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;小程序页面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;303px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;从最终小程序页面效果来看：&lt;strong&gt;Qwen&lt;/strong&gt;和&lt;strong&gt;DeepSeek&lt;/strong&gt;表现基本一致！&lt;/p&gt;
+&lt;p&gt;但有个&lt;strong&gt;问题&lt;/strong&gt;：Qwen 和 DeepSeek 都是直接引用&lt;strong&gt;weui&lt;/strong&gt;框架样式，这样势必会增加小程序包大小&lt;strong&gt;170KB&lt;/strong&gt;左右。而&lt;strong&gt;weui&lt;/strong&gt;最佳使用方式是作为扩展组件库的方式引入，这样就不会增加包大小了。&lt;/p&gt;
+&lt;h2 id=&#34;cocos-小游戏编程qwen-略胜&#34;&gt;Cocos 小游戏编程（Qwen 略胜）&lt;/h2&gt;
+&lt;p&gt;最后，来一个 Cocos 小游戏编程。今年春节，老牛同学从 0 基础开始学习，使用 Cocos Creator 做了一款微信小游戏。过程中遇到了不少问题，我把其中一个问题拿出来作为考题：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我正在使用Cocos Creator 3.8.5研发一款微信小游戏，在一个`ts`组件类中，我需要一个名为`prefabMap`、类型是`{[key: string]:Prefab}`映射的属性，如下TypeScript代码：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@ccclass(&amp;#39;WallView&amp;#39;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;export class WallView extends Component {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // 预制体映射
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    private prefabMap: { [key: string]: Prefab } = {};
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我希望可以通过“属性管理器”来设置**prefabMap**这个属性，包括映射`string`类型的Key和映射`Prefab`类型的Value，请帮忙实现这个代码。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/27.jpg&#34;
+	width=&#34;2490&#34;
+	height=&#34;1387&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/27_hu230c4bdbae45f4e4cc6ad90de7a9346d_287255_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/27_hu230c4bdbae45f4e4cc6ad90de7a9346d_287255_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Cocos小游戏代码&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;430px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;从上面代码来看，&lt;strong&gt;Qwen&lt;/strong&gt;和&lt;strong&gt;DeepSeek&lt;/strong&gt;大模型思路基本一致：先定义一个 KeyValue 类/接口，通过“属性管理器”设置这个 KeyValue 列表，然后再组件启动&lt;code&gt;start&lt;/code&gt;之后把 KeyValue 列表转化为映射对象。&lt;/p&gt;
+&lt;p&gt;它们两者的编程思路没有问题，可是编写的代码却是不生效的，均存在问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Qwen&lt;/strong&gt;的问题：代码已经非常接近目标，一步之遥，可 Cocos 无法识别&lt;code&gt;KeyValuePair&lt;/code&gt;这个类。有两种办法可以解决：&lt;code&gt;KeyValuePair&lt;/code&gt;类增加注解&lt;code&gt;@ccclass(&#39;KeyValuePair&#39;)&lt;/code&gt;，或者增加一行代码&lt;code&gt;@ccclass(&#39;KeyValuePair&#39;)(KeyValuePair)&lt;/code&gt;均可。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DeepSeek&lt;/strong&gt;的问题：相比 Qwen 来说，问题就多一些了，离目标也就更远一些：&lt;code&gt;PrefabKeyValue&lt;/code&gt;是一个接口，Cocos 根本无法识别，同时内部的&lt;code&gt;key&lt;/code&gt;和&lt;code&gt;value&lt;/code&gt;没有&lt;code&gt;@property&lt;/code&gt;注解，在“属性管理器”中也无法做到嵌套配置，&lt;code&gt;prefabList&lt;/code&gt;也就无法达成目标了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从上面分析来看，Qwen 更接近目标，因此 &lt;strong&gt;Qwen 略胜一筹&lt;/strong&gt;！&lt;/p&gt;
+&lt;h1 id=&#34;最后简单总结&#34;&gt;最后，简单总结&lt;/h1&gt;
+&lt;p&gt;综合上面分析和评测，我们可以看出：&lt;strong&gt;DeepSeek&lt;/strong&gt;在价格上更优惠，而&lt;strong&gt;Qwen&lt;/strong&gt;在编程效果上更胜一筹！&lt;/p&gt;
+&lt;p&gt;看到这儿，我相信大家和老牛同学一样，开始犯嘀咕：当前火爆全球、如日中天、大红大紫的&lt;strong&gt;DeepSeek&lt;/strong&gt;大模型，竟然在编程效果上不及&lt;strong&gt;Qwen&lt;/strong&gt;大模型？&lt;/p&gt;
+&lt;p&gt;从结果看，是的。也许是&lt;strong&gt;DeepSeek&lt;/strong&gt;火爆点并不在编程效果上，也行是的提示词待优化，也许是所举样例不具备代表性，也许是需要我们再给 DeepSeek 一些时日……&lt;/p&gt;
+&lt;p&gt;但无论如何，老牛同学目前已经明确，接下来续费大模型 Token 调用费用，该往哪个平台了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提示：&lt;/strong&gt; 以上 2 个大模型辅助编程的源码，老牛同学已经上传（除微信小程序中，除修正了&lt;code&gt;app.wxss&lt;/code&gt;样式文件的路径之外，老牛同学承诺对大模型编程结果未做任何一个字符的修改），大家可以下载复验（打开“&lt;strong&gt;老牛同学&lt;/strong&gt;”微信小程序-&amp;gt;点击“&lt;strong&gt;更多&lt;/strong&gt;”Tab-&amp;gt;“&lt;strong&gt;源代码&lt;/strong&gt;”获取下载链接）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Cocos 3D 小游戏：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/TlgNKvGYMuGMmU0dIBPn4A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.技术选型&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qlOYpjREXBKb7vl1kuujlg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.研发流程&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/V3CIhswW3CVcTY1aPaALTw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.小游戏框架&lt;/a&gt;丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3GZNd7qjwIhfTcsVruYQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.核心架构设计&lt;/a&gt;丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8jxPxJ2-9UnFsLMGh9h0fQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.分包构建发布&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Transformers 框架序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.包和对象加载中的设计巧思与实用技巧&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.AutoModel 初始化及 Qwen2.5 模型加载全流程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.Qwen2.5 大模型的 AutoTokenizer 技术细节&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.嵌入（Embedding）机制和 Word2Vec 实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.位置嵌入（Positional Embedding）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Pipeline NLP 任务序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;零·概述&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.文本转音频&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.文本分类&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.词元分类和命名实体识别&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.问答&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.表格问答&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.填充蒙版&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/F-CUuaZwmqt6X7QkI_IrVA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cline 免费插件 + Qwen2.5 大模型，零经验也能开发“对联王”微信小程序&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</title>
+        <link>https://ntopic.cn/p/2025011201/</link>
+        <pubDate>Sun, 12 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2025011201/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2025011201/00.jpg" alt="Featured image of post Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序" /&gt;&lt;p&gt;小朋友即将放寒假了，意味着春节就不远了。在我们湖北老家，当我还是学生的时候，每年临近春节，写春联、贴春联和对春联是读书人一件乐事。&lt;/p&gt;
+&lt;p&gt;如今，老牛同学早已不是读书人，但还是怀念那时快乐时光，因此想在春节前撸一个“对联王”微信小程序，专门用于创作春联和对春联。&lt;/p&gt;
+&lt;p&gt;上次零经验的我们，借助 Cursor 写了一个“节拍器”小程序，本次我们来用免费的 Cline 插件，辅助完成“对联王”微信小程序编程。下面是已发布的小程序，欢迎大家来体验：&lt;/p&gt;
+&lt;p&gt;【对联王微信小程序】&lt;/p&gt;
+&lt;p&gt;大家也可以在微信中搜索“老牛同学”找到“对联王”小程序：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025011201/01.jpg&#34;
+	width=&#34;1161&#34;
+	height=&#34;781&#34;
+	srcset=&#34;https://ntopic.cn/p/2025011201/01_hu5b4a41f27c7fe518c1493f019fcc5463_77943_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025011201/01_hu5b4a41f27c7fe518c1493f019fcc5463_77943_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;老牛同学·小程序&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;148&#34;
+		data-flex-basis=&#34;356px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;同时，本次借助 Cline 插件完成的“对联王”小程序的演示录屏如下：&lt;/p&gt;
+&lt;p&gt;【对联王演示视频，请到公众号或视频号查看】&lt;/p&gt;
+&lt;p&gt;接下来，老牛同学就把 Cline 插件的使用主要过程，与大家分享。&lt;/p&gt;
+&lt;h1 id=&#34;1-cline-与-cursor-区别&#34;&gt;1. Cline 与 Cursor 区别&lt;/h1&gt;
+&lt;p&gt;老牛同学根据自己编写 2 个小程序页面的经验，先说说两者的区别、使用感受和建议：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工具形态：Cline 是一个 VS Code 插件，在 VS Code 直接安装或卸载，无需注册即可使用，灵活方便；而 Cursor 则是一个专门的 IDE，需要单独下载并安装，还需要用户注册和登陆方可使用，稍微笨重一些。&lt;/li&gt;
+&lt;li&gt;费用：Cline 是开源免费的插件（&lt;a class=&#34;link&#34; href=&#34;https://github.com/cline/cline&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cline/cline&lt;/a&gt;）；而 Cursor 则是闭源的，且是收费的，它为新注册用户提供 2 周 2000 次调用的免费试用期。&lt;/li&gt;
+&lt;li&gt;支持的大模型：Cline 支持多种大模型，只需要兼容 OpenAI 接口规范且支持 Stream 流式输出即可，比如 Qwen 大模型；而 Cursor 内置了几种大模型，对兼容模型的支持并不很友好，比如总是有一些警告等。&lt;/li&gt;
+&lt;li&gt;功能和体验：两者在功能上感觉差不太多，Cline 在请求上下文、文件 Diff 比较界面稍逊 Cursor 一筹，但其实对编程影响并不大，总体来说 Cursor 体验上更优一点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;总体体感&lt;/strong&gt;：这 2 个工具的功能都差不多，那么它对我们的实际帮助，其实还是依赖于底层大模型的能力，好马还得配好鞍。老牛同学之前常用 Continue 插件，在体验上，感觉 Cline 有点像增强版的 Continue 插件，只是它额外提供了文件生成、差异比对、系统调用的能力。在“对联王”小程序的整个研发过程中，老牛同学其实同时使用了这 2 个插件。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cline 主要用于页面框架搭建、页面主要元素的布局、小程序主要逻辑代码等生成。&lt;/li&gt;
+&lt;li&gt;Continue 则用于细节部分调优，主要是对 Cline 生成的代码进行微调，比如：右下角“收藏夹”悬浮按钮的上下移动细节逻辑、悬浮按钮最后移动位置存储等逻辑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用建议&lt;/strong&gt;：如果大家预算充裕，且使用比较频繁，建议直接上付费的 Cursor IDE（20 美元每月和 40 美元每人每月两种收费价格）；如果使用免费的 Cline，建议搭配 Continue 一起使用。&lt;/p&gt;
+&lt;p&gt;关于 Continue 的使用教程，可以参考老牛同学之前文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Code Copilot 和使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;2-cline-插件配置&#34;&gt;2. Cline 插件配置&lt;/h1&gt;
+&lt;h2 id=&#34;安装插件&#34;&gt;安装插件&lt;/h2&gt;
+&lt;p&gt;安装好 VS Code 软件之后，Cline 插件安装就比较简单了，搜索“Cline”安装即可：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025011201/21.jpg&#34;
+	width=&#34;1720&#34;
+	height=&#34;766&#34;
+	srcset=&#34;https://ntopic.cn/p/2025011201/21_hu81a56b380717190502fcb94d67f822b7_145225_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025011201/21_hu81a56b380717190502fcb94d67f822b7_145225_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;安装Cline插件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;224&#34;
+		data-flex-basis=&#34;538px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;安装成功之后，我们可以看到再左侧有个“机器人”的小图标。&lt;/p&gt;
+&lt;h2 id=&#34;配置插件&#34;&gt;配置插件&lt;/h2&gt;
+&lt;p&gt;首次点击安装好的 Cline 插件图标，或者后续点击 Cline 插件的齿轮状的配置按钮，均可进入配置页面：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025011201/22.jpg&#34;
+	width=&#34;658&#34;
+	height=&#34;1027&#34;
+	srcset=&#34;https://ntopic.cn/p/2025011201/22_huee4bc1fa93267e39283fe32600294df0_88352_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025011201/22_huee4bc1fa93267e39283fe32600294df0_88352_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;配置Cline插件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;64&#34;
+		data-flex-basis=&#34;153px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;几个配置项比较简单，其中&lt;code&gt;API Provider&lt;/code&gt;如果选择的是&lt;strong&gt;OpenAI Compatible&lt;/strong&gt;，则需要保证接口符合 OpenAI 规范且支持 Stream 流式输出。&lt;/p&gt;
+&lt;h2 id=&#34;其他配置&#34;&gt;其他配置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;微信开发者工具：和上次“节拍器”小程序一样，我们需要下载&lt;strong&gt;微信开发者工具&lt;/strong&gt;，用于实时预览和调试小程序，确保代码可以在微信环境中正常运行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方下载链接&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Continue 插件：关于插件的配置和详细使用方法，可以参考老牛同学之前文章。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-对联王实战&#34;&gt;3. “对联王”实战&lt;/h1&gt;
+&lt;p&gt;准备就绪，现在，让我们一起探索如何利用 AI 的力量来加速开发进程，让基本零经验的新书也能开发一个小程序等应用。&lt;/p&gt;
+&lt;p&gt;打开 Chat 面板，输入精心设计的 Prompt 提示词。以下是老牛同学首次尝试时所用的提示内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;在春节活动中，创作对联或者对对联是一项有趣的活动：请帮忙研发一个名为“对联王”的微信小程序页面，文件名为&amp;#34;couplet&amp;#34;，目录为“pages/couplet”，实现以下功能：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. 用户输入上联，或者用户输入创意，回车或点击发送按钮，生成下联或者创作一副对联
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. 回车后的函数名为`sendMessage`，这个函数逻辑由用户实现
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. 整个页面的布局与微信App的聊天界面一致，布局如下：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; - 用户输入的消息，头像在右边
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; - API返回的消息，头像在左边
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; - 每一条消息的下面，均展示收藏、复制和删除操作按钮，同时展示消息的时间，时间格式为`小时:分钟:秒钟`，如`12:07:05`。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025011201/31.jpg&#34;
+	width=&#34;2248&#34;
+	height=&#34;1611&#34;
+	srcset=&#34;https://ntopic.cn/p/2025011201/31_hu2966dc89f05f49264ef9d15235fe5b11_462693_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025011201/31_hu2966dc89f05f49264ef9d15235fe5b11_462693_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Prompt提示词&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;提交后，等待 Cline 生成代码文件（一般为 3 个文件），对于每个文件代码差异，我们可以选择“&lt;strong&gt;Save&lt;/strong&gt;”接受或者“&lt;strong&gt;Reject&lt;/strong&gt;”操作。&lt;/p&gt;
+&lt;p&gt;之后，我们切换回&lt;strong&gt;微信开发者工具&lt;/strong&gt;界面，默认会自动刷新，或者按&lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;r&lt;/code&gt;强制刷新页面，即可查看最新的页面效果。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果页面布局和我们期望差异较大，那么我们继续使用 Cline 插件生成代码&lt;/li&gt;
+&lt;li&gt;如果页面布局和我们期望差不多，需要进行局部微调，就可以使用 Continue 插件进行部分调整&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不断迭代上述过程，直到小程序完全符合预期为止。&lt;/p&gt;
+&lt;p&gt;由于提示老牛同学提示词太多了，后面调整的提示词没有保存，就不一一展示了，期望大家均能快速研发出满意的小程序。&lt;/p&gt;
+&lt;h1 id=&#34;4-结语&#34;&gt;4. 结语&lt;/h1&gt;
+&lt;p&gt;最后，当我们使用外部 API 服务时，对于涉及敏感数据或有较高保密需求的项目，请务必注意保护用户隐私和数据安全。&lt;/p&gt;
+&lt;p&gt;通过上述步骤，即使是没有专业背景的人也能轻松上手，借助现代 AI 工具的力量，快速且高效地开发出属于自己的微信小程序。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Transformers 框架序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.包和对象加载中的设计巧思与实用技巧&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.AutoModel 初始化及 Qwen2.5 模型加载全流程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.Qwen2.5 大模型的 AutoTokenizer 技术细节&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.嵌入（Embedding）机制和 Word2Vec 实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.位置嵌入（Positional Embedding）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Pipeline NLP 任务序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;零·概述&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.文本转音频&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.文本分类&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.词元分类和命名实体识别&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.问答&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.表格问答&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.填充蒙版&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>使用Cursor &#43; Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战</title>
+        <link>https://ntopic.cn/p/2025010301/</link>
+        <pubDate>Fri, 03 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2025010301/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2025010301/01.jpg" alt="Featured image of post 使用Cursor &#43; Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战" /&gt;&lt;p&gt;最近，小朋友开始学习小提琴，需要一个节拍器来帮助他练习。老牛同学下载了好几个节拍器应用，里面的广告实在是太多了，简直无从下手操作，就算老牛同学是慎之又慎，但还是中招，被运营商扣费。&lt;/p&gt;
+&lt;p&gt;因此，老牛同学决定自己动手，定制一个专属的微信小程序节拍器。虽然老牛同学没有微信小程序的研发经验，但是借助强大的 AI 工具，最终，还是成功研发完成并上线了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025010301/01.jpg&#34;
+	width=&#34;1161&#34;
+	height=&#34;781&#34;
+	srcset=&#34;https://ntopic.cn/p/2025010301/01_hu5b4a41f27c7fe518c1493f019fcc5463_79100_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025010301/01_hu5b4a41f27c7fe518c1493f019fcc5463_79100_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;老牛同学·小程序&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;148&#34;
+		data-flex-basis=&#34;356px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【老牛同学小程序 · 节拍器 视频】&lt;/p&gt;
+&lt;h1 id=&#34;1-开发环境搭建&#34;&gt;1. 开发环境搭建&lt;/h1&gt;
+&lt;h2 id=&#34;安装必要的开发工具&#34;&gt;安装必要的开发工具&lt;/h2&gt;
+&lt;p&gt;为了实现高效开发，我们选择了以下两个主要工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;微信开发者工具&lt;/strong&gt;：用于实时预览和调试小程序，确保代码可以在微信环境中正常运行。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cursor&lt;/strong&gt;：这是一个集成大模型的智能代码编辑器，能够根据提示词自动生成或优化代码，大大提高了开发效率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下载地址：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;微信开发者工具：&lt;a class=&#34;link&#34; href=&#34;https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方下载链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Cursor：&lt;a class=&#34;link&#34; href=&#34;https://www.cursor.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方网站&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;请务必完成注册并登录到 Cursor 平台，以便使用其全部功能。&lt;/p&gt;
+&lt;h2 id=&#34;配置开发环境&#34;&gt;配置开发环境&lt;/h2&gt;
+&lt;h3 id=&#34;微信开发者工具配置&#34;&gt;微信开发者工具配置&lt;/h3&gt;
+&lt;p&gt;启动微信开发者工具后，创建一个新的小程序项目。选择“不使用云服务”和“不适用模板”，以获得更高的灵活性。记得填写正确的&lt;strong&gt;AppID&lt;/strong&gt;，这是与微信平台关联的关键信息。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025010301/21.jpg&#34;
+	width=&#34;1138&#34;
+	height=&#34;1096&#34;
+	srcset=&#34;https://ntopic.cn/p/2025010301/21_huf3fa269b695544a4777c8f18eca28525_72609_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025010301/21_huf3fa269b695544a4777c8f18eca28525_72609_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新建小程序&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;249px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;创建完成后，你将进入如下的研发和预览界面，准备好迎接下一步的挑战。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025010301/22.jpg&#34;
+	width=&#34;1582&#34;
+	height=&#34;1611&#34;
+	srcset=&#34;https://ntopic.cn/p/2025010301/22_hu01367b20543e7395b87ef2e377747ee0_201833_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025010301/22_hu01367b20543e7395b87ef2e377747ee0_201833_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;小程序研发和预览&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;98&#34;
+		data-flex-basis=&#34;235px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;cursor-工具配置&#34;&gt;Cursor 工具配置&lt;/h3&gt;
+&lt;p&gt;打开 Cursor，按照指引配置好&lt;strong&gt;Qwen2.5-Coder-32B&lt;/strong&gt;大模型，并选择刚刚创建的小程序目录作为工作区。这样，你就可以在 Cursor 中看到与微信开发者工具一致的文件结构，方便进行同步操作。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025010301/23.jpg&#34;
+	width=&#34;937&#34;
+	height=&#34;1273&#34;
+	srcset=&#34;https://ntopic.cn/p/2025010301/23_hu8096a80e9b829403602cf78c2814ca3c_97215_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025010301/23_hu8096a80e9b829403602cf78c2814ca3c_97215_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2.5-Coder-32B配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;73&#34;
+		data-flex-basis=&#34;176px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025010301/24.jpg&#34;
+	width=&#34;2520&#34;
+	height=&#34;1608&#34;
+	srcset=&#34;https://ntopic.cn/p/2025010301/24_hu3a43f7b8d3020cb4a4134453229be1f2_407971_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025010301/24_hu3a43f7b8d3020cb4a4134453229be1f2_407971_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Cursor文件目录&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;376px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-ai-辅助编程实战&#34;&gt;3. AI 辅助编程实战&lt;/h1&gt;
+&lt;p&gt;现在，让我们一起探索如何利用 AI 的力量来加速开发进程。在 Cursor 中按下&lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;i&lt;/code&gt;，打开 Chat 面板，输入精心设计的 Prompt 提示词。以下是老牛同学首次尝试时所用的提示内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;你是一位资深的微信小程序开发者，擅长UI设计和交互逻辑构建。当前任务是在现有基础上完善一个名为“节拍器”的小程序，它允许用户调整BPM（每分钟拍数），并通过点击按钮控制节拍声的播放与停止。请根据以下要求继续完成页面布局和功能实现：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- 页面标题：节拍器
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- 内容布局：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - 第一行：居中对齐，包括四个按钮（“-10”、“-5”、“+5”、“+10”）用于调节BPM值，默认值设为60。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - 第二行：显示计时器，格式为“小时:分:秒”。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - 第三行：“开始”按钮，点击后启动节拍声，频率由BPM值决定。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - 第四行：“停止”按钮，用于暂停节拍声。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025010301/31.jpg&#34;
+	width=&#34;1446&#34;
+	height=&#34;579&#34;
+	srcset=&#34;https://ntopic.cn/p/2025010301/31_hu274236edc82409284d34939c53c06f1b_158721_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025010301/31_hu274236edc82409284d34939c53c06f1b_158721_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Prompt提示词&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;249&#34;
+		data-flex-basis=&#34;599px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025010301/32.jpg&#34;
+	width=&#34;1510&#34;
+	height=&#34;1522&#34;
+	srcset=&#34;https://ntopic.cn/p/2025010301/32_hu95c010b70c24e0c5331d176ce44a0b7b_155320_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025010301/32_hu95c010b70c24e0c5331d176ce44a0b7b_155320_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Apply代码片段&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;99&#34;
+		data-flex-basis=&#34;238px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;提交后，等待 AI 生成代码片段，并通过&lt;code&gt;Apply&lt;/code&gt;将其应用到项目中。之后，我们切换回&lt;strong&gt;微信开发者工具&lt;/strong&gt;界面，默认会自动刷新，或者按&lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;r&lt;/code&gt;强制刷新页面，即可查看最新的页面效果。&lt;/p&gt;
+&lt;p&gt;不断迭代这一过程，直到小程序完全符合预期为止。&lt;/p&gt;
+&lt;h1 id=&#34;4-结语&#34;&gt;4. 结语&lt;/h1&gt;
+&lt;p&gt;最后，当我们使用外部 API 服务时，对于涉及敏感数据或有较高保密需求的项目，请务必注意保护用户隐私和数据安全。&lt;/p&gt;
+&lt;p&gt;通过上述步骤，即使是没有专业背景的人也能轻松上手，借助现代 AI 工具的力量，快速且高效地开发出属于自己的微信小程序。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Transformers 框架序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.包和对象加载中的设计巧思与实用技巧&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.AutoModel 初始化及 Qwen2.5 模型加载全流程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.Qwen2.5 大模型的 AutoTokenizer 技术细节&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.嵌入（Embedding）机制和 Word2Vec 实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.位置嵌入（Positional Embedding）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Pipeline NLP 任务序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;零·概述&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.文本转音频&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.文本分类&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.词元分类和命名实体识别&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.问答&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.表格问答&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.填充蒙版&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</title>
+        <link>https://ntopic.cn/p/2024120701/</link>
+        <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024120701/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024120701/00.jpg" alt="Featured image of post Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）" /&gt;&lt;p&gt;随着 AI 编程工具的迅猛发展，从早期的 Code Copilot（代码辅助）到如今备受瞩目的 Cursor、v0、Windsurf 和 &lt;strong&gt;Bolt.new&lt;/strong&gt; 等全栈开发平台。这些创新工具旨在加速项目开发、简化工作流程并提高研发效率。然而，访问这些工具通常依赖于“通畅的网络”和海外 LLM 模型，在某些情况下可能成为使用这些工具的障碍。&lt;/p&gt;
+&lt;p&gt;作为一位大模型的爱好者和学习者，老牛同学今天分享一条不同的路径——&lt;strong&gt;如何利用本地 Ollama 和国内的大模型 API，在本地部署和使用 Bolt.new？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以下是老牛同学录制的本地部署和使用 &lt;strong&gt;Bolt.new&lt;/strong&gt; 的视频：通过一句话，即可自动完成整个小项目的代码编写和部署预览。&lt;/p&gt;
+&lt;p&gt;【微信公众号视频链接】&lt;/p&gt;
+&lt;h1 id=&#34;1-boltnew-概览&#34;&gt;1. Bolt.new 概览&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Bolt.new&lt;/strong&gt;是由 StackBlitz 推出的一款革新性的 AI 驱动全栈开发平台，它以几个关键特性脱颖而出：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;即时全栈环境&lt;/strong&gt;：借助 WebContainer 技术，Bolt.new 能够在浏览器中直接运行真实的 Node.js 环境，支持 npm 包安装、服务器配置及第三方 API 交互，为开发者提供了前所未有的便捷性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;智能 AI 助手&lt;/strong&gt;：内置的强大 AI 功能可以理解并执行复杂的指令，无论是创建文件、编辑代码还是解决问题，都能显著提高工作效率。特别是其一键修复错误的功能，能够自动处理编译或运行时出现的问题，极大地节省了时间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;简易部署流程&lt;/strong&gt;：集成的聊天界面让用户可以直接上传代码至云端，并选择合适的托管服务（如 Vercel）进行部署。生成的应用程序可以通过 URL 轻松分享，促进团队协作和成果展示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;尽管 Bolt.new 带来了诸多便利，但也存在一些局限：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;缺乏版本控制&lt;/strong&gt;：代码调整可能导致原有版本被覆盖，增加了数据丢失的风险。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;频繁重新生成和部署&lt;/strong&gt;：每次修改需求时，Bolt.new 会重新生成整个代码库并部署，需要较长时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于快速原型设计和全栈功能开发，Bolt.new 凭借其完整的开发环境、智能化的辅助工具和简便的协作机制，是一个不错的选择。&lt;/p&gt;
+&lt;h1 id=&#34;2-本地部署-boltnew&#34;&gt;2. 本地部署 Bolt.new&lt;/h1&gt;
+&lt;h2 id=&#34;准备本地大模型&#34;&gt;准备本地大模型&lt;/h2&gt;
+&lt;p&gt;Bolt.new 底层依赖 LLM，我们先准备 2 个 LLM 选项：本地运行 Ollama，和 API 调用的远程 LLM 服务（非必须）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;本地 Ollama&lt;/strong&gt;：关于 Ollama 详细使用教程，请参考之前文章（&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ollama 完整教程&lt;/a&gt;），建议下载和启动&lt;strong&gt;Qwen2.5-Coder-7B&lt;/strong&gt;模型：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama run qwen2.5-coder:7b
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;LLM 服务 API&lt;/strong&gt;：Ollama 依赖电脑硬件配置，如果电脑硬件条件有限，我们还可以直接用户大模型服务 API，只需要兼容 OpenAPI 接口标准即可（老牛同学用的是百炼平台 Qwen2.5-Coder-32B 大模型）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;下载和配置-boltnew&#34;&gt;下载和配置 Bolt.new&lt;/h2&gt;
+&lt;p&gt;官方提供的 Bolt.new 并不直接支持本地 LLM 或自定义 API 设置。幸运的是，社区牛人&lt;strong&gt;coleam00&lt;/strong&gt;基于官方版本开发了一个增强版——&lt;a class=&#34;link&#34; href=&#34;https://github.com/stackblitz/bolt.new&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;bolt.new-any-llm&lt;/a&gt;，该版本不仅兼容多种 LLM，还能灵活配置 API 接口。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;克隆项目仓库&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/coleam00/bolt.new-any-llm bolt.new-any-LLM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; bolt.new-any-LLM
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;配置环境变量&lt;/strong&gt;：复制&lt;code&gt;.env.example&lt;/code&gt;为&lt;code&gt;.env&lt;/code&gt;，然后根据实际情况编辑&lt;code&gt;.env&lt;/code&gt;配置文件中的 API 地址和密钥。例如，Ollama 需要设置&lt;code&gt;OLLAMA_API_BASE_URL&lt;/code&gt;参数，国内模型 API 服务，则需要设置&lt;code&gt;OPENAI_LIKE_API_BASE_URL&lt;/code&gt;和&lt;code&gt;OPENAI_LIKE_API_KEY&lt;/code&gt;这 2 个参数。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 复制配置文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp .env.example .env
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后，打开&lt;code&gt;.env&lt;/code&gt;配置文件，可以看到支持的模型列表，包括 GROQ、HuggingFace、Open AI 等，根据需要进行内容修改：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Ollama配置
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OLLAMA_API_BASE_URL=http://localhost:11434
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 【可选】 老牛同学使用的是百炼平台
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OPENAI_LIKE_API_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OPENAI_LIKE_API_KEY=真实Key内容
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：&lt;code&gt;OPENAI_LIKE_API_BASE_URL&lt;/code&gt;和&lt;code&gt;OPENAI_LIKE_API_KEY&lt;/code&gt;意思就是兼容 OpenAI 接口标准的大模型地址和 API Key，目前国内厂商基本都支持 OpenAPI 接口标准。&lt;/p&gt;
+&lt;h2 id=&#34;boltnew-项目部署&#34;&gt;Bolt.new 项目部署&lt;/h2&gt;
+&lt;p&gt;为了加快 Node.js 包下载速度，我们可以设置一下镜像源（老牛同学使用的是淘宝镜像）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;npm config &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; registry https://registry.npmmirror.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其他镜像源如下列表，请按需选择：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NPM官方: https://registry.npmjs.org
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;淘宝镜像: http://registry.npmmirror.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;阿里云镜像: https://npm.aliyun.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;腾讯云: https://mirrors.cloud.tencent.com/npm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;华为云: https://mirrors.huaweicloud.com/repository/npm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;网易: https://mirrors.163.com/npm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;中科大: http://mirrors.ustc.edu.cn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;清华: https://mirrors.tuna.tsinghua.edu.cn
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后，我们执行以下命令来安装依赖并启动 Bolt.new：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装pnpm包管理工具&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;npm install -g pnpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装项目依赖包&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnpm install
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 启动Bolt.new&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnpm run dev
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动成功后，我们可以看到如下输出信息：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt;pnpm run dev
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; bolt@ dev D:&lt;span class=&#34;se&#34;&gt;\C&lt;/span&gt;odeSpace&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;olt.new
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; remix vite:dev
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ➜  Local:   http://localhost:5173/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ➜  Network: use --host to expose
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ➜  press h + enter to show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下来，我们开始体验本地化的 Bolt.new！&lt;/p&gt;
+&lt;h1 id=&#34;3-使用-boltnew-进行开发&#34;&gt;3. 使用 Bolt.new 进行开发&lt;/h1&gt;
+&lt;p&gt;通过浏览器打开 Bolt.new 本地地址：&lt;a class=&#34;link&#34; href=&#34;http://localhost:5173&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://localhost:5173&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;首先可以看到如下页面，与官方相比，多了一个&lt;strong&gt;Model Settings&lt;/strong&gt;的选项，在这里我们可以选择自己的模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/31.jpg&#34;
+	width=&#34;1020&#34;
+	height=&#34;988&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/31_hu9477948d34bd4d2c15bb2dbe15809e56_85332_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/31_hu9477948d34bd4d2c15bb2dbe15809e56_85332_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Bolt.new设置模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;247px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们可以选择 Ollama 模型（如上图），也可以选择配置过&lt;strong&gt;OPENAI_LIKE_API&lt;/strong&gt;尝试模型（如老牛同学百炼平台 API 模型）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/32.jpg&#34;
+	width=&#34;996&#34;
+	height=&#34;825&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/32_hu802f84a813b980fdab9c8d74c9bb9dce_62633_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/32_hu802f84a813b980fdab9c8d74c9bb9dce_62633_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OpenAI接口模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;120&#34;
+		data-flex-basis=&#34;289px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;选择完模型，我可以输入我们的需求：&lt;code&gt;写一个计算器页面&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;接下来的过程，就是老牛同学上面录制的视频所示了。&lt;/p&gt;
+&lt;p&gt;Bolt.new 可以根据我们的一句话内容，自动拆分成不同的小步骤：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/91.jpg&#34;
+	width=&#34;985&#34;
+	height=&#34;1006&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/91_hua37bb5ea70b40a2d99acb7b32878cf30_97340_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/91_hua37bb5ea70b40a2d99acb7b32878cf30_97340_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;拆分实现步骤&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;97&#34;
+		data-flex-basis=&#34;234px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后，自动生成完整的项目结构和执行步骤，包括文件名等：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/92.jpg&#34;
+	width=&#34;822&#34;
+	height=&#34;798&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/92_hufae3bc8dbabe05cf8b7de8d85444b594_42833_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/92_hufae3bc8dbabe05cf8b7de8d85444b594_42833_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;项目结构和步骤&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;247px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在右侧，显示源文件列表和动态展示每个文件生成过程：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/93.jpg&#34;
+	width=&#34;1290&#34;
+	height=&#34;1326&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/93_hu13709eb150c5a69a13b107a5dec56fc6_108379_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/93_hu13709eb150c5a69a13b107a5dec56fc6_108379_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;源文件列表和内容&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;97&#34;
+		data-flex-basis=&#34;233px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最终，所有源代码研发完成，自动部署整个和提供预览：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/94.jpg&#34;
+	width=&#34;1282&#34;
+	height=&#34;1327&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/94_hu612bbd794967ab483ed00619009bf697_79497_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/94_hu612bbd794967ab483ed00619009bf697_79497_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;项目部署和预览&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;96&#34;
+		data-flex-basis=&#34;231px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来，如果我们觉得哪里需要修改、或者有什么报错，直接提问，Bolt.new 会自动进行修改并部署和预览！&lt;/p&gt;
+&lt;h1 id=&#34;4-总结&#34;&gt;4. 总结&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Bolt.new&lt;/strong&gt;只需通过自然语音，就能实现全栈研发和自动部署的能力，对于追求高效开发和快速交付的团队而言，这是一个值得尝试的工具。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;友情提示&lt;/strong&gt;：对于保密性较高、或数据安全要求较高的项目，通过调用外部大模型 API 服务使用 Bolt.new 工具时，请注意数据安全问题！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Pipeline 任务：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Transformers 框架任务概览：从零开始掌握 Pipeline（管道）与 Task（任务）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Transformers 框架 Pipeline 任务详解：文本转音频（text-to-audio 或 text-to-speech）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Transformers 框架 Pipeline 任务详解：文本分类（text-classification）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深入解析 Transformers 框架（一）：包和对象加载中的设计巧思与实用技巧&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深入解析 Transformers 框架（二）：AutoModel 初始化及 Qwen2.5 模型加载全流程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深入解析 Transformers 框架（三）：Qwen2.5 大模型的 AutoTokenizer 技术细节&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深入解析 Transformers 框架（四）：Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>基于Qwen2/Lllama3等大模型，部署团队私有化RAG知识库系统的详细教程（Docker&#43;AnythingLLM）</title>
+        <link>https://ntopic.cn/p/2024070601/</link>
+        <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024070601/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024070601/00.png" alt="Featured image of post 基于Qwen2/Lllama3等大模型，部署团队私有化RAG知识库系统的详细教程（Docker&#43;AnythingLLM）" /&gt;&lt;p&gt;自 ChatGPT 发布以来，大型语言模型（Large Language Model，&lt;strong&gt;LLM&lt;/strong&gt;，大模型）得到了飞速发展，它在处理复杂任务、增强自然语言理解和生成类人文本等方面的能力让人惊叹，几乎各行各业均可从中获益。&lt;/p&gt;
+&lt;p&gt;然而，在一些垂直领域，这些开源或闭源的通用基础大模型也暴露了一些问题，主要体现在以下 3 个方面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;知识的局限性：&lt;/strong&gt; 大模型的知识源于训练数据，目前主流大模型（如：通义千问、文心一言等）的训练数据基本来源于网络公开的数据。因此，非公开的、离线的、实时的数据大模型是无法获取到（如：团队内部实时业务数据、私有的文档资料等），这些数据相关的知识也就无从具备。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;幻觉问题：&lt;/strong&gt; 大模型生成人类文本底层原理是基于概率（目前还无法证明大模型有意识），所以它有时候会&lt;strong&gt;一本正经地胡说八道&lt;/strong&gt;，特别是在不具备某方面的知识情况下。当我们也因缺乏这方面知识而咨询大模型时，大模型的幻觉问题会各我们造成很多困扰，因为我们也无法区分其输出的正确性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据的安全性：&lt;/strong&gt; 对于个人、创新团队、企业来说，&lt;strong&gt;数据安全&lt;/strong&gt;至关重要，老牛同学相信没有谁会愿意承担数据泄露的风险，把自己内部私有数据上传到第三方平台进行模型训练。这是一个矛盾：我们既要借助通用大模型能力，又要保障数据的安全性！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;为了解决以上通用大模型问题，&lt;strong&gt;检索增强生成&lt;/strong&gt;（Retrieval-Augmented Generation，&lt;strong&gt;RAG&lt;/strong&gt;）方案就应运而生了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/01.png&#34;
+	width=&#34;1317&#34;
+	height=&#34;606&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/01_hubda65f563eaca1269a4ab16adc424432_58919_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/01_hubda65f563eaca1269a4ab16adc424432_58919_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RAG主要流程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;521px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RAG&lt;/strong&gt; 的主要流程主要包含以下 2 个阶段：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;数据准备阶段：&lt;/strong&gt; 管理员将内部私有数据向量化后入库的过程，&lt;strong&gt;向量化&lt;/strong&gt;是一个将文本数据转化为向量矩阵的过程，该过程会直接影响到后续检索的效果；&lt;strong&gt;入库&lt;/strong&gt;即将向量数据构建索引，并存储到向量数据库的过程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用户应用阶段：&lt;/strong&gt; 根据用户的 Prompt 提示词，通过检索召回与 Prompt 提示词相关联的知识，并融入到原 Prompt 提示词中，作为大模型的输入 Prompt 提示词，通用大模型因此生成相应的输出。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从上面 RAG 方案我们可以看出，通过与通用大模型相结合，我们可搭建团队私有的内部本地知识库，并能有效的解决通用大模型存在的&lt;strong&gt;知识局限性&lt;/strong&gt;、&lt;strong&gt;幻觉问题&lt;/strong&gt;和&lt;strong&gt;隐私数据安全&lt;/strong&gt;等问题。&lt;/p&gt;
+&lt;p&gt;目前市面上已经有多个开源 RAG 框架，老牛同学将选择&lt;strong&gt;AnythingLLM&lt;/strong&gt;框架（&lt;strong&gt;16.8K ☆&lt;/strong&gt;，&lt;a class=&#34;link&#34; href=&#34;https://github.com/Mintplex-Labs/anything-llm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Mintplex-Labs/anything-llm&lt;/a&gt;）与大家一起来部署我们自己或者团队内部的本地知识库。整个部署过程将涉及以下几个方面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;环境准备：&lt;/strong&gt; &lt;strong&gt;AnythingLLM&lt;/strong&gt;框架推荐使用 Docker 部署，因此我们需要提前把 Docker 安装和配置好&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;大模型准备：&lt;/strong&gt; 老牛同学继续使用&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型，大家可以根据自己实际情况选择，无特殊要求&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RAG 部署和使用：&lt;/strong&gt; 即 AnythingLLM 安装和配置，并最终使用我们大家的 RAG 系统&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;环境准备windows-打开虚拟化功能hyper-v-和-wsl&#34;&gt;环境准备：Windows 打开虚拟化功能（Hyper-V 和 WSL）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;友情提示：&lt;/strong&gt; 老牛同学用的是 Windows 操作系统，因此下面是 Windows 的配置方式。&lt;/p&gt;
+&lt;p&gt;安装 Docker 需要用到虚拟化，因此需要 Windows 系统打开&lt;strong&gt;Hyper-V&lt;/strong&gt;和&lt;strong&gt;WSL 子系统&lt;/strong&gt;功能。如果是 &lt;strong&gt;Windows 11 家庭版&lt;/strong&gt;，默认并没有安装&lt;strong&gt;Hyper-V&lt;/strong&gt;功能，可以通过以下方式进行安装：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/02.png&#34;
+	width=&#34;1374&#34;
+	height=&#34;951&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/02_huaa4604baf83c1d40d70bfe532386980a_94185_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/02_huaa4604baf83c1d40d70bfe532386980a_94185_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Windows家庭版&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【第一步（&lt;strong&gt;家庭版&lt;/strong&gt;）：安装 Hyper-V 依赖包】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新建一个 txt 临时文本，并复制以下代码并保存，之后把该临时文件重命名为&lt;code&gt;Hyper-V.bat&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;右键&lt;/strong&gt;以管理员方式运行&lt;code&gt;Hyper-V.bat&lt;/code&gt;，本代码自动安装相关包，完成之后输入&lt;code&gt;Y&lt;/code&gt;重启电脑后即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;pushd&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%~dp0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dir /b %SystemRoot%&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ervicing&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;ackages&lt;span class=&#34;se&#34;&gt;\*&lt;/span&gt;Hyper-V*.mum &amp;gt;hyper-v.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; /f %%i in &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;findstr /i . hyper-v.txt 2^&amp;gt;nul&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; dism /online /norestart /add-package:&lt;span class=&#34;s2&#34;&gt;&amp;#34;%SystemRoot%\servicing\Packages\%%i&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;del hyper-v.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;【第二步：开启虚拟化功能】&lt;/p&gt;
+&lt;p&gt;首先，打开 Windows 功能（即：控制面板）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/03.png&#34;
+	width=&#34;1159&#34;
+	height=&#34;1084&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/03_hu225c1518dc74802b5eaf065abd77fd7f_88600_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/03_hu225c1518dc74802b5eaf065abd77fd7f_88600_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Windows功能&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;106&#34;
+		data-flex-basis=&#34;256px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后，勾选以下 3 个选项（&lt;strong&gt;Hyper-V&lt;/strong&gt;、&lt;strong&gt;适用于 Linux 的 Windows 子系统&lt;/strong&gt;和&lt;strong&gt;虚拟机平台&lt;/strong&gt;），打开虚拟化功能：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/04.png&#34;
+	width=&#34;790&#34;
+	height=&#34;921&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/04_hu2df9e01ea13779eba809f0148cac02bf_84226_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/04_hu2df9e01ea13779eba809f0148cac02bf_84226_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;打开虚拟化功能&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;205px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;确定&lt;/strong&gt;之后重启电脑即可！&lt;/p&gt;
+&lt;h2 id=&#34;环境准备docker-安装和配置&#34;&gt;环境准备：Docker 安装和配置&lt;/h2&gt;
+&lt;p&gt;Docker 安装和配置主要包含以下 2 个步骤：&lt;/p&gt;
+&lt;p&gt;【第一步：下载 Docker 软件】&lt;/p&gt;
+&lt;p&gt;下载和安装 Docker 软件：&lt;a class=&#34;link&#34; href=&#34;https://www.docker.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.docker.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果大家和老牛同学一样，出现无法打开 Docker 官网的情况，则也可以通过以下方式下载最新的版本：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开 Docker 中文网站：&lt;a class=&#34;link&#34; href=&#34;https://docker.github.net.cn/desktop/release-notes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docker.github.net.cn/desktop/release-notes/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;选择对应的安装软件，如果直接点击下载，可能还是无法下载。可以右键复制下载链接，然后通过&lt;strong&gt;迅雷&lt;/strong&gt;进行下载（老牛同学亲测有效）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/05.png&#34;
+	width=&#34;1314&#34;
+	height=&#34;423&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/05_hu282c88f2eb8f06d7dea1f5446d540b80_32527_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/05_hu282c88f2eb8f06d7dea1f5446d540b80_32527_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker下载&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;310&#34;
+		data-flex-basis=&#34;745px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【第二步；Docker 安装和配置】&lt;/p&gt;
+&lt;p&gt;下载完成之后，安装过程与普通的软件没有区别，安装完成之后需要注销电脑：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/06.png&#34;
+	width=&#34;1060&#34;
+	height=&#34;735&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/06_huf0be25c9c8c669eedd84ee52f682f01d_36435_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/06_huf0be25c9c8c669eedd84ee52f682f01d_36435_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker安装完成&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;登录操作系统之后，需要&lt;strong&gt;Accept&lt;/strong&gt;同意 Docker 协议条款，然后注册登录或者&lt;strong&gt;Continue without signing in&lt;/strong&gt;直接跳过，打开 Docker 软件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;设置镜像源：&lt;/strong&gt; 点击右上角&lt;strong&gt;齿轮&lt;/strong&gt;设置按钮，选择&lt;strong&gt;Docker Engine&lt;/strong&gt;，打开设置页面，输入 Docker 镜像文件加速器地址：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;registry-mirrors&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://docker.registry.cyou&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://mirror.baidubce.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果以上加速器地址不可用，可以使用阿里云个人私有的地址：&lt;a class=&#34;link&#34; href=&#34;https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/07.png&#34;
+	width=&#34;1501&#34;
+	height=&#34;1162&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/07_huf0574f72b89daafca56ede6243a5c6a0_121832_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/07_huf0574f72b89daafca56ede6243a5c6a0_121832_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;设置Docker镜像源&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;310px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;Apply &amp;amp; Restart&lt;/strong&gt;按钮即可！&lt;/p&gt;
+&lt;h2 id=&#34;anythingllm-安装和配置&#34;&gt;AnythingLLM 安装和配置&lt;/h2&gt;
+&lt;p&gt;接下来，我们开始安装和部署&lt;strong&gt;AnythingLLM&lt;/strong&gt;框架，包含以下 3 步：&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第一步：&lt;/strong&gt; 下载和启动 AnythingLLM 镜像】&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker pull mintplexlabs/anythingllm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/08.png&#34;
+	width=&#34;1360&#34;
+	height=&#34;778&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/08_hu0dc5b9425e973744f2ea1f19cb8de84b_77870_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/08_hu0dc5b9425e973744f2ea1f19cb8de84b_77870_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker镜像下载&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;419px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以通过以下命令，查看当前 Docker 的镜像列表：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt;docker images
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REPOSITORY                 TAG       IMAGE ID       CREATED      SIZE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mintplexlabs/anythingllm   latest    d950fa3b8011   &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; days ago   2.94GB
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/09.png&#34;
+	width=&#34;1752&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/09_hub8aadc34ed644536646daaef6f2bc307_92128_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/09_hub8aadc34ed644536646daaef6f2bc307_92128_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker镜像列表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;252&#34;
+		data-flex-basis=&#34;605px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第二步：&lt;/strong&gt; 启动 AnythingLLM 框架】&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Windows 系统：&lt;/strong&gt; AnythingLLM 镜像挂载和启动命令（因为命令有多行，需要通过&lt;strong&gt;PowerShell&lt;/strong&gt;执行）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Run this in powershell terminal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;:STORAGE_LOCATION&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;\Documents\anythingllm&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;If&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;!&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Test-Path &lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;:STORAGE_LOCATION&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;New-Item &lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;:STORAGE_LOCATION -ItemType Directory&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;If&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;!&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Test-Path &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:STORAGE_LOCATION\.env&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;New-Item &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:STORAGE_LOCATION\.env&amp;#34;&lt;/span&gt; -ItemType File&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run -d -p 3001:3001 &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--cap-add SYS_ADMIN &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-v &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:STORAGE_LOCATION`:/app/server/storage&amp;#34;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-v &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:STORAGE_LOCATION\.env:/app/server/.env&amp;#34;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-e &lt;span class=&#34;nv&#34;&gt;STORAGE_DIR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/app/server/storage&amp;#34;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mintplexlabs/anythingllm&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者，&lt;strong&gt;Linux/MacOS 系统：&lt;/strong&gt; AnythingLLM 镜像挂载和启动命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;STORAGE_LOCATION&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;/anythingllm &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;mkdir -p &lt;span class=&#34;nv&#34;&gt;$STORAGE_LOCATION&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;touch &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$STORAGE_LOCATION&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/.env&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;docker run -d -p 3001:3001 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--cap-add SYS_ADMIN &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-v &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;STORAGE_LOCATION&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;:/app/server/storage &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-v &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;STORAGE_LOCATION&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/.env:/app/server/.env &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-e &lt;span class=&#34;nv&#34;&gt;STORAGE_DIR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/app/server/storage&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;mintplexlabs/anythingllm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动完成，通过浏览器打开&lt;strong&gt;AnythingLLM&lt;/strong&gt;界面：&lt;a class=&#34;link&#34; href=&#34;http://localhost:3001&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://localhost:3001&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/10.png&#34;
+	width=&#34;1495&#34;
+	height=&#34;931&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/10_hu2784c5e6d51ab4b108467ae591f489d5_224471_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/10_hu2784c5e6d51ab4b108467ae591f489d5_224471_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AnythingLLM初始界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;385px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第三步：&lt;/strong&gt; 配置 AnythingLLM】&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;Get started&lt;/strong&gt; 按钮，进入&lt;strong&gt;LLM 选择&lt;/strong&gt;页面。老牛同学在前面文章中，分别介绍了大模型通过&lt;strong&gt;Ollama&lt;/strong&gt;和&lt;strong&gt;OpenAI&lt;/strong&gt;这 2 种主要的部署方式（包括：&lt;strong&gt;Llama3&lt;/strong&gt;、&lt;strong&gt;Qwen2&lt;/strong&gt;、&lt;strong&gt;Gemma2&lt;/strong&gt;等）。&lt;/p&gt;
+&lt;p&gt;老牛同学在这里选择&lt;strong&gt;Ollama&lt;/strong&gt;方式，如果大家重新设置了端口号，则需要看下 Ollama URL 端口号是否正确，默认值为：&lt;code&gt;http://host.docker.internal:11434&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/11.png&#34;
+	width=&#34;1072&#34;
+	height=&#34;1065&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/11_hucc256284c0239166dff439efac8f7d86_101001_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/11_hucc256284c0239166dff439efac8f7d86_101001_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AnythingLLM确认配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;241px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;AnythingLLM 设置确认，包括：大模型提供方、词嵌入和向量数据库，这些配置后续还可以修改。&lt;/p&gt;
+&lt;p&gt;最后，创建一个工作区，老牛同学设置的名称为：&lt;code&gt;RAG-ClassmateWX&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;anythingllm-导入数据和使用&#34;&gt;AnythingLLM 导入数据和使用&lt;/h2&gt;
+&lt;p&gt;上一步配置完成之后，无需任何其他配置，就可以和大模型对话聊天了，和通过其他客户端与大模型对话没有区别。接下来，我们需要导入我们内部私有数据，并进行验证。&lt;/p&gt;
+&lt;p&gt;【第一步：导入内部数据】&lt;/p&gt;
+&lt;p&gt;我们在电脑本地新建一个 txt 文件，文件名为：&lt;code&gt;为什么个人、团队等均有必要部署私有化的RAG知识库系统.txt&lt;/code&gt;，文件内容就是本文的开头内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;自ChatGPT发布以来，大型语言模型（Large Language Model，LLM，大模型）得到了飞速发展，它在解决复杂任务、增强自然语言理解和生成类人文本等方面的能力让人惊叹，几乎各行各业均可从中获益。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;然而，在一些垂直领域，这些开源或闭源的通用的基础大模型也暴露了一些问题，主要有以下3个方面：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. **知识的局限性：** 大模型的知识源于训练数据，目前主流大模型（如：通义千问、文心一言等）的训练数据基本来源于网络公开的数据。因此，非公开的、离线的、实时的数据大模型是无法获取到（如：团队内部实时业务数据、私有的文档资料等），这些数据相关的知识也就无从具备。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. **幻觉问题：** 大模型生成人类文本底层原理是基于概率（目前还无法证明大模型有意识），所以它有时候会**一本正经地胡说八道**，特别是在不具备某方面的知识情况下。当我们也因缺乏这方面知识而咨询大模型时，大模型的幻觉问题会各我们造成很多困扰，因为我们也无法区分其输出的正确性。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. **数据的安全性：** 对于个人、创新团队、企业来说，**数据安全**至关重要，老牛同学相信没有谁会愿意承担数据泄露的风险，把自己内部私有数据上传到第三方平台进行模型训练。这是一个矛盾：我们既要借助通用大模型能力，又要保障数据的安全性！
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;为了解决以上3个大模型通用问题，**检索增强生成**（Retrieval-Augmented Generation，**RAG**）方案就应运而生了！
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;首先，点击&lt;strong&gt;RAG-ClassmateWX&lt;/strong&gt;工作空间右边的&lt;strong&gt;上传&lt;/strong&gt;图标，准备上传本 txt 文件：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/12.png&#34;
+	width=&#34;514&#34;
+	height=&#34;484&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/12_hu98a778b95c0dbdf2bb8e033364c91812_36178_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/12_hu98a778b95c0dbdf2bb8e033364c91812_36178_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;准备上传文件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;106&#34;
+		data-flex-basis=&#34;254px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后，点击 txt 文件并上传，并点击&lt;strong&gt;Move to workspace&lt;/strong&gt;导入到工作空间：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/13.png&#34;
+	width=&#34;2179&#34;
+	height=&#34;1186&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/13_huca935a886981d4d2aa854a0f54008e70_155046_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/13_huca935a886981d4d2aa854a0f54008e70_155046_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;上传txt外部文件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最后，点击&lt;strong&gt;Save and Embed&lt;/strong&gt;完成 txt 文本文件数据准备步骤（导入、向量化和入库等）。&lt;/p&gt;
+&lt;p&gt;【第二步：内部数据使用和验证】&lt;/p&gt;
+&lt;p&gt;回到主界面，输入刚才 txt 内部文件名：&lt;strong&gt;为什么个人、团队等均有必要部署私有化的 RAG 知识库系统&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/14.png&#34;
+	width=&#34;2184&#34;
+	height=&#34;1410&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/14_hu2dc45aa9fec1f6919603e85532deba6b_393792_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/14_hu2dc45aa9fec1f6919603e85532deba6b_393792_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AnthingLLM的检索和结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;371px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;RAG 的回答感觉比我原文要好多了，大模型在引用了内部数据的同时，还展示自己的创造性！&lt;/p&gt;
+&lt;p&gt;同时，老牛同学用同样的问题，咨询 AnythingLLM 的底层模型，结果就比较普通通用了，大家可以对比看下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/15.png&#34;
+	width=&#34;1527&#34;
+	height=&#34;871&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/15_hu989f0fc1bac16160616ef5772d281c92_209073_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/15_hu989f0fc1bac16160616ef5772d281c92_209073_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AnythingLLM底层大模型结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;420px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;总结和问题&#34;&gt;总结和问题&lt;/h2&gt;
+&lt;p&gt;和我们之前的大模型部署和应用过程相比，基于 AnythingLLM 的 RAG 实现整个部署过程比较繁琐，包括环境准备、Docker 安装和配置、AnythingLLM 配置等。然而，AnythingLLM 的使用过程却相对比较简单，我们只需要上传我们内部数据文件，AnythingLLM 框架屏蔽了中间的数据提取分割、向量化处理、向量索引和入库、检索召回和重组 Prompt 提示词等过程。&lt;/p&gt;
+&lt;p&gt;同时，我们通过构建本地知识库，做了一个简单的测试验证，测试结果表明，在使用 RAG 的情况下，大模型的回答结果更加有效、更符合我们期望，同时具备了一定的创造性！&lt;/p&gt;
+&lt;p&gt;老牛同学最后提个问题：检索召唤的过程，能否使用搜索引擎（如：Elastic Search）代替？欢迎大家留言讨论，我们共同学习进步！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习交流进步 👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>阿里Qwen2-72B大模型已是开源榜的王者，为什么还要推出其他参数模型，被其他模型打榜？</title>
+        <link>https://ntopic.cn/p/2024070401/</link>
+        <pubDate>Thu, 04 Jul 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024070401/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024070401/00.png" alt="Featured image of post 阿里Qwen2-72B大模型已是开源榜的王者，为什么还要推出其他参数模型，被其他模型打榜？" /&gt;&lt;p&gt;6 月 27 日，全球知名的开源平台 Hugging Face 的联合创始人兼首席执行官 Clem 在社交平台激动宣布，阿里 &lt;strong&gt;Qwen2-72B&lt;/strong&gt; 成为了开源模型排行榜的王者。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070401/01.png&#34;
+	width=&#34;554&#34;
+	height=&#34;419&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070401/01_hu270b854608a715a6ecd608a754ec480a_125206_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070401/01_hu270b854608a715a6ecd608a754ec480a_125206_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Clem社交平台消息&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;317px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这是一件大好事，说明了我们在大模型领域从先前的追赶，逐渐走向了领导，未来完全有可能会引领着全球开源模型的发展潮流，这是我们的骄傲！&lt;/p&gt;
+&lt;p&gt;不过话说回来，&lt;strong&gt;Qwen2&lt;/strong&gt; 序列有 5 个参数版本，分别是 &lt;strong&gt;Qwen2-0.5B&lt;/strong&gt;、&lt;strong&gt;Qwen2-1.5B&lt;/strong&gt;、&lt;strong&gt;Qwen2-7B&lt;/strong&gt;、&lt;strong&gt;Qwen2-57B-A14B&lt;/strong&gt; 和 &lt;strong&gt;Qwen2-72B&lt;/strong&gt;。本次排行榜第一的是 &lt;strong&gt;Qwen2-72B&lt;/strong&gt; 参数版本，那么其他参数版本的评测结果如何呢？老牛同学查看了 Qwen2 的官方文档，有一些比较评测：&lt;a class=&#34;link&#34; href=&#34;https://qwenlm.github.io/zh/blog/qwen2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://qwenlm.github.io/zh/blog/qwen2/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Qwen2-72B&lt;/strong&gt; 如 Clem 宣布一样，包括自然语言理解、知识、代码、数学及多语言等多项能力上均显著超越当前领先的模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070401/02.png&#34;
+	width=&#34;5333&#34;
+	height=&#34;3000&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070401/02_hu142dd24e0e4692d96d331a27b1b66b8d_1831299_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070401/02_hu142dd24e0e4692d96d331a27b1b66b8d_1831299_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2-72B评测结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;而 &lt;strong&gt;Qwen2-7B&lt;/strong&gt; 模型在&lt;strong&gt;自然语言理解&lt;/strong&gt; 和 &lt;strong&gt;数学&lt;/strong&gt; 方面均有点落后了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070401/03.png&#34;
+	width=&#34;2304&#34;
+	height=&#34;902&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070401/03_hu66f53dbe145d71753d55dcb7041106ca_512520_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070401/03_hu66f53dbe145d71753d55dcb7041106ca_512520_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2-7B评测结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;255&#34;
+		data-flex-basis=&#34;613px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;其他参数版本没有评测结果，老牛同学猜测是其他参与评测的大模型没有对等的参数版本，因此无法进行比较，或者评测结果不相上下，也就没有必要把结果放出来了。&lt;/p&gt;
+&lt;h2 id=&#34;老牛同学的疑问&#34;&gt;老牛同学的疑问&lt;/h2&gt;
+&lt;p&gt;那么老牛同学的问题来了：&lt;strong&gt;阿里 Qwen2-72B 大模型已是开源榜的王者，为什么还要推出其他参数模型，被其他模型打榜？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;老牛同学带着这个问题咨询了几位同事，也问了&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型，他们的回答均有一定道理，但老牛同学猜测，Qwen 这么做的核心目的只有一个：&lt;strong&gt;丰富 Qwen 大模型生态&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;原因一：&lt;/strong&gt; 训练 Qwen 中小尺寸参数成本并不高】&lt;/p&gt;
+&lt;p&gt;以阿里人才储备、基础设施和高层 &lt;strong&gt;All in AI&lt;/strong&gt; 的决心和投入，训练 Qwen 中小参数版本的模型应该不是什么难事，顺手即可做的事情，相对来说成本并不高&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;原因二：&lt;/strong&gt; 快速进行迭代和模型参数优化演进】&lt;/p&gt;
+&lt;p&gt;通过快速发布多个尺寸的模型，可以让内外部的技术究人员分析和探索模型的参数规模与性能之间的关系，以便能找到最佳的平衡点，最终不断推动优化和演进 Qwen 系列大模型&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;原因三：&lt;/strong&gt; 构建和丰富 Qwen 大模型全场景生态】&lt;/p&gt;
+&lt;p&gt;老牛同学认为这是最为&lt;strong&gt;关键&lt;/strong&gt;的一点，开源不是目的、打榜争第一也应该不是目的，它们都只是&lt;strong&gt;构建并丰富生态&lt;/strong&gt;的策略！老牛同学和大家一起来回顾 2 件事情：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Windows XP 生态：&lt;/strong&gt; 我们还记得二零零几年的时候，满大街 &lt;strong&gt;Windows XP&lt;/strong&gt; 的盗版操作系统吗？操作系统激活竟然也可以是路边打印小店的一大业务。那么，盗版这么多，微软为什么不管管？是他不知道吗，还是根本管不了？老牛同学觉得都不是，应该是微软故意放任不管：微软要赚的是企业的钱，包括 IT 公司、电脑厂商等，个人的钱不太好赚；同时，使用 Windows 操作系统的个人越多，会带动 Windows 生态发展（使用技巧和攻略、研发各种各样的软件等），进而能拉动更多使用的个人，同时对于企业来说意味着熟练的工人也越多，企业为降低成本，自然就愿意采购 Windows 正版授权，最终还是微软赚钱了！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;阿里云 OS 生态：&lt;/strong&gt; 老牛同学在二零一几年的时候看到过一张图片，图片展示的是当时的阿里 CTO 王坚博士在报告台上擦眼泪。传说是王坚博士在给一群高管做汇报，汇报内容是阿里云和手机操作系统（云 OS）。云计算在当时的中国没有任何一家企业有布局，但王坚博士坚信云计算和云 OS 的未来，他作为第一个吃螃蟹的人，在技术研发和基础设施等方面的投入成本都非常巨大，受到了一些高管和投资人的质疑，因此他边做着汇报边流着委屈的流泪。辛亏当时马老师力排众议，支持王坚博士的想法，如今阿里云在国内技术或市场上称第二，应该没有其他云能自信的称第一了。&lt;/p&gt;
+&lt;p&gt;反观 &lt;strong&gt;云 OS&lt;/strong&gt; 我们几乎感知不到了，很大一个原因是 &lt;strong&gt;没有生态&lt;/strong&gt;：云 OS 曾经和国内的一些手机厂商合作推出过一些手机品牌（如 &lt;strong&gt;小辣椒&lt;/strong&gt;、&lt;strong&gt;大黄蜂&lt;/strong&gt;等），和比较大的厂商 &lt;strong&gt;宏基&lt;/strong&gt; 的合作新闻发布会，后者也因 Google Android 的压力不得不放弃合作。Google 对云 OS 抄袭 Android 的 API 代码的状告一直不断。老牛同时当时咨询过一位负责云 OS 短信模块的技术同学，为什么云 OS 的 API 需要和 Android 保持一致，是技术能力不够吗？技术同学告诉老牛同学，操作系统都能研发出来，API 并没有什么技术难度，但是如果 API 不能和 Android 保持一致，那么已有的 Android APP 将无法接入，所以必须要兼容保持一致，否则没有了 Android 的生态，操作系统要推广就难于登天了。&lt;/p&gt;
+&lt;p&gt;如今，&lt;strong&gt;云 OS&lt;/strong&gt; 虽然没有成为手机操作系统，但它却在车载（斑马网络）、智能家居（电视、天猫精灵等）等 OS 中大放异彩。&lt;/p&gt;
+&lt;p&gt;而 Qwen 系列大模型的 &lt;strong&gt;Qwen2-0.5B&lt;/strong&gt;和&lt;strong&gt;Qwen2-1.5B&lt;/strong&gt;可在智能家居推理；&lt;strong&gt;Qwen2-7B&lt;/strong&gt;可用于个人、小团队等部署推理，个人业务不断发展，就可能购买云服务器部署，小团队业务进一步发展，也完全有可能购买 Qwen 推理服务，最终形成完美的闭环（感觉和&lt;strong&gt;Windows XP&lt;/strong&gt;有那么一点点类似）。&lt;/p&gt;
+&lt;h2 id=&#34;最后纯属老牛同学个人观点请慎喷&#34;&gt;最后：纯属老牛同学个人观点，请慎喷&lt;/h2&gt;
+&lt;p&gt;以上观点纯属老牛同学个人的猜测，若有不合理之处，欢迎留言讨论，若有冒犯之处，请联系老牛同学删除此文，非常感谢！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习交流进步 👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/bNxHM3B7HOLNvJtjwvt8iw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Phi-3 模型手机部署教程（微软发布的可与 GPT-3.5 媲美的小模型）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API 调用和 WebUI 对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Llama 3 搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/6C_YqZ2SQh0C1_631keVeg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Google 发布了最新的开源大模型 Gemma 2，本地快速部署和体验&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ChatTTS 文本转语音模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stable Diffusion 3 文生图模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Sax4z2k8Dvn82h15jf51Hw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stable Diffusion 3 文生图“开源英雄”大模型本地部署和使用教程，轻松实现 AI 绘图自由&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;大模型应用实战&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助 AI 大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Python 小游戏&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI 已来，我与 AI 一起用 Python 编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python 游戏编程：一步步用 Python 打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程</title>
+        <link>https://ntopic.cn/p/2024062901/</link>
+        <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024062901/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024062901/02.png" alt="Featured image of post 使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程" /&gt;&lt;p&gt;目前市面上有不少基于大模型的 Code Copilot 产品，部分产品对于个人开发者来说可免费使用，比如阿里的&lt;strong&gt;通义灵码&lt;/strong&gt;、百度的&lt;strong&gt;文心快码&lt;/strong&gt;等。这些免费的产品均通过 API 的方式提供服务，因此调用时均必须&lt;strong&gt;联网&lt;/strong&gt;、同时需要把&lt;strong&gt;代码&lt;/strong&gt;、&lt;strong&gt;提示词&lt;/strong&gt;等内容作为 API 的入参在网络中传输和 API 服务器中进行处理，这里就涉及到一个比较重要的问题：&lt;strong&gt;隐私安全&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/01.png&#34;
+	width=&#34;1330&#34;
+	height=&#34;505&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/01_hu8dd8e27267ebf087ef85497c46878453_47149_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/01_hu8dd8e27267ebf087ef85497c46878453_47149_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code Copilot的公网API调用&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;263&#34;
+		data-flex-basis=&#34;632px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;针对小团队私有保密项目、创新团队孵化新产品，隐私安全问题就显得格外重要。因此，团队内部部署私有的&lt;strong&gt;Code Copilot&lt;/strong&gt;方案就应运而出了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/02.png&#34;
+	width=&#34;1206&#34;
+	height=&#34;525&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/02_hu1fa0aae459ee14b2d05b63839e018423_44026_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/02_hu1fa0aae459ee14b2d05b63839e018423_44026_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code Copilot的内部API服务&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;229&#34;
+		data-flex-basis=&#34;551px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;今天老牛同学和大家一起来使用&lt;strong&gt;Qwen2-7&lt;/strong&gt;构建个人或者团队专属的私有化 &lt;strong&gt;Code Copilot&lt;/strong&gt;，除了&lt;strong&gt;代码生成&lt;/strong&gt;之外，还可以是支持 &lt;strong&gt;AI 问答&lt;/strong&gt;、&lt;strong&gt;代码解释&lt;/strong&gt;、&lt;strong&gt;语言转换&lt;/strong&gt;、生成单元&lt;strong&gt;测试用例&lt;/strong&gt;等功能。不但可以提高我们的研发效率，还可以保护我们的代码隐私。&lt;/p&gt;
+&lt;h2 id=&#34;第一步部署私有的大模型qwen2-7b&#34;&gt;第一步：部署私有的大模型（Qwen2-7B）&lt;/h2&gt;
+&lt;p&gt;前面老牛同学介绍了本地部署大模型和使用教程，包括&lt;strong&gt;Llama3-8B&lt;/strong&gt;、&lt;strong&gt;Qwen2-7B&lt;/strong&gt;、&lt;strong&gt;GLM4-9B&lt;/strong&gt;、和&lt;strong&gt;Phi3&lt;/strong&gt;等。大家可以看一下之前的部署教程，老牛同学今天使用&lt;strong&gt;Qwen2-7B&lt;/strong&gt;作为我们 Copilot 底层大模型，对于本文&lt;strong&gt;Code Copilot&lt;/strong&gt;的部署和使用，其他大模型都是一样的，看大家的喜好，没有特殊要求。&lt;/p&gt;
+&lt;p&gt;老牛同学这里简单列一下部署教程：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;环境安装：&lt;/strong&gt; 主要是&lt;strong&gt;Miniconda&lt;/strong&gt;包管理安装，参见教程，注意只需要安装&lt;strong&gt;Miniconda&lt;/strong&gt;和&lt;strong&gt;Python&lt;/strong&gt;即可，其他非必须：大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Code Copilot&lt;/strong&gt;底层大模型的部署方式，老牛同学验证主要以下 2 种，任选一种即可：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方式一&lt;/strong&gt; 基于 Ollama 部署：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载并安装&lt;strong&gt;Ollama&lt;/strong&gt;本地模型管理软件（Windows/Mac/Linux 均支持）：&lt;a class=&#34;link&#34; href=&#34;https://ollama.com/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ollama.com/download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;通过 Ollama 下载并启动大模型：&lt;code&gt;ollama run qwen2:7b&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通过以上 2 步，即完成了大模型的部署。特别注意的是：&lt;strong&gt;GLM&lt;/strong&gt;系列大模型还不支持 Ollama 管理！因此如果你希望用 GLM 系列（如：&lt;strong&gt;GLM4-9B&lt;/strong&gt;）大模型，那么请看方式二。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方式二&lt;/strong&gt; 通过 Python 部署：通用方法，所有模型都支持，以下是老牛同学验证过的部署教程&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Phi3&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/bNxHM3B7HOLNvJtjwvt8iw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Phi-3 模型手机部署教程（微软发布的可与 GPT-3.5 媲美的小模型）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Qwen2-7B&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API 调用和 WebUI 对话机器人&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Llama3-8B&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GLM4-9B&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;第二步ide-安装和配置-continue-插件&#34;&gt;第二步：IDE 安装和配置 Continue 插件&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Code Copilot Continue&lt;/strong&gt;是目前最受欢迎的插件之一，它插件的形式使用，目前支持&lt;strong&gt;VS Code&lt;/strong&gt;和&lt;strong&gt;JetBrains 全家桶&lt;/strong&gt;这 2 个主流 IDE 的扩展，可以在对应的插件市场中直接搜索&lt;strong&gt;Continue&lt;/strong&gt;下载安装。&lt;strong&gt;Continue&lt;/strong&gt;插件的一个最大优势在于它可以指定连接本地或者局域网内的大模型，所以对于信息安全高的项目，我们完全可以在本地或者局域网内部署大模型，然后用&lt;strong&gt;Continue&lt;/strong&gt;插件连接使用，在提高开发生产效率同时保护了研发代码的隐私。目前&lt;strong&gt;Continue&lt;/strong&gt;插件的社区活跃，GitHub 仓库已达&lt;strong&gt;12K&lt;/strong&gt;星，插件版本更新频繁，越来越成熟。&lt;/p&gt;
+&lt;p&gt;因为老牛同学日常使用&lt;strong&gt;VS Code&lt;/strong&gt;较多，因此下面的安装和配置，基于&lt;strong&gt;VS Code&lt;/strong&gt;完成，&lt;strong&gt;JetBrains&lt;/strong&gt;（如：PyCharm 等）的方式类同。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装 Continue 插件：&lt;/strong&gt; 插件管理器中，搜索&lt;strong&gt;Continue&lt;/strong&gt;，点击安装，安装成功之后重启 IDE 即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/03.png&#34;
+	width=&#34;1150&#34;
+	height=&#34;229&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/03_hu8cc20be909358df9055e7c51ec9bc751_47783_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/03_hu8cc20be909358df9055e7c51ec9bc751_47783_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;安装Continue插件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;502&#34;
+		data-flex-basis=&#34;1205px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Continue 插件状态：&lt;/strong&gt; 安装成功并重启之后，可以看到&lt;strong&gt;VS Code&lt;/strong&gt;的左侧多了一个&lt;strong&gt;Continue&lt;/strong&gt;按钮。同时，右下角也多了一个&lt;strong&gt;Continue&lt;/strong&gt;状态图标：&lt;strong&gt;√ Continue&lt;/strong&gt;则代表&lt;strong&gt;Continue&lt;/strong&gt;在 IDE 中生效了，&lt;strong&gt;🚫Continue&lt;/strong&gt;则代表&lt;strong&gt;Continue&lt;/strong&gt;在 IDE 未启用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/04.png&#34;
+	width=&#34;1477&#34;
+	height=&#34;928&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/04_huc87a0c471c6d34f1cf27f2e24755b5ff_191124_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/04_huc87a0c471c6d34f1cf27f2e24755b5ff_191124_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Continue插件状态&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;381px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;配置 Continue 插件：&lt;/strong&gt; 点击左下角启用&lt;strong&gt;Continue&lt;/strong&gt;插件，然后点击左侧的&lt;strong&gt;Continue&lt;/strong&gt;按钮，可以看到一个对话界面，点击左下角&lt;strong&gt;齿轮&lt;/strong&gt;形状的&lt;strong&gt;配置&lt;/strong&gt;图标，则打开了一个 JSON 格式的配置文件，在这里可以配置&lt;strong&gt;Continue&lt;/strong&gt;底层使用的大模型信息：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/05.png&#34;
+	width=&#34;1477&#34;
+	height=&#34;933&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/05_hu6f91a15c2ce200f1e8bbb3ef90337f69_131417_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/05_hu6f91a15c2ce200f1e8bbb3ef90337f69_131417_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Continue插件配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;379px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;models&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Qwen2:7B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;provider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ollama&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;qwen2:7b&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Llama3-8B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;provider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;openai&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Local-Model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;apiBase&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:8000/v1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;apiKey&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;EMPTY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;completionOptions&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;#34;stop&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;|eot_id|&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;customCommands&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;prompt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;{{{ input }}}\n\nWrite a comprehensive set of unit tests for the selected code. It should setup, run tests that check for correctness including important edge cases, and teardown. Ensure that the tests are complete and sophisticated. Give the tests just as chat output, don&amp;#39;t edit any file.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Write unit tests for highlighted code&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// &amp;#34;tabAutocompleteModel&amp;#34;: {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//   &amp;#34;title&amp;#34;: &amp;#34;Qwen2:7B&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//   &amp;#34;provider&amp;#34;: &amp;#34;ollama&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//   &amp;#34;model&amp;#34;: &amp;#34;qwen2:7b&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// },
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;tabAutocompleteModel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Llama3-8B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Local-Model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;apiBase&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:8000/v1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;provider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;openai&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;apiKey&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;EMPTY&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;allowAnonymousTelemetry&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;embeddingsProvider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;provider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;transformers.js&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Continue&lt;/strong&gt;插件的配置信息主要分为 3 块：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;models&lt;/strong&gt; 代表所有的模型列表：上面样例配置文件，老牛同学分别配置了基于&lt;strong&gt;Ollama&lt;/strong&gt;部署的&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型和基于&lt;strong&gt;OpenAI&lt;/strong&gt;客户端部署的&lt;strong&gt;Llama3-7B&lt;/strong&gt;大模型（也就是涵盖了上面大模型的 2 种不同部署方式的不同配置方式）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;customCommands&lt;/strong&gt; 自定义给大模型的提示词格式，&lt;strong&gt;input&lt;/strong&gt;代表输入内容（代码或者文本等），可以按照实际需求进行调整&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tabAutocompleteModel&lt;/strong&gt; 代码编写过程中，当按下代码生成快捷键时，&lt;strong&gt;Continue&lt;/strong&gt;生成代码的大模型，从&lt;strong&gt;models&lt;/strong&gt;列表里面指定一个即可，当然也可以设置一个其他的大模型（&lt;strong&gt;注意：&lt;/strong&gt; 只能选择一个模型，上面样例配置注释掉了一个，在实际使用时需要删除掉，因为 JSON 不支持注释！）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;第三步使用-code-copilot-continue-插件&#34;&gt;第三步：使用 Code Copilot Continue 插件&lt;/h2&gt;
+&lt;p&gt;首先，启动大模型（如：&lt;strong&gt;Qwen2-7B&lt;/strong&gt;）；其次，点击 IDE 左下角图标，以启用&lt;strong&gt;Continue&lt;/strong&gt;插件；然后，选择一个对话大模型（默认选中第 1 个大模型）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/06.png&#34;
+	width=&#34;1477&#34;
+	height=&#34;933&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/06_hu32bbbaf1d8b6c886e87e2f972712a733_110476_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/06_hu32bbbaf1d8b6c886e87e2f972712a733_110476_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;启动Continue插件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;379px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;使用方式一：&lt;/strong&gt; 我们可以选择不同的大模型进行对话，相当于&lt;strong&gt;Continue&lt;/strong&gt;插件提供了一个可视化对话客户端&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;使用方式二：&lt;/strong&gt; 代码生成，也是本文的重点，下面老牛同学以&lt;strong&gt;快速排序算法&lt;/strong&gt;为例，来如何利用&lt;strong&gt;Continue&lt;/strong&gt;完成代码编写：&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;场景一：AI 对话代码同步&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用大模型对话能力，写出快速排序算法代码，Prompt 提示词：&lt;strong&gt;请提供一下功能代码：Python 实现快速排序算法函数&lt;/strong&gt;，大模型很好的实现了算法逻辑，并且给了很多的说明和解释&lt;/li&gt;
+&lt;li&gt;选中快速排序算法函数的代码，然后按下&lt;code&gt;CTRL+Shift+L&lt;/code&gt;快捷键，或者点击代码框右上角的&lt;strong&gt;Apply to current file&lt;/strong&gt;按钮，Python 自动同步到了编辑器中了：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/07.png&#34;
+	width=&#34;2124&#34;
+	height=&#34;1510&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/07_hufc4e9c4011f804afba2d1ba127ac905a_306886_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/07_hufc4e9c4011f804afba2d1ba127ac905a_306886_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI对话代码同步&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;337px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;场景二：代码自动补全&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在编辑器中，只需要输入注释内容（不要按回车键）：&lt;code&gt;# Python实现快速排序算法函数&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;然后按下&lt;code&gt;CTRL+Shift+L&lt;/code&gt;快捷键，然后在按下&lt;strong&gt;回车键&lt;/strong&gt;，可以看到代码已经生成，可以按&lt;code&gt;Tab键&lt;/code&gt;使用代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/08.png&#34;
+	width=&#34;1228&#34;
+	height=&#34;414&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/08_hu70348972b6750d9e206a140f2874073a_45269_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/08_hu70348972b6750d9e206a140f2874073a_45269_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;代码自动补全&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;296&#34;
+		data-flex-basis=&#34;711px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;场景三：增加单元测试代码&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在编辑器中，选中一段代码函数，然后按下&lt;code&gt;CTRL+I&lt;/code&gt;快捷键&lt;/li&gt;
+&lt;li&gt;然后，在弹出的&lt;strong&gt;Ctrl+I&lt;/strong&gt;指令框中输入：&lt;code&gt;增加代码测试代码&lt;/code&gt;，然后按下&lt;strong&gt;回车键&lt;/strong&gt;，可以看到生成了测试用例代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/09.png&#34;
+	width=&#34;2107&#34;
+	height=&#34;456&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/09_hu93aa817444527a6f197704379570d9db_106042_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/09_hu93aa817444527a6f197704379570d9db_106042_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;输入选中代码指令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;462&#34;
+		data-flex-basis=&#34;1108px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/10.png&#34;
+	width=&#34;1222&#34;
+	height=&#34;1209&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/10_huf962071a436f95d62b7df4759f420cea_160720_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/10_huf962071a436f95d62b7df4759f420cea_160720_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;增加单元测试用例代码&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;101&#34;
+		data-flex-basis=&#34;242px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;场景四：代码自动填充对话框&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在编辑器中，选中一段代码，然后按下&lt;code&gt;Ctrl+L&lt;/code&gt;快捷键，代码&lt;strong&gt;自动填充&lt;/strong&gt;到了左侧的对话框中&lt;/li&gt;
+&lt;li&gt;可以在对话框中继续输入指令，如：&lt;code&gt;请解释一下这段代码&lt;/code&gt;，然后按&lt;strong&gt;回车键&lt;/strong&gt;提交大模型：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/11.png&#34;
+	width=&#34;2101&#34;
+	height=&#34;1404&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/11_huffed8460599e222dc21ace10c23a4f2e_353205_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/11_huffed8460599e222dc21ace10c23a4f2e_353205_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;代码填充对话框和解释&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;其他场景&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;增加注释&lt;/li&gt;
+&lt;li&gt;代码异常堆栈分析&lt;/li&gt;
+&lt;li&gt;…… 其他请大家补充&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;最后&#34;&gt;最后：&lt;/h2&gt;
+&lt;p&gt;使用开源大模型作为团队的 Code Copilot 工具，可以提高团队的开发效率，同时也可以保护团队的代码隐私。虽然目前开源的 LLM 相比闭源商用的 LLM 还有一些差距，但是随着开源 LLM 的不断发展，相信两者的差距以后会越来越小。以上就是今天介绍的内容，希望对大家有所帮助。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习交流进步 👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Phi-3 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/bNxHM3B7HOLNvJtjwvt8iw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Phi-3 模型手机部署教程（微软发布的可与 GPT-3.5 媲美的小模型）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Qwen2-7B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API 调用和 WebUI 对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Llama-3-8B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Llama 3 搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLM-4-9B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ChatTTS 文本转语音模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stable Diffusion 3 文生图模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Sax4z2k8Dvn82h15jf51Hw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stable Diffusion 3 文生图“开源英雄”大模型本地部署和使用教程，轻松实现 AI 绘图自由&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;大模型应用案例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助 AI 大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Python 小游戏&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI 已来，我与 AI 一起用 Python 编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python 游戏编程：一步步用 Python 打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

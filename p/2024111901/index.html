@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Transformers 框架支持多种 NLP 任务，如何高效使用 Pipeline？本文从零开始，逐步介绍 Transformers 框架中的 Pipeline 和任务配置。通过实际案例和源代码分析，帮助你快速掌握 Transformers 框架的核心功能……'>
+<title>Transformers 框架任务概览：从零开始掌握 Pipeline（管道）与 Task（任务）</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024111901/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='Transformers 框架任务概览：从零开始掌握 Pipeline（管道）与 Task（任务）'>
+<meta property='og:description' content='Transformers 框架支持多种 NLP 任务，如何高效使用 Pipeline？本文从零开始，逐步介绍 Transformers 框架中的 Pipeline 和任务配置。通过实际案例和源代码分析，帮助你快速掌握 Transformers 框架的核心功能……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024111901/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='transformers' /><meta property='article:tag' content='Pipeline' /><meta property='article:tag' content='Task' /><meta property='article:published_time' content='2024-11-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024111901/00.jpg' />
+<meta name="twitter:title" content="Transformers 框架任务概览：从零开始掌握 Pipeline（管道）与 Task（任务）">
+<meta name="twitter:description" content="Transformers 框架支持多种 NLP 任务，如何高效使用 Pipeline？本文从零开始，逐步介绍 Transformers 框架中的 Pipeline 和任务配置。通过实际案例和源代码分析，帮助你快速掌握 Transformers 框架的核心功能……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024111901/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024111901/">
+                <img src="/p/2024111901/00_hucbe7527809a9a573bfe399636ed41f4d_79053_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024111901/00_hucbe7527809a9a573bfe399636ed41f4d_79053_800x0_resize_q75_box.jpg 800w, /p/2024111901/00_hucbe7527809a9a573bfe399636ed41f4d_79053_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="340" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架任务概览：从零开始掌握 Pipeline（管道）与 Task（任务）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">Transformers 框架任务概览：从零开始掌握 Pipeline（管道）与 Task（任务）</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>Transformers 框架支持多种 NLP 任务，如何高效使用 Pipeline？本文从零开始，逐步介绍 Transformers 框架中的 Pipeline 和任务配置。通过实际案例和源代码分析，帮助你快速掌握 Transformers 框架的核心功能……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-11-19
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：6 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>在前面的四篇 Transformers 框架文章中，老牛同学基于 Qwen2.5 大模型，通过走读源代码，对 Transformers 框架进行了初步分析，主要涵盖了以下几个方面：</p>
+<ul>
+<li><strong>Transformers 模块的懒加载设计</strong></li>
+<li><strong>AutoConfig、AutoModel 和 AutoTokenizer 这三个基础组件</strong></li>
+<li><strong>BPE 分词算法</strong></li>
+</ul>
+<p>这些基础组件是预训练大模型推理的基石。在此基础上，Transformers 框架提供了更高层次的组件——<strong>Pipeline</strong>（管道），它封装了模型加载、数据预处理、模型推理和结果后处理的完整流程。通过 Pipeline，用户可以极简地使用预训练模型来处理具体的自然语言处理（NLP）任务，而无需深入了解模型的内部细节。</p>
+<p>在 Hugging Face 官网上，这些任务被归为六大类：多模态（Multimodal）、自然语言处理（Natural Language Processing，NLP）、计算机视觉（Computer Vision）、音频（Audio）、表格（Tabular）和强化学习（Reinforcement Learning）。</p>
+<p><img src="/p/2024111901/task.jpg"
+	width="1066"
+	height="1315"
+	srcset="/p/2024111901/task_hue54ddb5722cd3843eb411956e515ffff_95077_480x0_resize_q75_box.jpg 480w, /p/2024111901/task_hue54ddb5722cd3843eb411956e515ffff_95077_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Hugging Face 官网任务分类"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="81"
+		data-flex-basis="194px"
+	
+></p>
+<p>本文我们将初步了解一下 Pipeline 和 Task 的配置和技术，老牛同计划在后续文章进行详细分析介绍。</p>
+<h1 id="1-task-配置源代码">1. Task 配置源代码</h1>
+<p>我们打开 Transformers 包的源代码，就可以看到当前支持的 Task 列表和配置（模块：<code>./pipelines/__init__.py</code>，常量：<code>SUPPORTED_TASKS</code>字典）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Transformers框架支持的Task列表和配置</span>
+</span></span><span class="line"><span class="cl"><span class="n">SUPPORTED_TASKS</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;audio-classification&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;impl&#34;</span><span class="p">:</span> <span class="n">AudioClassificationPipeline</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;tf&#34;</span><span class="p">:</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="n">AutoModelForAudioClassification</span><span class="p">,)</span> <span class="k">if</span> <span class="n">is_torch_available</span><span class="p">()</span> <span class="k">else</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;default&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;model&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&#34;superb/wav2vec2-base-superb-ks&#34;</span><span class="p">,</span> <span class="s2">&#34;372e048&#34;</span><span class="p">)}},</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;audio&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;automatic-speech-recognition&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;impl&#34;</span><span class="p">:</span> <span class="n">AutomaticSpeechRecognitionPipeline</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;tf&#34;</span><span class="p">:</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="n">AutoModelForCTC</span><span class="p">,</span> <span class="n">AutoModelForSpeechSeq2Seq</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_torch_available</span><span class="p">()</span> <span class="k">else</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;default&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;model&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&#34;facebook/wav2vec2-base-960h&#34;</span><span class="p">,</span> <span class="s2">&#34;22aad52&#34;</span><span class="p">)}},</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;multimodal&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;text-to-audio&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;impl&#34;</span><span class="p">:</span> <span class="n">TextToAudioPipeline</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;tf&#34;</span><span class="p">:</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="n">AutoModelForTextToWaveform</span><span class="p">,</span> <span class="n">AutoModelForTextToSpectrogram</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_torch_available</span><span class="p">()</span> <span class="k">else</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;default&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;model&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&#34;suno/bark-small&#34;</span><span class="p">,</span> <span class="s2">&#34;1dbd7a1&#34;</span><span class="p">)}},</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;text-classification&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;impl&#34;</span><span class="p">:</span> <span class="n">TextClassificationPipeline</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;tf&#34;</span><span class="p">:</span> <span class="p">(</span><span class="n">TFAutoModelForSequenceClassification</span><span class="p">,)</span> <span class="k">if</span> <span class="n">is_tf_available</span><span class="p">()</span> <span class="k">else</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="n">AutoModelForSequenceClassification</span><span class="p">,)</span> <span class="k">if</span> <span class="n">is_torch_available</span><span class="p">()</span> <span class="k">else</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;default&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;model&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&#34;distilbert/distilbert-base-uncased-finetuned-sst-2-english&#34;</span><span class="p">,</span> <span class="s2">&#34;714eb0f&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;tf&#34;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&#34;distilbert/distilbert-base-uncased-finetuned-sst-2-english&#34;</span><span class="p">,</span> <span class="s2">&#34;714eb0f&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 其他任务省略</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>SUPPORTED_TASKS</code>字典配置了 Transformers 框架支持的所有任务和 Pipeline 实现，每个字典的元素配置内容如下：</p>
+<ul>
+<li><strong>字典键</strong>：代表任务名，应用时代表这个任务。</li>
+<li><strong>type</strong>：代表任务分类，如<code>audio</code>表示这是一个处理音频数据的任务。</li>
+<li><strong>impl</strong>：代表Pipeline实现类，它封装了任务的所有逻辑，包括数据预处理、模型推理和结果后处理。</li>
+<li><strong>tf</strong>或<strong>pt</strong>：代表支持该任务的 TensorFlow 模型类或 PyTorch 模型类。</li>
+<li><strong>default</strong>：代表任务的默认配置，包括默认使用的模型及其版本。</li>
+</ul>
+<h1 id="2-pipeline-和-task-使用示例">2. Pipeline 和 Task 使用示例</h1>
+<p>下面，我们通过一个常见的情感分类任务来演示如何使用 Pipeline 进行任务处理：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span><span class="p">,</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSequenceClassification</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 本地模型文件目录</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;D:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s1">&#39;ModelSpace&#39;</span><span class="p">,</span> <span class="s1">&#39;Qwen2.5&#39;</span><span class="p">,</span> <span class="s1">&#39;Qwen2.5-1.5B-Instruct&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 加载分词器</span>
+</span></span><span class="line"><span class="cl"><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model_dir</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">local_files_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 加载本地模型</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model_dir</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">torch_dtype</span><span class="o">=</span><span class="s2">&#34;auto&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">device_map</span><span class="o">=</span><span class="s2">&#34;auto&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">local_files_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建一个情感分析Pipeline</span>
+</span></span><span class="line"><span class="cl"><span class="n">nlp</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&#34;text-classification&#34;</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 对一段文本进行情感分析</span>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">&#34;我觉得使用Transformers库Pipeline处理NLP任务非常方便！&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出：[{&#39;label&#39;: &#39;LABEL_0&#39;, &#39;score&#39;: 0.9700134992599487}]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的代码展示了使用 Pipeline 处理任务的标准框架：</p>
+<ul>
+<li><strong>tokenizer</strong>：分词器，我们在前面的文章中详细介绍了其技术细节和 BPE 算法逻辑，这里不再赘述。</li>
+<li><strong>model</strong>：与前面介绍的 AutoModel 使用方式完全一致，<code>AutoModelForSequenceClassification</code>是 Task 配置中 PyTorch 模型类。<code>AutoModelForSequenceClassification.from_pretrained()</code>的逻辑与我们前面介绍的 AutoModel 基本一致。对于 Qwen2 大模型，它最终返回<code>Qwen2ForSequenceClassification</code>实例（具体实现老牛同学将在接下来的系列文章中进行详细分析）。</li>
+<li><strong>nlp</strong>：Pipeline 的实例化，可以指定任务名处理单个任务，也可以指定任务列表处理多个任务。</li>
+<li><strong>result</strong>：任务结果，返回<code>label</code>标签和<code>score</code>置信度分数。</li>
+</ul>
+<h1 id="3-pipeline-技术细节">3. Pipeline 技术细节</h1>
+<p>接下来，我们通过阅读源代码，分析 Pipeline 执行的技术细节。</p>
+<p><strong>第 1 行代码</strong>：<code>nlp = pipeline(&quot;text-classification&quot;, tokenizer=tokenizer, model=model)</code> Pipeline 初始化时，根据任务名<code>text-classification</code>映射到任务配置信息，然后根据配置中的<code>impl</code>字段获取到 Pipeline 的实现类（如<code>TextClassificationPipeline</code>类）。</p>
+<p><img src="/p/2024111901/31.jpg"
+	width="1216"
+	height="582"
+	srcset="/p/2024111901/31_hucdf971f8babaef8d309b4cb955e962a2_64891_480x0_resize_q75_box.jpg 480w, /p/2024111901/31_hucdf971f8babaef8d309b4cb955e962a2_64891_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Pipeline初始化"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="208"
+		data-flex-basis="501px"
+	
+></p>
+<p>Pipeline 初始化完成后，加载对应的模型（如<code>AutoModelForSequenceClassification</code>，如果是 TensorFlow 模型则是<code>TFAutoModelForSequenceClassification</code>）。</p>
+<p><img src="/p/2024111901/32.jpg"
+	width="1236"
+	height="556"
+	srcset="/p/2024111901/32_hu646492ff07fffabd23e321d52022ce41_53156_480x0_resize_q75_box.jpg 480w, /p/2024111901/32_hu646492ff07fffabd23e321d52022ce41_53156_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="加载模型"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="222"
+		data-flex-basis="533px"
+	
+></p>
+<p>最终，Pipeline 实例化：<code>pipeline_class(model=model, framework=framework, task=task, **kwargs)</code></p>
+<p><strong>第 2 行代码</strong>：<code>result = nlp(&quot;我觉得使用Transformers库Pipeline处理NLP任务非常方便！&quot;)</code> 开始执行 Pipeline 任务。</p>
+<p><img src="/p/2024111901/33.jpg"
+	width="1162"
+	height="478"
+	srcset="/p/2024111901/33_hu6f263d9eced67786967152ffc6246035_56568_480x0_resize_q75_box.jpg 480w, /p/2024111901/33_hu6f263d9eced67786967152ffc6246035_56568_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Task执行"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="243"
+		data-flex-basis="583px"
+	
+></p>
+<p>Task 执行过程由三个模板方法完成：<code>preprocess()</code>前置处理、<code>forward()</code>执行和<code>postprocess()</code>后置处理。</p>
+<p><img src="/p/2024111901/34.jpg"
+	width="1663"
+	height="625"
+	srcset="/p/2024111901/34_hu41baed3252eff0c634a44ed9b31f8133_116993_480x0_resize_q75_box.jpg 480w, /p/2024111901/34_hu41baed3252eff0c634a44ed9b31f8133_116993_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="执行单任务"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="266"
+		data-flex-basis="638px"
+	
+></p>
+<p>从上面的 Pipeline 执行流程可以看出，与 AutoModel 非常相似：模型初始化、分词、模型推理、收集结果。</p>
+<h1 id="4-transformers-任务列表">4. Transformers 任务列表</h1>
+<p><code>SUPPORTED_TASKS</code>常量字典内容丰富，我们通过一段代码来统计任务列表：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">transformers.pipelines</span> <span class="kn">import</span> <span class="n">SUPPORTED_TASKS</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 收集分类</span>
+</span></span><span class="line"><span class="cl"><span class="n">task_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;audio&#39;</span><span class="p">,</span> <span class="s1">&#39;video&#39;</span><span class="p">,</span> <span class="s1">&#39;multimodal&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 打印表格</span>
+</span></span><span class="line"><span class="cl"><span class="n">order</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;| #   | 分类 | Task名 | Pipeline实现 |&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;|:---:|:----:|:------|:------------|&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">task_type</span> <span class="ow">in</span> <span class="n">task_types</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">SUPPORTED_TASKS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">task_type</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">order</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;| </span><span class="si">{</span><span class="s2">&#34;</span><span class="si">{:02d}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">order</span><span class="p">)</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">task</span><span class="p">[</span><span class="s2">&#34;type&#34;</span><span class="p">]</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">task</span><span class="p">[</span><span class="s2">&#34;impl&#34;</span><span class="p">]</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> |&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:center">#</th>
+<th style="text-align:center">分类</th>
+<th style="text-align:left">Task 名</th>
+<th style="text-align:left">Pipeline 实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">text-to-audio</td>
+<td style="text-align:left">TextToAudioPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">text-classification</td>
+<td style="text-align:left">TextClassificationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">token-classification</td>
+<td style="text-align:left">TokenClassificationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">04</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">question-answering</td>
+<td style="text-align:left">QuestionAnsweringPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">05</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">table-question-answering</td>
+<td style="text-align:left">TableQuestionAnsweringPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">06</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">fill-mask</td>
+<td style="text-align:left">FillMaskPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">07</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">summarization</td>
+<td style="text-align:left">SummarizationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">08</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">translation</td>
+<td style="text-align:left">TranslationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">09</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">text2text-generation</td>
+<td style="text-align:left">Text2TextGenerationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">text-generation</td>
+<td style="text-align:left">TextGenerationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">text</td>
+<td style="text-align:left">zero-shot-classification</td>
+<td style="text-align:left">ZeroShotClassificationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">image</td>
+<td style="text-align:left">image-classification</td>
+<td style="text-align:left">ImageClassificationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">image</td>
+<td style="text-align:left">image-feature-extraction</td>
+<td style="text-align:left">ImageFeatureExtractionPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">image</td>
+<td style="text-align:left">depth-estimation</td>
+<td style="text-align:left">DepthEstimationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">image</td>
+<td style="text-align:left">image-to-image</td>
+<td style="text-align:left">ImageToImagePipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">16</td>
+<td style="text-align:center">audio</td>
+<td style="text-align:left">audio-classification</td>
+<td style="text-align:left">AudioClassificationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td style="text-align:center">video</td>
+<td style="text-align:left">video-classification</td>
+<td style="text-align:left">VideoClassificationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">automatic-speech-recognition</td>
+<td style="text-align:left">AutomaticSpeechRecognitionPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">feature-extraction</td>
+<td style="text-align:left">FeatureExtractionPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">visual-question-answering</td>
+<td style="text-align:left">VisualQuestionAnsweringPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">document-question-answering</td>
+<td style="text-align:left">DocumentQuestionAnsweringPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">zero-shot-image-classification</td>
+<td style="text-align:left">ZeroShotImageClassificationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">23</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">zero-shot-audio-classification</td>
+<td style="text-align:left">ZeroShotAudioClassificationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">24</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">image-segmentation</td>
+<td style="text-align:left">ImageSegmentationPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">25</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">image-to-text</td>
+<td style="text-align:left">ImageToTextPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">26</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">object-detection</td>
+<td style="text-align:left">ObjectDetectionPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">27</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">zero-shot-object-detection</td>
+<td style="text-align:left">ZeroShotObjectDetectionPipeline</td>
+</tr>
+<tr>
+<td style="text-align:center">28</td>
+<td style="text-align:center">multimodal</td>
+<td style="text-align:left">mask-generation</td>
+<td style="text-align:left">MaskGenerationPipeline</td>
+</tr>
+</tbody>
+</table></div>
+<p>在接下来的 Pipeline 系列文章中，老牛同学将针对以上任务（共 <strong>28</strong> 个任务），分别进行详细介绍。敬请期待！如果你有任何问题或建议，欢迎留言交流！</p>
+<hr>
+<p>往期推荐文章：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw"  target="_blank" rel="noopener"
+    >深入解析 Transformers 框架（一）：包和对象加载中的设计巧思与实用技巧</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow"  target="_blank" rel="noopener"
+    >深入解析 Transformers 框架（二）：AutoModel 初始化及 Qwen2.5 模型加载全流程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg"  target="_blank" rel="noopener"
+    >深入解析 Transformers 框架（三）：Qwen2.5 大模型的 AutoTokenizer 技术细节</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w"  target="_blank" rel="noopener"
+    >深入解析 Transformers 框架（四）：Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/transformers/">Transformers</a>
+        
+            <a href="/tags/pipeline/">Pipeline</a>
+        
+            <a href="/tags/task/">Task</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024122501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024122501/00.e55a6c6f8512ddf00de5caa1c4d0d7b0_hu9ae0166db6d19f69e9ac797994b0da33_118198_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解（六）：填充蒙版（fill-mask）"
+                        data-key="2024122501" 
+                        data-hash="md5-5Vpsb4US3fAN5cqhxNDXsA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解（六）：填充蒙版（fill-mask）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024122201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024122201/00.8f0c742a7c716b39932ae5f29452b8ef_hua2f92f56a371a9250c7ce7c705f4b06c_77473_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解（五）：表格问答（table-question-answering）"
+                        data-key="2024122201" 
+                        data-hash="md5-jwx0KnxxazmTKuXylFK47w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解（五）：表格问答（table-question-answering）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024121801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024121801/00.0482825aac740c79b35a69ccde2c333c_hude2f169f0297ce1d5a001841fdf5521a_78453_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解（四）：问答（question-answering）"
+                        data-key="2024121801" 
+                        data-hash="md5-BIKCWqx0DHmzWmnM3iwzPA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解（四）：问答（question-answering）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024121101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024121101/00.b6b30e2f436fb7e2262bcf7f8d7f5eee_hu9de955f945922937b4d2ba40cf097258_80533_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解（三）：词元分类（token-classification）和命名实体识别"
+                        data-key="2024121101" 
+                        data-hash="md5-trMOL0Nvt&#43;ImK89/jX9e7g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解（三）：词元分类（token-classification）和命名实体识别</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024120401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024120401/00.06c35d5d5e2ee0432d699a21cf56474f_huaabab090f83155d3b38f36ae12d9a15a_81387_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解：文本分类（text-classification 或 sentiment-analysis）"
+                        data-key="2024120401" 
+                        data-hash="md5-BsNdXV4u4EMtaZohz1ZHTw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解：文本分类（text-classification 或 sentiment-analysis）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

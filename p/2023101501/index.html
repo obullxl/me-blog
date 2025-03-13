@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='我们在调试Web页面时，期望能使用80端口调试（比如本博客站点的每篇博客，我在发布之前，均需要在我的Mac电脑进行博客内容和样式的调试和校验）。而Mac电脑的80端口默认被系统Apache服务占用，下面分享我常用的2种使用80端口调试Web站点页面的办法……'>
+<title>Mac电脑80端口被占用的2种解决办法</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2023101501/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='Mac电脑80端口被占用的2种解决办法'>
+<meta property='og:description' content='我们在调试Web页面时，期望能使用80端口调试（比如本博客站点的每篇博客，我在发布之前，均需要在我的Mac电脑进行博客内容和样式的调试和校验）。而Mac电脑的80端口默认被系统Apache服务占用，下面分享我常用的2种使用80端口调试Web站点页面的办法……'>
+<meta property='og:url' content='https://ntopic.cn/p/2023101501/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Apache' /><meta property='article:tag' content='端口' /><meta property='article:published_time' content='2023-10-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-15T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2023101501/00.jpg' />
+<meta name="twitter:title" content="Mac电脑80端口被占用的2种解决办法">
+<meta name="twitter:description" content="我们在调试Web页面时，期望能使用80端口调试（比如本博客站点的每篇博客，我在发布之前，均需要在我的Mac电脑进行博客内容和样式的调试和校验）。而Mac电脑的80端口默认被系统Apache服务占用，下面分享我常用的2种使用80端口调试Web站点页面的办法……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2023101501/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前提确认占用80端口的程序sudo-lsof--i80">前提：确认占用80端口的程序（sudo lsof -i:80）</a></li>
+    <li><a href="#方案一暂停apache系统服务后启动web调试">方案一：暂停Apache系统服务后，启动Web调试</a></li>
+    <li><a href="#方案二修改apache系统服务80端口为其他端口">方案二：修改Apache系统服务80端口为其他端口</a></li>
+    <li><a href="#最后">最后</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2023101501/">
+                <img src="/p/2023101501/00_hud3c48deacf6a5f522c42f9a4136f7dd0_24108_800x0_resize_q75_box.jpg"
+                        srcset="/p/2023101501/00_hud3c48deacf6a5f522c42f9a4136f7dd0_24108_800x0_resize_q75_box.jpg 800w, /p/2023101501/00_hud3c48deacf6a5f522c42f9a4136f7dd0_24108_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="368" 
+                        loading="lazy"
+                        alt="Featured image of post Mac电脑80端口被占用的2种解决办法" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">Mac电脑80端口被占用的2种解决办法</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%B8%93%E4%B8%9A%E6%8A%80%E6%9C%AF/" >
+                专业技术
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>我们在调试Web页面时，期望能使用80端口调试（比如本博客站点的每篇博客，我在发布之前，均需要在我的Mac电脑进行博客内容和样式的调试和校验）。而Mac电脑的80端口默认被系统Apache服务占用，下面分享我常用的2种使用80端口调试Web站点页面的办法……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2023-10-15
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：2 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <h2 id="前提确认占用80端口的程序sudo-lsof--i80">前提：确认占用80端口的程序（sudo lsof -i:80）</h2>
+<p>我研发用的是<b>Mac电脑</b>，查看<b>80端口</b>被占用的进程命令：<code>sudo lsof -i:80</code></p>
+<p>我Mac电脑80端口占用进程如下：<b>httpd进程</b>占用了80端口，httpd进程即为<b>Apache服务</b>，下面提供了<b>2种</b>解决办法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">OXL-MacBook:~ obullxl$ sudo lsof -i:80
+</span></span><span class="line"><span class="cl">COMMAND  PID    USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+</span></span><span class="line"><span class="cl">httpd    <span class="m">128</span>    root    4u  IPv6 0x837e41eb989fc6d1      0t0  TCP *:http <span class="o">(</span>LISTEN<span class="o">)</span>
+</span></span><span class="line"><span class="cl">WeChat   <span class="m">390</span> obullxl  103u  IPv4 0x837e41e6ce1a65d9      0t0  TCP 192.168.101.30:49216-&gt;182.50.15.211:http <span class="o">(</span>CLOSE_WAIT<span class="o">)</span>
+</span></span><span class="line"><span class="cl">WeChat   <span class="m">390</span> obullxl  106u  IPv4 0x837e41e6ce1a3089      0t0  TCP 192.168.101.30:49217-&gt;182.50.10.149:http <span class="o">(</span>CLOSE_WAIT<span class="o">)</span>
+</span></span><span class="line"><span class="cl">WeChat   <span class="m">390</span> obullxl  342u  IPv4 0x837e41e6ce6045d9      0t0  TCP 192.168.101.30:52992-&gt;61.241.138.140:http <span class="o">(</span>CLOSE_WAIT<span class="o">)</span>
+</span></span><span class="line"><span class="cl">httpd    <span class="m">616</span>    _www    4u  IPv6 0x837e41eb989fc6d1      0t0  TCP *:http <span class="o">(</span>LISTEN<span class="o">)</span>
+</span></span><span class="line"><span class="cl">httpd   <span class="m">4646</span>    _www    4u  IPv6 0x837e41eb989fc6d1      0t0  TCP *:http <span class="o">(</span>LISTEN<span class="o">)</span>
+</span></span><span class="line"><span class="cl">httpd   <span class="m">4647</span>    _www    4u  IPv6 0x837e41eb989fc6d1      0t0  TCP *:http <span class="o">(</span>LISTEN<span class="o">)</span>
+</span></span><span class="line"><span class="cl">httpd   <span class="m">4648</span>    _www    4u  IPv6 0x837e41eb989fc6d1      0t0  TCP *:http <span class="o">(</span>LISTEN<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="方案一暂停apache系统服务后启动web调试">方案一：暂停Apache系统服务后，启动Web调试</h2>
+<p><b>Apache服务</b>启动和暂停，可以使用<b>apachectl</b>命令行：<code>sudo apachectl restart</code>和<code>sudo apachectl stop</code></p>
+<p>我的电脑暂停了Apache服务之后，再次查看<b>80端口</b>已经没有占用了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">OXL-MacBook:~ obullxl$ sudo apachectl stop
+</span></span><span class="line"><span class="cl">OXL-MacBook:~ obullxl$ sudo lsof -i:80
+</span></span><span class="line"><span class="cl">OXL-MacBook:~ obullxl$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为了让我们调试Web站点页面更加顺畅，我们可以把Apache暂停命令加到启动Web调试的命令中，如Hugo静态站点的脚本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/sh
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 暂停Apache服务，释放80端口</span>
+</span></span><span class="line"><span class="cl">sudo apachectl stop
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在80端口上启动Hugo，调试页面</span>
+</span></span><span class="line"><span class="cl">sudo hugo server -p <span class="m">80</span> -D
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>本方案的<b>唯一不足</b>就是：当我们使用<code>control + C</code>暂停了Hugo服务，释放了80端口后，Apache服务不能<b>自动启动</b>。需要手工执行命令重启Apache服务，优化方案请看<b>方案二</b>。</p>
+<h2 id="方案二修改apache系统服务80端口为其他端口">方案二：修改Apache系统服务80端口为其他端口</h2>
+<p>方案一可以解决我们在80端口调试Web页面，但是在调试完成之后，Apache服务需要手工执行命令重启。本方案就是修改Apache服务默认的80端口为其他端口，让出80端口给我们业务页面使用。</p>
+<ul>
+<li>第一步 找到Apache的安装目录：我Mac电脑目录是<code>/etc/apache2</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">OXL-MacBook:~ obullxl$ <span class="nb">cd</span> /etc
+</span></span><span class="line"><span class="cl">OXL-MacBook:etc obullxl$ ls <span class="p">|</span> grep apache
+</span></span><span class="line"><span class="cl">apache2
+</span></span><span class="line"><span class="cl">OXL-MacBook:etc obullxl$ <span class="nb">cd</span> apache2/
+</span></span><span class="line"><span class="cl">OXL-MacBook:apache2 obullxl$ ls
+</span></span><span class="line"><span class="cl">extra     magic     other     httpd.conf    httpd.conf.pre-update mime.types    users
+</span></span><span class="line"><span class="cl">httpd.conf~previous original
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>第二步 修改Apache配置文件（<code>httpd.conf</code>）中80端口为其他端口，如<b>8080</b>端口。为了安全起见，修改配置文件之前，先进行备份。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">OXL-MacBook:apache2 obullxl$ sudo cp httpd.conf httpd.conf.20231015
+</span></span><span class="line"><span class="cl">Password:
+</span></span><span class="line"><span class="cl">OXL-MacBook:apache2 obullxl$ sudo vi httpd.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;IfDefine</span> <span class="err">SERVER_APP_HAS_DEFAULT_PORTS</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    Listen 8080
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/IfDefine&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;IfDefine</span> <span class="err">!SERVER_APP_HAS_DEFAULT_PORTS</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    Listen 8080
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/IfDefine&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>第三步 重启Apache服务：<code>sudo apachectl restart</code>，同时可以查看8080端口，已经被Apache服务占用。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">OXL-MacBook:apache2 obullxl$ sudo apachectl restart
+</span></span><span class="line"><span class="cl">OXL-MacBook:apache2 obullxl$ sudo lsof -i:8080
+</span></span><span class="line"><span class="cl">COMMAND  PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+</span></span><span class="line"><span class="cl">httpd   <span class="m">6942</span> root    4u  IPv6 0x837e41eb989f9cd1      0t0  TCP *:http-alt <span class="o">(</span>LISTEN<span class="o">)</span>
+</span></span><span class="line"><span class="cl">httpd   <span class="m">6955</span> _www    4u  IPv6 0x837e41eb989f9cd1      0t0  TCP *:http-alt <span class="o">(</span>LISTEN<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="最后">最后</h2>
+<p>方案一和方案二个人验证均可行~</p>
+<hr>
+<p>我的本博客原地址：<a class="link" href="https://ntopic.cn/p/2023101501/"  target="_blank" rel="noopener"
+    >https://ntopic.cn/p/2023101501</a></p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/apache/">Apache</a>
+        
+            <a href="/tags/%E7%AB%AF%E5%8F%A3/">端口</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024062201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024062201/00.f074a500185aacf83c400e49be969b75_hua04b28422bbb4c6a12cc5f607adbb1af_216292_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post ngrok内网穿透，实现外网访问ChatTTS/Qwen2等大模型应用"
+                        data-key="2024062201" 
+                        data-hash="md5-8HSlABharPg8QA5JvpabdQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ngrok内网穿透，实现外网访问ChatTTS/Qwen2等大模型应用</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023112001/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023112001/00.b31e8cb86581e961c1da3409fadf5f3d_huc7364261a6c3c41a27a56f1135847b5b_18512_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post FlutterApp实战·第01天：Flutter安装和配置"
+                        data-key="2023112001" 
+                        data-hash="md5-sx6MuGWB6WHB2jQJ&#43;t9fPQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">FlutterApp实战·第01天：Flutter安装和配置</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023111801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023111801/00.4961349850238d81166e1bffe7c5488b_hua251d1ea2589f24e4f220f2de00fe773_52076_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Flutter/Dart第21天：Dart异步编程（Future/Stream）"
+                        data-key="2023111801" 
+                        data-hash="md5-SWE0mFAjjYEWbhv/58VIiw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter/Dart第21天：Dart异步编程（Future/Stream）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023110501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023110501/00.4961349850238d81166e1bffe7c5488b_hua251d1ea2589f24e4f220f2de00fe773_52076_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Flutter/Dart第20天：Dart 3.0新特性之类型修饰符"
+                        data-key="2023110501" 
+                        data-hash="md5-SWE0mFAjjYEWbhv/58VIiw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter/Dart第20天：Dart 3.0新特性之类型修饰符</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023110401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023110401/00.4961349850238d81166e1bffe7c5488b_hua251d1ea2589f24e4f220f2de00fe773_52076_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Flutter/Dart第19天：Dart高级特性之扩展方法（Extension methods）"
+                        data-key="2023110401" 
+                        data-hash="md5-SWE0mFAjjYEWbhv/58VIiw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter/Dart第19天：Dart高级特性之扩展方法（Extension methods）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='OpenManus 出自 MetaGPT 团队成员开源的通用AI智能体框架，凭借 QwQ-32B 基座模型实现了接近商用级Manus的表现。本文详解其三大核心优势：1）本地执行代码/浏览器操作的真实环境交互能力 2）基于Python的轻量化部署方案 3）与千亿参数模型媲美的任务完成度。通过CRM企业分析案例实测对比，展示开源智能体如何突破商用产品限制，为开发者提供可落地的AI解决方案……'>
+<title>没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2025030701/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量'>
+<meta property='og:description' content='OpenManus 出自 MetaGPT 团队成员开源的通用AI智能体框架，凭借 QwQ-32B 基座模型实现了接近商用级Manus的表现。本文详解其三大核心优势：1）本地执行代码/浏览器操作的真实环境交互能力 2）基于Python的轻量化部署方案 3）与千亿参数模型媲美的任务完成度。通过CRM企业分析案例实测对比，展示开源智能体如何突破商用产品限制，为开发者提供可落地的AI解决方案……'>
+<meta property='og:url' content='https://ntopic.cn/p/2025030701/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Manus' /><meta property='article:tag' content='QwQ' /><meta property='article:tag' content='Qwen' /><meta property='article:published_time' content='2025-03-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2025030701/00.jpg' />
+<meta name="twitter:title" content="没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量">
+<meta name="twitter:description" content="OpenManus 出自 MetaGPT 团队成员开源的通用AI智能体框架，凭借 QwQ-32B 基座模型实现了接近商用级Manus的表现。本文详解其三大核心优势：1）本地执行代码/浏览器操作的真实环境交互能力 2）基于Python的轻量化部署方案 3）与千亿参数模型媲美的任务完成度。通过CRM企业分析案例实测对比，展示开源智能体如何突破商用产品限制，为开发者提供可落地的AI解决方案……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2025030701/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2025030701/">
+                <img src="/p/2025030701/00_hue4a04b4c167b755d1cb1f73248022c70_117178_800x0_resize_q75_box.jpg"
+                        srcset="/p/2025030701/00_hue4a04b4c167b755d1cb1f73248022c70_117178_800x0_resize_q75_box.jpg 800w, /p/2025030701/00_hue4a04b4c167b755d1cb1f73248022c70_117178_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>OpenManus 出自 MetaGPT 团队成员开源的通用AI智能体框架，凭借 QwQ-32B 基座模型实现了接近商用级Manus的表现。本文详解其三大核心优势：1）本地执行代码/浏览器操作的真实环境交互能力 2）基于Python的轻量化部署方案 3）与千亿参数模型媲美的任务完成度。通过CRM企业分析案例实测对比，展示开源智能体如何突破商用产品限制，为开发者提供可落地的AI解决方案……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2025-03-07
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：4 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>本以为 <strong>QwQ-32B</strong> 的发布定会“炸街”，毕竟它的评测结果与 <strong>DeepSeek-R1-671B</strong> 满血版不相上下，而之前 <strong>DeepSeek-R1</strong> 横扫了整个地球，还持续扫了这么久：</p>
+<p><img src="/p/2025030701/QwQ-32B.jpg"
+	width="3035"
+	height="1713"
+	srcset="/p/2025030701/QwQ-32B_hu31c0d40a88662f92c1b1828799715a7b_269889_480x0_resize_q75_box.jpg 480w, /p/2025030701/QwQ-32B_hu31c0d40a88662f92c1b1828799715a7b_269889_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="QwQ-32B: 领略强化学习之力"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="425px"
+	
+></p>
+<p>万万没有想到，冲出来的这匹强劲黑马竟然是 <strong>Manus</strong> ，号称：<strong>全球首款通用型 AI 智能体</strong>，它不仅能产出创意，更重要的是还能<strong>交付结果</strong>。</p>
+<p><img src="/p/2025030701/01.jpg"
+	width="1790"
+	height="586"
+	srcset="/p/2025030701/01_huea6c13e8a14b3b4905af40f3b4e3f2d7_74162_480x0_resize_q75_box.jpg 480w, /p/2025030701/01_huea6c13e8a14b3b4905af40f3b4e3f2d7_74162_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Manus介绍"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="305"
+		data-flex-basis="733px"
+	
+></p>
+<p>在官方介绍视频中，<strong>Manus</strong> 在简历筛选评估、房地产信息检索和股票分析上，均表现出了惊人的能力。可惜的是，Manus 并未对所有人开放，需要有邀请码方可注册体验使用：</p>
+<p><img src="/p/2025030701/02.jpg"
+	width="1224"
+	height="602"
+	srcset="/p/2025030701/02_huf143963edf67aece68420aeaa5cad7f2_36361_480x0_resize_q75_box.jpg 480w, /p/2025030701/02_huf143963edf67aece68420aeaa5cad7f2_36361_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Manus注册"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="203"
+		data-flex-basis="487px"
+	
+></p>
+<p>幸运的是，不管是 <strong>QwQ-32B</strong> 还是 <strong>Manus</strong>，它们都是我们中国人的产品，为这些产品背后的技术大佬们致敬！</p>
+<p>下面是 1 个使用 <strong>Manus</strong> 的样例：<a class="link" href="https://manus.im/share/kTEHmnYgfqqubhiSAUwZR7?replay=1"  target="_blank" rel="noopener"
+    >https://manus.im/share/kTEHmnYgfqqubhiSAUwZR7?replay=1</a></p>
+<p>没有 <strong>Manus</strong> 邀请码，我们就无法体验到 <strong>Manus</strong> 强大能力。</p>
+<p>但幸运的是，<strong>OpenManus</strong> 为我们提供了一个开源的替代方案。接下来，我们就来使用 <strong>QwQ-32B</strong> 大模型体验一下 <strong>OpenManus</strong> 的能力：</p>
+<ol>
+<li>OpenManus 和 Manus 比较，源代码走读分析</li>
+<li>OpenManus 本地部署和配置</li>
+<li>使用与 <strong>Manus</strong> 样例中相同的提示词，体验 OpenManus 功能</li>
+</ol>
+<h1 id="1-openmanus-源代码分析">1. OpenManus 源代码分析</h1>
+<p>OpenManus 源代码地址：<a class="link" href="https://github.com/mannaandpoem/OpenManus"  target="_blank" rel="noopener"
+    >https://github.com/mannaandpoem/OpenManus</a></p>
+<p>OpenManus 研发成员来自 MetaGPT 智能体团队。关于 MetaGPT 的使用，可以参考老牛同学之前文章：<a class="link" href="https://mp.weixin.qq.com/s/ZfyCnCOqjtLGcPUfPq7JLQ"  target="_blank" rel="noopener"
+    >Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码</a></p>
+<p>把源代码下载到本地：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/mannaandpoem/OpenManus.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> OpenManus
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中，<code>main.py</code>是主入口文件，它初始化<code>Manus</code>代理类并处理输入的提示词；而<code>Manus</code>代理使用工具集合，包括<code>PythonExecute</code>、<code>BrowserUseTool</code>、<code>FileSaver</code>、<code>Terminate</code>和<code>GoogleSearch</code>等。</p>
+<p>这些工具的功能，说明了 OpenManus 可以在本地执行 Python 代码、使用浏览器、操作本地文件、执行终端命令和搜索等。</p>
+<p>我们可以打开源代码目录，看到这些工具定义：<code>./app/tool</code></p>
+<p>同时，我们通过<code>requirements.txt</code>文件可以看到，OpenManus 也依赖了一些组件：图像处理、文件操作、浏览器操作等。</p>
+<p>由此可见，OpenManus 借助其他工具，执行并完成用户的任务！</p>
+<h1 id="2-openmanus-本地配置">2. OpenManus 本地配置</h1>
+<p>简单了解了 OpenManus 主要设计之后，接下来我们本地部署起来。</p>
+<p>首先，安装 Conda 工具，用于管理 Python 虚拟环境。可以参考文章：<a class="link" href="https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w"  target="_blank" rel="noopener"
+    >大模型应用研发基础环境配置</a></p>
+<p>然后，创建 Python 虚拟环境（环境名：<code>OpenManus</code>），并激活环境：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 创建虚拟环境</span>
+</span></span><span class="line"><span class="cl">conda create -n OpenManus <span class="nv">python</span><span class="o">=</span>3.12
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 激活虚拟环境</span>
+</span></span><span class="line"><span class="cl">conda activate OpenManus
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，安装 OpenManus 依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install -r requirements.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，我们配置大模型 API，我们将使用 <strong>QwQ-32B</strong> 作为 OpenManus 底层大模型。</p>
+<p>先复制一份配置文件：<code>config/config.toml</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cp config/config.example.toml config/config.toml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，修改配置文件内容，把其中基础大模型配置成 <strong>QwQ-32B</strong> 基座模型，把视觉模型配置成 <strong>Qwen-Max</strong> 最新模型：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 全局模型配置</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">llm</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">model</span> <span class="p">=</span> <span class="s2">&#34;qwen-max-latest&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">base_url</span> <span class="p">=</span> <span class="s2">&#34;https://dashscope.aliyuncs.com/compatible-mode/v1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">api_key</span> <span class="p">=</span> <span class="s2">&#34;sk-...&#34;</span>  <span class="c"># 替换为真实 API 密钥</span>
+</span></span><span class="line"><span class="cl"><span class="nx">max_tokens</span> <span class="p">=</span> <span class="mi">4096</span>
+</span></span><span class="line"><span class="cl"><span class="nx">temperature</span> <span class="p">=</span> <span class="mf">0.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 视觉模型配置</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">llm</span><span class="p">.</span><span class="nx">vision</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">model</span> <span class="p">=</span> <span class="s2">&#34;qwen-max-latest&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">base_url</span> <span class="p">=</span> <span class="s2">&#34;https://dashscope.aliyuncs.com/compatible-mode/v1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">api_key</span> <span class="p">=</span> <span class="s2">&#34;sk-...&#34;</span>  <span class="c"># 替换为真实 API 密钥</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>注意</strong>：<code>llm.model</code>不能使用<strong>QwQ</strong>模型（感觉有点翻车了），原因在于 QwQ 仅支持流式输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">2025-03-07 21:00:32.259 | ERROR    | app.llm:ask_tool:250 - API error: Error code: 400 - {&#39;error&#39;: {&#39;code&#39;: &#39;invalid_parameter_error&#39;, &#39;param&#39;: None, &#39;message&#39;: &#39;This model only support stream mode, please enable the stream parameter to access the model. &#39;, &#39;type&#39;: &#39;invalid_request_error&#39;}, &#39;id&#39;: &#39;chatcmpl-dbc286db-797d-9e3f-8cf1-b3adf15abc1a&#39;, &#39;request_id&#39;: &#39;dbc286db-797d-9e3f-8cf1-b3adf15abc1a&#39;}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="3-openmanus-功能体验">3. OpenManus 功能体验</h1>
+<p>配置完毕，就可以开始使用了：<code>python main.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">&gt;python main.py
+</span></span><span class="line"><span class="cl">INFO     [browser_use] BrowserUse logging setup complete with level info
+</span></span><span class="line"><span class="cl">INFO     [root] Anonymized telemetry enabled. See https://docs.browser-use.com/development/telemetry for more information.
+</span></span><span class="line"><span class="cl">Enter your prompt (or &#39;exit&#39; to quit):
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为了和 <strong>Manus</strong> 结果进行比较，我们输入提示词：<code>Identify 20 CRM companies in the market and gather their slogans along with their branding stories.</code></p>
+<p>从日志可以看出，总共分为<strong>30 个推理步骤</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">2025-03-07 20:58:43.891 | WARNING  | __main__:main:15 - Processing your request...
+</span></span><span class="line"><span class="cl">2025-03-07 20:58:43.891 | INFO     | app.agent.base:run:137 - Executing step 1/30
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行完成之后，看到进行了总结：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">### Summary:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">We have now gathered the slogans and branding stories for the following CRM companies:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. Salesforce
+</span></span><span class="line"><span class="cl">2. HubSpot
+</span></span><span class="line"><span class="cl">3. Zoho CRM
+</span></span><span class="line"><span class="cl">4. Microsoft Dynamics 365
+</span></span><span class="line"><span class="cl">5. SAP CRM
+</span></span><span class="line"><span class="cl">6. Oracle CRM
+</span></span><span class="line"><span class="cl">7. SugarCRM
+</span></span><span class="line"><span class="cl">8. Pipedrive
+</span></span><span class="line"><span class="cl">9. Freshsales
+</span></span><span class="line"><span class="cl">10. Insightly
+</span></span><span class="line"><span class="cl">11. Nimble
+</span></span><span class="line"><span class="cl">12. Agile CRM
+</span></span><span class="line"><span class="cl">13. Capsule CRM
+</span></span><span class="line"><span class="cl">14. Copper (formerly ProsperWorks)
+</span></span><span class="line"><span class="cl">15. Infusionsoft (by Keap)
+</span></span><span class="line"><span class="cl">16. Zendesk Sell (formerly Base CRM)
+</span></span><span class="line"><span class="cl">17. Really Simple Systems CRM
+</span></span><span class="line"><span class="cl">18. Apptivo CRM
+</span></span><span class="line"><span class="cl">19. Bitrix24
+</span></span><span class="line"><span class="cl">20. Vtiger CRM
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">This information is saved in the file `crm_companies_info.txt`.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最终结果保存在本地文件：<code>crm_companies_info.txt</code></p>
+<p>打开本地结果文件，并且和 <strong>Manus</strong> 结果进行简单对比：</p>
+<p><img src="/p/2025030701/31.jpg"
+	width="2237"
+	height="1280"
+	srcset="/p/2025030701/31_huef5cfa32a7fae30e34af7bb0132286a5_487986_480x0_resize_q75_box.jpg 480w, /p/2025030701/31_huef5cfa32a7fae30e34af7bb0132286a5_487986_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="结果比对"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="174"
+		data-flex-basis="419px"
+	
+></p>
+<h1 id="4-总结">4. 总结</h1>
+<p>从最终结果看，<strong>Manus</strong> 的结果更加丰富一些，更像一份报告，包括：简介、目录，每个上市公司的品牌故事说明内容和格式也更加丰富和易于阅读；而 <strong>OpenManus</strong> 的结果就简洁多了，每个公司就包括核心的 3 个主要信息：公司名、Slogan 和品牌故事。</p>
+<p>目前还不好说谁更加优秀，但有一点可以肯定的是：通用智能体离我们越来越近了！</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/ZfyCnCOqjtLGcPUfPq7JLQ"  target="_blank" rel="noopener"
+    >Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ"  target="_blank" rel="noopener"
+    >Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w"  target="_blank" rel="noopener"
+    >大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama等）</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/manus/">Manus</a>
+        
+            <a href="/tags/qwq/">QwQ</a>
+        
+            <a href="/tags/qwen/">Qwen</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025020901/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020901/00.bd904e836f1f55b5f6204ef73662e639_hu8a5434afd7142d25bc7a2119bc98b479_227024_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？"
+                        data-key="2025020901" 
+                        data-hash="md5-vZBOg28fVbX2IE73NmLmOQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025011201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025011201/00.5d0cfc3bb62e18d88e6e74f2a54f2d78_hu883d5e381d46374d51c67d277ad5095c_219525_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序"
+                        data-key="2025011201" 
+                        data-hash="md5-XQz8O7YuGNiObnTypU8teA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025010301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025010301/01.89d74cead58d6664c5af2c8bb70b6e23_hu5b4a41f27c7fe518c1493f019fcc5463_79100_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 使用Cursor &#43; Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战"
+                        data-key="2025010301" 
+                        data-hash="md5-iddM6tWNZmTFryyLtwtuIw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Cursor &#43; Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024120701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024120701/00.b0064924678861a86e4ba7a5864945d8_hu31ac7d48ee715cbdbcf6bcc64e7e1d4c_130069_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）"
+                        data-key="2024120701" 
+                        data-hash="md5-sAZJJGeIYahuS6elhklF2A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

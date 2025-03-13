@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='利用 CrewAI 多智能体框架，我们可以更细粒度的控制智能体和任务，通过不同的流程组织协同多智能体共同完成工作……'>
+<title>基于 CrewAI 多智能体框架，手把手构建一个自动化写作应用实战</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024091401/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='基于 CrewAI 多智能体框架，手把手构建一个自动化写作应用实战'>
+<meta property='og:description' content='利用 CrewAI 多智能体框架，我们可以更细粒度的控制智能体和任务，通过不同的流程组织协同多智能体共同完成工作……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024091401/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Agent' /><meta property='article:tag' content='MetaGPT' /><meta property='article:tag' content='CrewAI' /><meta property='article:published_time' content='2024-09-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-09-14T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024091401/00.jpg' />
+<meta name="twitter:title" content="基于 CrewAI 多智能体框架，手把手构建一个自动化写作应用实战">
+<meta name="twitter:description" content="利用 CrewAI 多智能体框架，我们可以更细粒度的控制智能体和任务，通过不同的流程组织协同多智能体共同完成工作……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024091401/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024091401/">
+                <img src="/p/2024091401/00_hu25975eb2f329e262091455ae0784f007_16497_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024091401/00_hu25975eb2f329e262091455ae0784f007_16497_800x0_resize_q75_box.jpg 800w, /p/2024091401/00_hu25975eb2f329e262091455ae0784f007_16497_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="523" 
+                        loading="lazy"
+                        alt="Featured image of post 基于 CrewAI 多智能体框架，手把手构建一个自动化写作应用实战" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">基于 CrewAI 多智能体框架，手把手构建一个自动化写作应用实战</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>利用 CrewAI 多智能体框架，我们可以更细粒度的控制智能体和任务，通过不同的流程组织协同多智能体共同完成工作……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-09-14
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：6 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <center><strong>明月皓皓，星河灿烂，中秋佳节，团圆美满。祝大家中秋节快乐！</strong>听说台风要来了，也不知道还能不能吃着月饼赏个月？</center>
+<hr>
+<p>老牛同学在上文（<a class="link" href="https://mp.weixin.qq.com/s/ZfyCnCOqjtLGcPUfPq7JLQ"  target="_blank" rel="noopener"
+    >Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码</a>）和大家一起初步理解了什么是 Agent(智能体)、它具备哪些特性等基础知识，然后想着使用 MetaGPT 这个国内开源的多智能体系统，用一句话让它帮忙写一个贪吃蛇小游戏程序，体验一把当“老板”的乐趣。我们的需求确实是用一句话给了 MetaGPT，只可惜“老板”的乐趣是没有体验到，MetaGPT 倒是给我们留了一个有 Bug 的程序，老牛同学又得做回程序员，修 Bug 去！</p>
+<p>MetaGPT 这种端到端的多智能体系统设计本身很有吸引力，但是对它所依赖的基础大语言模型（大模型）有很强的诉求，否则根据一句话的需求产出的结果很难尽人意。老牛同学感觉大模型参数量得 <strong>100B</strong> 起步才会较好的效果，且需求越复杂，对大模型的要求就会越高。</p>
+<p>今天，老牛同学和大家一起看看另外一个多智能体框架 <strong>CrewAI</strong>，我们使用它，可以像搭乐高积木一样，搭建自己工作流。与 <strong>MetaGPT</strong> 相比，<strong>CrewAI</strong> 更加轻量化，定制的灵活性更高，因此老牛同学称它为框架。</p>
+<p>大语言模型最擅长的是自然语言生成，那么我们本次就来使用 <strong>CrewAI</strong> 搭建一个自动化写作系统，本文主要包括以下内容：</p>
+<ol>
+<li><strong>CrewAI</strong> 框架基本介绍</li>
+<li>本地安装 <strong>CrewAI</strong> 框架依赖</li>
+<li>使用 <strong>CrewAI</strong> 逐步地搭建我们的自动化写作系统</li>
+</ol>
+<p>本文所有涉及到的源代码，不出意外的话，源代码地址老牛同学会放在评论区~</p>
+<h1 id="crewai-框架基本介绍">CrewAI 框架基本介绍</h1>
+<p><strong>CrewAI</strong> 官方开源地址：<a class="link" href="https://github.com/crewAIInc/crewAI"  target="_blank" rel="noopener"
+    >https://github.com/crewAIInc/crewAI</a></p>
+<p><strong>CrewAI</strong> 是一个多智能体框架，主要为角色扮演中的智能体提供自动化配置，以促进智能体之间的合作，共同解决复杂问题。</p>
+<p><strong>CrewAI</strong> 主要由<strong>Agent</strong>(智能体)、<strong>Task</strong>(任务)、<strong>Tool</strong>(工具)和<strong>Crew</strong>(团队)模块组成。<strong>智能体</strong>是具有角色和背景故事、目标和记忆的团队成员；<strong>任务</strong>是智能体需要完成的任务；<strong>工具</strong>是智能体使用的设备，用于辅助完成任务；<strong>团队</strong>则是智能体和任务相结合的容器，是智能体协调合作执行任务的实际场所，智能体由它共同完成实际任务。</p>
+<p><img src="/p/2024091401/01.jpg"
+	width="1374"
+	height="943"
+	srcset="/p/2024091401/01_hu8e63bde16161d5fd6ec33b6c2d20f047_87370_480x0_resize_q75_box.jpg 480w, /p/2024091401/01_hu8e63bde16161d5fd6ec33b6c2d20f047_87370_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="349px"
+	
+></p>
+<p><strong>CrewAI</strong> 框架比较灵活，它不仅支持<strong>OpenAI</strong>标准 API，还支持<strong>Ollama</strong>标准 API，它具备如下核心特征：</p>
+<ol>
+<li>角色定制代理：可以根据不同的角色、目标和工具来量身定制代理。</li>
+<li>自动任务委派：代理之间能够自主地分配任务和进行交流，有效提升解题效率。</li>
+<li>任务管理灵活性：可以根据需要自定义任务和工具，并灵活地指派给不同代理。</li>
+<li>流程导向：目前系统仅支持按顺序执行任务，但更加复杂的如基于共识和层级的流程正在研发中。</li>
+</ol>
+<h1 id="本地安装-crewai-框架依赖">本地安装 CrewAI 框架依赖</h1>
+<p><strong>工欲善其事，必先利其器</strong>，我们通过<strong>Miniconda</strong>管理 Python 虚拟环境，<strong>Miniconda</strong>的安装和使用可以参考老牛同学之前的文章：<a class="link" href="https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w"  target="_blank" rel="noopener"
+    >大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Python虚拟环境名：CrewAI，版本号：3.10</span>
+</span></span><span class="line"><span class="cl">conda create -n CrewAI <span class="nv">python</span><span class="o">=</span>3.10 -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 激活虚拟环境</span>
+</span></span><span class="line"><span class="cl">conda activate CrewAI
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，我们就可以安装 CrewAI 框架依赖了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install crewai
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>至此，<strong>CrewAI</strong> 框架依赖就安装好了，我们接下来使用它来构建一个自动化协作应用。</p>
+<h1 id="使用-crewai-搭建自动化写作系统">使用 CrewAI 搭建自动化写作系统</h1>
+<p>前面提到，智能体依赖的大模型既支持 OpenAI 标准接口，也支持 Ollama 标准接口。老牛同学为了方便演示，使用 Ollama 本地部署<strong>Qwen2-7B</strong>大模型，有关 Ollama 详细介绍和使用，参见老牛同学之前的文章，本文不在赘述：<a class="link" href="https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q"  target="_blank" rel="noopener"
+    >Ollama 完整教程：本地 LLM 管理、WebUI 对话、Python/Java 客户端 API 应用</a></p>
+<p>【<strong>第一步：</strong> 明确我们的需求】</p>
+<p>我们在来想当一次“老板”，还是以<strong>儿童绘本故事</strong>为例，我们只提供一个<strong>主题</strong>：由第 1 个智能体根据主题产出绘本故事的<strong>构思</strong>内容，然后由第 2 个智能体根据第 1 个智能体的构思内容，产出<strong>故事</strong>内容。</p>
+<p>因此，我们需要有 2 个<strong>智能体</strong>（即：需要定义 2 个角色），分别是：故事内容<strong>构思者</strong>，和故事内容<strong>协作者</strong>；他们各自都有一个<strong>任务</strong>，分别是：产出故事内容<strong>构思</strong>，和根据构思编写<strong>故事</strong>。</p>
+<p>接下来，我们就开始实现我们的智能体了，在此之前，我们先引入<strong>CrewAI</strong>核心模块类，同时配置大模型：</p>
+<p><img src="/p/2024091401/11.jpg"
+	width="1088"
+	height="342"
+	srcset="/p/2024091401/11_hudf9f5d71066a7d320ce307e003fafb2e_29868_480x0_resize_q75_box.jpg 480w, /p/2024091401/11_hudf9f5d71066a7d320ce307e003fafb2e_29868_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="318"
+		data-flex-basis="763px"
+	
+></p>
+<p>【<strong>第二步：</strong> 定义<strong>构思者</strong>角色的智能体】</p>
+<p><img src="/p/2024091401/12.jpg"
+	width="1398"
+	height="227"
+	srcset="/p/2024091401/12_hu75e42e860516b447d9bb4dd5ec3147df_27265_480x0_resize_q75_box.jpg 480w, /p/2024091401/12_hu75e42e860516b447d9bb4dd5ec3147df_27265_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="615"
+		data-flex-basis="1478px"
+	
+></p>
+<p>对于<strong>构思者</strong>智能体，它的定义如下：</p>
+<ul>
+<li>我们要给它设定一个与任务相符的角色（<code>role</code>）：为了简单，我们就设定为构思者</li>
+<li>我们为这个智能体设定了一个目标（<code>goal</code>）：要根据给定的主题（<code>{topic}</code>），产出儿童绘本故事内容创意</li>
+<li>我们再为规划者智能体设定一个背景故事（<code>backstory</code>）：我们尽可能多地设定相关的上下文，比如它的职责、对它产出物的要求等。</li>
+<li>我们还要设置一些其它属性：<code>allow_delegation</code> 代表这个智能体不允许把工作委托给其他的智能体；<code>verbose</code> 代表把它的工作详细记录下来，这样我们可以看到它在执行内部任务时是如何运行的</li>
+</ul>
+<p>【<strong>第三步：</strong> 定义<strong>写作者</strong>角色的智能体】</p>
+<p><img src="/p/2024091401/13.jpg"
+	width="1334"
+	height="337"
+	srcset="/p/2024091401/13_hub3a3d7c58b53ee7a324eebb07abf6bfd_41473_480x0_resize_q75_box.jpg 480w, /p/2024091401/13_hub3a3d7c58b53ee7a324eebb07abf6bfd_41473_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="395"
+		data-flex-basis="950px"
+	
+></p>
+<p>对于<strong>写作者</strong>智能体来说，它的目标就是：根据构思者所提供的儿童绘本故事创意来编写故事内容。</p>
+<p>【<strong>第四步：</strong> 定义每个智能体的任务】</p>
+<p>上面我们定义了 2 个智能体角色，现在给他们分别定义 1 个任务：</p>
+<p><img src="/p/2024091401/14.jpg"
+	width="1184"
+	height="513"
+	srcset="/p/2024091401/14_hu97c7bbae3344c5156fc296d78136ac2f_50316_480x0_resize_q75_box.jpg 480w, /p/2024091401/14_hu97c7bbae3344c5156fc296d78136ac2f_50316_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="230"
+		data-flex-basis="553px"
+	
+></p>
+<p><strong>构思者</strong>和<strong>写作者</strong>的任务，均包含了描述、期望输出和分配的智能体等 3 个属性：</p>
+<ul>
+<li>描述（<code>description</code>）：期望智能体能做什么</li>
+<li>预期的输出（<code>expected_output</code>）：类似一种强制机制，明确任务的产出结果</li>
+<li>智能体（<code>agent</code>）：即为这个任务分配智能体</li>
+</ul>
+<p>【<strong>第五步：</strong> 让智能体和任务协同工作】</p>
+<p><img src="/p/2024091401/15.jpg"
+	width="1310"
+	height="570"
+	srcset="/p/2024091401/15_hub5da6065747c063ec90d7bb898338bce_39759_480x0_resize_q75_box.jpg 480w, /p/2024091401/15_hub5da6065747c063ec90d7bb898338bce_39759_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="229"
+		data-flex-basis="551px"
+	
+></p>
+<p>智能体是按照顺序执行任务的，上一个任务的输出，会被作为下一个任务的输入。<strong>特别注意</strong>：我们提供了<code>topic</code>上下文参数，它在智能体和任务中可以通过<code>{topic}</code>使用。</p>
+<p>运行程序，我们可以逐步看到<strong>构思者</strong>智能体的运行过程内容：</p>
+<p><img src="/p/2024091401/16.jpg"
+	width="1398"
+	height="787"
+	srcset="/p/2024091401/16_hu72722154947b1f295744e8d52d1018de_106052_480x0_resize_q75_box.jpg 480w, /p/2024091401/16_hu72722154947b1f295744e8d52d1018de_106052_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<p>接下来，可以看到<strong>写作者</strong>智能体的运行过程内容：</p>
+<p><img src="/p/2024091401/17.jpg"
+	width="1398"
+	height="842"
+	srcset="/p/2024091401/17_hu44d88795d1e3b2ca9099b9ed91cabdef_125995_480x0_resize_q75_box.jpg 480w, /p/2024091401/17_hu44d88795d1e3b2ca9099b9ed91cabdef_125995_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="398px"
+	
+></p>
+<p>最终，所有的智能体执行完成，产出的目标故事内容：</p>
+<p><img src="/p/2024091401/18.jpg"
+	width="1398"
+	height="837"
+	srcset="/p/2024091401/18_hu761b2a5799999eaa3d3a51fbef19690f_132321_480x0_resize_q75_box.jpg 480w, /p/2024091401/18_hu761b2a5799999eaa3d3a51fbef19690f_132321_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="167"
+		data-flex-basis="400px"
+	
+></p>
+<h1 id="最后crewai-总结说明">最后：CrewAI 总结说明</h1>
+<p>通过以上示例，我们了解了 <strong>CrewAI</strong> 的三个核心模块：<strong>Agent</strong>智能体，<strong>Task</strong>任务，<strong>Crew</strong>团体或者称容器，容器把他们组合在一起。</p>
+<ul>
+<li><strong>Agent：</strong> 一般情况下，一个<strong>Agent</strong>只做一件事，明确智能体的目标和期望；当然，一个<strong>Agent</strong>可以执行多项任务。</li>
+<li><strong>Task：</strong> 无论是创建 Agent 还是 Task 都需要明确自己的职责，以及对自己的期望。</li>
+<li><strong>Crew：</strong> 最终把任务，按照串行或并行的方式组织起来。</li>
+</ul>
+<p><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/x2RKTvFeKgRvi982X5cymA"  target="_blank" rel="noopener"
+    >MiniCPM-V 2.6 面壁“小钢炮”，多图、视频理解多模态模型，部署和推理实战教程</a></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/agent/">Agent</a>
+        
+            <a href="/tags/metagpt/">MetaGPT</a>
+        
+            <a href="/tags/crewai/">CrewAI</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024092101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024092101/01.a058ce6764f78fbd961d039febaef4fc_hu4a69ce90e6d0acdf7131434eb5356c98_280965_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程"
+                        data-key="2024092101" 
+                        data-hash="md5-oFjOZ2T3j72WHQOf6670/A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024090701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024090701/00.b6c1d73ee74046f684505d88c7cc6107_hu7a0c880590782b86405b42d88e695a08_83513_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码"
+                        data-key="2024090701" 
+                        data-hash="md5-tsHXPudARvaEUF2Ix8xhBw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030301/00.ea08cfef206e5f94acfff72f27329886_hu42cdc8535b0a762ff23c72abe3e7986b_81971_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！"
+                        data-key="2025030301" 
+                        data-hash="md5-6gjP7yBuX5Ss//cvJzKYhg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

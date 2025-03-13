@@ -1,0 +1,1547 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Llama on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/llama/</link>
+        <description>Recent content in Llama on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Wed, 12 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/llama/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API调用和WebUI对话机器人</title>
+        <link>https://ntopic.cn/p/2024061201/</link>
+        <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024061201/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024061201/01.jpg" alt="Featured image of post Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API调用和WebUI对话机器人" /&gt;&lt;p&gt;阿里巴巴通义千问团队发布了&lt;strong&gt;Qwen2&lt;/strong&gt;系列开源模型，该系列模型包括5个尺寸的预训练和指令微调模型：&lt;strong&gt;Qwen2-0.5B&lt;/strong&gt;、&lt;strong&gt;Qwen2-1.5B&lt;/strong&gt;、&lt;strong&gt;Qwen2-7B&lt;/strong&gt;、&lt;strong&gt;Qwen2-57B-A14B&lt;/strong&gt;以及&lt;strong&gt;Qwen2-72B&lt;/strong&gt;。对比当前最优的开源模型，&lt;strong&gt;Qwen2-72B&lt;/strong&gt;在包括自然语言理解、知识、代码、数学及多语言等多项能力上均显著超越当前领先的&lt;strong&gt;Llama3-70B&lt;/strong&gt;等大模型。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/02.jpg&#34;
+	width=&#34;1978&#34;
+	height=&#34;1113&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/02_huf88210797b2dc3e9786f55fcb597c6f1_391069_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/02_huf88210797b2dc3e9786f55fcb597c6f1_391069_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2-72B模型评测&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;老牛同学今天部署和体验&lt;strong&gt;Qwen2-7B-Instruct&lt;/strong&gt;指令微调的中等尺寸模型，相比近期推出同等规模的开源最好的&lt;strong&gt;Llama3-8B&lt;/strong&gt;、&lt;strong&gt;GLM4-9B&lt;/strong&gt;等模型，&lt;strong&gt;Qwen2-7B-Instruct&lt;/strong&gt;依然能在多个评测上取得显著的优势，尤其是代码及中文理解上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/03.jpg&#34;
+	width=&#34;1978&#34;
+	height=&#34;774&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/03_hub271ce1b4c8b7c6a2b1a6f2c7c080c06_244265_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/03_hub271ce1b4c8b7c6a2b1a6f2c7c080c06_244265_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2-7B模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;255&#34;
+		data-flex-basis=&#34;613px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特别注意：&lt;/strong&gt; 虽然&lt;strong&gt;Qwen2&lt;/strong&gt;开源了，但仍然需要遵循其模型许可，除&lt;strong&gt;Qwen2-72B&lt;/strong&gt;依旧使用此前的&lt;strong&gt;Qianwen License&lt;/strong&gt;外，其余系列版本模型，包括&lt;strong&gt;Qwen2-0.5B&lt;/strong&gt;、&lt;strong&gt;Qwen2-1.5B&lt;/strong&gt;、&lt;strong&gt;Qwen2-7B&lt;/strong&gt;以及&lt;strong&gt;Qwen2-57B-A14B&lt;/strong&gt;等在内，均采用&lt;strong&gt;Apache 2.0&lt;/strong&gt;许可协议。&lt;/p&gt;
+&lt;h2 id=&#34;下载qwen2-7b-instruct模型文件&#34;&gt;下载Qwen2-7B-instruct模型文件&lt;/h2&gt;
+&lt;p&gt;为了简化模型的部署过程，我们直接下载GGUF文件。关于GGUF文件介绍，请详见部署&lt;strong&gt;Llama3-8B&lt;/strong&gt;大模型的文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转AI，笔记本电脑安装属于自己的Llama 3 8B大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;打开&lt;strong&gt;Qwen2-7B-Instruct-GGUF&lt;/strong&gt;模型文件列表（&lt;a class=&#34;link&#34; href=&#34;https://modelscope.cn/models/qwen/Qwen2-7B-Instruct-GGUF/files&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://modelscope.cn/models/qwen/Qwen2-7B-Instruct-GGUF/files&lt;/a&gt;），我们选择&lt;strong&gt;qwen2-7b-instruct-q5_k_m.gguf&lt;/strong&gt;并下载：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/04.jpg&#34;
+	width=&#34;978&#34;
+	height=&#34;478&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/04_hu60bafbde8aee7c2346453073c7484b3b_144356_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/04_hu60bafbde8aee7c2346453073c7484b3b_144356_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2-7B量化模型文件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们可以根据自己需要，选择下载其它版本的模型文件！&lt;/p&gt;
+&lt;h2 id=&#34;启动qwen2-7b-instruct大模型&#34;&gt;启动Qwen2-7B-Instruct大模型&lt;/h2&gt;
+&lt;p&gt;GGUF模型量化文件下载完成后，我们就可以来运行&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型了。&lt;/p&gt;
+&lt;p&gt;在启动&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型之前，我们首先需要安装Python依赖包列表：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install llama-cpp-python
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install openai
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install uvicorn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install starlette
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install fastapi
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install sse_starlette
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install starlette_context
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install pydantic_settings
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后打开一个Terminal终端窗口，切换到GGUF模型文件目录，启动&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型（&lt;code&gt;./qwen2-7b-instruct-q5_k_m.gguf&lt;/code&gt;即为上一步下载的模型文件路径）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 启动Qwen2大模型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# n_ctx=20480代表单次回话最大20480个Token数量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python -m llama_cpp.server &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;   --host 0.0.0.0 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;   --model ./qwen2-7b-instruct-q5_k_m.gguf &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;   --n_ctx &lt;span class=&#34;m&#34;&gt;20480&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/05.jpg&#34;
+	width=&#34;1170&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/05_hucc2853454e33d0c6499a9a159f7080ed_216621_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/05_hucc2853454e33d0c6499a9a159f7080ed_216621_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2-7B启动成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;430&#34;
+		data-flex-basis=&#34;1032px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;qwen2-7b-instruct-命令行对话客户端&#34;&gt;Qwen2-7B-instruct 命令行对话客户端&lt;/h2&gt;
+&lt;p&gt;CLI命令行的客户端，可以参考之前&lt;strong&gt;LLama3-8B&lt;/strong&gt;大模型的文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# client.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;openai&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OpenAI&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 注意服务端端口，因为是本地，所以不需要api_key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OpenAI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;base_url&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:8000/v1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;api_key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;not-needed&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 对话历史：设定系统角色是一个只能助理，同时提交“自我介绍”问题&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;history&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;system&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;你是一个智能助理，你的回答总是容易理解的、正确的、有用的和内容非常精简.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 首次自我介绍完毕，接下来是等代码我们的提示&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;completion&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;completions&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;local-model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;messages&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;temperature&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;stream&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;new_message&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;assistant&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;completion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flush&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;new_message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[91;1m&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;user_input&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;gt; &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user_input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lower&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;bye&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;quit&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;exit&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]:&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 我们输入bye/quit/exit等均退出客户端&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[0mBYE BYE!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user_input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[92;1m&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动CLI对话客户端：&lt;code&gt;python client.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/06.jpg&#34;
+	width=&#34;1436&#34;
+	height=&#34;432&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/06_hucac271893c7217732b377f035bec04d3_467256_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/06_hucac271893c7217732b377f035bec04d3_467256_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2-7B启动成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;332&#34;
+		data-flex-basis=&#34;797px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;至此，我们可以与&lt;strong&gt;Qwen2-7B-Instruct&lt;/strong&gt;进行对话，体验Qwen2大模型的魅力了。&lt;/p&gt;
+&lt;p&gt;如果我们主要是通过API的方式使用&lt;strong&gt;Qwen2&lt;/strong&gt;大模型，那么Qwen2部署就到此结束了。&lt;/p&gt;
+&lt;p&gt;接下来的章节，我们部署WebUI对话客户端，通过Web界面的方式使用&lt;strong&gt;Qwen2&lt;/strong&gt;大模型，并且可以分享出去~&lt;/p&gt;
+&lt;h2 id=&#34;qwen2-7b-instruct-webui客户端&#34;&gt;Qwen2-7B-Instruct WebUI客户端&lt;/h2&gt;
+&lt;p&gt;结合&lt;strong&gt;Ollama&lt;/strong&gt;工具，搭建WebUI客户端，可参考之前&lt;strong&gt;Llama3-8B&lt;/strong&gt;大模型的文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于Ollama工具的LLM大语言模型Web可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一步：&lt;/strong&gt; 我们需要下载安装&lt;strong&gt;Ollama&lt;/strong&gt;本地大模型管理工具：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Ollama&lt;/code&gt;提供了&lt;strong&gt;MacOS&lt;/strong&gt;、&lt;strong&gt;Linux&lt;/strong&gt;和&lt;strong&gt;Windows&lt;/strong&gt;操作系统的安装包，大家可根据自己的操作系统，下载安装即可：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/07.jpg&#34;
+	width=&#34;1184&#34;
+	height=&#34;868&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/07_hude0f3d67b6b85e3d467df24bc32af0f9_137925_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/07_hude0f3d67b6b85e3d467df24bc32af0f9_137925_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ollama下载&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;327px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;安装包下载之后的安装过程，和日常安装其他软件没有差别，包括点击&lt;code&gt;Next&lt;/code&gt;以及&lt;code&gt;Install&lt;/code&gt;等安装&lt;code&gt;ollama&lt;/code&gt;到命令行。安装后续步骤中，我们可无需安装任何模型，因为我们在上文中我们已经安装了&lt;code&gt;Qwen2-7B&lt;/code&gt;大模型，后面可以直接使用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二步：&lt;/strong&gt; 安装&lt;code&gt;Node.js&lt;/code&gt;编程语言工具包&lt;/p&gt;
+&lt;p&gt;安装&lt;code&gt;Node.js&lt;/code&gt;编程语言工具包和安装其他软件包一样，下载安装即可：&lt;a class=&#34;link&#34; href=&#34;https://nodejs.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nodejs.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/08.jpg&#34;
+	width=&#34;1282&#34;
+	height=&#34;1250&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/08_hu04a0d0b576f5a114bd323b776e7ca4ec_519318_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/08_hu04a0d0b576f5a114bd323b776e7ca4ec_519318_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Node.js下载&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;102&#34;
+		data-flex-basis=&#34;246px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;安装完成之后，可以验证一下 Node.js 的版本，建议用目前的最新&lt;strong&gt;v20&lt;/strong&gt;版本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;node -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;老牛同学安装的版本：&lt;strong&gt;v20.13.1&lt;/strong&gt;（最新版本）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第三步：&lt;/strong&gt; 基于GGUF模型文件创建&lt;code&gt;Ollama&lt;/code&gt;模型&lt;/p&gt;
+&lt;p&gt;在我们存放&lt;code&gt;Qwen2-7B&lt;/code&gt;的 GGUF 模型文件目录中，创建一个文件名为&lt;code&gt;Modelfile&lt;/code&gt;的文件，该文件的内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;FROM ./qwen2-7b-instruct-q5_k_m.gguf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后在Terminal终端，使用这个文件创建&lt;code&gt;Ollama&lt;/code&gt;模型，这里我把&lt;code&gt;Ollama&lt;/code&gt;的模型取名为&lt;strong&gt;Qwen2-7B&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ollama create Qwen2-7B -f ./Modelfile
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;transferring model data 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;using existing layer sha256:258dd2fa1bdf98b85327774e1fd36e2268c2a4b68eb9021d71106449ee4ba9d5 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;creating new layer sha256:14f4474ef69698bf4dbbc7409828341fbd85923319a801035e651d9fe6a9e9c9 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;writing manifest 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;success
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最后，通过&lt;code&gt;Ollama&lt;/code&gt;启动我们刚创建的大语言模型：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama run Qwen2-7B
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动完毕，其实我们已经有了一个和之前差不多的控制台对话界面，也可以与&lt;code&gt;Qwen2-7B&lt;/code&gt;对话了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/09.jpg&#34;
+	width=&#34;1626&#34;
+	height=&#34;522&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/09_hub8429b6002d338834396d0d717f20700_697066_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/09_hub8429b6002d338834396d0d717f20700_697066_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ollama启动模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;311&#34;
+		data-flex-basis=&#34;747px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果我们不想要这个模型了，也可以通过命令行删除模型文件：&lt;code&gt;ollama rm Qwen2-7B&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我们也可以查看本地&lt;strong&gt;Ollama&lt;/strong&gt;管理的模型列表：&lt;code&gt;ollama list&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Ollama&lt;/code&gt;存放模型文件根目录：&lt;code&gt;~/.ollama&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第四步：&lt;/strong&gt; 部署&lt;code&gt;Ollama&lt;/code&gt;大模型Web对话界面&lt;/p&gt;
+&lt;p&gt;控制台聊天对话界面体验总归是不太好，接下来部署 Web 可视化聊天界面。&lt;/p&gt;
+&lt;p&gt;首先，下载&lt;code&gt;ollama-webui&lt;/code&gt;Web 工程代码：&lt;code&gt;git clone https://github.com/ollama-webui/ollama-webui-lite&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后切换&lt;code&gt;ollama-webui&lt;/code&gt;代码的目录：&lt;code&gt;cd ollama-webui-lite&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;设置 Node.js 工具包镜像源，以接下来下载 Node.js 的依赖包更加快速：&lt;code&gt;npm config set registry http://mirrors.cloud.tencent.com/npm/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;安装 Node.js 依赖的工具包：&lt;code&gt;npm install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;最后，启动 Web 可视化界面：&lt;code&gt;npm run dev&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/10.jpg&#34;
+	width=&#34;824&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/10_hu197c9156a112ece4d67099f8d904a84b_147151_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/10_hu197c9156a112ece4d67099f8d904a84b_147151_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;WebUI启动成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;305&#34;
+		data-flex-basis=&#34;732px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果看到以上输出，代表 Web 可视化界面已经成功了！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第五步：&lt;/strong&gt; 通过WebUI愉快与&lt;strong&gt;Qwen2-7B&lt;/strong&gt;对话&lt;/p&gt;
+&lt;p&gt;浏览器打开 Web 可视化界面：&lt;a class=&#34;link&#34; href=&#34;http://localhost:3000&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://localhost:3000/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以看到&lt;code&gt;Ollama&lt;/code&gt;的初始化页面，默认没有模型，需要选择，我们选择刚创建并部署的&lt;code&gt;Qwen2-7B&lt;/code&gt;模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024061201/11.jpg&#34;
+	width=&#34;1476&#34;
+	height=&#34;684&#34;
+	srcset=&#34;https://ntopic.cn/p/2024061201/11_hu0fb10bb63d1e0f985629debcce25c502_144513_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024061201/11_hu0fb10bb63d1e0f985629debcce25c502_144513_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;选择Qwen2-7B大模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;215&#34;
+		data-flex-basis=&#34;517px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;底部就是聊天输入框，至此可以愉快的与&lt;code&gt;Qwen2-7B&lt;/code&gt;聊天对话了：&lt;/p&gt;
+&lt;h2 id=&#34;总结qwen2-7b比llama3-8b快&#34;&gt;总结：Qwen2-7B比Llama3-8B快&lt;/h2&gt;
+&lt;p&gt;老牛同学验证和对比，在文本推理上，&lt;strong&gt;Qwen2-7B&lt;/strong&gt;确实比&lt;strong&gt;Llama3-8B&lt;/strong&gt;要快很多。后续老牛同学中文文本推理相关的API接口，就主要采用更快&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型了~&lt;/p&gt;
+&lt;h2 id=&#34;其他ollama工具常用用法&#34;&gt;其他：&lt;code&gt;Ollama&lt;/code&gt;工具常用用法&lt;/h2&gt;
+&lt;p&gt;从上文的介绍可以看到，基于&lt;code&gt;Ollama&lt;/code&gt;部署一个大模型的 Web 可视化对话机器人，还是非常方便。下面整理了部分&lt;code&gt;Ollama&lt;/code&gt;提供的用法或者。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ollama 命令&lt;/strong&gt;工具&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 查看当前Ollama的模型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama list
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 增量更新当前部署的模型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama pull Qwen2-7B
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 删除一个模型文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama rm Qwen2-7B
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 复制一个模型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama cp Qwen2-7B Qwen2-newModel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Ollama API&lt;/strong&gt;结果返回&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl http://localhost:11434/api/generate -d &lt;span class=&#34;s1&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  &amp;#34;model&amp;#34;: &amp;#34;Qwen2-7B&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  &amp;#34;prompt&amp;#34;:&amp;#34;为什么天空是蓝色的？&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Ollama API&lt;/strong&gt;聊天对话&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl http://localhost:11434/api/chat -d &lt;span class=&#34;s1&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  &amp;#34;model&amp;#34;: &amp;#34;Qwen2-7B&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  &amp;#34;messages&amp;#34;: [
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;    { &amp;#34;role&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;为什么天空是蓝色的？&amp;#34; }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  ]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;微信公众号老牛同学&#34;&gt;微信公众号：老牛同学&lt;/h2&gt;
+&lt;h3 id=&#34;qwen2-7b-开源大模型&#34;&gt;Qwen2-7B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2阿里最强开源大模型（Qwen2-7B）本地部署、API调用和WebUI对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;llama-3-8b-开源大模型&#34;&gt;Llama-3-8B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;glm-4-9b-开源大模型&#34;&gt;GLM-4-9B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;chattts-文本转语音模型&#34;&gt;ChatTTS 文本转语音模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API使用和搭建WebUI界面&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;大模型应用&#34;&gt;大模型应用&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助AI大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;python-小游戏&#34;&gt;Python 小游戏&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI已来，我与AI一起用Python编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python游戏编程：一步步用Python打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验</title>
+        <link>https://ntopic.cn/p/2024060801/</link>
+        <pubDate>Sat, 08 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024060801/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024060801/00.jpg" alt="Featured image of post 本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验" /&gt;&lt;p&gt;&lt;strong&gt;GLM-4-9B&lt;/strong&gt;是清华大学和智谱AI推出的最新一代预训练模型&lt;strong&gt;GLM-4&lt;/strong&gt;系列中的开源版本。在语义、数学、推理、代码和知识等多方面的数据集测评中，&lt;strong&gt;GLM-4-9B&lt;/strong&gt;及其人类偏好对齐的版本&lt;strong&gt;GLM-4-9B-Chat&lt;/strong&gt;均表现出较高的性能，其通用能力评测结果甚至超越了&lt;strong&gt;Llama-3-8B&lt;/strong&gt;开源大模型，多模态版本也与&lt;strong&gt;GPT-4&lt;/strong&gt;版本齐平。&lt;/p&gt;
+&lt;p&gt;除了能进行多轮对话，&lt;strong&gt;GLM-4-9B-Chat&lt;/strong&gt;还具备网页浏览、代码执行、自定义工具调用和长文本推理等高级功能。 &lt;strong&gt;GLM-4&lt;/strong&gt;模型增加了多语言支持，支持包括日语，韩语，德语在内的 26 种语言。&lt;strong&gt;GLM-4-9B&lt;/strong&gt;还推出了支持 1M 上下文长度（约 200 万中文字符）的模型。&lt;/p&gt;
+&lt;p&gt;根据&lt;strong&gt;GLM-4&lt;/strong&gt;大模型评测结果，在通用能力方面超越&lt;strong&gt;Llama3&lt;/strong&gt;大模型，在多模态能力比肩&lt;strong&gt;GPT-4&lt;/strong&gt;大模型系列版本，评测结果和调用方法详情：&lt;a class=&#34;link&#34; href=&#34;https://github.com/THUDM/GLM-4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/THUDM/GLM-4&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本文介绍&lt;strong&gt;GLM-4&lt;/strong&gt;大模型部署和使用方法，需要注意的是，&lt;strong&gt;GLM-4&lt;/strong&gt;虽然开源了，但&lt;strong&gt;GLM-4&lt;/strong&gt;大模型的权重的使用则需要遵循协议：&lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/THUDM/glm-4-9b/blob/main/LICENSE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://huggingface.co/THUDM/glm-4-9b/blob/main/LICENSE&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;第一步下载模型文件&#34;&gt;第一步：下载模型文件&lt;/h2&gt;
+&lt;p&gt;老牛同学在前面文章中，介绍了通过单一的GGUF文件在本地部署&lt;strong&gt;Llama-3-8B&lt;/strong&gt;（&lt;strong&gt;Llama3-Chinese-Chat&lt;/strong&gt;）大模型：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLM-4-9B&lt;/strong&gt;模板目前还没有GGUF文件，因此老牛同学通过Git下载PyTorch张量参数文件在本地部署&lt;strong&gt;GLM-4-9B-Chat-1M&lt;/strong&gt;大模型。&lt;/p&gt;
+&lt;p&gt;由于模型参数文件比较大，使用Git无法直接下载到本地，需要通过&lt;strong&gt;git-lfs&lt;/strong&gt;工具包下载：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install git-lfs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;通过Git复制模型文件到笔记本电脑：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git lfs install
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://www.modelscope.cn/ZhipuAI/glm-4-9b-chat-1m.git GLM-4-9B-Chat-1M
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;总共有10个模型参数文件，平均每个文件&lt;strong&gt;1.8GB&lt;/strong&gt;大小，总计18GB左右，因此在Git下载过程中，容易中断失败，可以通过以下命令多次尝试下载：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git lfs pull
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024060801/01.jpg&#34;
+	width=&#34;1104&#34;
+	height=&#34;808&#34;
+	srcset=&#34;https://ntopic.cn/p/2024060801/01_hua45523be335adf4b2d3dbddd2027fd8f_162239_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024060801/01_hua45523be335adf4b2d3dbddd2027fd8f_162239_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GLM4模型参数文件列表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;327px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;第二步下线glm4代码库&#34;&gt;第二步：下线GLM4代码库&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;GLM-4&lt;/strong&gt;的官方GitHub代码库中有很多使用样例和微调等Python代码，我们可直接进行调整和使用：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://github.com/THUDM/GLM-4.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;第三步启动glm4客户端&#34;&gt;第三步：启动GLM4客户端&lt;/h2&gt;
+&lt;p&gt;打开&lt;strong&gt;GLM-4&lt;/strong&gt;代码库中&lt;code&gt;basic_demo/trans_cli_demo.py&lt;/code&gt;文件，修改&lt;strong&gt;第18行&lt;/strong&gt;模型路径&lt;code&gt;MODEL_PATH&lt;/code&gt;参数，内容为我们通过Git复制到本地的路径，如老牛同学的路径如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#MODEL_PATH = os.environ.get(&amp;#39;MODEL_PATH&amp;#39;, &amp;#39;THUDM/glm-4-9b-chat&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MODEL_PATH&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;environ&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;MODEL_PATH&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/Users/shizihu/JupyterLab/GLM-4-9B-Chat-1M&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在启动之前，我们还需要安装几个Python工具包（当然也可以跳过，后面启动失败时在进行安装也是可以的）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install tiktoken
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install accelerate
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动大模型客户端：&lt;code&gt;python trans_cli_demo.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;% python trans_cli_demo.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Loading checkpoint shards: 100%&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;██████████████████████████████████████████████&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; 10/10 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;00:09&amp;lt;00:00,  1.04it/s&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;WARNING:root:Some parameters are on the meta device device because they were offloaded to the disk.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Welcome to the GLM-4-9B CLI chat. Type your messages below.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You: 介绍一下你自己。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;GLM-4:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我是一个人工智能助手，我的名字是 ChatGLM，是基于清华大学 KEG 实验室和智谱 AI 公司
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024060801/02.jpg&#34;
+	width=&#34;1778&#34;
+	height=&#34;386&#34;
+	srcset=&#34;https://ntopic.cn/p/2024060801/02_hu0d9468faef38b4d2a073f40ebdbf8687_278218_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024060801/02_hu0d9468faef38b4d2a073f40ebdbf8687_278218_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GLM4模型对话&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;460&#34;
+		data-flex-basis=&#34;1105px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;总结glm-4-9b比llama-3-8b慢太多了&#34;&gt;总结：GLM-4-9B比Llama-3-8B慢太多了&lt;/h2&gt;
+&lt;p&gt;根据官方的评测报告，&lt;strong&gt;GLM-4-9B&lt;/strong&gt;在对话、多模态等方面要比&lt;strong&gt;Llama-3-8B&lt;/strong&gt;强不少，根据老牛同学本地部署&lt;strong&gt;对话&lt;/strong&gt;的验证结果来看，对话的输出速度实在太慢了，简直就是在挤牙膏，一个字一个字的往外输出。&lt;/p&gt;
+&lt;p&gt;至于&lt;strong&gt;GLM-4-9B&lt;/strong&gt;的多模态、工具调用、代码解释等能力，老牛同学本次就不一一演示了，&lt;strong&gt;GLM-4&lt;/strong&gt;官方的GitHub代码库有很多Demo代码，大家可以对代码调整后尝试体验一下~&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我的本博客原地址：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人</title>
+        <link>https://ntopic.cn/p/2024052101/</link>
+        <pubDate>Tue, 21 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024052101/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024052101/02.jpg" alt="Featured image of post 基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人" /&gt;&lt;blockquote&gt;
+&lt;p&gt;前面两篇博文，我们分别在个人笔记本电脑部署了&lt;strong&gt;Llama 3 8B&lt;/strong&gt;参数大模型，并使用&lt;strong&gt;Ollama&lt;/strong&gt;搭建了基于 Web 可视化对话聊天机器人，可以在自己电脑上愉快的与&lt;strong&gt;Llama&lt;/strong&gt;大模型 Web 机器人对话聊天了。但在使用过程中，笔者发现&lt;strong&gt;Llama&lt;/strong&gt;大模型经常出现&lt;strong&gt;中文问题英文回答&lt;/strong&gt;的问题，需要使用&lt;strong&gt;中文回答&lt;/strong&gt;等提示词告诉大模型用中文回答，体验还不是最好的。今天，本博文就来解决这个问题，让我们有个中文版的&lt;strong&gt;Llama 3&lt;/strong&gt;Web 对话机器人（&lt;strong&gt;Llama3-Chinese-Chat&lt;/strong&gt;）……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第一篇&lt;strong&gt;Llama 3 8B&lt;/strong&gt;大模型部署和 Python 版对话机器人博文：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;第二篇基于&lt;strong&gt;Ollama&lt;/strong&gt;部署&lt;strong&gt;Llama 3 8B&lt;/strong&gt;大模型 Web 版本对话机器人博文：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 因为本博文介绍的是&lt;strong&gt;Llama 3 中文版&lt;/strong&gt;（&lt;strong&gt;Llama3-Chinese-Chat&lt;/strong&gt;）对话机器人，涉及到前面两篇博文内容，特别是第二篇 Web 版本对话机器人部署，因此建议按照前文博文部署好&lt;strong&gt;Llama 3 8B&lt;/strong&gt;大语言模型。&lt;/p&gt;
+&lt;h2 id=&#34;hf-上选择排名最高的模型&#34;&gt;HF 上选择排名最高的模型&lt;/h2&gt;
+&lt;p&gt;模型列表官网地址：&lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/models&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://huggingface.co/models&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;模型列表国内镜像（&lt;strong&gt;推荐&lt;/strong&gt;）：&lt;a class=&#34;link&#34; href=&#34;https://hf-mirror.com/models&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hf-mirror.com/models&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在模型列表页面按照关键字&lt;code&gt;llama chinese&lt;/code&gt;搜索，并按照&lt;strong&gt;趋势&lt;/strong&gt;排序，可以看到中文版模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024052101/01.jpg&#34;
+	width=&#34;2530&#34;
+	height=&#34;1384&#34;
+	srcset=&#34;https://ntopic.cn/p/2024052101/01_huae61d300a0f7989ceb023d401e9fe593_1105009_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024052101/01_huae61d300a0f7989ceb023d401e9fe593_1105009_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;LLama中文版模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;438px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看出，第一名模型的&lt;strong&gt;下载&lt;/strong&gt;数量和&lt;strong&gt;点赞&lt;/strong&gt;数量，比第二名要多好多，我们就选择&lt;strong&gt;shenzhi-wang&lt;/strong&gt;这位作者发布的模型。&lt;/p&gt;
+&lt;h2 id=&#34;方式一通过-gguf-量化模型安装推荐&#34;&gt;方式一：通过 GGUF 量化模型安装（推荐）&lt;/h2&gt;
+&lt;p&gt;GGUF 安装比较简单，下载单个文件即可：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024052101/02.jpg&#34;
+	width=&#34;1040&#34;
+	height=&#34;1086&#34;
+	srcset=&#34;https://ntopic.cn/p/2024052101/02_hub3da83b4b5bc32de4db9cd09399c10b7_374346_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024052101/02_hub3da83b4b5bc32de4db9cd09399c10b7_374346_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;LLama中文版GGUF模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;95&#34;
+		data-flex-basis=&#34;229px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;下载到本地之后，按照我的&lt;strong&gt;第一篇&lt;/strong&gt;博文，即可进行控制台聊天了：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;启动大模型&lt;/strong&gt;Shell 脚本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ./venv/bin/activate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python -m llama_cpp.server --host 0.0.0.0 --model &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;   ./Llama3-8B-Chinese-Chat-q4_0-v2_1.gguf &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;   --n_ctx &lt;span class=&#34;m&#34;&gt;20480&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Python 对话客户端&lt;/strong&gt;代码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;openai&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OpenAI&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 注意服务端端口，因为是本地，所以不需要api_key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;127.0.0.1&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#ip = &amp;#39;192.168.1.37&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OpenAI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;base_url&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:8000/v1&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;n&#34;&gt;api_key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;not-needed&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 对话历史：设定系统角色是一个只能助理，同时提交“自我介绍”问题&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;history&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;system&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;你是一个智能助理，你的回答总是容易理解的、正确的、有用的和内容非常精简.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 首次自我介绍完毕，接下来是等代码我们的提示&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;completion&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;completions&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;local-model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;messages&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;temperature&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;stream&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;new_message&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;assistant&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;completion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flush&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;new_message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[91;1m&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;userinput&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;gt; &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userinput&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lower&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;bye&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;quit&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;exit&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]:&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 我们输入bye/quit/exit等均退出客户端&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[0mBYE BYE!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userinput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[92;1m&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;运行 Python 客户端&lt;/strong&gt;即可：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024052101/03.jpg&#34;
+	width=&#34;1632&#34;
+	height=&#34;246&#34;
+	srcset=&#34;https://ntopic.cn/p/2024052101/03_huc7b96f9887ab9df1f5da9de1f651a003_95258_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024052101/03_huc7b96f9887ab9df1f5da9de1f651a003_95258_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Python控制台对话客户端&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;663&#34;
+		data-flex-basis=&#34;1592px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;按照第二篇博文，部署基于 Web 版对话机器人：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;基于 GGUF 量化模型&lt;strong&gt;生成 Ollama&lt;/strong&gt;模型文件，假设文件名为&lt;code&gt;Modelfile-Chinese&lt;/code&gt;，内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;FROM ./Llama3-8B-Chinese-Chat-q4_0-v2_1.gguf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;执行 Ollama 模型转换，&lt;code&gt;Llama-3-8B-Chinese&lt;/code&gt;为 Ollama 模型名：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ollama create Llama-3-8B-Chinese -f ./Modelfile-Chinese
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;transferring model data
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;using existing layer sha256:242ac8dd3eabcb1e5fcd3d78912eaf904f08bb6ecfed8bac9ac9a0b7a837fcb8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;creating new layer sha256:9f3bfa6cfc3061e49f8d5ab5fba0f93426be5f8207d8d8a9eebf638bd12b627a
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;writing manifest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;success
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;可以通过 Ollama 查看目前的大模型列表：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ollama list
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NAME                      ID            SIZE    MODIFIED
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Llama-3-8B-Chinese:latest 37143cf1f51f  4.7 GB  &lt;span class=&#34;m&#34;&gt;42&lt;/span&gt; seconds ago
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Llama-3-8B:latest         74abc0712fc1  4.9 GB  &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; days ago
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;可以看到我们刚安装的大模型：&lt;strong&gt;Llama-3-8B-Chinese&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;启动&lt;strong&gt;ollama-webui-lite&lt;/strong&gt;项目，可以选择&lt;strong&gt;Llama-3-8B-Chinese&lt;/strong&gt;模型和对话聊天了：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npm run dev
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; ollama-webui-lite@0.0.1 dev
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; vite dev --host --port &lt;span class=&#34;m&#34;&gt;3000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  VITE v4.5.3  ready in &lt;span class=&#34;m&#34;&gt;1797&lt;/span&gt; ms
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ➜  Local:   http://localhost:3000/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ➜  Network: http://192.168.101.30:3000/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ➜  press h to show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024052101/04.jpg&#34;
+	width=&#34;1550&#34;
+	height=&#34;264&#34;
+	srcset=&#34;https://ntopic.cn/p/2024052101/04_hu97c9217b73ef8283d49772062613e0f2_34116_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024052101/04_hu97c9217b73ef8283d49772062613e0f2_34116_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OlLama选择中文版模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;587&#34;
+		data-flex-basis=&#34;1409px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;方式二通过-ollama-拉取模型文件&#34;&gt;方式二：通过 Ollama 拉取模型文件&lt;/h2&gt;
+&lt;p&gt;这种方式比较简单，无需下载 GGUF 模型文件，可以让 Ollama 直接拉取模型文件并完成安装：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Llama3-8B-Chinese-Chat的4位量化版本（对机器性能要求最低）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama run wangshenzhi/llama3-8b-chinese-chat-ollama-q4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Llama3-8B-Chinese-Chat的8位量化版本（对机器性能要求中等）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama run wangshenzhi/llama3-8b-chinese-chat-ollama-q8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Llama3-8B-Chinese-Chat的f16未量化版本（对机器性能要求最高）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama run wangshenzhi/llama3-8b-chinese-chat-ollama-fp16
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Ollama 自动下载并完成安装，之后启动&lt;strong&gt;ollama-webui-lite&lt;/strong&gt;项目，就可以使用了~&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我的本博客原地址：&lt;a class=&#34;link&#34; href=&#34;https://ntopic.cn/p/2024052101/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ntopic.cn/p/2024052101&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>一文彻底整明白，基于Ollama工具的LLM大语言模型Web可视化对话机器人部署指南</title>
+        <link>https://ntopic.cn/p/2024051801/</link>
+        <pubDate>Sat, 18 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024051801/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024051801/02.jpg" alt="Featured image of post 一文彻底整明白，基于Ollama工具的LLM大语言模型Web可视化对话机器人部署指南" /&gt;&lt;blockquote&gt;
+&lt;p&gt;在上一篇博文中，我们在本地部署了&lt;strong&gt;Llama 3 8B&lt;/strong&gt;参数大模型，并用 Python 写了一个控制台对话客户端，基本能愉快的与 Llama 大模型对话聊天了。但控制台总归太技术化，体验不是很友好，我们希望能有个类似 ChatGPT 那样的 Web 聊天对话界面，本博文就安排起来……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上一篇&lt;strong&gt;Llama 3 8B&lt;/strong&gt;大模型部署和 Python 对话客户端博文：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;因为本博文介绍的&lt;strong&gt;Web 可视化&lt;/strong&gt;对话机器人，涉及到前文的&lt;strong&gt;Llama 3 8B&lt;/strong&gt;大模型（并不是强依赖），因此建议提取安装前文部署好&lt;strong&gt;Llama 3 8B&lt;/strong&gt;大语言模型。&lt;/p&gt;
+&lt;p&gt;为了方便把我们的大模型对话机器人分享出去，聊天机器人最后是基于&lt;strong&gt;Web&lt;/strong&gt;网站，可通过浏览器访问，本文正是通过&lt;code&gt;Ollama&lt;/code&gt;和&lt;code&gt;WebUI&lt;/code&gt;在本地部署&lt;code&gt;Llama 3&lt;/code&gt;Web 版聊天机器人，本文包括如下部分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;什么是&lt;code&gt;Ollama&lt;/code&gt;，它与&lt;code&gt;Llama&lt;/code&gt;是什么关系？&lt;/li&gt;
+&lt;li&gt;安装&lt;code&gt;Ollama&lt;/code&gt;大语言模型工具&lt;/li&gt;
+&lt;li&gt;安装&lt;code&gt;Node.js&lt;/code&gt;编程语言工具包（为接下来的 Web 可视化聊天界面做好准备）&lt;/li&gt;
+&lt;li&gt;基于&lt;code&gt;Llama 3 8B&lt;/code&gt;GGUF 模型文件创建&lt;code&gt;Ollama&lt;/code&gt;模型文件&lt;/li&gt;
+&lt;li&gt;部署&lt;code&gt;Ollama&lt;/code&gt;大模型 Web 可视化聊天界面&lt;/li&gt;
+&lt;li&gt;愉快的与&lt;code&gt;Llama 3&lt;/code&gt;大模型俩天对话&lt;/li&gt;
+&lt;li&gt;最后，&lt;code&gt;Ollama&lt;/code&gt;大模型工具的其他用法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;什么是ollama它与llama是什么关系&#34;&gt;什么是&lt;code&gt;Ollama&lt;/code&gt;，它与&lt;code&gt;Llama&lt;/code&gt;是什么关系？&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Ollama&lt;/code&gt;是一个开源的 LLM（大型语言模型）服务工具，用于简化在本地运行大语言模型，降低使用大语言模型的门槛，使得大模型的开发者、研究人员和爱好者能够在本地环境快速实验、管理和部署最新大语言模型，包括如&lt;code&gt;Llama 3&lt;/code&gt;、&lt;code&gt;Phi 3&lt;/code&gt;、&lt;code&gt;Mistral&lt;/code&gt;、&lt;code&gt;Gemma&lt;/code&gt;等开源的大型语言模型。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Ollama&lt;/code&gt;目前支持以下大语言模型：&lt;a class=&#34;link&#34; href=&#34;https://ollama.com/library&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ollama.com/library&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051801/01.jpg&#34;
+	width=&#34;1278&#34;
+	height=&#34;980&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051801/01_hua04b28422bbb4c6a12cc5f607adbb1af_199841_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051801/01_hua04b28422bbb4c6a12cc5f607adbb1af_199841_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;312px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;因此，&lt;code&gt;Ollama&lt;/code&gt;与&lt;code&gt;Llama&lt;/code&gt;的关系：&lt;code&gt;Llama&lt;/code&gt;是大语言模型，而&lt;code&gt;Ollama&lt;/code&gt;是大语言模型（不限于&lt;code&gt;Llama&lt;/code&gt;模型）便捷的管理和运维工具&lt;/p&gt;
+&lt;h2 id=&#34;安装ollama大语言模型工具&#34;&gt;安装&lt;code&gt;Ollama&lt;/code&gt;大语言模型工具&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Ollama&lt;/code&gt;提供了&lt;strong&gt;MacOS&lt;/strong&gt;、&lt;strong&gt;Linux&lt;/strong&gt;和&lt;strong&gt;Windows&lt;/strong&gt;操作系统的安装包，大家可根据自己的操作系统，下载安装即可：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051801/02.jpg&#34;
+	width=&#34;1184&#34;
+	height=&#34;868&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051801/02_hua04b28422bbb4c6a12cc5f607adbb1af_86436_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051801/02_hua04b28422bbb4c6a12cc5f607adbb1af_86436_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;327px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;安装包下载之后的安装过程，和日常安装其他软件没有差别，包括点击&lt;code&gt;Next&lt;/code&gt;以及&lt;code&gt;Install&lt;/code&gt;等安装&lt;code&gt;ollama&lt;/code&gt;到命令行。安装后续步骤中，我们可无需安装任何模型（默认是&lt;code&gt;Llama 3&lt;/code&gt;），因为我们在上文中已经安装了&lt;code&gt;Llama 3 8B&lt;/code&gt;大模型，后面可以直接使用。&lt;/p&gt;
+&lt;p&gt;当然，假如没有根据我的前面博文安装&lt;code&gt;Llama 3 8B&lt;/code&gt;模型，在安装&lt;code&gt;Ollama&lt;/code&gt;过程中，也可以一起进行安装。&lt;/p&gt;
+&lt;h2 id=&#34;安装nodejs编程语言工具包&#34;&gt;安装&lt;code&gt;Node.js&lt;/code&gt;编程语言工具包&lt;/h2&gt;
+&lt;p&gt;安装&lt;code&gt;Node.js&lt;/code&gt;编程语言工具包和安装其他软件包一样，下载安装即可：&lt;a class=&#34;link&#34; href=&#34;https://nodejs.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nodejs.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051801/03.jpg&#34;
+	width=&#34;1282&#34;
+	height=&#34;1250&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051801/03_hua04b28422bbb4c6a12cc5f607adbb1af_208693_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051801/03_hua04b28422bbb4c6a12cc5f607adbb1af_208693_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;102&#34;
+		data-flex-basis=&#34;246px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;安装完成之后，可以验证一下 Node.js 的版本，建议用目前的最新&lt;strong&gt;v20&lt;/strong&gt;版本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;node -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;我安装的版本：&lt;strong&gt;v20.13.1&lt;/strong&gt;（最新版本）&lt;/p&gt;
+&lt;h2 id=&#34;基于llama-3-8bgguf-模型文件创建ollama模型&#34;&gt;基于&lt;code&gt;Llama 3 8B&lt;/code&gt;GGUF 模型文件创建&lt;code&gt;Ollama&lt;/code&gt;模型&lt;/h2&gt;
+&lt;p&gt;在我们存放&lt;code&gt;Llama 3 8B&lt;/code&gt;的 GGUF 模型文件目录中，创建一个文件名为&lt;code&gt;Modelfile&lt;/code&gt;的文件，该文件的内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;FROM ./Meta-Llama-3-8B-Instruct.Q4_K_M.gguf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后在控制台，使用这个文件创建&lt;code&gt;Ollama&lt;/code&gt;模型，这里我把&lt;code&gt;Ollama&lt;/code&gt;的模型取名为&lt;strong&gt;Llama-3-8B&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ollama create Llama-3-8B -f ./Modelfile
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;transferring model data
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;using existing layer sha256:647a2b64cbcdbe670432d0502ebb2592b36dd364d51a9ef7a1387b7a4365781f
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;creating new layer sha256:459d7c837b2bd7f895a15b0a5213846912693beedaf0257fbba2a508bc1c88d9
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;writing manifest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;success
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最后，通过&lt;code&gt;Ollama&lt;/code&gt;启动我们刚创建的大语言模型：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama run Llama-3-8B
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051801/04.jpg&#34;
+	width=&#34;1628&#34;
+	height=&#34;738&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051801/04_hua04b28422bbb4c6a12cc5f607adbb1af_425764_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051801/04_hua04b28422bbb4c6a12cc5f607adbb1af_425764_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;220&#34;
+		data-flex-basis=&#34;529px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;启动完毕，其实我们已经有了一个控制台聊天界面，可以通过控制台与&lt;code&gt;Llama-3-8B&lt;/code&gt;聊天了&lt;/p&gt;
+&lt;p&gt;如果我们不想要这个模型了，也可以通过命令行删除模型文件：&lt;code&gt;ollama rm Llama-3-8B&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Ollama&lt;/code&gt;存放模型文件根目录：&lt;code&gt;~/.ollama&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;部署ollama大模型-web-可视化聊天界面&#34;&gt;部署&lt;code&gt;Ollama&lt;/code&gt;大模型 Web 可视化聊天界面&lt;/h2&gt;
+&lt;p&gt;控制台聊天对话界面体验总归是不太好，接下来部署 Web 可视化聊天界面。&lt;/p&gt;
+&lt;p&gt;首先，下载&lt;code&gt;ollama-webui&lt;/code&gt;Web 工程代码：&lt;code&gt;git clone https://github.com/ollama-webui/ollama-webui-lite&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后切换&lt;code&gt;ollama-webui&lt;/code&gt;代码的目录：&lt;code&gt;cd ollama-webui-lite&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;设置 Node.js 工具包镜像源，以接下来下载 Node.js 的依赖包更加快速：&lt;code&gt;npm config set registry http://mirrors.cloud.tencent.com/npm/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;安装 Node.js 依赖的工具包：&lt;code&gt;npm install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;最后，启动 Web 可视化界面：&lt;code&gt;npm run dev&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051801/05.jpg&#34;
+	width=&#34;824&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051801/05_hua04b28422bbb4c6a12cc5f607adbb1af_52060_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051801/05_hua04b28422bbb4c6a12cc5f607adbb1af_52060_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;305&#34;
+		data-flex-basis=&#34;732px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果看到以上输出，代表 Web 可视化界面已经成功了！&lt;/p&gt;
+&lt;h2 id=&#34;愉快的与llama-3大模型俩天对话&#34;&gt;愉快的与&lt;code&gt;Llama 3&lt;/code&gt;大模型俩天对话&lt;/h2&gt;
+&lt;p&gt;浏览器打开 Web 可视化界面：&lt;a class=&#34;link&#34; href=&#34;http://localhost:3000&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://localhost:3000/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以看到&lt;code&gt;Ollama&lt;/code&gt;的初始化页面，默认没有模型，需要选择，我们选择刚创建并部署的&lt;code&gt;Llama-3-8B&lt;/code&gt;模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051801/06.jpg&#34;
+	width=&#34;2116&#34;
+	height=&#34;692&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051801/06_hua04b28422bbb4c6a12cc5f607adbb1af_73102_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051801/06_hua04b28422bbb4c6a12cc5f607adbb1af_73102_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;305&#34;
+		data-flex-basis=&#34;733px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051801/07.jpg&#34;
+	width=&#34;2118&#34;
+	height=&#34;712&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051801/07_hua04b28422bbb4c6a12cc5f607adbb1af_86097_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051801/07_hua04b28422bbb4c6a12cc5f607adbb1af_86097_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;297&#34;
+		data-flex-basis=&#34;713px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;底部就是聊天输入框，至此可以愉快的与&lt;code&gt;Llama 3&lt;/code&gt;聊天对话了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051801/08.jpg&#34;
+	width=&#34;1534&#34;
+	height=&#34;794&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051801/08_hua04b28422bbb4c6a12cc5f607adbb1af_154487_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051801/08_hua04b28422bbb4c6a12cc5f607adbb1af_154487_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;463px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Web 对话聊天机器人的设置，大家可以基于 Web 网站设置，这里不在介绍，有需要的网友可以私信一起研究进步！&lt;/p&gt;
+&lt;h2 id=&#34;禅定ollama工具的其他用法&#34;&gt;禅定：&lt;code&gt;Ollama&lt;/code&gt;工具的其他用法&lt;/h2&gt;
+&lt;p&gt;从上文的介绍可以看到，基于&lt;code&gt;Ollama&lt;/code&gt;部署一个大模型的 Web 可视化对话机器人，还是非常方便。下面整理了部分&lt;code&gt;Ollama&lt;/code&gt;提供的用法或者。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ollama 命令&lt;/strong&gt;工具&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 查看当前Ollama的模型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama list
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 增量更新当前部署的模型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama pull Llama-3-8B
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 删除一个模型文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama rm Llama-3-8B
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 复制一个模型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama cp Llama-3-8B Llama-newModel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Ollama API&lt;/strong&gt;结果返回&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl http://localhost:11434/api/generate -d &lt;span class=&#34;s1&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  &amp;#34;model&amp;#34;: &amp;#34;Llama-3-8B&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  &amp;#34;prompt&amp;#34;:&amp;#34;为什么天空是蓝色的？&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Ollama API&lt;/strong&gt;聊天对话&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl http://localhost:11434/api/chat -d &lt;span class=&#34;s1&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  &amp;#34;model&amp;#34;: &amp;#34;Llama-3-8B&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  &amp;#34;messages&amp;#34;: [
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;    { &amp;#34;role&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;为什么天空是蓝色的？&amp;#34; }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;  ]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;我的本博客原地址：&lt;a class=&#34;link&#34; href=&#34;https://ntopic.cn/p/2024051801/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ntopic.cn/p/2024051801&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>玩转AI，笔记本电脑安装属于自己的Llama 3 8B大模型和对话客户端</title>
+        <link>https://ntopic.cn/p/2024051101/</link>
+        <pubDate>Sat, 11 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024051101/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024051101/01.jpg" alt="Featured image of post 玩转AI，笔记本电脑安装属于自己的Llama 3 8B大模型和对话客户端" /&gt;&lt;blockquote&gt;
+&lt;p&gt;2024 年 4 月 18 日，Meta&lt;strong&gt;开源&lt;/strong&gt;了 Llama 3 大模型，把 AI 的门槛降低到了最低，这是人工智能领域的一个重要飞跃。我们个人也可以部署大模型了，这简直就是给个人开发者发了个大红包！Llama 3 模型有不同的参数版本，本文主要分享我在个人笔记本电脑是部署 8B 参数过程和编写客户端，让我们大家都参与进来，推动 AI 应用更上一层楼……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;本文&lt;strong&gt;Llama 3 8B&lt;/strong&gt;客户端源代码地址：&lt;a class=&#34;link&#34; href=&#34;https://gitee.com/obullxl/PythonCS/tree/master/Llama-3-8B&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gitee.com/obullxl/PythonCS/tree/master/Llama-3-8B&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;选择-llama-3-模型版本8b80-亿参数&#34;&gt;选择 Llama 3 模型版本（8B，80 亿参数）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;特别注意：&lt;/strong&gt; Meta 虽然开源了 Llama 3 大模型，但是每个版本都有 Meta 的许可协议，建议大家在接受使用这些模型所需的条款之前仔细阅读。&lt;/p&gt;
+&lt;p&gt;Llama 3 模型版本有几个，我们主要关注 80 亿参数（&lt;strong&gt;Llama 3 8B&lt;/strong&gt;）和 700 亿参数（Llama 3 70B）这两个版本。它们对电脑系统配置有不同的要求，主要计算资源（即：CPU/GPU）和内存来存储和处理模型权重：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Llama 3 8B 版本：对于 80 亿参数的模型，建议至少 4 核 CPU，至少 16GB 内存（推荐 32GB 或更高），以确保模型加载和运行过程中的流畅性；模型文件大小 5 GB 左右，磁盘空间有 10GB 足够了；GPU 是可选的，它可以显著提高推理速度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Llama 3 70B 版本：对于 700 亿参数的模型，CPU 要求显著提高（建议 16 核以上），至少需要 64GB 内存（推荐 128GB 或更高），模型在推理时会占用大量的内存资源；模型文件超过 20GB，远超 8B 版本；强烈推荐使用高端 GPU，以实现有效加速&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;综上所述，8B 版本比较适合我们个人电脑，硬件配置基本能符合，同时模型又不失推理效果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051101/01.jpg&#34;
+	width=&#34;1172&#34;
+	height=&#34;664&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051101/01_hua04b28422bbb4c6a12cc5f607adbb1af_84235_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051101/01_hua04b28422bbb4c6a12cc5f607adbb1af_84235_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;笔记本电脑配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;下载-llama-3-8b-模型文件&#34;&gt;下载 Llama 3 8B 模型文件&lt;/h2&gt;
+&lt;p&gt;我们第一步是想自己部署尝鲜，因此直接下载压缩后的模型权重，文件为&lt;strong&gt;GGUF&lt;/strong&gt;格式，&lt;strong&gt;GGUF&lt;/strong&gt;格式是为了快速推理和优化内存使用而设计的，相比以前的&lt;strong&gt;GGML&lt;/strong&gt;格式，&lt;strong&gt;GGUF&lt;/strong&gt;支持更复杂的令牌化过程和特殊令牌处理，能更好地应对多样化的语言模型需求。就是因为有&lt;strong&gt;GGUF&lt;/strong&gt;格式，&lt;strong&gt;Llama 3&lt;/strong&gt;大语言模型才可以在笔记本电脑上运行，同时&lt;strong&gt;GGUF&lt;/strong&gt;就一个文件，也简化了模型交换和部署的过程，它对促进模型的普及和应用有着积极作用。&lt;/p&gt;
+&lt;p&gt;因为&lt;strong&gt;Hugging Face&lt;/strong&gt;官网正常无法访问，需要科学上网，因此推荐&lt;strong&gt;国内镜像&lt;/strong&gt;进行下载：&lt;/p&gt;
+&lt;p&gt;官网地址：&lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/QuantFactory/Meta-Llama-3-8B-Instruct-GGUF/tree/main&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://huggingface.co/QuantFactory/Meta-Llama-3-8B-Instruct-GGUF/tree/main&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;国内镜像：&lt;a class=&#34;link&#34; href=&#34;https://hf-mirror.com/QuantFactory/Meta-Llama-3-8B-Instruct-GGUF/tree/main&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hf-mirror.com/QuantFactory/Meta-Llama-3-8B-Instruct-GGUF/tree/main&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051101/02.jpg&#34;
+	width=&#34;2494&#34;
+	height=&#34;1364&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051101/02_hua04b28422bbb4c6a12cc5f607adbb1af_503934_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051101/02_hua04b28422bbb4c6a12cc5f607adbb1af_503934_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GGUF模型文件列表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;438px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;GGUF 模型文件名称接受，如上述列表中，有&lt;code&gt;Meta-Llama-3-8B-Instruct.Q4_K_M.gguf&lt;/code&gt;和&lt;code&gt;Meta-Llama-3-8B-Instruct.Q5_K_M.gguf&lt;/code&gt;等：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Instruct&lt;/strong&gt;代表本模型是对基线模型进行了微调，用于更好地理解和生成遵循指令（instruction-following）的文本，以提供符合要求的响应&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Q4/Q5 等&lt;/strong&gt;代表模型权重的量化位数（其中&lt;strong&gt;Q&lt;/strong&gt;是&lt;strong&gt;Quantization&lt;/strong&gt;的缩小，即量化），是一种模型压缩技术，用于减少模型大小，同时降低对计算资源的需求（特别是内存），但又尽量保持模型的性能；数字&lt;strong&gt;4&lt;/strong&gt;或&lt;strong&gt;5&lt;/strong&gt;则代表量化精度的位数（Q4 是 4 位，Q5 是 5 位等），精度越高模型体积和内存使用也会越大，但仍然远小于未量化的基线模型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;K_M/K_S&lt;/strong&gt;代表含义笔者还未明确，&lt;strong&gt;K&lt;/strong&gt;可能是&lt;strong&gt;Knowledge&lt;/strong&gt;的缩写；&lt;strong&gt;M&lt;/strong&gt;应该是&lt;strong&gt;Medium&lt;/strong&gt;缩写（即中等模型），&lt;strong&gt;S&lt;/strong&gt;应该是&lt;strong&gt;Small&lt;/strong&gt;缩小（即小模型）；若有明确的朋友，还望不吝告知，共同进步！&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;若个人电脑配置不是特别好，我们可以选择&lt;strong&gt;Q2_K&lt;/strong&gt;版本（大小 3.2GB），它相较于&lt;strong&gt;Q4_K_M&lt;/strong&gt;版本（大小 4.9GB），&lt;strong&gt;Q2&lt;/strong&gt;版本的推理精度较低，但速度较快，而&lt;strong&gt;Q4&lt;/strong&gt;版本在速度和精度之间均取得了很好的平衡，因此首选推荐&lt;strong&gt;Q4_K_M&lt;/strong&gt;版本。&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;下载&lt;/strong&gt;图标即可下载，由于文件较大，浏览器的下载容易过程容易终端，重试可继续下载（笔者浏览器中断了好几次，总共耗时 4 个多小时）&lt;/p&gt;
+&lt;h2 id=&#34;启动大模型服务端&#34;&gt;启动大模型服务端&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;GGUF&lt;/strong&gt;模型量化文件下载完成后，我们就可以来运行&lt;strong&gt;Llama 3&lt;/strong&gt;大模型了。首先打开一个 Terminal 终端窗口，切换到&lt;strong&gt;GGUF&lt;/strong&gt;文件目录，设置 Python&lt;strong&gt;虚拟环境&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 切换到存放GGUF文件目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/PythonSpace/Llama3-8B/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 切换Python 3.12.2版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda activate PY3.12.2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 创建并激活虚拟环境&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python -m venv venv
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ./venv/bin/activate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装依赖包&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install llama-cpp-python
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install openai
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install uvicorn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install starlette
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install fastapi
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install sse_starlette
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install starlette_context
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install pydantic_settings
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 启动Llama大模型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python -m llama_cpp.server --host 0.0.0.0 --model &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;   ./Meta-Llama-3-8B-Instruct.Q4_K_M.gguf &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;   --n_ctx &lt;span class=&#34;m&#34;&gt;2048&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最后启动 Llama 模型命令中，&lt;code&gt;n_ctx 2048&lt;/code&gt;代表单次回话最大 Token 数量。启动成功，我们应该看到类似如下的信息：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051101/03.jpg&#34;
+	width=&#34;1640&#34;
+	height=&#34;1144&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051101/03_hua04b28422bbb4c6a12cc5f607adbb1af_582602_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051101/03_hua04b28422bbb4c6a12cc5f607adbb1af_582602_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Llama启动成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;恭喜你，你已经迈入 Llama 大模型大厦的大门了，后面存在无限可能，就看我们的创意了！&lt;/p&gt;
+&lt;h2 id=&#34;编写-llama-模型对话客户端&#34;&gt;编写 Llama 模型对话客户端&lt;/h2&gt;
+&lt;p&gt;接下来，我们将使用&lt;strong&gt;llama-cpp&lt;/strong&gt;库和&lt;strong&gt;openai&lt;/strong&gt;库在个人电脑上快速搭建&lt;strong&gt;Llama 模型&lt;/strong&gt;的&lt;strong&gt;客户端&lt;/strong&gt;，开始尝鲜大模型（它&lt;strong&gt;目前&lt;/strong&gt;只是个控制台客户端，还不能如 ChatGPT 那样有可视化的界面，但它的功能一样完备，所以请各位不用着急，我们先来体验一下 Llama 大模型，可视化的界面下文我在和大家分享）。&lt;/p&gt;
+&lt;p&gt;Python 客户端代码如下，为了后续方便演示，这个 &lt;strong&gt;Client.py&lt;/strong&gt; 文件也放到&lt;strong&gt;GGUF&lt;/strong&gt;模型文件一起：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;我们使用&lt;strong&gt;OpenAI&lt;/strong&gt;接口来与 Llama 交互，上面启动模型的最后，我们看到服务端 IP 是本地，端口是&lt;strong&gt;8000&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;接着，我们使用 2 条信息对历史记录进行初始化：第一个条是&lt;strong&gt;系统信息&lt;/strong&gt;，第二个条是要求模型自我介绍的&lt;strong&gt;用户提示&lt;/strong&gt;，为了避免长篇大论，我这里限制了回答的长度和字数&lt;/li&gt;
+&lt;li&gt;接下来，通过&lt;code&gt;&amp;gt;&lt;/code&gt;提示符等待用户（即我们）输入，输入&lt;code&gt;bye&lt;/code&gt;、&lt;code&gt;quit&lt;/code&gt;和&lt;code&gt;exit&lt;/code&gt;任意一个即代表退出客户端&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;openai&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OpenAI&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 注意服务端端口，因为是本地，所以不需要api_key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OpenAI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;base_url&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://localhost:8000/v1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;n&#34;&gt;api_key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;not-needed&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 对话历史：设定系统角色是一个只能助理，同时提交“自我介绍”问题&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;history&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;system&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;你是一个智能助理，你的回答总是正确的、有用的和内容非常精简.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;请用中文进行自我介绍，要求不能超过5句话，总字数不超过100个字。&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[92;1m&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 首次自我介绍完毕，接下来是等代码我们的提示&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;completion&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;completions&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;local-model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;messages&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;temperature&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;stream&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;new_message&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;assistant&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;completion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flush&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;new_message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[91;1m&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;userinput&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;gt; &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userinput&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lower&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;bye&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;quit&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;exit&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]:&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 我们输入bye/quit/exit等均退出客户端&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[0mBYE BYE!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userinput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\033&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[92;1m&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;我们新打开一个 Terminal 终端窗口，同样切换目标到 GGUF 文件目录，并且激活 Python 虚拟环境：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 切换到存放GGUF文件目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/PythonSpace/Llama3-8B/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 切换Python 3.12.2版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda activate PY3.12.2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 激活虚拟环境（之前已经创建）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ./venv/bin/activate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 启动客户端&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python client.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;首次打开客户端，因为有第一个默认的&lt;strong&gt;自我介绍&lt;/strong&gt;问题，稍微有点忙，但是可以看到，&lt;strong&gt;Llama 模型&lt;/strong&gt;按照我们的要求完成了自我介绍，总体还不赖：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051101/04.jpg&#34;
+	width=&#34;1640&#34;
+	height=&#34;1144&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051101/04_hua04b28422bbb4c6a12cc5f607adbb1af_295528_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051101/04_hua04b28422bbb4c6a12cc5f607adbb1af_295528_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Llama模型自我介绍&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接着，我给&lt;strong&gt;Llama 模型&lt;/strong&gt;来了一个类&lt;strong&gt;哲学&lt;/strong&gt;的问题：&lt;code&gt;请你用中文问答：人为什么要不断追求卓越？&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Llama 模型&lt;/strong&gt;的回答非常精简，且只有 5 句话，所谓言简意赅：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024051101/05.jpg&#34;
+	width=&#34;1640&#34;
+	height=&#34;1144&#34;
+	srcset=&#34;https://ntopic.cn/p/2024051101/05_hua04b28422bbb4c6a12cc5f607adbb1af_366743_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024051101/05_hua04b28422bbb4c6a12cc5f607adbb1af_366743_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Llama回答：人为什么要不断追求卓越？&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;上图中，红色为我的输入，绿色为模型的答复，超级赞！&lt;/p&gt;
+&lt;h2 id=&#34;禅定总结&#34;&gt;禅定：总结&lt;/h2&gt;
+&lt;p&gt;现在我们的&lt;strong&gt;Llama 模型&lt;/strong&gt;聊天机器人已准备就绪，我们想问什么就可以问什么，尽情享受吧。&lt;/p&gt;
+&lt;p&gt;当然，我们废了大半天劲，如果只是和模型简单的聊聊天，那就有点可惜了，或者说如果要人工输入，那我们本地部署的意义就不大。&lt;/p&gt;
+&lt;p&gt;假设能够通过程序的方式，自动调用本地部署的&lt;strong&gt;Llama 模型&lt;/strong&gt;是不是可以提供我们工作效率；&lt;strong&gt;Llama 模型&lt;/strong&gt;的能力非常广泛，可用于多种场景和任务：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;自然语言生成&lt;/strong&gt;：Llama 3 能够生成连贯、高质量的文本，包括文章、故事、诗歌等创意写作，以及邮件、报告等实用文体。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对话系统&lt;/strong&gt;：模型可以用于构建聊天机器人或 AI 助手，进行自然、流畅的对话交流，提供信息查询、娱乐互动等功能。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;代码生成&lt;/strong&gt;：它在代码生成任务上表现优异，能够根据描述自动生成或补全代码片段，辅助程序员提高开发效率。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;翻译&lt;/strong&gt;：Llama 3 支持跨语言应用，可以实现文本的自动翻译，覆盖多种语言对。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文本摘要&lt;/strong&gt;：能够自动生成文章、报告的摘要，提取关键信息，帮助用户快速浏览大量内容。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;情感分析和文本分类&lt;/strong&gt;：可以识别文本中的情绪倾向、主题分类，为企业提供市场洞察、客户服务优化等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;问答系统&lt;/strong&gt;：高效准确地回答用户提出的问题，无论是常识性问题还是专业领域的复杂询问。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;个性化推荐&lt;/strong&gt;：基于用户的历史交互和偏好，生成个性化的推荐内容，如新闻、商品、音乐等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文本生成图像描述&lt;/strong&gt;：结合多模态技术，Llama 3 可以根据文本描述生成图像内容的描述，助力图像生成或图像检索。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;法律文档处理&lt;/strong&gt;：微调后的模型可以用于法律文档的理解、分析，比如合同审查、案例研究等。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;关注本公众号，下次继续我们分享&lt;strong&gt;Llama 模型&lt;/strong&gt;可视化对话的功能！&lt;/p&gt;
+&lt;p&gt;问题，&lt;code&gt;Llama 3 8B&lt;/code&gt;容易出现问中文，回答英文的问题，可下载中文微调版GGUF模型文件（&lt;strong&gt;Llama3-Chinese-Chat&lt;/strong&gt;）：&lt;a class=&#34;link&#34; href=&#34;https://hf-mirror.com/collections/shenzhi-wang/llama3-chinese-chat-663a2b15ab68e84aa355ca4d&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hf-mirror.com/collections/shenzhi-wang/llama3-chinese-chat-663a2b15ab68e84aa355ca4d&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我的本博客原地址：&lt;a class=&#34;link&#34; href=&#34;https://ntopic.cn/p/2024051101/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ntopic.cn/p/2024051101&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

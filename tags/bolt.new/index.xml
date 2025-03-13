@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Bolt.new on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/bolt.new/</link>
+        <description>Recent content in Bolt.new on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sat, 07 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/bolt.new/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</title>
+        <link>https://ntopic.cn/p/2024120701/</link>
+        <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024120701/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024120701/00.jpg" alt="Featured image of post Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）" /&gt;&lt;p&gt;随着 AI 编程工具的迅猛发展，从早期的 Code Copilot（代码辅助）到如今备受瞩目的 Cursor、v0、Windsurf 和 &lt;strong&gt;Bolt.new&lt;/strong&gt; 等全栈开发平台。这些创新工具旨在加速项目开发、简化工作流程并提高研发效率。然而，访问这些工具通常依赖于“通畅的网络”和海外 LLM 模型，在某些情况下可能成为使用这些工具的障碍。&lt;/p&gt;
+&lt;p&gt;作为一位大模型的爱好者和学习者，老牛同学今天分享一条不同的路径——&lt;strong&gt;如何利用本地 Ollama 和国内的大模型 API，在本地部署和使用 Bolt.new？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以下是老牛同学录制的本地部署和使用 &lt;strong&gt;Bolt.new&lt;/strong&gt; 的视频：通过一句话，即可自动完成整个小项目的代码编写和部署预览。&lt;/p&gt;
+&lt;p&gt;【微信公众号视频链接】&lt;/p&gt;
+&lt;h1 id=&#34;1-boltnew-概览&#34;&gt;1. Bolt.new 概览&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Bolt.new&lt;/strong&gt;是由 StackBlitz 推出的一款革新性的 AI 驱动全栈开发平台，它以几个关键特性脱颖而出：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;即时全栈环境&lt;/strong&gt;：借助 WebContainer 技术，Bolt.new 能够在浏览器中直接运行真实的 Node.js 环境，支持 npm 包安装、服务器配置及第三方 API 交互，为开发者提供了前所未有的便捷性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;智能 AI 助手&lt;/strong&gt;：内置的强大 AI 功能可以理解并执行复杂的指令，无论是创建文件、编辑代码还是解决问题，都能显著提高工作效率。特别是其一键修复错误的功能，能够自动处理编译或运行时出现的问题，极大地节省了时间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;简易部署流程&lt;/strong&gt;：集成的聊天界面让用户可以直接上传代码至云端，并选择合适的托管服务（如 Vercel）进行部署。生成的应用程序可以通过 URL 轻松分享，促进团队协作和成果展示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;尽管 Bolt.new 带来了诸多便利，但也存在一些局限：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;缺乏版本控制&lt;/strong&gt;：代码调整可能导致原有版本被覆盖，增加了数据丢失的风险。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;频繁重新生成和部署&lt;/strong&gt;：每次修改需求时，Bolt.new 会重新生成整个代码库并部署，需要较长时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于快速原型设计和全栈功能开发，Bolt.new 凭借其完整的开发环境、智能化的辅助工具和简便的协作机制，是一个不错的选择。&lt;/p&gt;
+&lt;h1 id=&#34;2-本地部署-boltnew&#34;&gt;2. 本地部署 Bolt.new&lt;/h1&gt;
+&lt;h2 id=&#34;准备本地大模型&#34;&gt;准备本地大模型&lt;/h2&gt;
+&lt;p&gt;Bolt.new 底层依赖 LLM，我们先准备 2 个 LLM 选项：本地运行 Ollama，和 API 调用的远程 LLM 服务（非必须）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;本地 Ollama&lt;/strong&gt;：关于 Ollama 详细使用教程，请参考之前文章（&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ollama 完整教程&lt;/a&gt;），建议下载和启动&lt;strong&gt;Qwen2.5-Coder-7B&lt;/strong&gt;模型：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ollama run qwen2.5-coder:7b
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;LLM 服务 API&lt;/strong&gt;：Ollama 依赖电脑硬件配置，如果电脑硬件条件有限，我们还可以直接用户大模型服务 API，只需要兼容 OpenAPI 接口标准即可（老牛同学用的是百炼平台 Qwen2.5-Coder-32B 大模型）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;下载和配置-boltnew&#34;&gt;下载和配置 Bolt.new&lt;/h2&gt;
+&lt;p&gt;官方提供的 Bolt.new 并不直接支持本地 LLM 或自定义 API 设置。幸运的是，社区牛人&lt;strong&gt;coleam00&lt;/strong&gt;基于官方版本开发了一个增强版——&lt;a class=&#34;link&#34; href=&#34;https://github.com/stackblitz/bolt.new&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;bolt.new-any-llm&lt;/a&gt;，该版本不仅兼容多种 LLM，还能灵活配置 API 接口。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;克隆项目仓库&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/coleam00/bolt.new-any-llm bolt.new-any-LLM
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; bolt.new-any-LLM
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;配置环境变量&lt;/strong&gt;：复制&lt;code&gt;.env.example&lt;/code&gt;为&lt;code&gt;.env&lt;/code&gt;，然后根据实际情况编辑&lt;code&gt;.env&lt;/code&gt;配置文件中的 API 地址和密钥。例如，Ollama 需要设置&lt;code&gt;OLLAMA_API_BASE_URL&lt;/code&gt;参数，国内模型 API 服务，则需要设置&lt;code&gt;OPENAI_LIKE_API_BASE_URL&lt;/code&gt;和&lt;code&gt;OPENAI_LIKE_API_KEY&lt;/code&gt;这 2 个参数。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 复制配置文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp .env.example .env
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后，打开&lt;code&gt;.env&lt;/code&gt;配置文件，可以看到支持的模型列表，包括 GROQ、HuggingFace、Open AI 等，根据需要进行内容修改：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Ollama配置
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OLLAMA_API_BASE_URL=http://localhost:11434
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 【可选】 老牛同学使用的是百炼平台
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OPENAI_LIKE_API_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OPENAI_LIKE_API_KEY=真实Key内容
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：&lt;code&gt;OPENAI_LIKE_API_BASE_URL&lt;/code&gt;和&lt;code&gt;OPENAI_LIKE_API_KEY&lt;/code&gt;意思就是兼容 OpenAI 接口标准的大模型地址和 API Key，目前国内厂商基本都支持 OpenAPI 接口标准。&lt;/p&gt;
+&lt;h2 id=&#34;boltnew-项目部署&#34;&gt;Bolt.new 项目部署&lt;/h2&gt;
+&lt;p&gt;为了加快 Node.js 包下载速度，我们可以设置一下镜像源（老牛同学使用的是淘宝镜像）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;npm config &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; registry https://registry.npmmirror.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其他镜像源如下列表，请按需选择：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NPM官方: https://registry.npmjs.org
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;淘宝镜像: http://registry.npmmirror.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;阿里云镜像: https://npm.aliyun.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;腾讯云: https://mirrors.cloud.tencent.com/npm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;华为云: https://mirrors.huaweicloud.com/repository/npm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;网易: https://mirrors.163.com/npm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;中科大: http://mirrors.ustc.edu.cn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;清华: https://mirrors.tuna.tsinghua.edu.cn
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后，我们执行以下命令来安装依赖并启动 Bolt.new：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装pnpm包管理工具&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;npm install -g pnpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装项目依赖包&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnpm install
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 启动Bolt.new&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnpm run dev
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动成功后，我们可以看到如下输出信息：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt;pnpm run dev
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; bolt@ dev D:&lt;span class=&#34;se&#34;&gt;\C&lt;/span&gt;odeSpace&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;olt.new
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; remix vite:dev
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ➜  Local:   http://localhost:5173/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ➜  Network: use --host to expose
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ➜  press h + enter to show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下来，我们开始体验本地化的 Bolt.new！&lt;/p&gt;
+&lt;h1 id=&#34;3-使用-boltnew-进行开发&#34;&gt;3. 使用 Bolt.new 进行开发&lt;/h1&gt;
+&lt;p&gt;通过浏览器打开 Bolt.new 本地地址：&lt;a class=&#34;link&#34; href=&#34;http://localhost:5173&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://localhost:5173&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;首先可以看到如下页面，与官方相比，多了一个&lt;strong&gt;Model Settings&lt;/strong&gt;的选项，在这里我们可以选择自己的模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/31.jpg&#34;
+	width=&#34;1020&#34;
+	height=&#34;988&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/31_hu9477948d34bd4d2c15bb2dbe15809e56_85332_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/31_hu9477948d34bd4d2c15bb2dbe15809e56_85332_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Bolt.new设置模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;247px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们可以选择 Ollama 模型（如上图），也可以选择配置过&lt;strong&gt;OPENAI_LIKE_API&lt;/strong&gt;尝试模型（如老牛同学百炼平台 API 模型）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/32.jpg&#34;
+	width=&#34;996&#34;
+	height=&#34;825&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/32_hu802f84a813b980fdab9c8d74c9bb9dce_62633_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/32_hu802f84a813b980fdab9c8d74c9bb9dce_62633_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OpenAI接口模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;120&#34;
+		data-flex-basis=&#34;289px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;选择完模型，我可以输入我们的需求：&lt;code&gt;写一个计算器页面&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;接下来的过程，就是老牛同学上面录制的视频所示了。&lt;/p&gt;
+&lt;p&gt;Bolt.new 可以根据我们的一句话内容，自动拆分成不同的小步骤：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/91.jpg&#34;
+	width=&#34;985&#34;
+	height=&#34;1006&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/91_hua37bb5ea70b40a2d99acb7b32878cf30_97340_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/91_hua37bb5ea70b40a2d99acb7b32878cf30_97340_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;拆分实现步骤&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;97&#34;
+		data-flex-basis=&#34;234px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后，自动生成完整的项目结构和执行步骤，包括文件名等：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/92.jpg&#34;
+	width=&#34;822&#34;
+	height=&#34;798&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/92_hufae3bc8dbabe05cf8b7de8d85444b594_42833_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/92_hufae3bc8dbabe05cf8b7de8d85444b594_42833_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;项目结构和步骤&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;247px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在右侧，显示源文件列表和动态展示每个文件生成过程：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/93.jpg&#34;
+	width=&#34;1290&#34;
+	height=&#34;1326&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/93_hu13709eb150c5a69a13b107a5dec56fc6_108379_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/93_hu13709eb150c5a69a13b107a5dec56fc6_108379_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;源文件列表和内容&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;97&#34;
+		data-flex-basis=&#34;233px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最终，所有源代码研发完成，自动部署整个和提供预览：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024120701/94.jpg&#34;
+	width=&#34;1282&#34;
+	height=&#34;1327&#34;
+	srcset=&#34;https://ntopic.cn/p/2024120701/94_hu612bbd794967ab483ed00619009bf697_79497_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024120701/94_hu612bbd794967ab483ed00619009bf697_79497_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;项目部署和预览&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;96&#34;
+		data-flex-basis=&#34;231px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来，如果我们觉得哪里需要修改、或者有什么报错，直接提问，Bolt.new 会自动进行修改并部署和预览！&lt;/p&gt;
+&lt;h1 id=&#34;4-总结&#34;&gt;4. 总结&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Bolt.new&lt;/strong&gt;只需通过自然语音，就能实现全栈研发和自动部署的能力，对于追求高效开发和快速交付的团队而言，这是一个值得尝试的工具。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;友情提示&lt;/strong&gt;：对于保密性较高、或数据安全要求较高的项目，通过调用外部大模型 API 服务使用 Bolt.new 工具时，请注意数据安全问题！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Pipeline 任务：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Transformers 框架任务概览：从零开始掌握 Pipeline（管道）与 Task（任务）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Transformers 框架 Pipeline 任务详解：文本转音频（text-to-audio 或 text-to-speech）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Transformers 框架 Pipeline 任务详解：文本分类（text-classification）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深入解析 Transformers 框架（一）：包和对象加载中的设计巧思与实用技巧&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深入解析 Transformers 框架（二）：AutoModel 初始化及 Qwen2.5 模型加载全流程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深入解析 Transformers 框架（三）：Qwen2.5 大模型的 AutoTokenizer 技术细节&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深入解析 Transformers 框架（四）：Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

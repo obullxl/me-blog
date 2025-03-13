@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='vLLM默认并不支持纯CPU模式部署和推理模式，老牛同学应网友要求，根据vLLM官网整理vLLM在CPU模式下如何部署和推理大语音模型，并以Qwen2为了进行验证和演示……'>
+<title>vLLM CPU和GPU模式署和推理 Qwen2 等大语言模型详细教程</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024081101/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='vLLM CPU和GPU模式署和推理 Qwen2 等大语言模型详细教程'>
+<meta property='og:description' content='vLLM默认并不支持纯CPU模式部署和推理模式，老牛同学应网友要求，根据vLLM官网整理vLLM在CPU模式下如何部署和推理大语音模型，并以Qwen2为了进行验证和演示……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024081101/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='vLLM' /><meta property='article:tag' content='Qwen2' /><meta property='article:published_time' content='2024-08-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-11T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024081101/vllm.jpg' />
+<meta name="twitter:title" content="vLLM CPU和GPU模式署和推理 Qwen2 等大语言模型详细教程">
+<meta name="twitter:description" content="vLLM默认并不支持纯CPU模式部署和推理模式，老牛同学应网友要求，根据vLLM官网整理vLLM在CPU模式下如何部署和推理大语音模型，并以Qwen2为了进行验证和演示……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024081101/vllm.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#安装-miniconda-包管理工具">安装 Miniconda 包管理工具</a></li>
+    <li><a href="#设置-miniconda-国内镜像">设置 Miniconda 国内镜像</a></li>
+    <li><a href="#设置-python-版本和虚拟环境">设置 Python 版本和虚拟环境</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#下载-qwen2-模型权重文件git-方式">下载 Qwen2 模型权重文件（Git 方式）</a></li>
+    <li><a href="#下载-qwen2-模型权重文件sdk-和命令行方式">下载 Qwen2 模型权重文件（SDK 和命令行方式）</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#vllm-本地大模型部署和推理">vLLM 本地大模型部署和推理</a></li>
+    <li><a href="#发布-api-服务和调用推理">发布 API 服务和调用推理</a></li>
+    <li><a href="#gpu-多卡部署和推理大模型">GPU 多卡部署和推理大模型</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024081101/">
+                <img src="/p/2024081101/vllm_hub20bbea5694ca3a59339a693ae8ca887_49290_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024081101/vllm_hub20bbea5694ca3a59339a693ae8ca887_49290_800x0_resize_q75_box.jpg 800w, /p/2024081101/vllm_hub20bbea5694ca3a59339a693ae8ca887_49290_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="228" 
+                        loading="lazy"
+                        alt="Featured image of post vLLM CPU和GPU模式署和推理 Qwen2 等大语言模型详细教程" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">vLLM CPU和GPU模式署和推理 Qwen2 等大语言模型详细教程</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>vLLM默认并不支持纯CPU模式部署和推理模式，老牛同学应网友要求，根据vLLM官网整理vLLM在CPU模式下如何部署和推理大语音模型，并以Qwen2为了进行验证和演示……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-08-11
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：9 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>老牛同学在前面文章中，介绍了不同大模型的部署和推理方式。有网友给老牛同学留言，希望老牛同学能写一篇使用 <strong>vLLM</strong> 通过 CPU 和 GPU 推理 <strong>Qwen2</strong> 等大语言模型的文章，老牛同学决定本期安排起来。</p>
+<p>由于<strong>vLLM</strong>默认并不支持 CPU 部署和推理，为了验证和演示<strong>CPU</strong>部署和推理过程，老牛同学肝了周六 1 个晚上和周日大半天，目前都成功了。因<strong>vLLM</strong>通过<strong>CPU</strong>部署推理的文档少之又少，官网有些地方也不是很明确，导致老牛同学在执行过程中走了不少弯路。因此，老牛同学希望通过本文，能帮助大家避免踩坑和走弯路。</p>
+<p>通过本文，老牛同学将介绍<strong>vLLM</strong>的 3 部分内容：</p>
+<ol>
+<li><strong>CPU</strong>模式下，如果编译打包<strong>vLLM</strong>框架（你没有看错：<strong>CPU</strong>模式需要我们自己编译打包）</li>
+<li>通过<strong>CPU</strong>模式，演示多种方式部署和推理<strong>Qwen2</strong>大模型（其他模型也一样）：本地模式、部署 API 服务、API 客户端、WebUI 等方式</li>
+<li>最后，在<strong>GPU</strong>模式，简单介绍<strong>vLLM</strong>部署和推理；相比<strong>CPU</strong>环境，简单太多了，因为<strong>vLLM</strong>默认就只支持<strong>GPU</strong>环境</li>
+</ol>
+<p><strong>vLLM</strong> 官网源代码地址：<a class="link" href="https://github.com/vllm-project/vllm"  target="_blank" rel="noopener"
+    >https://github.com/vllm-project/vllm</a></p>
+<p><strong>vLLM</strong> 支持目前主流大模型，详细列表见官网：<a class="link" href="https://docs.vllm.ai/en/latest/models/supported_models.html"  target="_blank" rel="noopener"
+    >https://docs.vllm.ai/en/latest/models/supported_models.html</a></p>
+<p><strong>Qwen2</strong> 系列大模型在<strong>vLLM</strong>支持大模型之列，本文将详细介绍通过<strong>vLLM</strong>部署和推理<strong>Qwen2-0.5B</strong>大语言模型（之所以选择<strong>0.5B</strong>小尺寸模型，纯粹下载更快、演示更方便，其他<strong>vLLM</strong>所支持的所有大模型，其部署和推理过程<strong>完全一样</strong>，大家可以根据自己的需要选择不同的模型）</p>
+<h1 id="vllm-环境准备">vLLM 环境准备</h1>
+<p>特别注意的是：<strong>vLLM</strong>目前只支持<strong>Linux</strong>操作系统（包括<strong>Windows WSL</strong>子系统），因此环境准备分为 2 部分：</p>
+<ol>
+<li>Linux 环境准备：我们的操作系统如果是<strong>Linux</strong>系统，那就无需其他操作；如果是<strong>Windows</strong>操作系统，需要首先安装和配置好<strong>WSL</strong>子系统，老牛同学就不介绍（本教程老牛同学也是用的<strong>Windows WSL</strong> Ubuntu 子系统）</li>
+<li>Python 研发环境准备：老牛默认使用<strong>Miniconda</strong>，需要安装和设置。老牛同学稍微进行介绍，大模型研发环境配置详细文档，参加老牛同学之前的文章：<a class="link" href="https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w"  target="_blank" rel="noopener"
+    >大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）</a></li>
+</ol>
+<h2 id="安装-miniconda-包管理工具">安装 Miniconda 包管理工具</h2>
+<p><strong>Linux</strong>/<strong>Windows WSL</strong>系统，我们可以通过命令行完成安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir -p ~/miniconda3
+</span></span><span class="line"><span class="cl">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+</span></span><span class="line"><span class="cl">bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+</span></span><span class="line"><span class="cl">rm -rf ~/miniconda3/miniconda.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Shell 上下文激活<strong>Miniconda</strong>相关命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">~/miniconda3/bin/conda init bash
+</span></span><span class="line"><span class="cl">~/miniconda3/bin/conda init zsh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">source</span> /home/obullxl/.bashrc
+</span></span><span class="line"><span class="cl"><span class="nb">source</span> /home/obullxl/.zshrc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="设置-miniconda-国内镜像">设置 Miniconda 国内镜像</h2>
+<p>配置镜像是为了提升依赖包下载速度，老牛同学强烈建议进行配置。</p>
+<p><strong>Miniconda</strong>配置文件路径：<code>~/.condarc</code>，一般情况下配置文件不存在，我们可以创建并初始化它：<code>conda config --set show_channel_urls yes</code></p>
+<p>然后打开配置文件，设置依赖包镜像渠道：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">show_channel_urls: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">channels:
+</span></span><span class="line"><span class="cl">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+</span></span><span class="line"><span class="cl">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+</span></span><span class="line"><span class="cl">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+</span></span><span class="line"><span class="cl">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+</span></span><span class="line"><span class="cl">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+</span></span><span class="line"><span class="cl">  - defaults
+</span></span><span class="line"><span class="cl">custom_channels:
+</span></span><span class="line"><span class="cl">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span class="line"><span class="cl">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span class="line"><span class="cl">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span class="line"><span class="cl">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span class="line"><span class="cl">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span class="line"><span class="cl">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span class="line"><span class="cl">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>保存配置文件，我可以查看配置是否生效：<code>conda info</code></p>
+<p><img src="/p/2024081101/01.jpg"
+	width="1422"
+	height="1252"
+	srcset="/p/2024081101/01_hu8f856b97e3474906ce6506ac88e9b862_246279_480x0_resize_q75_box.jpg 480w, /p/2024081101/01_hu8f856b97e3474906ce6506ac88e9b862_246279_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Conda配置信息"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="113"
+		data-flex-basis="272px"
+	
+></p>
+<h2 id="设置-python-版本和虚拟环境">设置 Python 版本和虚拟环境</h2>
+<p>接下来，我们通过<strong>Minicodan</strong>安装 Python 虚拟环境：<code>conda create --name vLLM python=3.10 -y</code></p>
+<ul>
+<li>虚拟环境名：<strong>vLLM</strong></li>
+<li>Python 版本：<strong>3.10</strong></li>
+</ul>
+<p>虚拟环境安装完成之后，我们激活环境：<code>conda activate vLLM</code></p>
+<p><strong>特别注意</strong>：Python 版本号建议为<code>3.10</code>，老牛同学刚开始使用<code>3.12</code>后续过程出现不兼容问题！</p>
+<h1 id="下载-qwen2-模型权重文件">下载 Qwen2 模型权重文件</h1>
+<p>接下来，我们下载<strong>Qwen2</strong>大模型权重文件，共有 3 种方式：Git 下载、SDK 下载、命令行下载（推荐：<strong>Git</strong>方式）</p>
+<h2 id="下载-qwen2-模型权重文件git-方式">下载 Qwen2 模型权重文件（Git 方式）</h2>
+<p>我们将通过<strong>Git</strong>下载权重文件，因此先检测一下<strong>Git</strong>是否安装：<code>git</code></p>
+<p>若没有安装，则通过命令进行安装：<code>sudo apt-get install git</code></p>
+<p>如果想更新<strong>Git</strong>版本，则可执行命令：<code>sudo apt-get update</code></p>
+<p>同时，<strong>Qwen2</strong>模型权重文件比较大，我们需要用到 Git 大文件系统，因此需要提前安装好：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get install git-lfs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Git</strong>准备就绪，我们开始下载模型权重文件到本地（老牛同学目录：<code>/home/obullxl/ModelSpace/Qwen2-0.5B</code>）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 创建目录</span>
+</span></span><span class="line"><span class="cl">mkdir -p ~/ModelSpace <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/ModelSpace
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 下载文件</span>
+</span></span><span class="line"><span class="cl">git lfs install
+</span></span><span class="line"><span class="cl">git clone https://www.modelscope.cn/qwen/qwen2-0.5b.git Qwen2-0.5B
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下载过程中，如果因网络等原因中断，我们可以继续断点下载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> ~/ModelSpace/Qwen2-0.5B
+</span></span><span class="line"><span class="cl">git lfs pull<span class="sb">`</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下载成功之后，我们可以看到<strong>Qwen2</strong>的模型权重文件列表：</p>
+<p><img src="/p/2024081101/02.jpg"
+	width="1069"
+	height="498"
+	srcset="/p/2024081101/02_hu3e6428f4d09a47d255a05c2ff307cc2a_112249_480x0_resize_q75_box.jpg 480w, /p/2024081101/02_hu3e6428f4d09a47d255a05c2ff307cc2a_112249_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Qwen2模型权重文件"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="214"
+		data-flex-basis="515px"
+	
+></p>
+<h2 id="下载-qwen2-模型权重文件sdk-和命令行方式">下载 Qwen2 模型权重文件（SDK 和命令行方式）</h2>
+<p>当然，我们还可以通过以下 2 种方式下载模型权重文件：</p>
+<ol>
+<li>通过 SDK 下载：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">modelscope</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">modelscope</span> <span class="kn">import</span> <span class="n">snapshot_download</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_dir</span> <span class="o">=</span> <span class="n">snapshot_download</span><span class="p">(</span><span class="s1">&#39;qwen/qwen2-0.5b&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>通过命令行下载：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install modelscope
+</span></span><span class="line"><span class="cl">modelscope download --model qwen/qwen2-0.5b
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="使用-vllm-部署和推理大模型">使用 vLLM 部署和推理大模型</h1>
+<p><strong>特别注意</strong>：<strong>vLLM</strong>的依赖包默认支持 GPU 部署和推理，如果使用<strong>CPU</strong>推理，我们需要根据<strong>vLLM</strong>源代码重新编译打包！</p>
+<p>【<strong>GPU 部署和推理</strong>】比较简单，通过 PIP 直接安装依赖包即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install vLLM
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>【<strong>CPU 部署和推理</strong>】我们需要下载<strong>vLLM</strong>源代码，自己编译打包和安装：</p>
+<p>首先，下载<strong>vLLM</strong>源代码（老牛同学目录：<code>~/CodeSpace/vllm-project</code>）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir -p ~/CodeSpace
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~/CodeSpace
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git clone https://github.com/vllm-project/vllm.git vllm-project
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，我们安装源代码<strong>GCC 编译器</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get update  -y
+</span></span><span class="line"><span class="cl">sudo apt-get install -y gcc-12 g++-12 libnuma-dev
+</span></span><span class="line"><span class="cl">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 <span class="m">10</span> --slave /usr/bin/g++ g++ /usr/bin/g++-12
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，我们需要安装<strong>vLLM</strong>便于打包的依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> ~/CodeSpace/vllm-project
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pip install --upgrade pip
+</span></span><span class="line"><span class="cl">pip install wheel packaging ninja <span class="s2">&#34;setuptools&gt;=49.4.0&#34;</span> numpy
+</span></span><span class="line"><span class="cl">pip install -v -r requirements-cpu.txt --extra-index-url https://download.pytorch.org/whl/cpu
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，我们可以进行<strong>vLLM</strong>打包安装了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> ~/CodeSpace/vllm-project
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">VLLM_TARGET_DEVICE</span><span class="o">=</span>cpu python setup.py install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>vLLM</strong>打包安装完成，我们就可以开始对<strong>Qwen2</strong>大模型进行部署和推理了：</p>
+<h2 id="vllm-本地大模型部署和推理">vLLM 本地大模型部署和推理</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Qwen2-vLLM-Local.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">vllm</span> <span class="kn">import</span> <span class="n">LLM</span><span class="p">,</span> <span class="n">SamplingParams</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置环境变量</span>
+</span></span><span class="line"><span class="cl"><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;VLLM_TARGET_DEVICE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cpu&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 模型ID：我们下载的模型权重文件目录</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/obullxl/ModelSpace/Qwen2-0.5B&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Tokenizer初始化</span>
+</span></span><span class="line"><span class="cl"><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model_dir</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">local_files_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Prompt提示词</span>
+</span></span><span class="line"><span class="cl"><span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;You are a helpful assistant.&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;天空为什么是蓝色的？&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">messages</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tokenize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 初始化大语言模型</span>
+</span></span><span class="line"><span class="cl"><span class="n">llm</span> <span class="o">=</span> <span class="n">LLM</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">=</span><span class="n">model_dir</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tensor_parallel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># CPU无需张量并行</span>
+</span></span><span class="line"><span class="cl">    <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 超参数：最多512个Token</span>
+</span></span><span class="line"><span class="cl"><span class="n">sampling_params</span> <span class="o">=</span> <span class="n">SamplingParams</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">top_p</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">repetition_penalty</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 模型推理输出</span>
+</span></span><span class="line"><span class="cl"><span class="n">outputs</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">([</span><span class="n">text</span><span class="p">],</span> <span class="n">sampling_params</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prompt</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">prompt</span>
+</span></span><span class="line"><span class="cl">    <span class="n">generated_text</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Prompt提示词: </span><span class="si">{</span><span class="n">prompt</span><span class="si">!r}</span><span class="s1">, 大模型推理输出: </span><span class="si">{</span><span class="n">generated_text</span><span class="si">!r}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2024081101/03.jpg"
+	width="1461"
+	height="855"
+	srcset="/p/2024081101/03_hu19783cd9d60b9ee37fff74b3ddac7b5b_339469_480x0_resize_q75_box.jpg 480w, /p/2024081101/03_hu19783cd9d60b9ee37fff74b3ddac7b5b_339469_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="vLLM本地推理Qwen2大模型"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="170"
+		data-flex-basis="410px"
+	
+></p>
+<h2 id="发布-api-服务和调用推理">发布 API 服务和调用推理</h2>
+<p>本地部署推理只能在一台服务器完成，我们也通过<strong>vLLM</strong>把本地大模型部署成 OpenAI API 服务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python -m vllm.entrypoints.openai.api_server --model ~/ModelSpace/Qwen2-0.5B
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>默认情况下，API 服务端口为<strong>8000</strong>，我们可通过 <code>--port</code> 参数设置服务端口；同时，可通过<code>--host</code> 参数设置服务地址：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python -m vllm.entrypoints.openai.api_server --model /home/obullxl/ModelSpace/Qwen2-0.5B --port <span class="m">8000</span> --host 0.0.0.0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>API 服务部署成功之后，可以通过 CURL 命令<strong>验证</strong>服务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Qwen2-vLLM-CURL.py</span>
+</span></span><span class="line"><span class="cl">curl http://localhost:8000/v1/chat/completions -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -d <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;model&#34;: &#34;/home/obullxl/ModelSpace/Qwen2-0.5B&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;messages&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="s1">    {&#34;role&#34;: &#34;system&#34;, &#34;content&#34;: &#34;You are a helpful assistant.&#34;},
+</span></span></span><span class="line"><span class="cl"><span class="s1">    {&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;天空为什么是蓝色的？&#34;}
+</span></span></span><span class="line"><span class="cl"><span class="s1">  ],
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;temperature&#34;: 0.7,
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;top_p&#34;: 0.8,
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;repetition_penalty&#34;: 1.05,
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;max_tokens&#34;: 512
+</span></span></span><span class="line"><span class="cl"><span class="s1">}&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2024081101/04.jpg"
+	width="1450"
+	height="400"
+	srcset="/p/2024081101/04_hu7a7a8b1c502a996b70c83160eee15493_204982_480x0_resize_q75_box.jpg 480w, /p/2024081101/04_hu7a7a8b1c502a996b70c83160eee15493_204982_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="CURL调用Qwen2大模型推理"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="362"
+		data-flex-basis="870px"
+	
+></p>
+<p>或者，我们可以通过 Python 客户端调用<strong>API 访问服务</strong>：</p>
+<p>若没有安装<strong>openai</strong>依赖包，需要提前安装一下：<code>pip install openai</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Qwen2-vLLM-OpenAI.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># OpenAI初始化</span>
+</span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;EMPTY&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000/v1&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">chat_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;/home/obullxl/ModelSpace/Qwen2-0.5B&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;You are a helpful assistant.&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;天空为什么是蓝色的？&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">top_p</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Qwen2推理结果:&#39;</span><span class="p">,</span> <span class="n">chat_response</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2024081101/05.jpg"
+	width="1443"
+	height="193"
+	srcset="/p/2024081101/05_hua4bdc3d8e5612566815e364436f9047c_97641_480x0_resize_q75_box.jpg 480w, /p/2024081101/05_hua4bdc3d8e5612566815e364436f9047c_97641_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="API客户端调用Qwen2大模型推理"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="747"
+		data-flex-basis="1794px"
+	
+></p>
+<p>我们还可以通过 WebUI 访问我们部署的 API 服务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install gradio
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Qwen2-vLLM-WebUI.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">argparse</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">http_bot</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;User-Agent&#34;</span><span class="p">:</span> <span class="s2">&#34;vLLM Client&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pload</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;prompt&#34;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;stream&#34;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;max_tokens&#34;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">model_url</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">json</span><span class="o">=</span><span class="n">pload</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_lines</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                     <span class="n">decode_unicode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                     <span class="n">delimiter</span><span class="o">=</span><span class="sa">b</span><span class="s2">&#34;</span><span class="se">\0</span><span class="s2">&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">chunk</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">output</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;text&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="n">output</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">build_demo</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Blocks</span><span class="p">()</span> <span class="k">as</span> <span class="n">demo</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gr</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&#34;# vLLM text completion demo</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">inputbox</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&#34;Input&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                              <span class="n">placeholder</span><span class="o">=</span><span class="s2">&#34;Enter text and press ENTER&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">outputbox</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&#34;Output&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                               <span class="n">placeholder</span><span class="o">=</span><span class="s2">&#34;Generated result from the model&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">inputbox</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">http_bot</span><span class="p">,</span> <span class="p">[</span><span class="n">inputbox</span><span class="p">],</span> <span class="p">[</span><span class="n">outputbox</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">demo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--host&#34;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--port&#34;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">8001</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--model-url&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">default</span><span class="o">=</span><span class="s2">&#34;http://0.0.0.0:8000/generate&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">demo</span> <span class="o">=</span> <span class="n">build_demo</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">demo</span><span class="o">.</span><span class="n">queue</span><span class="p">()</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">server_name</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">server_port</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">share</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动 WebUI 服务：<code>python Qwen2-vLLM-WebUI.py</code></p>
+<p>浏览器打开 WebUI 界面：<code>http://localhost:8001</code>（如是<strong>Windows WSL</strong>子系统，可以通过<code>ifconfig</code>命令、或者直接通过<code>ifconfig | grep eth0 -n1 | grep inet | awk '{print $3}'</code>命令获取 WSL 的 IP 地址），通过 WebUI 我们就可以与大模型对话了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">Running on local URL:  http://127.0.0.1:8001
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果我们是<strong>Windows WSL</strong>子系统，那么需要把 WebUI 设置为共享模式，否则会有如下提示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">Running on local URL:  http://127.0.0.1:8001
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Could not create share link. Missing file: /home/obullxl/miniconda3/envs/vLLM/lib/python3.10/site-packages/gradio/frpc_linux_amd64_v0.2.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Please check your internet connection. This can happen if your antivirus software blocks the download of this file. You can install manually by following these steps:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. Download this file: https://cdn-media.huggingface.co/frpc-gradio-0.2/frpc_linux_amd64
+</span></span><span class="line"><span class="cl">2. Rename the downloaded file to: frpc_linux_amd64_v0.2
+</span></span><span class="line"><span class="cl">3. Move the file to this location: /home/obullxl/miniconda3/envs/vLLM/lib/python3.10/site-packages/gradio
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>frpc_linux_amd64</strong>文件默认在 HF 上，需要<strong>通畅的网络</strong>，老牛同学已经下载好，请自取：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">链接: https://pan.baidu.com/s/1CYDcbkUEhhhCEuzb5z8xXA?pwd=LNTX
+</span></span><span class="line"><span class="cl">提取码: LNTX
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="gpu-多卡部署和推理大模型">GPU 多卡部署和推理大模型</h2>
+<p>非常抱歉，因老牛同学没有 GPU 卡，因此本文此部分通过 GPU 部署和推理的结果无法演示和截图。但老牛同学查看和研究了官网，总结了 GPU 多卡的使用方法，大家若有卡的话可以验证一下。若本文此部分有不正确或者遗漏之处，还望留言指出，老牛同学进行修正完善，谢谢大家！</p>
+<p>我们可以通过<code>tensor_parallel_size</code>参数启用 GPU 多卡分布式并行推理能力，提高大模型推理的吞吐量。</p>
+<p>【<strong>vLLM 本地大模型部署和推理</strong>】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">vllm</span> <span class="kn">import</span> <span class="n">LLM</span><span class="p">,</span> <span class="n">SamplingParams</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ...... 省略部分</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">llm</span> <span class="o">=</span> <span class="n">LLM</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">model</span><span class="o">=</span><span class="n">model_dir</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tensor_parallel_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ....... 其他省略</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>【<strong>发布 API 服务和调用推理</strong>】</p>
+<p>同样的，也可以通过 <code>--tensor-parallel-size</code> 参数部署并发布 API 服务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python -m vllm.entrypoints.api_server --model /home/obullxl/ModelSpace/Qwen2-0.5B --tensor-parallel-size <span class="m">4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>客户端的使用方法，与之前完全一样~</p>
+<h1 id="总结vllm-建议生产环境部署推理">总结：vLLM 建议生产环境部署推理</h1>
+<p>至此，通过<strong>vLLM</strong>部署和推理<strong>Qwen2</strong>等大语言模型的教程就结束了。<strong>vLLM</strong>官方默认支持 GPU 部署和推理，<strong>CPU</strong>则需要单独编译打包，比较繁琐。</p>
+<p>老牛同学建议：如果我们是研发、联调、WSL 等环境使用大语言模型，建议就是直接用<strong>Llama.cpp</strong>、<strong>Ollama</strong>等部署和推理工具；生产部署是 Linux 操作系统，可以使用<strong>vLLM</strong>部署和推理。</p>
+<p>大家可以看出，其实通过<strong>Llama.cpp</strong>、<strong>Ollama</strong>等方式部署和推理大语言模型的方式，其实都大同小异：</p>
+<ol>
+<li>本地部署和推理：先下载模型权重文件，然后通过对应的 Python 模块完成部署和推理</li>
+<li>通过 API 部署和推理：先把本地模型部署到某个 API 服务端口，然后通过 API 客户端完成调用推理</li>
+</ol>
+<p>本文所有<strong>源代码</strong>仓库地址：<a class="link" href="https://gitee.com/obullxl/SunningTX/tree/master/PythonTX/Qwen-vLLM"  target="_blank" rel="noopener"
+    >https://gitee.com/obullxl/SunningTX/tree/master/PythonTX/Qwen-vLLM</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/NYTQVBC4ug73o_VdQy-TeQ"  target="_blank" rel="noopener"
+    >LivePortrait 数字人：开源的图生视频模型，本地部署和专业视频制作详细教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg"  target="_blank" rel="noopener"
+    >本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g"  target="_blank" rel="noopener"
+    >玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A"  target="_blank" rel="noopener"
+    >ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q"  target="_blank" rel="noopener"
+    >Ollama 完整教程：本地 LLM 管理、WebUI 对话、Python/Java 客户端 API 应用</a></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/vllm/">VLLM</a>
+        
+            <a href="/tags/qwen2/">Qwen2</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024081401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024081401/MiniCPM-V.49f657789c691fc23622de7fa34bfbf2_huc8b43462814d34d316edcb67d57199f7_46284_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MiniCPM-V 2.6 面壁“小钢炮”，多图、视频理解多模态模型，部署和推理实战教程"
+                        data-key="2024081401" 
+                        data-hash="md5-SfZXeJxpH8I2It5/o0v78g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MiniCPM-V 2.6 面壁“小钢炮”，多图、视频理解多模态模型，部署和推理实战教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030301/00.ea08cfef206e5f94acfff72f27329886_hu42cdc8535b0a762ff23c72abe3e7986b_81971_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！"
+                        data-key="2025030301" 
+                        data-hash="md5-6gjP7yBuX5Ss//cvJzKYhg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025021401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025021401/00.78d40d30b90012309e2e0c835aef8ac4_hu38a63772fa259397b2f70878a2b36caa_40924_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 欧拉角和四元数，3D 游戏开发中“旋转”难题的通俗讲解和应用实战"
+                        data-key="2025021401" 
+                        data-hash="md5-eNQNMLkAEjCeLgyDWu&#43;KxA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">欧拉角和四元数，3D 游戏开发中“旋转”难题的通俗讲解和应用实战</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

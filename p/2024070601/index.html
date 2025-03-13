@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='大语言模型在垂直细分领域存在知识局限、幻觉、数据安全等一些问题，可通过RAG（检索增强生成）方案来解决。本文基于AnythingLLM框架，搭建团队私有知识库系统，并进行使用和验证，RAG系统在保留输出的有效性同时，还保留了创造性……'>
+<title>基于Qwen2/Lllama3等大模型，部署团队私有化RAG知识库系统的详细教程（Docker&#43;AnythingLLM）</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024070601/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='基于Qwen2/Lllama3等大模型，部署团队私有化RAG知识库系统的详细教程（Docker&#43;AnythingLLM）'>
+<meta property='og:description' content='大语言模型在垂直细分领域存在知识局限、幻觉、数据安全等一些问题，可通过RAG（检索增强生成）方案来解决。本文基于AnythingLLM框架，搭建团队私有知识库系统，并进行使用和验证，RAG系统在保留输出的有效性同时，还保留了创造性……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024070601/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Qwen' /><meta property='article:tag' content='RAG' /><meta property='article:tag' content='AnythingLLM' /><meta property='article:tag' content='Docker' /><meta property='article:published_time' content='2024-07-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-06T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024070601/00.png' />
+<meta name="twitter:title" content="基于Qwen2/Lllama3等大模型，部署团队私有化RAG知识库系统的详细教程（Docker&#43;AnythingLLM）">
+<meta name="twitter:description" content="大语言模型在垂直细分领域存在知识局限、幻觉、数据安全等一些问题，可通过RAG（检索增强生成）方案来解决。本文基于AnythingLLM框架，搭建团队私有知识库系统，并进行使用和验证，RAG系统在保留输出的有效性同时，还保留了创造性……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024070601/00.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#环境准备windows-打开虚拟化功能hyper-v-和-wsl">环境准备：Windows 打开虚拟化功能（Hyper-V 和 WSL）</a></li>
+    <li><a href="#环境准备docker-安装和配置">环境准备：Docker 安装和配置</a></li>
+    <li><a href="#anythingllm-安装和配置">AnythingLLM 安装和配置</a></li>
+    <li><a href="#anythingllm-导入数据和使用">AnythingLLM 导入数据和使用</a></li>
+    <li><a href="#总结和问题">总结和问题</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024070601/">
+                <img src="/p/2024070601/00_hu98e9cb01058f1c96227732799c120259_28514_800x0_resize_box_3.png"
+                        srcset="/p/2024070601/00_hu98e9cb01058f1c96227732799c120259_28514_800x0_resize_box_3.png 800w, /p/2024070601/00_hu98e9cb01058f1c96227732799c120259_28514_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="340" 
+                        loading="lazy"
+                        alt="Featured image of post 基于Qwen2/Lllama3等大模型，部署团队私有化RAG知识库系统的详细教程（Docker&#43;AnythingLLM）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">基于Qwen2/Lllama3等大模型，部署团队私有化RAG知识库系统的详细教程（Docker&#43;AnythingLLM）</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>大语言模型在垂直细分领域存在知识局限、幻觉、数据安全等一些问题，可通过RAG（检索增强生成）方案来解决。本文基于AnythingLLM框架，搭建团队私有知识库系统，并进行使用和验证，RAG系统在保留输出的有效性同时，还保留了创造性……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-07-06
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：8 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>自 ChatGPT 发布以来，大型语言模型（Large Language Model，<strong>LLM</strong>，大模型）得到了飞速发展，它在处理复杂任务、增强自然语言理解和生成类人文本等方面的能力让人惊叹，几乎各行各业均可从中获益。</p>
+<p>然而，在一些垂直领域，这些开源或闭源的通用基础大模型也暴露了一些问题，主要体现在以下 3 个方面：</p>
+<ol>
+<li><strong>知识的局限性：</strong> 大模型的知识源于训练数据，目前主流大模型（如：通义千问、文心一言等）的训练数据基本来源于网络公开的数据。因此，非公开的、离线的、实时的数据大模型是无法获取到（如：团队内部实时业务数据、私有的文档资料等），这些数据相关的知识也就无从具备。</li>
+<li><strong>幻觉问题：</strong> 大模型生成人类文本底层原理是基于概率（目前还无法证明大模型有意识），所以它有时候会<strong>一本正经地胡说八道</strong>，特别是在不具备某方面的知识情况下。当我们也因缺乏这方面知识而咨询大模型时，大模型的幻觉问题会各我们造成很多困扰，因为我们也无法区分其输出的正确性。</li>
+<li><strong>数据的安全性：</strong> 对于个人、创新团队、企业来说，<strong>数据安全</strong>至关重要，老牛同学相信没有谁会愿意承担数据泄露的风险，把自己内部私有数据上传到第三方平台进行模型训练。这是一个矛盾：我们既要借助通用大模型能力，又要保障数据的安全性！</li>
+</ol>
+<p>为了解决以上通用大模型问题，<strong>检索增强生成</strong>（Retrieval-Augmented Generation，<strong>RAG</strong>）方案就应运而生了：</p>
+<p><img src="/p/2024070601/01.png"
+	width="1317"
+	height="606"
+	srcset="/p/2024070601/01_hubda65f563eaca1269a4ab16adc424432_58919_480x0_resize_box_3.png 480w, /p/2024070601/01_hubda65f563eaca1269a4ab16adc424432_58919_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="RAG主要流程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="217"
+		data-flex-basis="521px"
+	
+></p>
+<p><strong>RAG</strong> 的主要流程主要包含以下 2 个阶段：</p>
+<ol>
+<li><strong>数据准备阶段：</strong> 管理员将内部私有数据向量化后入库的过程，<strong>向量化</strong>是一个将文本数据转化为向量矩阵的过程，该过程会直接影响到后续检索的效果；<strong>入库</strong>即将向量数据构建索引，并存储到向量数据库的过程。</li>
+<li><strong>用户应用阶段：</strong> 根据用户的 Prompt 提示词，通过检索召回与 Prompt 提示词相关联的知识，并融入到原 Prompt 提示词中，作为大模型的输入 Prompt 提示词，通用大模型因此生成相应的输出。</li>
+</ol>
+<p>从上面 RAG 方案我们可以看出，通过与通用大模型相结合，我们可搭建团队私有的内部本地知识库，并能有效的解决通用大模型存在的<strong>知识局限性</strong>、<strong>幻觉问题</strong>和<strong>隐私数据安全</strong>等问题。</p>
+<p>目前市面上已经有多个开源 RAG 框架，老牛同学将选择<strong>AnythingLLM</strong>框架（<strong>16.8K ☆</strong>，<a class="link" href="https://github.com/Mintplex-Labs/anything-llm"  target="_blank" rel="noopener"
+    >https://github.com/Mintplex-Labs/anything-llm</a>）与大家一起来部署我们自己或者团队内部的本地知识库。整个部署过程将涉及以下几个方面：</p>
+<ol>
+<li><strong>环境准备：</strong> <strong>AnythingLLM</strong>框架推荐使用 Docker 部署，因此我们需要提前把 Docker 安装和配置好</li>
+<li><strong>大模型准备：</strong> 老牛同学继续使用<strong>Qwen2-7B</strong>大模型，大家可以根据自己实际情况选择，无特殊要求</li>
+<li><strong>RAG 部署和使用：</strong> 即 AnythingLLM 安装和配置，并最终使用我们大家的 RAG 系统</li>
+</ol>
+<h2 id="环境准备windows-打开虚拟化功能hyper-v-和-wsl">环境准备：Windows 打开虚拟化功能（Hyper-V 和 WSL）</h2>
+<p><strong>友情提示：</strong> 老牛同学用的是 Windows 操作系统，因此下面是 Windows 的配置方式。</p>
+<p>安装 Docker 需要用到虚拟化，因此需要 Windows 系统打开<strong>Hyper-V</strong>和<strong>WSL 子系统</strong>功能。如果是 <strong>Windows 11 家庭版</strong>，默认并没有安装<strong>Hyper-V</strong>功能，可以通过以下方式进行安装：</p>
+<p><img src="/p/2024070601/02.png"
+	width="1374"
+	height="951"
+	srcset="/p/2024070601/02_huaa4604baf83c1d40d70bfe532386980a_94185_480x0_resize_box_3.png 480w, /p/2024070601/02_huaa4604baf83c1d40d70bfe532386980a_94185_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Windows家庭版"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="346px"
+	
+></p>
+<p>【第一步（<strong>家庭版</strong>）：安装 Hyper-V 依赖包】</p>
+<ol>
+<li>新建一个 txt 临时文本，并复制以下代码并保存，之后把该临时文件重命名为<code>Hyper-V.bat</code></li>
+<li><strong>右键</strong>以管理员方式运行<code>Hyper-V.bat</code>，本代码自动安装相关包，完成之后输入<code>Y</code>重启电脑后即可</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">pushd</span> <span class="s2">&#34;%~dp0&#34;</span>
+</span></span><span class="line"><span class="cl">dir /b %SystemRoot%<span class="se">\s</span>ervicing<span class="se">\P</span>ackages<span class="se">\*</span>Hyper-V*.mum &gt;hyper-v.txt
+</span></span><span class="line"><span class="cl"><span class="k">for</span> /f %%i in <span class="o">(</span><span class="s1">&#39;findstr /i . hyper-v.txt 2^&gt;nul&#39;</span><span class="o">)</span> <span class="k">do</span> dism /online /norestart /add-package:<span class="s2">&#34;%SystemRoot%\servicing\Packages\%%i&#34;</span>
+</span></span><span class="line"><span class="cl">del hyper-v.txt
+</span></span><span class="line"><span class="cl">Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>【第二步：开启虚拟化功能】</p>
+<p>首先，打开 Windows 功能（即：控制面板）：</p>
+<p><img src="/p/2024070601/03.png"
+	width="1159"
+	height="1084"
+	srcset="/p/2024070601/03_hu225c1518dc74802b5eaf065abd77fd7f_88600_480x0_resize_box_3.png 480w, /p/2024070601/03_hu225c1518dc74802b5eaf065abd77fd7f_88600_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Windows功能"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="106"
+		data-flex-basis="256px"
+	
+></p>
+<p>然后，勾选以下 3 个选项（<strong>Hyper-V</strong>、<strong>适用于 Linux 的 Windows 子系统</strong>和<strong>虚拟机平台</strong>），打开虚拟化功能：</p>
+<p><img src="/p/2024070601/04.png"
+	width="790"
+	height="921"
+	srcset="/p/2024070601/04_hu2df9e01ea13779eba809f0148cac02bf_84226_480x0_resize_box_3.png 480w, /p/2024070601/04_hu2df9e01ea13779eba809f0148cac02bf_84226_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="打开虚拟化功能"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="85"
+		data-flex-basis="205px"
+	
+></p>
+<p>点击<strong>确定</strong>之后重启电脑即可！</p>
+<h2 id="环境准备docker-安装和配置">环境准备：Docker 安装和配置</h2>
+<p>Docker 安装和配置主要包含以下 2 个步骤：</p>
+<p>【第一步：下载 Docker 软件】</p>
+<p>下载和安装 Docker 软件：<a class="link" href="https://www.docker.com"  target="_blank" rel="noopener"
+    >https://www.docker.com</a></p>
+<p>如果大家和老牛同学一样，出现无法打开 Docker 官网的情况，则也可以通过以下方式下载最新的版本：</p>
+<ol>
+<li>打开 Docker 中文网站：<a class="link" href="https://docker.github.net.cn/desktop/release-notes/"  target="_blank" rel="noopener"
+    >https://docker.github.net.cn/desktop/release-notes/</a></li>
+<li>选择对应的安装软件，如果直接点击下载，可能还是无法下载。可以右键复制下载链接，然后通过<strong>迅雷</strong>进行下载（老牛同学亲测有效）</li>
+</ol>
+<p><img src="/p/2024070601/05.png"
+	width="1314"
+	height="423"
+	srcset="/p/2024070601/05_hu282c88f2eb8f06d7dea1f5446d540b80_32527_480x0_resize_box_3.png 480w, /p/2024070601/05_hu282c88f2eb8f06d7dea1f5446d540b80_32527_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Docker下载"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="310"
+		data-flex-basis="745px"
+	
+></p>
+<p>【第二步；Docker 安装和配置】</p>
+<p>下载完成之后，安装过程与普通的软件没有区别，安装完成之后需要注销电脑：</p>
+<p><img src="/p/2024070601/06.png"
+	width="1060"
+	height="735"
+	srcset="/p/2024070601/06_huf0be25c9c8c669eedd84ee52f682f01d_36435_480x0_resize_box_3.png 480w, /p/2024070601/06_huf0be25c9c8c669eedd84ee52f682f01d_36435_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Docker安装完成"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="346px"
+	
+></p>
+<p>登录操作系统之后，需要<strong>Accept</strong>同意 Docker 协议条款，然后注册登录或者<strong>Continue without signing in</strong>直接跳过，打开 Docker 软件。</p>
+<p><strong>设置镜像源：</strong> 点击右上角<strong>齿轮</strong>设置按钮，选择<strong>Docker Engine</strong>，打开设置页面，输入 Docker 镜像文件加速器地址：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;registry-mirrors&#34;</span><span class="err">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;https://docker.registry.cyou&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;https://mirror.baidubce.com&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果以上加速器地址不可用，可以使用阿里云个人私有的地址：<a class="link" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors"  target="_blank" rel="noopener"
+    >https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
+<p><img src="/p/2024070601/07.png"
+	width="1501"
+	height="1162"
+	srcset="/p/2024070601/07_huf0574f72b89daafca56ede6243a5c6a0_121832_480x0_resize_box_3.png 480w, /p/2024070601/07_huf0574f72b89daafca56ede6243a5c6a0_121832_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="设置Docker镜像源"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="310px"
+	
+></p>
+<p>点击<strong>Apply &amp; Restart</strong>按钮即可！</p>
+<h2 id="anythingllm-安装和配置">AnythingLLM 安装和配置</h2>
+<p>接下来，我们开始安装和部署<strong>AnythingLLM</strong>框架，包含以下 3 步：</p>
+<p>【<strong>第一步：</strong> 下载和启动 AnythingLLM 镜像】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull mintplexlabs/anythingllm
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2024070601/08.png"
+	width="1360"
+	height="778"
+	srcset="/p/2024070601/08_hu0dc5b9425e973744f2ea1f19cb8de84b_77870_480x0_resize_box_3.png 480w, /p/2024070601/08_hu0dc5b9425e973744f2ea1f19cb8de84b_77870_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Docker镜像下载"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="174"
+		data-flex-basis="419px"
+	
+></p>
+<p>可以通过以下命令，查看当前 Docker 的镜像列表：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;docker images
+</span></span><span class="line"><span class="cl">REPOSITORY                 TAG       IMAGE ID       CREATED      SIZE
+</span></span><span class="line"><span class="cl">mintplexlabs/anythingllm   latest    d950fa3b8011   <span class="m">2</span> days ago   2.94GB
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2024070601/09.png"
+	width="1752"
+	height="694"
+	srcset="/p/2024070601/09_hub8aadc34ed644536646daaef6f2bc307_92128_480x0_resize_box_3.png 480w, /p/2024070601/09_hub8aadc34ed644536646daaef6f2bc307_92128_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Docker镜像列表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="252"
+		data-flex-basis="605px"
+	
+></p>
+<p>【<strong>第二步：</strong> 启动 AnythingLLM 框架】</p>
+<p><strong>Windows 系统：</strong> AnythingLLM 镜像挂载和启动命令（因为命令有多行，需要通过<strong>PowerShell</strong>执行）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Run this in powershell terminal</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$env</span>:STORAGE_LOCATION<span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">\Documents\anythingllm&#34;</span><span class="p">;</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">If<span class="o">(</span>!<span class="o">(</span>Test-Path <span class="nv">$env</span>:STORAGE_LOCATION<span class="o">))</span> <span class="o">{</span>New-Item <span class="nv">$env</span>:STORAGE_LOCATION -ItemType Directory<span class="o">}</span><span class="p">;</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">If<span class="o">(</span>!<span class="o">(</span>Test-Path <span class="s2">&#34;</span><span class="nv">$env</span><span class="s2">:STORAGE_LOCATION\.env&#34;</span><span class="o">))</span> <span class="o">{</span>New-Item <span class="s2">&#34;</span><span class="nv">$env</span><span class="s2">:STORAGE_LOCATION\.env&#34;</span> -ItemType File<span class="o">}</span><span class="p">;</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">docker run -d -p 3001:3001 <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">--cap-add SYS_ADMIN <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">-v <span class="s2">&#34;</span><span class="nv">$env</span><span class="s2">:STORAGE_LOCATION`:/app/server/storage&#34;</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">-v <span class="s2">&#34;</span><span class="nv">$env</span><span class="s2">:STORAGE_LOCATION\.env:/app/server/.env&#34;</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">-e <span class="nv">STORAGE_DIR</span><span class="o">=</span><span class="s2">&#34;/app/server/storage&#34;</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">mintplexlabs/anythingllm<span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或者，<strong>Linux/MacOS 系统：</strong> AnythingLLM 镜像挂载和启动命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">STORAGE_LOCATION</span><span class="o">=</span><span class="nv">$HOME</span>/anythingllm <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>mkdir -p <span class="nv">$STORAGE_LOCATION</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>touch <span class="s2">&#34;</span><span class="nv">$STORAGE_LOCATION</span><span class="s2">/.env&#34;</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>docker run -d -p 3001:3001 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--cap-add SYS_ADMIN <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="si">${</span><span class="nv">STORAGE_LOCATION</span><span class="si">}</span>:/app/server/storage <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="si">${</span><span class="nv">STORAGE_LOCATION</span><span class="si">}</span>/.env:/app/server/.env <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">STORAGE_DIR</span><span class="o">=</span><span class="s2">&#34;/app/server/storage&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>mintplexlabs/anythingllm
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动完成，通过浏览器打开<strong>AnythingLLM</strong>界面：<a class="link" href="http://localhost:3001"  target="_blank" rel="noopener"
+    >http://localhost:3001</a></p>
+<p><img src="/p/2024070601/10.png"
+	width="1495"
+	height="931"
+	srcset="/p/2024070601/10_hu2784c5e6d51ab4b108467ae591f489d5_224471_480x0_resize_box_3.png 480w, /p/2024070601/10_hu2784c5e6d51ab4b108467ae591f489d5_224471_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="AnythingLLM初始界面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="385px"
+	
+></p>
+<p>【<strong>第三步：</strong> 配置 AnythingLLM】</p>
+<p>点击<strong>Get started</strong> 按钮，进入<strong>LLM 选择</strong>页面。老牛同学在前面文章中，分别介绍了大模型通过<strong>Ollama</strong>和<strong>OpenAI</strong>这 2 种主要的部署方式（包括：<strong>Llama3</strong>、<strong>Qwen2</strong>、<strong>Gemma2</strong>等）。</p>
+<p>老牛同学在这里选择<strong>Ollama</strong>方式，如果大家重新设置了端口号，则需要看下 Ollama URL 端口号是否正确，默认值为：<code>http://host.docker.internal:11434</code></p>
+<p><img src="/p/2024070601/11.png"
+	width="1072"
+	height="1065"
+	srcset="/p/2024070601/11_hucc256284c0239166dff439efac8f7d86_101001_480x0_resize_box_3.png 480w, /p/2024070601/11_hucc256284c0239166dff439efac8f7d86_101001_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="AnythingLLM确认配置"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="241px"
+	
+></p>
+<p>AnythingLLM 设置确认，包括：大模型提供方、词嵌入和向量数据库，这些配置后续还可以修改。</p>
+<p>最后，创建一个工作区，老牛同学设置的名称为：<code>RAG-ClassmateWX</code></p>
+<h2 id="anythingllm-导入数据和使用">AnythingLLM 导入数据和使用</h2>
+<p>上一步配置完成之后，无需任何其他配置，就可以和大模型对话聊天了，和通过其他客户端与大模型对话没有区别。接下来，我们需要导入我们内部私有数据，并进行验证。</p>
+<p>【第一步：导入内部数据】</p>
+<p>我们在电脑本地新建一个 txt 文件，文件名为：<code>为什么个人、团队等均有必要部署私有化的RAG知识库系统.txt</code>，文件内容就是本文的开头内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">自ChatGPT发布以来，大型语言模型（Large Language Model，LLM，大模型）得到了飞速发展，它在解决复杂任务、增强自然语言理解和生成类人文本等方面的能力让人惊叹，几乎各行各业均可从中获益。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">然而，在一些垂直领域，这些开源或闭源的通用的基础大模型也暴露了一些问题，主要有以下3个方面：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. **知识的局限性：** 大模型的知识源于训练数据，目前主流大模型（如：通义千问、文心一言等）的训练数据基本来源于网络公开的数据。因此，非公开的、离线的、实时的数据大模型是无法获取到（如：团队内部实时业务数据、私有的文档资料等），这些数据相关的知识也就无从具备。
+</span></span><span class="line"><span class="cl">2. **幻觉问题：** 大模型生成人类文本底层原理是基于概率（目前还无法证明大模型有意识），所以它有时候会**一本正经地胡说八道**，特别是在不具备某方面的知识情况下。当我们也因缺乏这方面知识而咨询大模型时，大模型的幻觉问题会各我们造成很多困扰，因为我们也无法区分其输出的正确性。
+</span></span><span class="line"><span class="cl">3. **数据的安全性：** 对于个人、创新团队、企业来说，**数据安全**至关重要，老牛同学相信没有谁会愿意承担数据泄露的风险，把自己内部私有数据上传到第三方平台进行模型训练。这是一个矛盾：我们既要借助通用大模型能力，又要保障数据的安全性！
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">为了解决以上3个大模型通用问题，**检索增强生成**（Retrieval-Augmented Generation，**RAG**）方案就应运而生了！
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>首先，点击<strong>RAG-ClassmateWX</strong>工作空间右边的<strong>上传</strong>图标，准备上传本 txt 文件：</p>
+<p><img src="/p/2024070601/12.png"
+	width="514"
+	height="484"
+	srcset="/p/2024070601/12_hu98a778b95c0dbdf2bb8e033364c91812_36178_480x0_resize_box_3.png 480w, /p/2024070601/12_hu98a778b95c0dbdf2bb8e033364c91812_36178_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="准备上传文件"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="106"
+		data-flex-basis="254px"
+	
+></p>
+<p>然后，点击 txt 文件并上传，并点击<strong>Move to workspace</strong>导入到工作空间：</p>
+<p><img src="/p/2024070601/13.png"
+	width="2179"
+	height="1186"
+	srcset="/p/2024070601/13_huca935a886981d4d2aa854a0f54008e70_155046_480x0_resize_box_3.png 480w, /p/2024070601/13_huca935a886981d4d2aa854a0f54008e70_155046_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="上传txt外部文件"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="440px"
+	
+></p>
+<p>最后，点击<strong>Save and Embed</strong>完成 txt 文本文件数据准备步骤（导入、向量化和入库等）。</p>
+<p>【第二步：内部数据使用和验证】</p>
+<p>回到主界面，输入刚才 txt 内部文件名：<strong>为什么个人、团队等均有必要部署私有化的 RAG 知识库系统</strong></p>
+<p><img src="/p/2024070601/14.png"
+	width="2184"
+	height="1410"
+	srcset="/p/2024070601/14_hu2dc45aa9fec1f6919603e85532deba6b_393792_480x0_resize_box_3.png 480w, /p/2024070601/14_hu2dc45aa9fec1f6919603e85532deba6b_393792_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="AnthingLLM的检索和结果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="154"
+		data-flex-basis="371px"
+	
+></p>
+<p>RAG 的回答感觉比我原文要好多了，大模型在引用了内部数据的同时，还展示自己的创造性！</p>
+<p>同时，老牛同学用同样的问题，咨询 AnythingLLM 的底层模型，结果就比较普通通用了，大家可以对比看下：</p>
+<p><img src="/p/2024070601/15.png"
+	width="1527"
+	height="871"
+	srcset="/p/2024070601/15_hu989f0fc1bac16160616ef5772d281c92_209073_480x0_resize_box_3.png 480w, /p/2024070601/15_hu989f0fc1bac16160616ef5772d281c92_209073_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="AnythingLLM底层大模型结果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="420px"
+	
+></p>
+<h2 id="总结和问题">总结和问题</h2>
+<p>和我们之前的大模型部署和应用过程相比，基于 AnythingLLM 的 RAG 实现整个部署过程比较繁琐，包括环境准备、Docker 安装和配置、AnythingLLM 配置等。然而，AnythingLLM 的使用过程却相对比较简单，我们只需要上传我们内部数据文件，AnythingLLM 框架屏蔽了中间的数据提取分割、向量化处理、向量索引和入库、检索召回和重组 Prompt 提示词等过程。</p>
+<p>同时，我们通过构建本地知识库，做了一个简单的测试验证，测试结果表明，在使用 RAG 的情况下，大模型的回答结果更加有效、更符合我们期望，同时具备了一定的创造性！</p>
+<p>老牛同学最后提个问题：检索召唤的过程，能否使用搜索引擎（如：Elastic Search）代替？欢迎大家留言讨论，我们共同学习进步！</p>
+<hr>
+<p>关注本公众号，我们共同学习交流进步 👇🏻👇🏻👇🏻</p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg"  target="_blank" rel="noopener"
+    >本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g"  target="_blank" rel="noopener"
+    >玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A"  target="_blank" rel="noopener"
+    >ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面</a></p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/qwen/">Qwen</a>
+        
+            <a href="/tags/rag/">RAG</a>
+        
+            <a href="/tags/anythingllm/">AnythingLLM</a>
+        
+            <a href="/tags/docker/">Docker</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025020901/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020901/00.bd904e836f1f55b5f6204ef73662e639_hu8a5434afd7142d25bc7a2119bc98b479_227024_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？"
+                        data-key="2025020901" 
+                        data-hash="md5-vZBOg28fVbX2IE73NmLmOQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025011201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025011201/00.5d0cfc3bb62e18d88e6e74f2a54f2d78_hu883d5e381d46374d51c67d277ad5095c_219525_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序"
+                        data-key="2025011201" 
+                        data-hash="md5-XQz8O7YuGNiObnTypU8teA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025010301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025010301/01.89d74cead58d6664c5af2c8bb70b6e23_hu5b4a41f27c7fe518c1493f019fcc5463_79100_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 使用Cursor &#43; Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战"
+                        data-key="2025010301" 
+                        data-hash="md5-iddM6tWNZmTFryyLtwtuIw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Cursor &#43; Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

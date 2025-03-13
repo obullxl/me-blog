@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>DeepSeek on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/deepseek/</link>
+        <description>Recent content in DeepSeek on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/deepseek/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</title>
+        <link>https://ntopic.cn/p/2025022101/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2025022101/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2025022101/00.jpg" alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！" /&gt;&lt;p&gt;在&lt;strong&gt;Phi-3&lt;/strong&gt;大模型发布之际，我们基于&lt;strong&gt;Termux&lt;/strong&gt;应用，在我的小米手机部署了&lt;strong&gt;Phi-3&lt;/strong&gt;模型：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/bNxHM3B7HOLNvJtjwvt8iw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;文章地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Termux&lt;/strong&gt;应用是一个终端模拟器，它允许我们安装 Linux 操作系统，然后在 Linux 操作系统中安装 Ollama，最后基于 Ollama 下载和推理大模型，虽然方法可行，但是存在一些局限：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;操作步骤繁琐，用户体验较差：安装 Linux 操作系统、启动系统、安装和启动 Ollama 等操作，都需要通过命令行完成，体验较差。&lt;/li&gt;
+&lt;li&gt;资源消耗较大：手机内存有限，Termux 应用、Linux 操作系统、Ollama 框架等都需要消耗资源，推理速度较慢，资源吃紧&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DeepSeek R1 很火爆，导致在使用 DeepSeek R1 时，老牛同学经常会遇到“服务器繁忙，请稍后重试。”的问题：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/01.jpg&#34;
+	width=&#34;566&#34;
+	height=&#34;182&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/01_hu8dfacf6d4f06920cd818a08f4693906c_10424_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/01_hu8dfacf6d4f06920cd818a08f4693906c_10424_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DeepSeek R1服务器繁忙&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;310&#34;
+		data-flex-basis=&#34;746px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;今天老牛同学推荐一款更加先进的应用：&lt;strong&gt;MNN Chat&lt;/strong&gt;，它是由阿里巴巴开源的全功能多模态模型应用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;仅需一台手机即可运行： 完全在设备本地运行，确保数据隐私，无需将信息上传至外部服务器。&lt;/li&gt;
+&lt;li&gt;CPU 推理优化： 在安卓平台上，MNN-LLM 展现了卓越的 CPU 性能，预填充速度相较于 llama.cpp 提高了 8.6 倍，相较于 fastllm 提升了 20.5 倍，解码速度分别快了 2.3 倍和 8.9 倍。&lt;/li&gt;
+&lt;li&gt;多模态支持： 提供多种任务功能，包括文本生成文本、图像生成文本、音频转文本及文本生成图像。&lt;/li&gt;
+&lt;li&gt;广泛的模型兼容性： 支持多种领先的模型提供商，包括 Qwen、Gemma、Llama（涵盖 TinyLlama 与 MobileLLM）、Baichuan、Yi、DeepSeek、InternLM、Phi、ReaderLM 和 Smolm 等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;官网地址：&lt;a class=&#34;link&#34; href=&#34;https://www.mnn.zone&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.mnn.zone&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GitHub 源码地址：&lt;a class=&#34;link&#34; href=&#34;https://github.com/alibaba/MNN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/alibaba/MNN&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;接下来，我们在手机上部署试用一下，老牛同学的手机配置如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/02.jpg&#34;
+	width=&#34;712&#34;
+	height=&#34;1005&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/02_huc95a0497919936e5c491741bd7b771e7_39468_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/02_huc95a0497919936e5c491741bd7b771e7_39468_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;小米手机配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;70&#34;
+		data-flex-basis=&#34;170px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;1安装-mnn-应用&#34;&gt;1.安装 MNN 应用&lt;/h1&gt;
+&lt;p&gt;对于 Android 手机，我们可以直接下载和安装最新版本：&lt;a class=&#34;link&#34; href=&#34;https://meta.alicdn.com/data/mnn/mnn_chat_d_0_2_2.apk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/11.jpg&#34;
+	width=&#34;2000&#34;
+	height=&#34;368&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/11_hu3a066d216f050015d4bd686ebcc67043_40454_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/11_hu3a066d216f050015d4bd686ebcc67043_40454_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;MNN LLM&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;543&#34;
+		data-flex-basis=&#34;1304px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;或者，我们也可以按照以下步骤，自己编译 Android 和 iOS 应用：&lt;/p&gt;
+&lt;h2 id=&#34;android-编译和使用&#34;&gt;Android 编译和使用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;克隆 MNN 源代码：&lt;code&gt;git clone https://github.com/alibaba/MNN.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;构建库：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; project/android
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir build_64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;../build_64.sh &lt;span class=&#34;s2&#34;&gt;&amp;#34;-DMNN_LOW_MEMORY=true -DMNN_CPU_WEIGHT_DEQUANT_GEMM=true -DMNN_BUILD_LLM=true -DMNN_SUPPORT_TRANSFORMER_FUSE=true -DMNN_ARM82=true -DMNN_USE_LOGCAT=true -DMNN_OPENCL=true -DLLM_SUPPORT_VISION=true -DMNN_BUILD_OPENCV=true -DMNN_IMGCODECS=true -DLLM_SUPPORT_AUDIO=true -DMNN_BUILD_AUDIO=true -DMNN_BUILD_DIFFUSION=ON -DMNN_SEP_BUILD=ON&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;复制到 LLM Android 应用项目：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir -p ../../../apps/Android/MnnLlmChat/app/src/main/jniLibs/arm64-v8a
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find . -name &lt;span class=&#34;s2&#34;&gt;&amp;#34;*.so&amp;#34;&lt;/span&gt; -exec cp &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt; ../../../apps/Android/MnnLlmChat/app/src/main/jniLibs/arm64-v8a &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;构建 Android 应用项目并安装：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ../../../apps/Android/MnnLlmChat
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./gradlew installDebug
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;ios-应用编译和使用&#34;&gt;iOS 应用编译和使用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;克隆 MNN 源代码：&lt;code&gt;git clone https://github.com/alibaba/MNN.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;编译 MNN.framework:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; MNN/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh package_scripts/ios/buildiOS.sh &lt;span class=&#34;s2&#34;&gt;&amp;#34;-DMNN_ARM82=true -DMNN_LOW_MEMORY=true -DMNN_SUPPORT_TRANSFORMER_FUSE=true -DMNN_BUILD_LLM=true -DMNN_CPU_WEIGHT_DEQUANT_GEMM=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_METAL=ON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_BUILD_DIFFUSION=ON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_BUILD_OPENCV=ON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_IMGCODECS=ON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_OPENCL=OFF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_SEP_BUILD=OFF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-DMNN_SUPPORT_TRANSFORMER_FUSE=ON&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;拷贝 framework 到 iOS 项目中：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mv MNN-iOS-CPU-GPU/Static/MNN.framework /apps/iOS/MNNLLMChat/MNN.framework
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;确保 Link Binary With Libraried 中包含 MNN.framework，和其他三个 Framework:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/12.jpg&#34;
+	width=&#34;2328&#34;
+	height=&#34;842&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/12_hu0fdb6d0d96e36d38a172428a28be1669_121767_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/12_hu0fdb6d0d96e36d38a172428a28be1669_121767_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Framework&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;276&#34;
+		data-flex-basis=&#34;663px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果没有包含，可以手动添加 MNN.framework:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/13.jpg&#34;
+	width=&#34;1422&#34;
+	height=&#34;1060&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/13_hu758df1afed2a31e83ede031957df0d99_101464_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/13_hu758df1afed2a31e83ede031957df0d99_101464_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;MNN.framework&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;321px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;修改 iOS 签名并编译项目&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /apps/iOS/MNNLLMChat
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;open MNNLLMiOS.xcodeproj
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在 Xcode 项目属性中 Signing &amp;amp; Capabilities &amp;gt; Team 输入自己的账号和 Bundle Identifier:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/14.jpg&#34;
+	width=&#34;1878&#34;
+	height=&#34;708&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/14_hu04f1f4966fb7feaa1bd8789d8e944495_91973_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/14_hu04f1f4966fb7feaa1bd8789d8e944495_91973_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;签名&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;265&#34;
+		data-flex-basis=&#34;636px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;等待 Swift Package 下载完成之后，进行编译使用。&lt;/p&gt;
+&lt;h1 id=&#34;2下载模型文件&#34;&gt;2.下载模型文件&lt;/h1&gt;
+&lt;p&gt;手机上安装好&lt;strong&gt;MNN Chat&lt;/strong&gt;应用之后，我们打开应用，就可以看到它所兼容的模型列表，包括文本、音频、图像等：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/21.jpg&#34;
+	width=&#34;696&#34;
+	height=&#34;1438&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/21_hua2394fed259d87acb14ca570c81ac937_117219_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/21_hua2394fed259d87acb14ca570c81ac937_117219_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;大模型列表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;48&#34;
+		data-flex-basis=&#34;116px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击即可下载，老牛同学想体验一下文本和图片识别，下载了&lt;strong&gt;DeepSeek-R1-7B-Qwen-MNN&lt;/strong&gt;和&lt;strong&gt;Qwen2-VL-2B-Instruct-MNN&lt;/strong&gt;这 2 个大模型，等待下载完成。&lt;/p&gt;
+&lt;h1 id=&#34;3-mnn-模型推理&#34;&gt;3. MNN 模型推理&lt;/h1&gt;
+&lt;p&gt;先试用一下&lt;strong&gt;DeepSeek-R1-7B-Qwen-MNN&lt;/strong&gt;文本模型，输入提示词：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;同样是一年，为什么阳历固定12个月，而阴历却有闰月？
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/31.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/31_huf0c5c2d4323b39dd591dd60be1f1c4e0_195967_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/31_huf0c5c2d4323b39dd591dd60be1f1c4e0_195967_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DeepSeek文本推理&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;DeepSeek R1 开始思考，分析阳历和阴历的计算方法，最终得出结论：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/32.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/32_hu9edca58c44217a952ac7b36d3917770c_209756_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/32_hu9edca58c44217a952ac7b36d3917770c_209756_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DeepSeek思考结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;从手机的推理速率来看，总体还算不错，比通过&lt;strong&gt;Termux&lt;/strong&gt;应用的方式推理效率高多了。&lt;/p&gt;
+&lt;p&gt;接下来，看看&lt;strong&gt;Qwen2-VL-2B-Instruct-MNN&lt;/strong&gt;图片多模态大模型，老牛同学让它进行车牌识别：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025022101/33.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2025022101/33_hub9a48696cdd3e62e2fe1e0afc022b24c_110111_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025022101/33_hub9a48696cdd3e62e2fe1e0afc022b24c_110111_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen2-VL车牌识别&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看到，识别的结果是很不错的！&lt;/p&gt;
+&lt;p&gt;还有其他的大模型，包括音频、图片生成（Stable Diffusion）等，大家可以体验一下。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Cocos 3D 小游戏：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/TlgNKvGYMuGMmU0dIBPn4A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.技术选型&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qlOYpjREXBKb7vl1kuujlg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.研发流程&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/V3CIhswW3CVcTY1aPaALTw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.小游戏框架&lt;/a&gt;丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3GZNd7qjwIhfTcsVruYQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.核心架构设计&lt;/a&gt;丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8jxPxJ2-9UnFsLMGh9h0fQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.分包构建发布&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Transformers 框架序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.包和对象加载中的设计巧思与实用技巧&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.AutoModel 初始化及 Qwen2.5 模型加载全流程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.Qwen2.5 大模型的 AutoTokenizer 技术细节&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.嵌入（Embedding）机制和 Word2Vec 实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.位置嵌入（Positional Embedding）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Pipeline NLP 任务序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;零·概述&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.文本转音频&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.文本分类&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.词元分类和命名实体识别&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.问答&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.表格问答&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.填充蒙版&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/F-CUuaZwmqt6X7QkI_IrVA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cline 免费插件 + Qwen2.5 大模型，零经验也能开发“对联王”微信小程序&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</title>
+        <link>https://ntopic.cn/p/2025020901/</link>
+        <pubDate>Sun, 09 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2025020901/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2025020901/00.jpg" alt="Featured image of post DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？" /&gt;&lt;p&gt;整个春节假期，DeepSeek 与《哪吒 2》的消息接连不断，看完我总有种莫名的激动。一边是 DeepSeek 在基础技术领域的深耕细作，另一边则是《哪吒 2》对用户产品的精心打磨，两者多年来的默默努力和不懈追求，终于在今年春节实现了一飞冲天、一鸣惊人的突破！&lt;/p&gt;
+&lt;p&gt;老牛同学作为一名长期使用 Qwen 大模型Token服务的用户，目前余额所剩无几了，对购买的服务主要就三个追求：&lt;strong&gt;价格&lt;/strong&gt;、&lt;strong&gt;效率&lt;/strong&gt;、&lt;strong&gt;效果&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;接下来，老牛同学将根据自己使用大模型的实际情况，对&lt;strong&gt;DeepSeek&lt;/strong&gt;和&lt;strong&gt;Qwen&lt;/strong&gt;分别进行以下几个方面的测验，哪个得分高，老牛同学后续就用哪个的 Token 服务。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;价格：说实话，现在大模型厂商都很卷，价格都很实惠。同时，Token 数量与分词算法相关，因此价格只要不超过 50%，老牛同学觉得都差多不。&lt;/li&gt;
+&lt;li&gt;效率：敢作为服务拿出来卖，老牛同学觉得效率都不会差；同时，模型产出内容不一样，这里就没有一个严格标准，因此暂不做比较。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;效果&lt;/strong&gt;，这是老牛同学最关心的点，只有满足需求的服务，才是需要的服务。&lt;strong&gt;编程&lt;/strong&gt;是老牛同学使用大模型服务最多的地方，因此将通过&lt;strong&gt;Web 页面&lt;/strong&gt;、&lt;strong&gt;Python&lt;/strong&gt;、&lt;strong&gt;微信小程序&lt;/strong&gt;和&lt;strong&gt;Cocos 小游戏&lt;/strong&gt;这 4 个方面编程结果进行评测。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;为了消除历史消息对上下文的影响，每次编程老牛同学都使用全新的会话。&lt;/li&gt;
+&lt;li&gt;本次编程评测编程代码结果，老牛同学全部上传共享，大家可通过打开“&lt;strong&gt;老牛同学&lt;/strong&gt;”微信小程序-&amp;gt;点击“&lt;strong&gt;更多&lt;/strong&gt;”Tab-&amp;gt;“&lt;strong&gt;源代码&lt;/strong&gt;”获取下载链接进行复验：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/CX.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信小程序：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;qwen-和-deepseek-服务价格deepseek-更实惠&#34;&gt;Qwen 和 DeepSeek 服务价格（DeepSeek 更实惠）&lt;/h1&gt;
+&lt;p&gt;老牛同学将以&lt;strong&gt;Qwen-Max-Latest&lt;/strong&gt;和&lt;strong&gt;DeepSeek-Chat&lt;/strong&gt;进行比较（Token 数量统一为&lt;strong&gt;百万&lt;/strong&gt;），以下是 2 个大模型官网公布的价格：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Qwen 价格：输入**¥2.4**，输出**¥9.6**&lt;/li&gt;
+&lt;li&gt;DeepSeek 价格：输入缓存命中**¥0.5**，缓存未命中**¥2**，输出**¥8**&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/11.jpg&#34;
+	width=&#34;1515&#34;
+	height=&#34;444&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/11_huff2a968c98514115d4d9f452a168360f_60221_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/11_huff2a968c98514115d4d9f452a168360f_60221_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Qwen价格&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;341&#34;
+		data-flex-basis=&#34;818px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/12.jpg&#34;
+	width=&#34;1446&#34;
+	height=&#34;456&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/12_hu9c2f94a349e6a4fca04046005ae8131a_55994_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/12_hu9c2f94a349e6a4fca04046005ae8131a_55994_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DeepSeek价格&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;317&#34;
+		data-flex-basis=&#34;761px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;虽然 Qwen 和 DeepSeek 采用的分词算法可能不一样，但是考虑到都是以&lt;strong&gt;百万&lt;/strong&gt;为单位，这些差异基本可以忽略。&lt;/p&gt;
+&lt;p&gt;从上述官网价格来看：&lt;strong&gt;DeepSeek 更实惠&lt;/strong&gt;！&lt;/p&gt;
+&lt;h1 id=&#34;qwen-和-deepseek-编程能力&#34;&gt;Qwen 和 DeepSeek 编程能力&lt;/h1&gt;
+&lt;p&gt;接下来，我们开始进行编程评测，分别通过&lt;strong&gt;Web 页面&lt;/strong&gt;、&lt;strong&gt;Python&lt;/strong&gt;、&lt;strong&gt;微信小程序&lt;/strong&gt;和&lt;strong&gt;Cocos 小游戏&lt;/strong&gt;这 4 个方面编程进行评测。&lt;/p&gt;
+&lt;h2 id=&#34;web-页面编程qwen-胜出&#34;&gt;Web 页面编程（Qwen 胜出）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;计算器&lt;/strong&gt;是一个很好的 Web 程序样例，老牛同学就选择它作为考题，提示词如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;写一个**计算器**静态Web页面，计算器的风格参考Apple手机自带的计算器App。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;对于CSS样式，请尽量复用现有的CSS框架，比如BootStrap、Tailwind CSS等等。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/21.jpg&#34;
+	width=&#34;2515&#34;
+	height=&#34;1533&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/21_hu22433e8b365837e2e9acfcad8e77a004_334410_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/21_hu22433e8b365837e2e9acfcad8e77a004_334410_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;计算器编程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;393px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最终，老牛同学复制 2 个模型的输出 HTML 代码，通过浏览器打开：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/22.jpg&#34;
+	width=&#34;1947&#34;
+	height=&#34;1044&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/22_hue657b10ee68a78495654889aef0ad2de_106452_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/22_hue657b10ee68a78495654889aef0ad2de_106452_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Web编程结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;186&#34;
+		data-flex-basis=&#34;447px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;2 个模型的 Web 编程结果分析：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;风格：Qwen 更接近 Apple 手机自带的计算器。&lt;/li&gt;
+&lt;li&gt;功能：对于基本的加、减、乘、除功能，Qwen 输入框只展示了计算结果，没有显示过程算式；而 DeepSeek 点击无反应，也没有结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结，老牛同学对 Web 页面编程评测结论：&lt;strong&gt;Qwen 胜出&lt;/strong&gt;！&lt;/p&gt;
+&lt;h2 id=&#34;python-编程qwen-胜出&#34;&gt;Python 编程（Qwen 胜出）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;贪吃蛇&lt;/strong&gt;是一款经典的单机游戏，也是很多一部分学习 Python 编程技术的第一个完整程序，我们就以它作为考题，提示词如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;使用Python，写一个带有GUI界面的**贪吃蛇**小游戏，要求：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. 游戏开始，有“开始”操作界面，用户点击开始游戏
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. 游戏过程中，在界面底部中间，展示当前分数
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. 游戏结束，有一个结束页面，页面展示游戏分数，并有“重新开始”操作界面
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/23.jpg&#34;
+	width=&#34;2512&#34;
+	height=&#34;1152&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/23_hu9312c8f69ceb477329a51b83f01c6c46_264351_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/23_hu9312c8f69ceb477329a51b83f01c6c46_264351_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;贪吃蛇编程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最终，老牛同学在本机分别运行这 2 个小游戏，界面如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/24.jpg&#34;
+	width=&#34;1506&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/24_hu5b7b15ae4d69d6baf970768e158dc115_51961_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/24_hu5b7b15ae4d69d6baf970768e158dc115_51961_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Python编程结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;520px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于最终编程结果，评测分析如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;功能：2 个大模型的结果，均能跑起来，有开始界面，正常展示。&lt;/li&gt;
+&lt;li&gt;游戏：Qwen 蛇的速度比较适中，基本还能玩起来。而 DeepSeek 蛇速度则很快，老牛同学手速没有那么快，基本玩不起来。&lt;/li&gt;
+&lt;li&gt;结果：Qwen 能正常展示中文，而 DeepSeek 展示就是乱码了（缺少&lt;code&gt;ttf&lt;/code&gt;字体文件）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结，Python 编程评测结果：&lt;strong&gt;Qwen 胜出&lt;/strong&gt;！&lt;/p&gt;
+&lt;h2 id=&#34;微信小程序编程势均力敌&#34;&gt;微信小程序编程（势均力敌）&lt;/h2&gt;
+&lt;p&gt;接下来，我们进行微信小程序编程评测，老牛同学感觉比上面 2 个编程要稍微难一点：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;写一个微信小程序页面，页面样式参考**微信**手机App中“我”Tab的样式。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;对于页面样式，请尽量复用现有成熟的框架，比如weui等。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/25.jpg&#34;
+	width=&#34;2520&#34;
+	height=&#34;1473&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/25_hu9edad9e84aa6f83b43c441e07c46e144_323929_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/25_hu9edad9e84aa6f83b43c441e07c46e144_323929_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;小程序代码&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;171&#34;
+		data-flex-basis=&#34;410px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于&lt;strong&gt;weui&lt;/strong&gt;框架的&lt;code&gt;app.wxss&lt;/code&gt;文件：Qwen 给的地址文件不存在，而 DeepSeek 给的是一个样例地址。老牛同学修复这个问题之后，最终小程序页面样式如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/26.jpg&#34;
+	width=&#34;1278&#34;
+	height=&#34;1011&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/26_hu0ad3ba640c3aee1c0a609406fa1cb591_102800_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/26_hu0ad3ba640c3aee1c0a609406fa1cb591_102800_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;小程序页面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;303px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;从最终小程序页面效果来看：&lt;strong&gt;Qwen&lt;/strong&gt;和&lt;strong&gt;DeepSeek&lt;/strong&gt;表现基本一致！&lt;/p&gt;
+&lt;p&gt;但有个&lt;strong&gt;问题&lt;/strong&gt;：Qwen 和 DeepSeek 都是直接引用&lt;strong&gt;weui&lt;/strong&gt;框架样式，这样势必会增加小程序包大小&lt;strong&gt;170KB&lt;/strong&gt;左右。而&lt;strong&gt;weui&lt;/strong&gt;最佳使用方式是作为扩展组件库的方式引入，这样就不会增加包大小了。&lt;/p&gt;
+&lt;h2 id=&#34;cocos-小游戏编程qwen-略胜&#34;&gt;Cocos 小游戏编程（Qwen 略胜）&lt;/h2&gt;
+&lt;p&gt;最后，来一个 Cocos 小游戏编程。今年春节，老牛同学从 0 基础开始学习，使用 Cocos Creator 做了一款微信小游戏。过程中遇到了不少问题，我把其中一个问题拿出来作为考题：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我正在使用Cocos Creator 3.8.5研发一款微信小游戏，在一个`ts`组件类中，我需要一个名为`prefabMap`、类型是`{[key: string]:Prefab}`映射的属性，如下TypeScript代码：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@ccclass(&amp;#39;WallView&amp;#39;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;export class WallView extends Component {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // 预制体映射
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    private prefabMap: { [key: string]: Prefab } = {};
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我希望可以通过“属性管理器”来设置**prefabMap**这个属性，包括映射`string`类型的Key和映射`Prefab`类型的Value，请帮忙实现这个代码。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025020901/27.jpg&#34;
+	width=&#34;2490&#34;
+	height=&#34;1387&#34;
+	srcset=&#34;https://ntopic.cn/p/2025020901/27_hu230c4bdbae45f4e4cc6ad90de7a9346d_287255_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025020901/27_hu230c4bdbae45f4e4cc6ad90de7a9346d_287255_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Cocos小游戏代码&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;430px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;从上面代码来看，&lt;strong&gt;Qwen&lt;/strong&gt;和&lt;strong&gt;DeepSeek&lt;/strong&gt;大模型思路基本一致：先定义一个 KeyValue 类/接口，通过“属性管理器”设置这个 KeyValue 列表，然后再组件启动&lt;code&gt;start&lt;/code&gt;之后把 KeyValue 列表转化为映射对象。&lt;/p&gt;
+&lt;p&gt;它们两者的编程思路没有问题，可是编写的代码却是不生效的，均存在问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Qwen&lt;/strong&gt;的问题：代码已经非常接近目标，一步之遥，可 Cocos 无法识别&lt;code&gt;KeyValuePair&lt;/code&gt;这个类。有两种办法可以解决：&lt;code&gt;KeyValuePair&lt;/code&gt;类增加注解&lt;code&gt;@ccclass(&#39;KeyValuePair&#39;)&lt;/code&gt;，或者增加一行代码&lt;code&gt;@ccclass(&#39;KeyValuePair&#39;)(KeyValuePair)&lt;/code&gt;均可。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DeepSeek&lt;/strong&gt;的问题：相比 Qwen 来说，问题就多一些了，离目标也就更远一些：&lt;code&gt;PrefabKeyValue&lt;/code&gt;是一个接口，Cocos 根本无法识别，同时内部的&lt;code&gt;key&lt;/code&gt;和&lt;code&gt;value&lt;/code&gt;没有&lt;code&gt;@property&lt;/code&gt;注解，在“属性管理器”中也无法做到嵌套配置，&lt;code&gt;prefabList&lt;/code&gt;也就无法达成目标了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从上面分析来看，Qwen 更接近目标，因此 &lt;strong&gt;Qwen 略胜一筹&lt;/strong&gt;！&lt;/p&gt;
+&lt;h1 id=&#34;最后简单总结&#34;&gt;最后，简单总结&lt;/h1&gt;
+&lt;p&gt;综合上面分析和评测，我们可以看出：&lt;strong&gt;DeepSeek&lt;/strong&gt;在价格上更优惠，而&lt;strong&gt;Qwen&lt;/strong&gt;在编程效果上更胜一筹！&lt;/p&gt;
+&lt;p&gt;看到这儿，我相信大家和老牛同学一样，开始犯嘀咕：当前火爆全球、如日中天、大红大紫的&lt;strong&gt;DeepSeek&lt;/strong&gt;大模型，竟然在编程效果上不及&lt;strong&gt;Qwen&lt;/strong&gt;大模型？&lt;/p&gt;
+&lt;p&gt;从结果看，是的。也许是&lt;strong&gt;DeepSeek&lt;/strong&gt;火爆点并不在编程效果上，也行是的提示词待优化，也许是所举样例不具备代表性，也许是需要我们再给 DeepSeek 一些时日……&lt;/p&gt;
+&lt;p&gt;但无论如何，老牛同学目前已经明确，接下来续费大模型 Token 调用费用，该往哪个平台了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提示：&lt;/strong&gt; 以上 2 个大模型辅助编程的源码，老牛同学已经上传（除微信小程序中，除修正了&lt;code&gt;app.wxss&lt;/code&gt;样式文件的路径之外，老牛同学承诺对大模型编程结果未做任何一个字符的修改），大家可以下载复验（打开“&lt;strong&gt;老牛同学&lt;/strong&gt;”微信小程序-&amp;gt;点击“&lt;strong&gt;更多&lt;/strong&gt;”Tab-&amp;gt;“&lt;strong&gt;源代码&lt;/strong&gt;”获取下载链接）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Cocos 3D 小游戏：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/TlgNKvGYMuGMmU0dIBPn4A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.技术选型&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qlOYpjREXBKb7vl1kuujlg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.研发流程&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/V3CIhswW3CVcTY1aPaALTw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.小游戏框架&lt;/a&gt;丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3GZNd7qjwIhfTcsVruYQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.核心架构设计&lt;/a&gt;丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8jxPxJ2-9UnFsLMGh9h0fQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.分包构建发布&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Transformers 框架序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.包和对象加载中的设计巧思与实用技巧&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.AutoModel 初始化及 Qwen2.5 模型加载全流程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.Qwen2.5 大模型的 AutoTokenizer 技术细节&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.嵌入（Embedding）机制和 Word2Vec 实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.位置嵌入（Positional Embedding）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Pipeline NLP 任务序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;零·概述&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.文本转音频&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.文本分类&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.词元分类和命名实体识别&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.问答&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.表格问答&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.填充蒙版&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/F-CUuaZwmqt6X7QkI_IrVA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cline 免费插件 + Qwen2.5 大模型，零经验也能开发“对联王”微信小程序&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

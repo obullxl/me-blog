@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='阿里云百炼平台发布推文，提供30天免费算力额度，助力玩转 Llama3.1 训练推理。老牛同学首当其冲，去体验一把，本文详细记录了整个过程，同时给出了老牛同学的一些想法，欢迎交流学习……'>
+<title>太卷了，阿里云免费1个月大模型算力额度，玩转Llama3.1/Qwen2等训练推理</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024072601/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='太卷了，阿里云免费1个月大模型算力额度，玩转Llama3.1/Qwen2等训练推理'>
+<meta property='og:description' content='阿里云百炼平台发布推文，提供30天免费算力额度，助力玩转 Llama3.1 训练推理。老牛同学首当其冲，去体验一把，本文详细记录了整个过程，同时给出了老牛同学的一些想法，欢迎交流学习……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024072601/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='阿里云' /><meta property='article:tag' content='大模型' /><meta property='article:published_time' content='2024-07-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024072601/00.png' />
+<meta name="twitter:title" content="太卷了，阿里云免费1个月大模型算力额度，玩转Llama3.1/Qwen2等训练推理">
+<meta name="twitter:description" content="阿里云百炼平台发布推文，提供30天免费算力额度，助力玩转 Llama3.1 训练推理。老牛同学首当其冲，去体验一把，本文详细记录了整个过程，同时给出了老牛同学的一些想法，欢迎交流学习……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024072601/00.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024072601/">
+                <img src="/p/2024072601/00_hu495ae1cd16dc9d03dd5f36c665248bf2_45404_800x0_resize_box_3.png"
+                        srcset="/p/2024072601/00_hu495ae1cd16dc9d03dd5f36c665248bf2_45404_800x0_resize_box_3.png 800w, /p/2024072601/00_hu495ae1cd16dc9d03dd5f36c665248bf2_45404_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="298" 
+                        loading="lazy"
+                        alt="Featured image of post 太卷了，阿里云免费1个月大模型算力额度，玩转Llama3.1/Qwen2等训练推理" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">太卷了，阿里云免费1个月大模型算力额度，玩转Llama3.1/Qwen2等训练推理</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>阿里云百炼平台发布推文，提供30天免费算力额度，助力玩转 Llama3.1 训练推理。老牛同学首当其冲，去体验一把，本文详细记录了整个过程，同时给出了老牛同学的一些想法，欢迎交流学习……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-07-26
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：7 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>早上收到朋友转发的阿里云公众号推文，阿里云为用户免费提供 1 个月的训练推理等算力额度（<a class="link" href="https://mp.weixin.qq.com/s/BoWoRPsI3sOM3To0BHSQHw"  target="_blank" rel="noopener"
+    >上阿里云，免费玩转 Llama 405B 「超大杯」！</a>）。想想上周老牛同学为了制作微调技术教程，演示训练<strong>Qwen2-0.5B</strong>小尺寸大模型就跑了一个晚上（<a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a>），如今阿里云竟然免费提供 1 个月训练推理算力，而且还支持<strong>Llama3.1-405B</strong>超大尺寸模型，标题和内容确实把老牛同学给够吸住了。</p>
+<p>虽然老牛同学非常相信阿里云在中国市场的地位，但还是有那么一点点担心是标题党，因此老牛同学决定验证一下，走一遍完整开通和使用流程，最后给出自己的感受给大家做个参考。</p>
+<h1 id="开通阿里云百炼服务">开通阿里云百炼服务</h1>
+<p>推文写得很清楚，免费额度是为阿里云百炼平台用户提供的，因此先开通注册：<a class="link" href="https://www.aliyun.com/product/bailian"  target="_blank" rel="noopener"
+    >https://www.aliyun.com/product/bailian</a></p>
+<p>说实话，取名真的很重要，不仅要好听好记还要切实际功能。比如<strong>千问</strong>：作为你的人工智能助理，随你问，我都能答；<strong>百炼</strong>：千锤百炼，大模型训练微调，就是不断打磨和调整优化过程。</p>
+<p>阿里云百炼：是基于通义大模型、行业大模型以及三方大模型的一站式大模型开发平台。面向企业客户和个人开发者，提供完整的模型服务工具和全链路应用开发套件，预置丰富的能力插件，提供 API 及 SDK 等便捷的集成方式，高效完成大模型应用构建。</p>
+<p>产品定价：阿里云百炼大模型服务平台在调用 API 后将产生计量和计费。各个领域的模型采用不同的计量单元，不同模型单独制定各自的计费单价和免费额度等规则。（<strong>特别注意</strong>：不同模型是单独计价和单价免费额度规则，算力额度有可能针对不同模型不一样！）</p>
+<p>点击“<strong>立即开通</strong>”橙色大按钮，按照提示，一步一步完成注册即可：</p>
+<p><img src="/p/2024072601/01.png"
+	width="1300"
+	height="379"
+	srcset="/p/2024072601/01_huc6bb699390736bd8e19955e453dac925_103356_480x0_resize_box_3.png 480w, /p/2024072601/01_huc6bb699390736bd8e19955e453dac925_103356_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="开通阿里云百炼平台服务"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="343"
+		data-flex-basis="823px"
+	
+></p>
+<p>我们可以直接通过支付宝、淘宝等方式登录（老牛同学使用支付宝扫描登录）。登录成功，需要同意“<strong>阿里云百炼服务协议</strong>”，我们主要是用于学习和研究，肯定不会干那些超纲的事情，无脑点击“<strong>同意</strong>”按钮就行了。</p>
+<p>然后，我们就进入了百炼平台控制台首页：</p>
+<p><img src="/p/2024072601/02.png"
+	width="1462"
+	height="1027"
+	srcset="/p/2024072601/02_hu18b3b15db9b0d842d13eac9defb5bddc_118349_480x0_resize_box_3.png 480w, /p/2024072601/02_hu18b3b15db9b0d842d13eac9defb5bddc_118349_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="百炼平台控制台首页"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="341px"
+	
+></p>
+<p>看到“<strong>免费额度：100/100 次</strong>”小字样，老牛同学之前的担心加重了一点，回头想想还是继续往下看看，毕竟是阿里云，应该是不能随便开玩笑的。</p>
+<p>点击“<strong>去开通 →</strong>”按钮，又来个弹框确认开通。不过支持的模型倒是挺多的，支持 139 个推理（包括 Llama3.1-405B 大模型）、17 个部署和 14 个训练，应该来说我们对学习和研究类需求足够了：</p>
+<p><img src="/p/2024072601/03.png"
+	width="1120"
+	height="798"
+	srcset="/p/2024072601/03_hubae089f470d53c74a947b98d417b7452_55467_480x0_resize_box_3.png 480w, /p/2024072601/03_hubae089f470d53c74a947b98d417b7452_55467_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="确认开通百炼大模型服务"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="140"
+		data-flex-basis="336px"
+	
+></p>
+<p>勾选“我已阅读并同意《模型管理服务协议》”，然后点击“<strong>确认开通</strong>”按钮，整个开通流程就结束了！</p>
+<h1 id="使用-api-调用推理服务">使用 API 调用推理服务</h1>
+<p>首先体验一下大模型的<strong>推理</strong>服务，选择“<strong>模型广场</strong>”，选择任意一个模型（如：<strong>通义千问-Max</strong>），点击“API 调用示例”：</p>
+<p><img src="/p/2024072601/04.png"
+	width="1597"
+	height="898"
+	srcset="/p/2024072601/04_hu2e11266e317acd31591282f24347f4be_50519_480x0_resize_box_3.png 480w, /p/2024072601/04_hu2e11266e317acd31591282f24347f4be_50519_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="选择模型进行API推理"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<p>可以看到，API 调用示例提供了<strong>Python</strong>、<strong>Java</strong>和<strong>Curl</strong>共 3 种方式，对于我们来说也应该足够了（老牛同学就不演示了）。</p>
+<p>最关键的是，点击“<strong>模型详情</strong>”，可以看到计费方式和<strong>免费额度</strong>信息：</p>
+<p><img src="/p/2024072601/05.png"
+	width="1008"
+	height="1108"
+	srcset="/p/2024072601/05_hu1d4ce3f52f733baffdeac217e63fd0bb_61282_480x0_resize_box_3.png 480w, /p/2024072601/05_hu1d4ce3f52f733baffdeac217e63fd0bb_61282_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="模型详情-免费额度"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="90"
+		data-flex-basis="218px"
+	
+></p>
+<p>可以看到，免费额度信息如下：</p>
+<ol>
+<li>免费的 Token 数量有限制（如：通义千问-Max 是 100 万个）</li>
+<li>之前推文中提到的，免费 1 个月，是指这些免费额度仅 1 个月<strong>有效期</strong>，不是老牛同学想象的免费使用 1 个月！</li>
+</ol>
+<p>到这里，老牛同学感觉有一点点失望了，但是老牛同学对推理要求不多，在看看模型训练如何免费的。</p>
+<h1 id="使用百炼平台进行模型训练">使用百炼平台进行模型训练</h1>
+<p>选择“<strong>模型工具</strong>”-“<strong>模型调优</strong>”，然后点击“<strong>训练新模型</strong>”按钮，然后在弹框选择“<strong>高效训练</strong>”（就是老牛同学上周文章中的微调）</p>
+<p>点击“<strong>下一步</strong>”，选择“<strong>预置模型</strong>”，在下拉框中选择“<strong>通义千问-开源版-7B</strong>”模型（模型没有强制要求）</p>
+<p>点击“<strong>下一步</strong>”，需要选择训练数据集，因之前没有训练过，还没有数据集，因此我们点击“<strong>管理训练集</strong>”增加数据集</p>
+<p>数据集是<code>jsonl</code>文件，单个 JSON 的格式需要符合 ChatML 格式，样例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span><span class="nt">&#34;messages&#34;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;system&#34;</span><span class="p">,</span> <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;You are a helpful assistant&#34;</span><span class="p">},</span> <span class="p">{</span><span class="nt">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;谁在文艺复兴时期绘制人体?&#34;</span><span class="p">},</span> <span class="p">{</span><span class="nt">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;assistant&#34;</span><span class="p">,</span> <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;文艺复兴时期是一个关于艺术、文化和学术的复兴运动，在这个时期，许多艺术家都绘制了人体。&#34;</span><span class="p">}]}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因此，老牛同学上周微调用的文本分类的原始数据集需要格式化处理一下（评论区有最终文件链接），Python 代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 训练数据集文件</span>
+</span></span><span class="line"><span class="cl"><span class="n">BAS_DATA_DIR</span> <span class="o">=</span> <span class="s1">&#39;D:\ModelSpace\Qwen2&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">RAW_TRAIN_FILE_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BAS_DATA_DIR</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;zh_cls_fudan-news&#39;</span><span class="p">,</span> <span class="s1">&#39;train.jsonl&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">NEW_TRAIN_FILE_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BAS_DATA_DIR</span><span class="p">,</span> <span class="s1">&#39;train-ChatML.jsonl&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 将原始数据集转换为ChatML格式的新数据集</span>
+</span></span><span class="line"><span class="cl"><span class="n">message_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 读取原JSONL文件</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">RAW_TRAIN_FILE_PATH</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 解析每一行原始数据（每一行均是一个JSON格式）</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;text&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">catagory</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;category&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;output&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">message_part_1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;system&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;You are a helpful assistant&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">message_part_2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&#34;你是一个文本分类领域的专家，你会接收到一段文本和几个潜在的分类选项列表，请输出文本内容的正确分类。</span><span class="se">\n</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="se">\n</span><span class="s2">分类选项列表:</span><span class="si">{</span><span class="n">catagory</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">message_part_3</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;assistant&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">output</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">message</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;messages&#34;</span><span class="p">:</span> <span class="p">[</span><span class="n">message_part_1</span><span class="p">,</span> <span class="n">message_part_2</span><span class="p">,</span> <span class="n">message_part_3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">message_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 保存处理后的JSONL文件，每行也是一个JSON格式</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">NEW_TRAIN_FILE_PATH</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">message_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果大家不想对原始的文件进行处理了，可以到评论区直接下载老牛同学已经处理好的数据集文件。</p>
+<p>在新打开页面，点击“<strong>新增数据集</strong>”，勾选“<strong>训练集</strong>”（文件最大支持 20MB），然后处理好的文件上次即可（裁剪一下，留下 1000 行）。</p>
+<p>导入成功之后，可以查看数据样例，还可以单行进行处理：</p>
+<p><img src="/p/2024072601/06.png"
+	width="2361"
+	height="1285"
+	srcset="/p/2024072601/06_hu85a5f218203189b1bb0778334ee76941_88500_480x0_resize_box_3.png 480w, /p/2024072601/06_hu85a5f218203189b1bb0778334ee76941_88500_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="训练数据集样例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="440px"
+	
+></p>
+<p>确认无误之后，点击“<strong>发布</strong>”数据集，后面就可以使用了。</p>
+<p>然后我们继续回到刚才模型训练页面，选择我们创建的数据集，操作菜单：模型工具-模型调优，选择刚才发布的训练数据集：</p>
+<p><img src="/p/2024072601/07.png"
+	width="1020"
+	height="649"
+	srcset="/p/2024072601/07_hub02b734523a4aad593b758066b5127ea_18007_480x0_resize_box_3.png 480w, /p/2024072601/07_hub02b734523a4aad593b758066b5127ea_18007_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="选择训练数据集"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="377px"
+	
+></p>
+<p>点击“<strong>下一步</strong>”，验证数据，选择“<strong>自动切分</strong>”，我们就不单独创建数据集了。</p>
+<p>在“<strong>混合训练</strong>”选择中，针对<strong>中文-对话</strong>和<strong>中文-通用</strong>均选择<code>0.5</code>倍（因为我们训练集都是中文，就简单点点设置了）</p>
+<p>最后，可以看到本次模型训练的详情和预估费用：</p>
+<p><img src="/p/2024072601/08.png"
+	width="1011"
+	height="1413"
+	srcset="/p/2024072601/08_hu94f63677e967d8e51eb83f874919e180_59517_480x0_resize_box_3.png 480w, /p/2024072601/08_hu94f63677e967d8e51eb83f874919e180_59517_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="高效参数训练费用预估"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="71"
+		data-flex-basis="171px"
+	
+></p>
+<p>点击“<strong>开始训练</strong>”就是开始训练了，预估费用不足<strong>50 元</strong>还算不错，比老牛同学自己电脑训练所用的电费感觉贵不了多少！</p>
+<h1 id="最后想谈点大模型产品的感想">最后：想谈点大模型产品的感想</h1>
+<p>最近和朋友聊天，聊到最近很火爆的大模型，目前市面上有那么多感觉非常惊艳的开源大模型，利用这些开源大模型来创业岂不美哉？！</p>
+<p>朋友对自己的想法自信满满，滔滔不绝介绍自己的创意，其中之一就是：基于大语言模型研发一个老年人伴侣 APP，专门解决老年人孤单无人陪伴的问题，背景是经调研机构研究和评测，中国老龄化逐渐严重，老年人服务市场巨大，等等……</p>
+<p>老牛同学听了一会儿实在没有忍住，强制打断给出判断：<strong>行不通</strong>，极有可能被大模型厂商<strong>碾压</strong>，没有生存空间！</p>
+<p>下面是老牛同学的一些不成熟的想法判断示意图：凡是大模型厂商正在做、未来可能会做的事情，小团体、创业团队等如果不想被他们<strong>碾压</strong>的话，趁早不要做！！！</p>
+<p><img src="/p/2024072601/09.png"
+	width="1122"
+	height="496"
+	srcset="/p/2024072601/09_hu48584a7613a14d2806324ba93c816aaf_16542_480x0_resize_box_3.png 480w, /p/2024072601/09_hu48584a7613a14d2806324ba93c816aaf_16542_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="老牛同学胡乱的想法"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="226"
+		data-flex-basis="542px"
+	
+></p>
+<p>想想看，如果存在一个巨大的大模型市场，那些大模型厂商会不涉猎吗？</p>
+<ul>
+<li>阿里云为了拉新用户使用百炼平台，推广百炼平台，提供免费的算力额度，这些额度难道不是钱吗？大模型厂商之间都已经卷成这样了，小团体还敢挡路？</li>
+<li>大模型厂商他们基本是要人有人、要技术有技术、要资源有资源、要卡有卡，而小团体呢，大多情况只是有一个创意想法而已！</li>
+</ul>
+<p>那么，创业小团体的出路在哪儿呢：细分领域，那些大模型厂商看不上的领域、那些和大模型厂商前进方向不冲突的领域。</p>
+<p>比如<strong>准爸准妈</strong>领域：有没有可能，根据准妈的产检信息，利用大模型预判孩子出生日期、时间、体重、性别等，以便准爸准妈提前做好准备？</p>
+<p>比如<strong>护肤品</strong>领域：有没有可能，根据女性皮肤照片，利用大模型推荐最合适的护肤品？</p>
+<p>等等，以上只是老牛同学的一些胡思乱想，若有不适宜之处，请帮忙指正，老牛同学第一时间修正或者删除本文，谢谢大家！</p>
+<p>最后的最后，回应本文开头，对阿里云百炼推文做个总结：虽然有那么一点点标题党嫌疑，但总体还是<strong>诚意满满</strong>（单模型，100 万 Token，有效期 30 天），试问国内还有别家这么干吗？如果我们只是作为一个学习者、体验者或者临时使用者，Token 数量和有效期我想也完全足够。</p>
+<p>因此，如果你只是想体验一下大模型、或者产品上线之前的联调、或者临时小需求需要使用大模型服务，这个免费的羊毛就是为你准备的，抓紧大胆的去薅吧！</p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/NYTQVBC4ug73o_VdQy-TeQ"  target="_blank" rel="noopener"
+    >LivePortrait 数字人：开源的图生视频模型，本地部署和专业视频制作详细教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg"  target="_blank" rel="noopener"
+    >本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g"  target="_blank" rel="noopener"
+    >玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A"  target="_blank" rel="noopener"
+    >ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q"  target="_blank" rel="noopener"
+    >Ollama 完整教程：本地 LLM 管理、WebUI 对话、Python/Java 客户端 API 应用</a></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">阿里云</a>
+        
+            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2025020901/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020901/00.bd904e836f1f55b5f6204ef73662e639_hu8a5434afd7142d25bc7a2119bc98b479_227024_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？"
+                        data-key="2025020901" 
+                        data-hash="md5-vZBOg28fVbX2IE73NmLmOQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024071801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024071801/00.876825b484dc4da97a767da3106513c2_hu63d9dd5bc1ea15226ab3c891b9df5038_271410_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）"
+                        data-key="2024071801" 
+                        data-hash="md5-h2gltITcTal6dn2jEGUTwg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024071401/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://modelscope.cn/api/v1/models/AI-ModelScope/LivePortrait/repo?Revision=master&amp;FilePath=.%2Fdocs%2Fshowcase2.gif&amp;View=true" loading="lazy" data-key="2024071401" data-hash="https://modelscope.cn/api/v1/models/AI-ModelScope/LivePortrait/repo?Revision=master&amp;FilePath=.%2Fdocs%2Fshowcase2.gif&amp;View=true"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">LivePortrait 数字人：开源的图生视频模型，本地部署和专业视频制作详细教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024070401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024070401/00.8e63c02979f9360873529614dac8414b_huce067645ed24a619e3f9931314bcd87c_717911_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 阿里Qwen2-72B大模型已是开源榜的王者，为什么还要推出其他参数模型，被其他模型打榜？"
+                        data-key="2024070401" 
+                        data-hash="md5-jmPAKXn5NghzUpYU2shBSw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">阿里Qwen2-72B大模型已是开源榜的王者，为什么还要推出其他参数模型，被其他模型打榜？</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024070201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024070201/00.ccff7b67d4c55b161b21bd9816444edb_hu2f8b94c83031de6e5bc3f44f06111c68_362582_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Google 发布了最新的开源大模型 Gemma 2，本地快速部署和体验"
+                        data-key="2024070201" 
+                        data-hash="md5-zP97Z9TFWxYbIb2YFkRO2w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Google 发布了最新的开源大模型 Gemma 2，本地快速部署和体验</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

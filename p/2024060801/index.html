@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='清华大学和智谱AI推出了全面升级的新一代基座大模型GLM-4，整体性能相比GLM3提升60%，支持128K上下文，可根据用户意图自主理解和规划复杂指令、完成复杂任务……'>
+<title>本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024060801/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验'>
+<meta property='og:description' content='清华大学和智谱AI推出了全面升级的新一代基座大模型GLM-4，整体性能相比GLM3提升60%，支持128K上下文，可根据用户意图自主理解和规划复杂指令、完成复杂任务……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024060801/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI工具' /><meta property='article:tag' content='GLM' /><meta property='article:tag' content='大模型' /><meta property='article:tag' content='Llama' /><meta property='article:published_time' content='2024-06-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-06-08T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024060801/00.jpg' />
+<meta name="twitter:title" content="本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验">
+<meta name="twitter:description" content="清华大学和智谱AI推出了全面升级的新一代基座大模型GLM-4，整体性能相比GLM3提升60%，支持128K上下文，可根据用户意图自主理解和规划复杂指令、完成复杂任务……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024060801/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#第一步下载模型文件">第一步：下载模型文件</a></li>
+    <li><a href="#第二步下线glm4代码库">第二步：下线GLM4代码库</a></li>
+    <li><a href="#第三步启动glm4客户端">第三步：启动GLM4客户端</a></li>
+    <li><a href="#总结glm-4-9b比llama-3-8b慢太多了">总结：GLM-4-9B比Llama-3-8B慢太多了</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024060801/">
+                <img src="/p/2024060801/00_hua04b28422bbb4c6a12cc5f607adbb1af_88324_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024060801/00_hua04b28422bbb4c6a12cc5f607adbb1af_88324_800x0_resize_q75_box.jpg 800w, /p/2024060801/00_hua04b28422bbb4c6a12cc5f607adbb1af_88324_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="334" 
+                        loading="lazy"
+                        alt="Featured image of post 本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>清华大学和智谱AI推出了全面升级的新一代基座大模型GLM-4，整体性能相比GLM3提升60%，支持128K上下文，可根据用户意图自主理解和规划复杂指令、完成复杂任务……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-06-08
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：4 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p><strong>GLM-4-9B</strong>是清华大学和智谱AI推出的最新一代预训练模型<strong>GLM-4</strong>系列中的开源版本。在语义、数学、推理、代码和知识等多方面的数据集测评中，<strong>GLM-4-9B</strong>及其人类偏好对齐的版本<strong>GLM-4-9B-Chat</strong>均表现出较高的性能，其通用能力评测结果甚至超越了<strong>Llama-3-8B</strong>开源大模型，多模态版本也与<strong>GPT-4</strong>版本齐平。</p>
+<p>除了能进行多轮对话，<strong>GLM-4-9B-Chat</strong>还具备网页浏览、代码执行、自定义工具调用和长文本推理等高级功能。 <strong>GLM-4</strong>模型增加了多语言支持，支持包括日语，韩语，德语在内的 26 种语言。<strong>GLM-4-9B</strong>还推出了支持 1M 上下文长度（约 200 万中文字符）的模型。</p>
+<p>根据<strong>GLM-4</strong>大模型评测结果，在通用能力方面超越<strong>Llama3</strong>大模型，在多模态能力比肩<strong>GPT-4</strong>大模型系列版本，评测结果和调用方法详情：<a class="link" href="https://github.com/THUDM/GLM-4"  target="_blank" rel="noopener"
+    >https://github.com/THUDM/GLM-4</a></p>
+<p>本文介绍<strong>GLM-4</strong>大模型部署和使用方法，需要注意的是，<strong>GLM-4</strong>虽然开源了，但<strong>GLM-4</strong>大模型的权重的使用则需要遵循协议：<a class="link" href="https://huggingface.co/THUDM/glm-4-9b/blob/main/LICENSE"  target="_blank" rel="noopener"
+    >https://huggingface.co/THUDM/glm-4-9b/blob/main/LICENSE</a></p>
+<h2 id="第一步下载模型文件">第一步：下载模型文件</h2>
+<p>老牛同学在前面文章中，介绍了通过单一的GGUF文件在本地部署<strong>Llama-3-8B</strong>（<strong>Llama3-Chinese-Chat</strong>）大模型：<a class="link" href="https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ"  target="_blank" rel="noopener"
+    >基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人</a></p>
+<p><strong>GLM-4-9B</strong>模板目前还没有GGUF文件，因此老牛同学通过Git下载PyTorch张量参数文件在本地部署<strong>GLM-4-9B-Chat-1M</strong>大模型。</p>
+<p>由于模型参数文件比较大，使用Git无法直接下载到本地，需要通过<strong>git-lfs</strong>工具包下载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">brew install git-lfs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过Git复制模型文件到笔记本电脑：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git lfs install
+</span></span><span class="line"><span class="cl">git clone https://www.modelscope.cn/ZhipuAI/glm-4-9b-chat-1m.git GLM-4-9B-Chat-1M
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>总共有10个模型参数文件，平均每个文件<strong>1.8GB</strong>大小，总计18GB左右，因此在Git下载过程中，容易中断失败，可以通过以下命令多次尝试下载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git lfs pull
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2024060801/01.jpg"
+	width="1104"
+	height="808"
+	srcset="/p/2024060801/01_hua45523be335adf4b2d3dbddd2027fd8f_162239_480x0_resize_q75_box.jpg 480w, /p/2024060801/01_hua45523be335adf4b2d3dbddd2027fd8f_162239_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="GLM4模型参数文件列表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="327px"
+	
+></p>
+<h2 id="第二步下线glm4代码库">第二步：下线GLM4代码库</h2>
+<p><strong>GLM-4</strong>的官方GitHub代码库中有很多使用样例和微调等Python代码，我们可直接进行调整和使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">https://github.com/THUDM/GLM-4.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="第三步启动glm4客户端">第三步：启动GLM4客户端</h2>
+<p>打开<strong>GLM-4</strong>代码库中<code>basic_demo/trans_cli_demo.py</code>文件，修改<strong>第18行</strong>模型路径<code>MODEL_PATH</code>参数，内容为我们通过Git复制到本地的路径，如老牛同学的路径如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#MODEL_PATH = os.environ.get(&#39;MODEL_PATH&#39;, &#39;THUDM/glm-4-9b-chat&#39;)</span>
+</span></span><span class="line"><span class="cl"><span class="n">MODEL_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MODEL_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;/Users/shizihu/JupyterLab/GLM-4-9B-Chat-1M&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在启动之前，我们还需要安装几个Python工具包（当然也可以跳过，后面启动失败时在进行安装也是可以的）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install tiktoken
+</span></span><span class="line"><span class="cl">pip install accelerate
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动大模型客户端：<code>python trans_cli_demo.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">% python trans_cli_demo.py
+</span></span><span class="line"><span class="cl">Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+</span></span><span class="line"><span class="cl">Loading checkpoint shards: 100%<span class="p">|</span>██████████████████████████████████████████████<span class="p">|</span> 10/10 <span class="o">[</span>00:09&lt;00:00,  1.04it/s<span class="o">]</span>
+</span></span><span class="line"><span class="cl">WARNING:root:Some parameters are on the meta device device because they were offloaded to the disk.
+</span></span><span class="line"><span class="cl">Welcome to the GLM-4-9B CLI chat. Type your messages below.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">You: 介绍一下你自己。
+</span></span><span class="line"><span class="cl">GLM-4:
+</span></span><span class="line"><span class="cl">我是一个人工智能助手，我的名字是 ChatGLM，是基于清华大学 KEG 实验室和智谱 AI 公司
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2024060801/02.jpg"
+	width="1778"
+	height="386"
+	srcset="/p/2024060801/02_hu0d9468faef38b4d2a073f40ebdbf8687_278218_480x0_resize_q75_box.jpg 480w, /p/2024060801/02_hu0d9468faef38b4d2a073f40ebdbf8687_278218_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="GLM4模型对话"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="460"
+		data-flex-basis="1105px"
+	
+></p>
+<h2 id="总结glm-4-9b比llama-3-8b慢太多了">总结：GLM-4-9B比Llama-3-8B慢太多了</h2>
+<p>根据官方的评测报告，<strong>GLM-4-9B</strong>在对话、多模态等方面要比<strong>Llama-3-8B</strong>强不少，根据老牛同学本地部署<strong>对话</strong>的验证结果来看，对话的输出速度实在太慢了，简直就是在挤牙膏，一个字一个字的往外输出。</p>
+<p>至于<strong>GLM-4-9B</strong>的多模态、工具调用、代码解释等能力，老牛同学本次就不一一演示了，<strong>GLM-4</strong>官方的GitHub代码库有很多Demo代码，大家可以对代码调整后尝试体验一下~</p>
+<hr>
+<p>关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻</p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+<hr>
+<p>我的本博客原地址：<a class="link" href="https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg"  target="_blank" rel="noopener"
+    >https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg</a></p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai%E5%B7%A5%E5%85%B7/">AI工具</a>
+        
+            <a href="/tags/glm/">GLM</a>
+        
+            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
+        
+            <a href="/tags/llama/">Llama</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024061201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024061201/01.a4c438fe6ec4fa103f22aa5e17331600_hu4fbde6bb6e2fc98225cb13a238d286f0_126052_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API调用和WebUI对话机器人"
+                        data-key="2024061201" 
+                        data-hash="md5-pMQ4/m7E&#43;hA/IqpeFzMWAA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API调用和WebUI对话机器人</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024052101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024052101/02.2b8e53bd1e6c994508463a30c66fe5a6_hub3da83b4b5bc32de4db9cd09399c10b7_374346_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人"
+                        data-key="2024052101" 
+                        data-hash="md5-K45TvR5smUUIRjowxm/lpg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024051801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024051801/02.097bf7c439b1ec6425c871f3dee9d3fb_hua04b28422bbb4c6a12cc5f607adbb1af_86436_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 一文彻底整明白，基于Ollama工具的LLM大语言模型Web可视化对话机器人部署指南"
+                        data-key="2024051801" 
+                        data-hash="md5-CXv3xDmx7GQlyHHz3unT&#43;w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">一文彻底整明白，基于Ollama工具的LLM大语言模型Web可视化对话机器人部署指南</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024051101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024051101/01.39eb637a78febbbc967b7a72213969b7_hua04b28422bbb4c6a12cc5f607adbb1af_84235_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 玩转AI，笔记本电脑安装属于自己的Llama 3 8B大模型和对话客户端"
+                        data-key="2024051101" 
+                        data-hash="md5-Oetjenj&#43;u7yWe3pyITlptw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">玩转AI，笔记本电脑安装属于自己的Llama 3 8B大模型和对话客户端</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024062301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024062301/00.fc431bc863457a0900fae3e542901d0a_hub4c93f99d8ebc3968cf2dbd70f526bf5_328647_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Phi-3 模型手机部署教程（微软发布的可与GPT-3.5媲美的小模型）"
+                        data-key="2024062301" 
+                        data-hash="md5-/EMbyGNFegkA&#43;uPlQpAdCg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Phi-3 模型手机部署教程（微软发布的可与GPT-3.5媲美的小模型）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

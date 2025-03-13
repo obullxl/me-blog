@@ -1,0 +1,1533 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>人工智能 on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</link>
+        <description>Recent content in 人工智能 on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sat, 22 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[AI资讯·0622] Claude3.5超越GPT-4o，360推出AI搜索，OpenAI收购Rockset，华为发布大模型</title>
+        <link>https://ntopic.cn/p/ai20240622/</link>
+        <pubDate>Sat, 22 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240622/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240622/00.jpg" alt="Featured image of post [AI资讯·0622] Claude3.5超越GPT-4o，360推出AI搜索，OpenAI收购Rockset，华为发布大模型" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;「网红」周鸿祎，要为 AI 带货&lt;/li&gt;
+&lt;li&gt;突发！OpenAI收购数据公司&lt;/li&gt;
+&lt;li&gt;盘古5.0重磅发布！华为云大模型年度杀招来了，人形机器人现场整活&lt;/li&gt;
+&lt;li&gt;GPT-4o一夜被赶超！Anthropic推出Claude 3.5，网友3分钟克隆马里奥游戏&lt;/li&gt;
+&lt;li&gt;中国人自己的操作系统！余承东掏出纯血鸿蒙，华为AI大招硬刚苹果&lt;/li&gt;
+&lt;li&gt;Claude3.5突然发布！GPT-4o不香了&lt;/li&gt;
+&lt;li&gt;无论真实还是AI视频，「摩斯卡」都能重建恢复4D动态可渲染场景&lt;/li&gt;
+&lt;li&gt;抢疯了，腾讯给大模型人才，定了一个前所未有的标准&lt;/li&gt;
+&lt;li&gt;华为发布会杀疯了：盘古大模型跳级发布，编程语言仓颉首次亮相&lt;/li&gt;
+&lt;li&gt;美政府再发AI禁令！限制美国人对华AI技术和产品投资&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;网红周鸿祎要为-ai-带货&#34;&gt;「网红」周鸿祎，要为 AI 带货&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240622/ai20240622-158.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240622/ai20240622-158_huf20e0a43bd8a54953a572be4309608ac_109571_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240622/ai20240622-158_huf20e0a43bd8a54953a572be4309608ac_109571_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;「网红」周鸿祎，要为 AI 带货&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;360集团创始人周鸿祎再次成为公众焦点，通过推出AI搜索、AI浏览器及AI甄选平台，旨在重塑国民级产品搜索与浏览器领域，并助力优秀中国AI产品的普及。周鸿祎强调不做“网红”，而是打造企业家IP以推广360品牌和优质中国产品。在AI战略中，360选择既做模型又做有强场景属性的应用，同时搭建桥梁连接用户与AI工具。其AI搜索采用多轮搜索技术，优化用户体验，并提供丰富多媒体内容及个性化服务；AI浏览器则升级为一站式AI问题解决工具箱，内置划重点、提炼简介等功能，支持视频全文生成、双语观看、网页转PPT等高效操作。此外，360AI甄选平台汇集了360自家产品、知名公司应用以及独立开发者作品，旨在降低普通用户接触AI的门槛，并通过周鸿祎个人流量为这些优秀AI工具提供曝光机会。此举不仅推动了AI在个人和中小企业端的应用发展，也为中国AI应用生态提供了重要支持。综上所述，360集团通过创新产品和服务，致力于成为新时代AI入口与普及者，旨在让普通人以低成本接触并使用AI技术，同时扶持国内AI开发者与应用生态。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4TGB5NH05119FMA.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;突发openai收购数据公司&#34;&gt;突发！OpenAI收购数据公司&lt;/h2&gt;
+&lt;p&gt;OpenAI宣布收购实时分析数据库公司Rockset，以增强其产品中对实时数据的利用和访问能力，目标是支持更复杂的应用如实时推荐、动态聊天机器人、实时监控等，并扩大AI技术应用范围。收购旨在使AI更好地理解和操作数据，通过Rockset的技术实现数据分析速度的提升及成本降低。Rockset成立于2016年，提供快速搜索和分析数据库服务，曾获得多轮融资总额逾1亿美元。收购后，Rockset团队将加入OpenAI，共同推动AI与实时数据处理的融合创新。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J59ALCIN051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;盘古50重磅发布华为云大模型年度杀招来了人形机器人现场整活&#34;&gt;盘古5.0重磅发布！华为云大模型年度杀招来了，人形机器人现场整活&lt;/h2&gt;
+&lt;p&gt;华为发布盘古大模型5.0，主打“云+端”独有策略及行业难题解决能力。该模型实现参数规格全覆盖，从十亿级到万亿级，支持多模态理解和生成，展现强思维与复杂推理能力。华为云同步发布了六大行业模型，如盘古钢铁、高铁、具身智能等，并提供升级服务，包括昇腾AI云、ModelArtsstudio、CodeArts等生产线的优化，以及首次揭秘的技术点，旨在打造“世界模型”，全面重塑云服务，助力解决行业难题。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J587U3NR051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;gpt-4o一夜被赶超anthropic推出claude-35网友3分钟克隆马里奥游戏&#34;&gt;GPT-4o一夜被赶超！Anthropic推出Claude 3.5，网友3分钟克隆马里奥游戏&lt;/h2&gt;
+&lt;p&gt;一夜之间，Anthropic推出了新一代大模型Claude3.5Sonnet，在多项全球权威测评中超越了OpenAI的GPT-4o。Claude在推理、知识、编码能力及速度成本方面表现优异，刷新行业基准。用户可通过Claude网页和iOS程序免费试用，付费用户能更高速访问。AnthropicAPI、AmazonBedrock和GoogleCloud提供该模型，收费标准合理。Claude3.5Sonnet立即引起轰动，网友称其编程效率比GPT-4o高10倍，实现马里奥游戏克隆版仅需3分钟。Anthropic被视为OpenAI的有力竞争对手，Claude系列新品发布是对GPT-4o的直接挑战。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J57U4DTM051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;中国人自己的操作系统余承东掏出纯血鸿蒙华为ai大招硬刚苹果&#34;&gt;中国人自己的操作系统！余承东掏出纯血鸿蒙，华为AI大招硬刚苹果&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240622/ai20240622-166.jpg&#34;
+	width=&#34;796&#34;
+	height=&#34;498&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240622/ai20240622-166_hu556af553b923f839011f4bc12df64491_121175_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240622/ai20240622-166_hu556af553b923f839011f4bc12df64491_121175_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;中国人自己的操作系统！余承东掏出纯血鸿蒙，华为AI大招硬刚苹果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;纯血鸿蒙，华为HarmonyOSNEXT，中国自研操作系统新里程碑；余承东称其为中国内核制造历史转折点，10年成就欧美同行30年的成果。系统全面升级，性能提升30%，分布式软总线技术优化连接速度与功耗。强调人机交互、个性化专属和全场景智能，AI“核弹”HarmonyIntelligence震撼发布，AI生图、修复、多模态助手等能力嵌入系统，现场反响热烈。华为鸿蒙原生应用进入冲刺阶段，Beta版正式面向开发者启动，集结号吹响。生态设备数量已破9亿台，涵盖手机、平板、电视及车机等领域。终端AI技术成熟，NPU智能手机早于2017年发布，小艺用上大模型。华为发布自研编程语言“仓颉”，全场景、高性能、高安全特点明显，并提供AI辅助编程工具给开发者使用。全球首个端侧AI手机公司，代码行数达到1.1亿，华为贡献6200多万行。鸿蒙生态开发者数量已达254万人，OpenHarmony代码行数超过1.1亿，支持900多个服务意图框架，覆盖重点垂直领域的200多种意图。AI声音修复功能为语言障碍人群带来便利，小艺智能体知识量达万亿tokens，记忆感知场景超23个，推理成功率高。华为鸿蒙系统面向全场景智能操作系统升级，强调与苹果的对比，展现出遥遥领先的优势。5.5G商用元年到来，华为作为核心推动者和建设者。AI大模型赋能终端，万物互联时代全球链接设备数量将达2000亿部。HarmonyOSNEXT实现一个系统统一生态，手机、平板、手表及各类IoT设备皆可使用。鸿蒙原生智能强调新交互、个性化专属与全场景智能，与苹果“五大AI原则”有共通之处，如强调个性化和广泛适用性。华为承诺2024年第四季度正式版落地华为产品线。此次开发者大会，华为不仅展示了强大的自研能力，还发布了面向未来的操作系统创新和技术突破，展现出在AI领域的深度探索和应用，为全行业带来了新的期待与挑战。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J57NBFEJ051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;claude35突然发布gpt-4o不香了&#34;&gt;Claude3.5突然发布！GPT-4o不香了&lt;/h2&gt;
+&lt;p&gt;Anthropic发布了Claude3.5Sonnet，首个3.5系列版本，在关键指标上超越GPT-4o，速度是前版两倍，成本仅五分之一。免费试用网页端和iOS程序，Pro订阅者享受更高速率限制。API价格：每百万输入Tokens3美元，输出Tokens15美元，200KTokens上下文窗口。年内还将发布Claude3.5Haiku和Claude3.5Opus。为安全测试严格把关。用户反馈代码能力惊艳，文本处理达研究生水平推理、本科生知识和编码标准，视觉能力最强，所有任务均超越前版。新功能Artifacts提供动态工作区，实时生成文档、代码、图像等，标志Claude从对话AI向协作工作环境进化。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J55TBQM10511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;无论真实还是ai视频摩斯卡都能重建恢复4d动态可渲染场景&#34;&gt;无论真实还是AI视频，「摩斯卡」都能重建恢复4D动态可渲染场景&lt;/h2&gt;
+&lt;p&gt;本文介绍了一种名为MoSca的新系统，旨在从单目视频中重建可渲染的动态场景。MoSca利用神经信息处理技术，无需额外信息，能生成三维动态模型，适用于互联网上的各种视频内容。该系统克服了真实拍摄二维视频缺乏多视角信息和动态场景自由度高带来的挑战。MoSca采用了一种四维运动脚手架表示方法，通过融合基石模型输出的深度估计、长时间跟踪、光流估计等数据，简化复杂度高的动态变形问题。这种方法允许从单目视频中高效地恢复出物理世界的信息，并进行全局融合观测。实验结果显示，MoSca在多种数据集上表现优异，特别是在重建动态场景时展现出优越性能，支持高质量渲染并优于其他方法。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J57O1MV70511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;抢疯了腾讯给大模型人才定了一个前所未有的标准&#34;&gt;抢疯了，腾讯给大模型人才，定了一个前所未有的标准&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240622/ai20240622-170.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;555&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240622/ai20240622-170_hu13da32116ed11aa70a4c6f54936fcc82_81313_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240622/ai20240622-170_hu13da32116ed11aa70a4c6f54936fcc82_81313_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;抢疯了，腾讯给大模型人才，定了一个前所未有的标准&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;467px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;科技公司竞争核心在于持续吸引顶尖AI人才，尤其是生成式AI领域的专家。OpenAI的成功归因于多年的技术探索、资金支持以及聚集的顶级AI研究人员。国内同样涌现了一批怀揣理想和技术热情的专业人士，致力于中文原生大模型的研发和优化，力求在世界范围内领先。以高研为例，他从学术研究转向实际应用，在腾讯参与并推动了混元大模型项目的研发，实现了文生图能力的重大突破，开源的混元-DiT模型在视觉生成效果上显著提升。傅志远则将AI应用于游戏体验优化，通过强化学习和多智能体系统的研究，改进游戏功能，并提高用户体验。王艾文专注于AIforScience领域，特别是在蛋白质组学研究中取得了重要成果，为科学发现提供了新视角。腾讯青云计划加大了对大模型领域人才的招募力度，强调长期价值，提供极具竞争力的条件吸引全球顶尖学子，旨在推动中国在大模型技术领域的快速发展和创新。整体而言，科技公司通过培养和吸纳AI人才，促进技术创新与应用落地，不仅推动了自身的发展，也助力国家层面的技术实力提升。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J57DQQQC0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;华为发布会杀疯了盘古大模型跳级发布编程语言仓颉首次亮相&#34;&gt;华为发布会杀疯了：盘古大模型跳级发布，编程语言仓颉首次亮相&lt;/h2&gt;
+&lt;p&gt;华为发布盘古大模型5.0，涵盖十亿、百亿、千亿、万亿四种规模，强调多模态和强思维能力。现场演示搭载盘古的人形机器人完成复杂任务与学习场景，并应用于自动驾驶领域，生成符合物理规律的训练视频。鸿蒙系统也采用最新盘古大模型，增强智慧助手小艺的多模态能力。此外，华为揭秘盘古背后技术细节，包括数据、架构π和训练方法。盘古5.0四大升级点：覆盖不同应用需求、提升多模态理解与生成、强化思维链与策略搜索、在工业设计与建筑设计等领域展现广泛应用。鸿蒙系统进行全面升级，采用全新端云垂直整合架构，性能显著提升，并推出仓颉编程语言，面向全场景应用开发。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J59GBOP60511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;美政府再发ai禁令限制美国人对华ai技术和产品投资&#34;&gt;美政府再发AI禁令！限制美国人对华AI技术和产品投资&lt;/h2&gt;
+&lt;p&gt;美国财政部宣布新禁令，禁止美国人对特定AI系统及使用特定计算能力的终端用途进行投资，即使在开发未被禁止的AI系统或芯片相关交易时也需上报。此政策旨在应对国家安全技术与产品上的投资，并针对半导体、量子信息技术和人工智能领域实施监管。具体细则将在8月4日后公布。该禁令是去年拜登签署的第14105号行政命令的执行，旨在限制中国在特定技术领域的投资活动，以防止资金流入可能威胁美国安全的技术发展。违反规定者将面临刑事和民事处罚，并可能撤销相关投资。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J59PI7UM0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Qwen2-7B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API调用和WebUI对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Llama-3-8B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLM-4-9B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ChatTTS 文本转语音模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API使用和搭建WebUI界面&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stable Diffusion 3 文生图模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Sax4z2k8Dvn82h15jf51Hw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stable Diffusion 3 文生图“开源英雄”大模型本地部署和使用教程，轻松实现AI绘图自由&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;大模型应用案例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助AI大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Python 小游戏&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI已来，我与AI一起用Python编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python游戏编程：一步步用Python打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>[AI资讯·0618] 快手AI模型可灵在质量优于Sora，OpenAI和谷歌发布新技术推动AI视频推理发展，Gemini1.5Pro在该榜单中表现突出</title>
+        <link>https://ntopic.cn/p/ai20240618/</link>
+        <pubDate>Mon, 17 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240618/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240618/ai20240618-156.jpg" alt="Featured image of post [AI资讯·0618] 快手AI模型可灵在质量优于Sora，OpenAI和谷歌发布新技术推动AI视频推理发展，Gemini1.5Pro在该榜单中表现突出" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;陕西推出AI千亿级发展计划，五大产业集群，智算超3000P&lt;/li&gt;
+&lt;li&gt;试了快手的视频AI，竟然有点领先&lt;/li&gt;
+&lt;li&gt;“技术故障”背刺巴菲特，金融大模型到底靠不靠谱？&lt;/li&gt;
+&lt;li&gt;Gemini视频推理遥遥领先GPT-4o，首个视频多模态基准Video-MME&lt;/li&gt;
+&lt;li&gt;国产视频大模型PixVerse发布运动笔刷，网友：效果超Runway&lt;/li&gt;
+&lt;li&gt;AI研究的主要推动力是什么？ChatGPT团队科学家：算力成本下降&lt;/li&gt;
+&lt;li&gt;LLM最全「怪癖」首曝光！马里兰OpenAI等30+学者祭出75页提示报告&lt;/li&gt;
+&lt;li&gt;大模型「幻觉」全无？图神经网络成破解核心，精准预测因果消除「幻觉」&lt;/li&gt;
+&lt;li&gt;为什么你的 iPhone，肯定用不上「苹果 AI」？&lt;/li&gt;
+&lt;li&gt;答案抽取正确率达96.88%，xFinder断了大模型「作弊」的小心思&lt;/li&gt;
+&lt;li&gt;3D 版 SORA 来了！DreamTech 推出全球首个原生 3D-DiT 大模型&lt;/li&gt;
+&lt;li&gt;中国版Sora级视频大模型发布，打造“视频-Native”超级应用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;陕西推出ai千亿级发展计划五大产业集群智算超3000p&#34;&gt;陕西推出AI千亿级发展计划，五大产业集群，智算超3000P&lt;/h2&gt;
+&lt;p&gt;陕西省推出《加快推动人工智能产业发展实施方案（2024-2026年）》，旨在通过建设产业园、突破核心技术、打造产业集群等措施，实现人工智能产业的高质量发展。目标包括建设多个产业园区、引入国家级重点项目、新增制造业企业通过DCMM贯标认证等。方案聚焦算力供给、数据集成与大模型布局，实施“强基、创智、赋智、聚智”四大行动，以提升技术底座、培育主体、优化生态，并将陕西打造为具有重要影响力的人工智能产业聚集地。具体措施涉及强化算力、扩大数据供应、布局通用和行业大模型等，同时推动创新产品研发与成果转化，实现制造业全流程智能化升级。方案还规划建设产业集聚区，培育优势企业，并提供保障措施，包括统筹协调机制、试点示范推广、完善支撑体系及强化安全保障，以促进人工智能与实体经济深度融合，赋能新型工业化发展。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4GTGC5M051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;试了快手的视频ai竟然有点领先&#34;&gt;试了快手的视频AI，竟然有点领先&lt;/h2&gt;
+&lt;p&gt;快手新AI模型&amp;quot;可灵&amp;quot;在外网火了，与Sora同台竞技，表现亮眼。在蚂蚁爬行、拉力赛车等场景中，可灵生成视频质量高，细节处理优于Sora。此外，可灵对中国元素理解更佳，适合中国用户。LumaAI同样能生成高质量两分钟视频，并有“电影感”和图片+提示词生成视频的功能。两款AI在吃播、电影感、物理世界理解等方面各有千秋，但快手的可灵AI在效果稳定性上表现更优。快手通过模仿Sora的技术路线并采用DiT架构提升模型性能，在视频数据丰富的背景下，实现了较好的效果。然而，商业化问题成为AI发展的瓶颈，大部分厂商难以找到盈利模式，高昂的成本和会员收费并未覆盖成本。尽管如此，快手凭借自身平台优势，可灵AI有潜力探索新的商业模式，如“发帖助手”等定位可能带来流量和收入。本文对两款AI进行了详细对比，并分析了AI发展面临的商业化挑战及快手的潜在机会。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4SN3TV6051196HN.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;技术故障背刺巴菲特金融大模型到底靠不靠谱&#34;&gt;“技术故障”背刺巴菲特，金融大模型到底靠不靠谱？&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240618/ai20240618-146.jpg&#34;
+	width=&#34;640&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240618/ai20240618-146_hud6eb3fe3e30583cc6b8245cea625e226_263098_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240618/ai20240618-146_hud6eb3fe3e30583cc6b8245cea625e226_263098_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;“技术故障”背刺巴菲特，金融大模型到底靠不靠谱？&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;金证科技携手英特尔打造金融领域大模型推理方案，通过组合式AI（大模型+小模型+工具）解决金融业务需求，K-GPT等大模型在特定任务中展现优势，同时优化成本与资源利用。英特尔至强®CPUMax系列处理器提供高带宽内存和内置英特尔®高级矩阵扩展引擎，大幅提高计算性能，支持高效推理和大规模矩阵运算。金证通过与英特尔合作，实现硬件、软件优化的深度融合，为金融行业应用大模型树立标杆，助力金融机构数字化转型，并在科技节中展示了AI技术的实际应用前景。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4TD7SB80511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;gemini视频推理遥遥领先gpt-4o首个视频多模态基准video-mme&#34;&gt;Gemini视频推理遥遥领先GPT-4o，首个视频多模态基准Video-MME&lt;/h2&gt;
+&lt;p&gt;OpenAI和谷歌发布的新技术将AI视频推理推向新高度，但缺少全面评估大模型视频推理能力的标准。为弥补这一空白，Video-MME基准应运而生，全面评估多模态大模型的综合视频理解能力，并得到业界认可。Gemini1.5Pro在该榜单中表现突出，在视频理解和处理上占据主导地位，其性能超越了GPT-4o和GPT-4V/o等其他模型。Video-MME基准特点包括：覆盖不同长度、类型和模态的视频数据集，采用全人工标注确保高质量；评估时间维度广泛性、数据模态丰富性和视频类型的多样性。实验结果显示Gemini1.5Pro在长视频理解上表现优异，并支持音频输入，优于其他开源模型如VILA-1.5。尽管当前多模态大模型在长视频理解方面仍有进步空间，Video-MME基准的推出为评估和改进这些模型提供了重要工具。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4TCMD9V0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;国产视频大模型pixverse发布运动笔刷网友效果超runway&#34;&gt;国产视频大模型PixVerse发布运动笔刷，网友：效果超Runway&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240618/ai20240618-149.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240618/ai20240618-149_hu9efa8f5bad54b1fdb648cb2922b5e45a_305747_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240618/ai20240618-149_hu9efa8f5bad54b1fdb648cb2922b5e45a_305747_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;国产视频大模型PixVerse发布运动笔刷，网友：效果超Runway&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;MagicBrush运动笔刷工具因其能够精准控制视频元素运动方式、提升用户操作灵活性和可控性，在AI视频社区备受关注。该工具允许用户通过涂抹区域和绘制轨迹来调整视频中的物体动作，类似“神笔马良”的效果，实现在生成视频时如同修图般的精细操控。PixVerse是继Runway之后第二家发布类似功能的AI视频生成公司，其MagicBrush运动笔刷在多主体控制、画面含义理解等方面表现出色。用户能通过该工具实现多目标精准移动、遵循物理规律创造生动自然的场景，并且比Runway更灵活地绘制运动轨迹和自定义方向与距离。爱诗科技CEO王长虎在智源大会上介绍，PixVerse采用多种技术路线探索文生视频模型生成，包括Diffusion+Unet架构以及DiT架构。同时，公司着重于提升视频可控性，通过角色一致性（C2V）功能优化图像保真度和美学质量，并研发MagicBrush网络结构以简化交互层面并提高运动控制精度。爱诗科技专注于解决用户实际需求，如推出C2V功能实现连续、可控的视频生成，以及MagicBrush运动笔刷功能。这些创新使得PixVerse在竞争激烈的AI视频生成市场中脱颖而出，吸引了大量用户的积极反馈和使用，其产品用户体验和效果得到显著提升。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4T6F0A70512MLBG.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai研究的主要推动力是什么chatgpt团队科学家算力成本下降&#34;&gt;AI研究的主要推动力是什么？ChatGPT团队科学家：算力成本下降&lt;/h2&gt;
+&lt;p&gt;AI研究的主要推动力是计算成本呈指数级下降及规模扩展。HyungWonChung通过分析Transformer的发展历史，阐述了编码器-解码器与仅解码器架构之间的差异及其对AI研究的意义。找到主要推动力后，理解它对于预测AI未来至关重要。Chung强调回顾过去架构的重要性，旨在提供一个统一视角，揭示哪些结构可能最终被规模扩展取代。他指出AI社区在添加结构方面做得很好，但在移除结构方面还需更多关注。计算成本的下降推动了AI研究的发展，使得更少结构的模型更具扩展性。通过理解历史中的关键结构选择及其原因，可以更好地洞察从过去到现在的变化，并据此预测未来方向。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4T4PO9P0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;llm最全怪癖首曝光马里兰openai等30学者祭出75页提示报告&#34;&gt;LLM最全「怪癖」首曝光！马里兰OpenAI等30+学者祭出75页提示报告&lt;/h2&gt;
+&lt;p&gt;大语言模型(LLM)的提示技术研究揭示了其行为的怪异特性：重复内容可显著提高性能，而匿名化人名则导致准确性下降。马里兰大学等12所机构的30多位研究人员对LLM提示进行了大规模系统研究，发布了一篇详尽报告，覆盖4,797条记录筛选出1,565篇相关论文。报告中指出，奇奇怪怪的大语言模型在生成式AI行业中存在一些未被充分理解的现象。研究发现了以下现象：-重复内容：某些提示中的重复信息能显著提升LLM的性能。-包含人名：在提示中提及具体人物名字对准确性有重要影响。-示例选择与顺序敏感性：示例的选择和排列顺序对LLM的表现至关重要，甚至可能使准确率大幅波动。此外，研究还探讨了代码辅助推理、文本提示技术分类（如少样本学习、零样本推理等）、多语言和多模态提示方法。报告提出了一种全面的分类框架，并强调了在设计提示时的关键决策点。研究提出了提示工程过程，包括数据集上的推理、性能评估与提示模板修改三个步骤。还回顾了用于自动优化提示的技术策略，如答案工程，以及针对标注任务的LLM输出注释结果分析。报告总结了最常用的提示技术，指出少样本学习、零样本推理、高质量上下文提示示例和自洽等方法使用频率较高。同时，多模态提示也得到了发展，涵盖了图像、视频等不同形式的数据处理策略。这项研究为理解LLM的提示技术提供了全面视角，并揭示了这些模型在特定条件下的行为模式与敏感点。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4SURV8C0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;大模型幻觉全无图神经网络成破解核心精准预测因果消除幻觉&#34;&gt;大模型「幻觉」全无？图神经网络成破解核心，精准预测因果消除「幻觉」&lt;/h2&gt;
+&lt;p&gt;AI初创公司Alembic宣布推出全新AI系统，彻底解决了大模型生成虚假信息的问题，实现了消除&amp;quot;幻觉&amp;quot;的目标。该系统能够在企业数据集中识别随时间变化的因果关系，而非仅限于相关性，确保输出确定性和谈论因果关系的能力。此前，AI模型在生成看似逼真文本时常产生错误或无意义信息，成为企业应用的主要障碍。Alembic通过安全可靠的技术手段，使AI系统能够从各种数据源摄取信息，并处理&amp;quot;可观测性和分类器&amp;quot;模块和几何数据组件。结果输入因果图神经网络（GNN），生成确定性预测及战略建议。公司建立了超级计算机基础设施并开发了新数字技术，将企业数据表示为时间感知图神经网络，以捕捉事件与数据点随时间形成的关联。AlembicAI不仅学习模式和相关性，还能识别推动业务成果的因果关系，高度预测未来行动影响，并推荐实现目标的最佳干预措施。展示分析复杂数据生成战略建议的过程表明了其技术实力。Alembic在财富500强企业中受到浓厚兴趣，获得Nvidia公司博士专家及未公开大客户认可，显示出市场潜力。然而，该公司面临挑战证明最终技术成果能超越早期试点，为大型企业提供准确结果。&amp;ldquo;无幻觉&amp;quot;方法可能成为关键卖点，也可能揭示研究突破与实际影响之间差距的警示故事。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4SUPGQ40511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;为什么你的-iphone肯定用不上苹果-ai&#34;&gt;为什么你的 iPhone，肯定用不上「苹果 AI」？&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240618/ai20240618-153.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240618/ai20240618-153_hu2051965c750be1d0aea689c47084f3ca_103769_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240618/ai20240618-153_hu2051965c750be1d0aea689c47084f3ca_103769_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;为什么你的 iPhone，肯定用不上「苹果 AI」？&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;硬件限制导致老款iPhone无法使用新AI功能。苹果追求设备上的隐私处理策略，强调在用户设备上直接执行AI任务以保护数据安全。AI模型需要足够的RAM空间运行，而老款手机的内存限制是主要问题之一。苹果AI功能仅限于特定机型，如新款iPhonePro系列及配备M1或更新芯片的iPad和Mac。尽管有理论上的逆向工程让部分AI功能在非标准硬件上运行，但实际效果有限。未来是否所有AI功能都能兼容更广泛的设备仍有待验证，预计首批AI功能将在iOS18发布时与新款iPhone一同推出，届时用户将能亲自体验苹果AI的实际价值和效果。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4SQVLCI05119FMA.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;答案抽取正确率达9688xfinder断了大模型作弊的小心思&#34;&gt;答案抽取正确率达96.88%，xFinder断了大模型「作弊」的小心思&lt;/h2&gt;
+&lt;p&gt;大语言模型（LLM）发展迅速，引发了对公平性与可靠性的讨论。当前主要评估框架如OpenCompass等推动了进步，但专注于核心组件可信度的团队较少。上海算法创新研究院和中国人民大学的研究团队发布《xFinder》论文，深入分析LLM评估流程，重点评估答案抽取器在可靠性与一致性方面的表现。论文指出现有方法依赖正则表达式（RegEx）进行答案抽取，最佳准确率仅为74.38%，且容易被拟合影响结果。为解决这一问题，《xFinder》提出了一种新模型，具备高度鲁棒性，能更准确地抽取关键答案，显著优于当前最佳框架中的RegEx方法，并支持多样化题型评估。实现过程包括生成LLM响应、构建KAF数据集和训练xFinder。团队构建了包含26,900个训练样本的KAF数据集，用于有效训练模型。实验结果显示，在不同任务上，xFinder-qwen1505的平均提取准确率高达96.88%，远超最佳评估框架中的RegEx方法，并显著优于GPT-4。此外，《xFinder》在现实世界场景中对多种LLM进行了评估，证实了其高鲁棒性和泛化能力。实验揭示了关键发现：不同模型在不同框架下的排名差异大、xfinder一致性高、直接使用选项文本能提升排名的一致性。《xFinder》通过优化关键答案提取模块，显著提高了LLM评估的准确性和可靠性，并展现出了高度鲁棒性和泛化能力。未来研究将继续优化此方法并探索其他评估领域，为LLM性能评估提供更可靠的基础。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4T77AK10511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;3d-版-sora-来了dreamtech-推出全球首个原生-3d-dit-大模型&#34;&gt;3D 版 SORA 来了！DreamTech 推出全球首个原生 3D-DiT 大模型&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240618/ai20240618-156.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240618/ai20240618-156_hu39aaad0348e76c82767de365e5ef36d5_46223_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240618/ai20240618-156_hu39aaad0348e76c82767de365e5ef36d5_46223_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;3D 版 SORA 来了！DreamTech 推出全球首个原生 3D-DiT 大模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;全球首个原生三维生成大模型Direct3D由DreamTech发布，并公开了相关学术论文《直接立方体：通过三维潜扩散转换器的可扩展图像到三维生成》。Direct3D解决了高质量三维内容生成难题，采用3DDiffusionTransformer（3D-DiT）技术路线，不经过中间2D阶段直接生成三维模型。与传统2D-to-3Dlifting方法相比，Direct3D在原理上具有优势，但面临高效3D模型表征、训练架构和高质量大规模3D训练数据的挑战。Direct3D通过创新提出类似OpenAISORA的3DVAE来提取特征，采用改进优化后的DiT架构，并结合DreamTech自研的数据合成引擎生成大量高质量3D数据。实验验证显示，Direct3D在三维模型生成质量上超越主流2D升维方法，主要得益于高效表征、对齐模块和使用大规模高质量3D数据。技术架构上，Direct3D采用与OpenAISORA相似的DiT架构，符合ScalingLaw原则，通过增加参数量和训练数据量提升智能程度。在大语言模型、图像生成和视频生成领域中均得到验证。Direct3D是全球首个公开的3D内容生成方向上的DiT实践，展示了原生3D技术路线的优势。随着Direct3D推出，3D生成领域进入商用时代。与传统方案相比，Direct3D生成的3D模型质量达到商用级别，解决了几何结构、精度、表面细节和mesh面片数量等问题，适用于家用及工业打印机。模型参数量增加后，3D生成可应用于更多行业。基于Direct3D大模型，DreamTech推出了面向C端用户的Animeit!和面向创作者的3D内容创作平台两款尝鲜产品。Animeit!将用户输入转换为高质量二次元风格的3D人物形象，并具备骨骼节点用于动作绑定。另一款产品让用户通过文本描述或上传图片在短时间内获得高质量3D模型。DreamTech专注于3DAI技术，致力于提升全球AIGC创作者及消费者的体验，目标打造与真实世界无缝对接、实时互动的4D时空体验，实现通用人工智能（AGI）。公司汇集了全球顶尖AI人才，核心团队由英国两院院士、国家级青年人才以及多位深圳市高层次人才组成。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4T3B1FC0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;中国版sora级视频大模型发布打造视频-native超级应用&#34;&gt;中国版Sora级视频大模型发布，打造“视频-Native”超级应用&lt;/h2&gt;
+&lt;p&gt;全球视频生成领域迎来新突破，中国首个超长时长、高性价比大模型“视界一粟YiSu”发布，标志着视频生成技术进入快速爆发期。此款模型在性能与成本之间达到极致平衡，拥有16秒原生超长时长，可生成至1分钟以上，具备强大运动表现力和物理世界理解能力。通过融入LLM和扩散模型的自研架构，极大优化了多模态融合、训练及推理效率，并实现了模型效果的极致优化。视界一粟YiSu基于极佳科技自研技术路线，超越DiT（DiffusionTransformer）基础，结合LLM与扩散模型优势，提供视频生成最佳方案。这一模型有望推动AI-Native和视频-Native爆款应用的诞生，为用户提供AI时代前所未有的体验价值。面向通用智能时代，视界一粟YiSu将加速实现长视频生成的大规模产品应用，其数据引擎能力对自动驾驶、通用机器人等物理世界通用智能具有关键作用。极佳科技世界级人工智能综合团队在技术与产业落地方面拥有丰富经验，通过打造基础模型和超级应用的智能闭环飞轮，推动行业走向通用智能时代。未来，视界一粟YiSu将助力更多创新技术和产品的发展，为用户提供更多价值，加速通用智能时代的到来。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4TF9AUQ0512MLBG.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;微信公众号老牛同学&#34;&gt;微信公众号：老牛同学&lt;/h2&gt;
+&lt;h3 id=&#34;stable-diffusion开源大模型&#34;&gt;Stable Diffusion开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Sax4z2k8Dvn82h15jf51Hw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stable Diffusion 3 文生图“开源英雄”大模型笔记本部署和使用教程，轻松实现AI绘图自由&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;qwen2-7b-开源大模型&#34;&gt;Qwen2-7B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API调用和WebUI对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;llama3-8b-开源大模型&#34;&gt;Llama3-8B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;glm-4-9b-开源大模型&#34;&gt;GLM-4-9B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;chattts-文本转语音模型&#34;&gt;ChatTTS 文本转语音模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API使用和搭建WebUI界面&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;大模型应用&#34;&gt;大模型应用&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助AI大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;python-小游戏&#34;&gt;Python 小游戏&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI已来，我与AI一起用Python编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python游戏编程：一步步用Python打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>AI测试高考物理题，最高准确率100%，OpenAI与苹果合作，将ChatGPT融入系统中，大模型在物理领域应用潜力显现</title>
+        <link>https://ntopic.cn/p/ai20240612/</link>
+        <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240612/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240612/ai20240612-125.jpg" alt="Featured image of post AI测试高考物理题，最高准确率100%，OpenAI与苹果合作，将ChatGPT融入系统中，大模型在物理领域应用潜力显现" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;国产AI大战高考物理，第1题全对，第2题开始放飞&lt;/li&gt;
+&lt;li&gt;终于放大招了，2024WWDC，苹果开启AI反击战&lt;/li&gt;
+&lt;li&gt;苹果一夜重塑iPhone！GPT-4o加持Siri，AI深入所有APP&lt;/li&gt;
+&lt;li&gt;OpenAI确认苹果集成ChatGPT 还任命了两位新高管&lt;/li&gt;
+&lt;li&gt;GPT-4搞不定的图推理，港科大7B模型搞定｜KDD2024&lt;/li&gt;
+&lt;li&gt;拿下SOTA！最强中文Embedding模型对标OpenAI，技术路线公开&lt;/li&gt;
+&lt;li&gt;具身智能赋能机器人，「AI+人形机器人」论坛在浦东新区成功举行&lt;/li&gt;
+&lt;li&gt;苹果智能炸裂登场：GPT-4o加持,全家桶都上生成式AI,Siri脱胎换骨&lt;/li&gt;
+&lt;li&gt;AI重新定义导航，弯道会车无灯路口提前预警，网友：导航成精了！&lt;/li&gt;
+&lt;li&gt;AI生图格局大震！Stable Diffusion 3开源倒计时，2B单机可跑碾压闭源Midjou&lt;/li&gt;
+&lt;li&gt;手机流畅运行470亿大模型：上交大发布LLM手机推理框架，提速29倍&lt;/li&gt;
+&lt;li&gt;估值64亿美元！Mistral AI官宣6.4亿美元B轮融资&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;国产ai大战高考物理第1题全对第2题开始放飞&#34;&gt;国产AI大战高考物理，第1题全对，第2题开始放飞&lt;/h2&gt;
+&lt;p&gt;端午佳节之际，高考在部分地区已落幕，在其他考场，考生仍在奋力应考。为预祝所有参与者取得理想成绩，各类科目考试答案开始在网络上流传。面对新高考改革下取消文理分科、采用3+1+2或3+3模式的挑战，本次邀请了通义千问等十款AI助手参与物理单选题与多选题的解答测试。在单选题环节中，最高准确率为100%，涉及矢量标量概念。第二题，选手们答案各异；海螺AI、讯飞星火和文心一言表现出色。第5题，讯飞星火、海螺AI和新增的Kimi与腾讯元宝答对。文心一言和ChatGLM在解答双缝干涉实验时展现了独特的应试策略。多选题部分，海螺AI表现最佳，通义千问、文心一言以及万知亦取得不俗成绩。最高准确率第8题是一道概念题，第9题万知与海螺AI全选正确答案。测试结果显示，在46分的选择题中，多数选手达到了及格标准。本次AI解答测试展现了大模型在物理领域应用的潜力与挑战性，未来期待更多创新与改进。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4B8JQK60511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;终于放大招了2024wwdc苹果开启ai反击战&#34;&gt;终于放大招了，2024WWDC，苹果开启AI反击战&lt;/h2&gt;
+&lt;p&gt;2024年WWDC大会上，苹果全面发力人工智能领域，发布了一系列新操作系统，包括iOS18、iPadOS18、macOSSequoia、watchOS11等，并推出了“AppleIntelligence”功能。这一功能使Siri更加智能，支持图片AI消除、系统录音APP通话录音、AI图片生成等功能。用户无需注册即可使用ChatGPT-4。然而，该功能仅适用于搭载A17Pro和M系列芯片的设备，且当前只有美国版本提供英语服务，其他国家和地区需等待后续更新。AppleIntelligence的推出标志着苹果正式踏入人工智能元年，库克强调它不仅涉及人工智能，更是一种个人化智能体验。在文字处理、隐私保护等方面，AI功能得到了显著增强，如Siri支持不连贯语音指令、跨App操作等。图片处理方面，用户可以直接使用AI技术消除照片中的路人或搜索特定动作的表情，并生成与AppleMusic库中音乐相匹配的回忆或vlog。此外，苹果宣布与OpenAI合作将ChatGPT集成到系统生态中，并由GPT-4驱动，用户无需注册即可体验。国行版则可能与百度合作使用文心一言大模型。值得一提的是，通过录音功能，用户可以实现文字转换，这一特性在安卓设备上已有所应用。AppleIntelligence强调了隐私保护和端侧、云端处理的结合，确保数据安全。尽管在AI领域起步较晚，但苹果展示了一系列创新功能，并承诺将AI融入更多产品中，以打造个人化智能体验。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/tech/article/J4CJD7QD000999D8.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;苹果一夜重塑iphonegpt-4o加持siriai深入所有app&#34;&gt;苹果一夜重塑iPhone！GPT-4o加持Siri，AI深入所有APP&lt;/h2&gt;
+&lt;p&gt;苹果通过与OpenAI合作接入ChatGPT和使用GPT-4o模型，对iPhone系统进行全面升级，包括Siri的重生、重构人机交互模式、引入AppleIntelligence成为AI新代名词等。发布内容涉及iOS、iPadOS大更新，AI浓度显著提升，并且这些功能免费提供给iPhone15Pro及以上设备和搭载M1及更高配置芯片的Mac用户。内置ChatGPT无需注册即可使用。发布会引起广泛关注，WWDC24冲上热搜前三，网友感慨苹果整合能力逆天，新AI功能满足大家想象力。AppleIntelligence与ChatGPT联手打造AIPhone，系统AI化、引入强大云端大模型，包括语言、图像、行动和个性化等多方面增强。语言方面支持通知优先排序、写作工具优化；图像生成覆盖素描、插画、动画等多种风格，并能自定义emoji；行动力方面提供跨应用操作及个人情景分析。AppleIntelligence在隐私保护上采用专门架构，在端侧进行涉及个人隐私的计算，确保安全。此外，AppleIntelligence还能生成摘要、总结电话录音等功能。对于更复杂任务，引入ChatGPT，支持多模态任务如为菜谱提供灵感等，并且所有请求不会被记录。Siri升级进入新纪元，屏幕边缘光晕显示，理解更丰富语言和上下文信息，支持语音打字切换输入，解答数千个操作问题。AppleIntelligence将增强屏幕内容感知功能、跨应用操作能力以及APPIntents框架的智能度，提供更多个性化体验。iOS18主打个性化，引入深色模式设置，APP小组件主题自定义，控制中心可自定义控制项和布局，隐私安全方面增加上锁功能。图库新增按时间、主题分类整理的小相册，短信解锁新功能如延迟发送、特殊文字效果等。iPadOS18终于加入计算器，并支持数学笔记、手写识别等功能，备忘录推出Smartscript模仿笔迹功能。VisionOS2增强AI空间化照片和沉浸式分享能力，支持双指轻点切换主屏幕、旅行模式增加火车场景支持。MacOSSepuoia优化设备互联，可在Mac桌面上直接打开iPhone镜像并操作iPhone内容，Safari新增Highlights功能突出显示重要页面内容，并加强智能防追踪保护隐私。新出的Keychain管理密码安全，实现多设备同步。发布会后，库克表示AIPhone时代刚刚开始。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4CON34U0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;openai确认苹果集成chatgpt-还任命了两位新高管&#34;&gt;OpenAI确认苹果集成ChatGPT 还任命了两位新高管&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240612/ai20240612-116.jpg&#34;
+	width=&#34;336&#34;
+	height=&#34;252&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240612/ai20240612-116_hueafeaa9cf4deea10765939a7294c5c66_94481_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240612/ai20240612-116_hueafeaa9cf4deea10765939a7294c5c66_94481_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OpenAI确认苹果集成ChatGPT 还任命了两位新高管&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;美国时间周一，OpenAI宣布聘请萨拉·弗莱尔为首席财务官和凯文·威尔为首席产品官，并与苹果合作集成ChatGPT等协议。弗莱尔曾任NextdoorCEO及SquareCFO，目前是斯坦福大学数字经济实验室联席主席；威尔曾担任PlanetLabs总裁、Twitter高级副总裁以及Facebook和Instagram高管。新任命旨在强化OpenAI的高管团队，推动公司扩大规模以满足增长需求，并应对复杂环境。OpenAI与苹果的合作计划于今年晚些时候将ChatGPT整合至iOS、iPadOS及macOS系统中，用户可借此利用ChatGPT功能进行文本生成、图像创建等操作。此外，Siri将调用ChatGPT智能提供答案，但在发送问题前需用户确认。近期，OpenAI因快速成长和争议性员工离职事件受到关注，并有员工公开信表达对行业过快发展及缺乏监管的担忧。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/tech/article/J4CTMJK500097U7T.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;gpt-4搞不定的图推理港科大7b模型搞定kdd2024&#34;&gt;GPT-4搞不定的图推理，港科大7B模型搞定｜KDD2024&lt;/h2&gt;
+&lt;p&gt;大模型执行图推理任务时，关键在于是否能准确给出结果并同时提供详细的推理过程。GPT-4表现简短且错误，可能受限于处理长输入或理解复杂结构；相比之下，港科大团队开发的GraphWiz不仅正确解答，还清晰展示推理路径。GraphInstruct数据集为训练语言模型提供了多样化的图任务和明确的推理路径，旨在提升模型解决各种图问题的能力。GraphWiz通过针对性微调和两阶段训练方法优化了解题能力，并提供连贯推理路径。研究发现，GraphWiz在空间推理、记忆保持方面表现出色，优于GPT-4。九种不同复杂度层次的图问题被精心挑选用于全面探索图论理论与应用。GraphInstruct数据集构建包括生成随机图和显式推理路径，通过拒绝采样策略增强数据多样性。GraphWiz训练采用混合任务指令调优和直接偏好优化对齐方法提升模型性能。评估结果显示，GraphWiz在不同复杂度的图问题上显著超越GPT-4，并且随着训练语料库增加，性能进一步提升。然而，在某些特定任务中存在潜在过拟合现象。通过比较实验，研究发现GraphWiz具有良好的跨任务泛化能力，尤其在高复杂度和零样本迁移任务上的表现令人印象深刻。整体而言，GraphWiz的开发不仅提升了大型模型解决图推理问题的能力，还提供了清晰、连贯的推理路径，为实际应用提供了强大支持。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4DKQKHO0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;拿下sota最强中文embedding模型对标openai技术路线公开&#34;&gt;拿下SOTA！最强中文Embedding模型对标OpenAI，技术路线公开&lt;/h2&gt;
+&lt;p&gt;国产大模型「日日新5.0」凭借商汤自研中文Embedding模型Piccolo2在权威评测中超越GPT-4Turbo，成为首个实现此壮举的国产模型。背后是算法、算力与数据全面优化的结果，其中Piccolo2作为关键算法之一，支持512/2K/8K向量长度，尤其8K模型对标OpenAI，性能在C-MTEB中文语义向量评测中领先。论文及HuggingFace地址公开，揭示了其通过多任务混合损失训练、高效数据合成与难负样本挖掘提升性能的策略。相较于之前SOTA模型，Piccolo2综合评分提高约1.9个点，展现了在检索、分类、聚类等任务上的强大能力，为大语言模型落地应用提供了关键技术支持。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4DJEH3G0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;具身智能赋能机器人ai人形机器人论坛在浦东新区成功举行&#34;&gt;具身智能赋能机器人，「AI+人形机器人」论坛在浦东新区成功举行&lt;/h2&gt;
+&lt;p&gt;在上海市浦东新区科技和经济委员会指导下，「AI+人形机器人」论坛暨张江机器人全球生态峰会具身智能开发者论坛于浦东新区张江科学会堂成功召开。来自多个领域的200多位嘉宾参加，讨论了具身智能、运动控制、云计算及人形机器人整机等议题，吸引了超30000在线观众。论坛邀请12位专家分享研究成果，涵盖浙大教授王越的末端规划难题解决方案，上海人工智能实验室青年科学家庞江淼的人工智能模型赋能与三维感知挑战解决，香港中文大学（深圳）教授贾奎提出的高通用性具身智能阶段及跨维智能基于Sim2Real的解决方案。李清教授分析了肌腱仿生驱动优势，并倡导产业交流；胡宇航分享自监督学习应用推动自动学习优化；蒋琛讨论具身智能控制系统平台促进人形机器人大小脑融合。施群聚焦人形机器人结构设计，季超博士分享团队结合具身大模型的技术路线及挑战，李伟研究员介绍基于生命进化学习的机器人形态与行为策略迁移。陈鹏介绍松灵机器人的全球科研教育工作，张龙君分享加速具身智能机器人产品核心能力构建的工作，邢伯阳分享低成本具身平台的设计思想和应用前景。浦东新区大模型赋能产业系列论坛聚焦金融、智能网联车、人形机器人等垂直领域，探讨前沿AI应用场景，搭建技术交流与产业协同的开放平台，助力浦东打造世界级人工智能产业集群。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4D9GQ960511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;苹果智能炸裂登场gpt-4o加持全家桶都上生成式aisiri脱胎换骨&#34;&gt;苹果智能炸裂登场：GPT-4o加持,全家桶都上生成式AI,Siri脱胎换骨&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240612/ai20240612-125.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240612/ai20240612-125_hu4697c1f87f561bff2a15f9ead133bd06_63496_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240612/ai20240612-125_hu4697c1f87f561bff2a15f9ead133bd06_63496_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;苹果智能炸裂登场：GPT-4o加持,全家桶都上生成式AI,Siri脱胎换骨&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;苹果全球开发者大会WWDC2023在ApplePark正式召开，宣布覆盖全线产品的生成式AI技术，并带来Siri、Siri新形态、AppleIntelligence系统级整合、ChatGPT集成、跨平台集成ChatGPT、全新语言理解和创造能力、ImagePlayground和Genmoji以及隐私保护等创新。此次发布会亮点包括：1.&lt;strong&gt;生成式AI技术&lt;/strong&gt;：苹果推出基于M系列芯片的自研本地大模型加云端策略，实现强大、直观、完全整合、个性化且保护隐私的体验。2.&lt;strong&gt;Siri更新&lt;/strong&gt;：-新形态Siri拥有更丰富的语言理解能力，更加自然、懂上下文、个性化，简化日常任务。-支持文字输入和切换文本与语音交互方式。-屏幕感知功能允许执行屏幕信息相关操作。3.&lt;strong&gt;AppleIntelligence&lt;/strong&gt;：全面AI系统，结合生成式AI模型和个人资料提供智能服务，覆盖iPhone、iPad和Mac，利用苹果芯片能力处理语言和图像，并支持跨应用操作。4.&lt;strong&gt;ChatGPT集成&lt;/strong&gt;：-Apple正式将ChatGPT集入iOS18、iPadOS18和macOSSequoia，提供图像和文档理解功能。-Siri可以随时利用ChatGPT提供专业回答，用户授予权限后可直接访问。5.&lt;strong&gt;写作工具与AI&lt;/strong&gt;：系统集成的写作工具支持通过ChatGPT协助生成内容，并在iOS、iPadOS和macOS中提供个性化的智能服务，如重写、校对和总结文本等。6.&lt;strong&gt;隐私保护&lt;/strong&gt;：AppleIntelligence采用设备端处理和私有云端计算（PrivateCloudCompute）策略，确保数据安全，为AI领域设立新的隐私标准。7.&lt;strong&gt;新macOS系统&lt;/strong&gt;：macOSSequoia引入iPhone镜像功能、通知整合与Safari升级等，提供更流畅的多设备体验。8.&lt;strong&gt;iPad计算器应用&lt;/strong&gt;：苹果首次为iPad推出原生计算器应用，满足用户需求。9.&lt;strong&gt;VisionPro系统&lt;/strong&gt;：visionOS2新增多项功能，支持从2D图像中导出深度信息，并带来空间照片等创新体验。总体而言，苹果通过此次WWDC发布会展示了其在生成式AI领域的全面布局和技术创新，旨在提升用户体验并保持技术领先地位。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4D772290511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai重新定义导航弯道会车无灯路口提前预警网友导航成精了&#34;&gt;AI重新定义导航，弯道会车无灯路口提前预警，网友：导航成精了！&lt;/h2&gt;
+&lt;p&gt;高德地图新功能“车道级安全预警”引发用户热议，其能在多种场景下实时探测行车风险，提供语音提醒，覆盖前后左右、昼夜情况，帮助用户减少事故风险。该功能从过去的“车道级导航”进化为能预测并响应风险的系统，不仅提升准确性，还扩展了感知范围，让用户仿佛拥有“千里眼”。高德地图日活跃用户峰值超过2.8亿，月活高达8.01亿，作为国内移动互联网第四大应用，在大规模用户基础上实现车道级安全预警。此外，AI技术与大模型的融入优化了导航服务，提供个性化体验，并探索车路云一体化可能性。高德的成功不仅在于技术创新，也体现了对用户需求的深入理解和服务的社会普惠性，预示着AI在出行领域的未来变革。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4DLEDBE0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai生图格局大震stable-diffusion-3开源倒计时2b单机可跑碾压闭源midjou&#34;&gt;AI生图格局大震！Stable Diffusion 3开源倒计时，2B单机可跑碾压闭源Midjou&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240612/ai20240612-132.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240612/ai20240612-132_hu2b983275ca6c0e6d1bf84d44f5db83df_156818_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240612/ai20240612-132_hu2b983275ca6c0e6d1bf84d44f5db83df_156818_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI生图格局大震！Stable Diffusion 3开源倒计时，2B单机可跑碾压闭源Midjou&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;StableDiffusion3（SD3）即将开源，引发AI生图领域重大变革。经过4个月的酝酿，此消息在社区内激起了巨大反响。SD3凭借其强大的MMDiT全新架构，在AI图像生成领域展现出前所未有的实力，有望成为首个开源碾压闭源的技术赛道。ComfyUI已提前支持SD3版本，预示着开源发布即将成真。SD3的开源不仅意味着StabilityAI将面临收入压力，也凸显了公司在面对开源与商业化选择时的挑战。此前，该公司因巨额债务和CEO离职等负面事件备受关注，但坚持开源的决心彰显其对社区价值的认可。SD3架构强大，能够显著提升图像质量、支持多主题提示，并增强文字拼写能力。其核心在于MMDiT模型，结合了DiT架构与Transformer技术，专为处理文本和图像双模态任务设计。实验结果显示，SD3在人类偏好评估中超越DALL-E3和Midjourneyv6，成为领域内顶尖模型。此消息对AI社区影响重大，预示着开源合作的深化、研究方法的加速创新以及多模态功能的扩展。SD3将为开发者提供更高效、易用的工具，并可能催生更多独创性的体验。随着40亿和80亿参数版本的陆续上线，SD3有望进一步推动AI生图领域的发展。综上所述，StableDiffusion3即将开源的消息不仅对AI社区产生深远影响，也展示了开源项目在技术创新与合作中的巨大潜力。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4G2RO850511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;手机流畅运行470亿大模型上交大发布llm手机推理框架提速29倍&#34;&gt;手机流畅运行470亿大模型：上交大发布LLM手机推理框架，提速29倍&lt;/h2&gt;
+&lt;p&gt;苹果公司关注在手机等移动设备上部署大型模型的趋势，但当前移动设备上的模型较小且消耗大量内存，限制了应用场景。为提供更强服务，苹果需与OpenAI合作，通过云端大模型嵌入操作系统。此方案引发隐私讨论和争议。终端侧本地部署大模型既能提供强大智能又保护隐私的安全性成为关注焦点。主要挑战包括手机内存不足和算力不够强。大型模型参数越多，对内存要求越高；现有手机硬件难以高效运行大规模模型。为解决这些挑战，上海交大IPADS实验室推出面向手机的大模型推理引擎PowerInfer-2.0，并配套大模型优化技术TurboSparse。PowerInfer-2.0能够快速在内存有限的智能手机上实现推理，让Mixtral47B模型达到11tokens/s的速度。相比热门开源推理框架llama.cpp，其推理加速比平均达25倍最高29倍。上海交大团队提出针对手机场景的优化策略，包括动态神经元缓存和基于神经元簇的异构计算，并在去年底提出的PowerInfer-1.0基础上进一步提升。针对手机内存不足问题，利用稀疏模型推理特点，PowerInfer-2.0将神经网络中的神经元分为冷、热两种，并基于LRU策略维护神经元缓存池。近期频繁激活的热神经元被放置在运行内存中，降低内存使用量。通过分段神经元缓存和神经元簇级流水线技术，PowerInfer-2.0实现I/O延迟隐藏并提高模型推理效率。实测显示，在一加12和一加Ace2两款测试手机上，PowerInfer-2.0的预填充速度显著高于llama.cpp与LLMFlash，并在解码阶段占据优势。对于Mixtral47B这类大模型，也能在手机上跑出11.68tokens/s的速度。上海交大团队还提出低成本高质量地大幅提升模型稀疏性的方法。通过引入dReLU激活函数和高质量继续训练语料库，TurboSparse系列模型不仅保持甚至超过原版模型精度，同时将稀疏度提升至三分之一。改造过程中，模型需要继续训练的token数量不到预训练总量的5%，成本极低。上海交大IPADS实验室的研究成果为大型语言模型在资源受限设备上的快速推理提供了可能，并展现出在车载设备、智能家居等方向的应用前景。未来，与手机厂商的合作有望加速相关技术落地应用。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4FTHQ410511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;估值64亿美元mistral-ai官宣64亿美元b轮融资&#34;&gt;估值64亿美元！Mistral AI官宣6.4亿美元B轮融资&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240612/ai20240612-143.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240612/ai20240612-143_hu419bcfcbda0fb2489d6a4989b49da26f_146040_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240612/ai20240612-143_hu419bcfcbda0fb2489d6a4989b49da26f_146040_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;估值64亿美元！Mistral AI官宣6.4亿美元B轮融资&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;法国AI初创公司MistralAI完成6亿欧元B轮融资，估值升至60亿欧元，较六个月前增长3倍。本轮融资由GeneralCatalyst领投，原有投资者如Lightspeed、AndreessenHorowitz、Bpifrance和法国巴黎银行等参与，企业支持者包括英伟达、Salesforce、三星和IBM。MistralAI于2023年4月在巴黎创立，由前DeepMind和Meta的科学家共同组建，专注于开源模型及企业级服务。公司已获得累计超5亿美元融资，近期发布参数规模1760亿的Mixtral8x22B模型，仅次于马斯克的Grok-1，成为市场上第二大开源模型。MistralAI被视为OpenAI在欧洲的主要竞争对手，估值达到64亿美元。MistralAI成立于巴黎，由亚瑟·门施、提摩西·拉克鲁瓦和纪尧姆·兰普创立。公司成立两个月后获得约1.13亿美元种子轮融资，同年12月A轮获得约4.15亿美元融资，估值达20亿美元。微软今年2月对MistralAI进行了小额投资，但不持有股权。MistralAI的投资者包括科技巨头如微软、英伟达和Salesforce等，以及硅谷著名风投GeneralCatalyst和AndreessenHorowitz。市场对MistralAI的信心显著提升，估值较去年12月增长了不止两倍。公司计划在开源大模型领域继续取得突破，与科技巨头竞争。MistralAI成立仅一年，在开源大模型领域取得了多项里程碑，包括发布首个生成式AI模型、具有开放权重的稀疏专家混合模型以及支持5国语言的旗舰模型等。公司还与微软建立了合作伙伴关系，利用AzureAI的超级计算基础设施进行模型训练，并提供MIstralAI模型服务。随着国内外百模大战进入深水区，资金成为关键因素。MistralAI的成功融资为AI创投圈增添信心，显示出市场对新AI大模型创企的信心。面对挑战，MistralAI需利用资金加速性能提升和产品化进程，以在竞争中脱颖而出。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4GPRO7H051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;微信公众号老牛同学&#34;&gt;微信公众号：老牛同学&lt;/h2&gt;
+&lt;h3 id=&#34;qwen2-7b-开源大模型&#34;&gt;Qwen2-7B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API调用和WebUI对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;llama3-8b-开源大模型&#34;&gt;Llama3-8B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;glm-4-9b-开源大模型&#34;&gt;GLM-4-9B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;chattts-文本转语音模型&#34;&gt;ChatTTS 文本转语音模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API使用和搭建WebUI界面&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;大模型应用&#34;&gt;大模型应用&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助AI大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;python-小游戏&#34;&gt;Python 小游戏&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI已来，我与AI一起用Python编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python游戏编程：一步步用Python打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>[AI资讯·0609] SamAltman建立了庞大投资帝国，但不持OpenAI股票；个人资产包括房产和多家公司股权。他曾在YCombinator担任总裁，并投资40家公司，有五家估值增长100倍以上。尽管他不参与OpenAI决策，但其利益与公司业务存在复杂关系，引发监督和透明度争议。</title>
+        <link>https://ntopic.cn/p/ai20240609/</link>
+        <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240609/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240609/ai20240609-107.jpg" alt="Featured image of post [AI资讯·0609] SamAltman建立了庞大投资帝国，但不持OpenAI股票；个人资产包括房产和多家公司股权。他曾在YCombinator担任总裁，并投资40家公司，有五家估值增长100倍以上。尽管他不参与OpenAI决策，但其利益与公司业务存在复杂关系，引发监督和透明度争议。" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;奥特曼28亿「投资帝国」曝光！不要OpenAI股份，当CEO最不赚钱&lt;/li&gt;
+&lt;li&gt;开源超闭源！通义千问Qwen2发布即爆火，网友：GPT-4o危&lt;/li&gt;
+&lt;li&gt;OpenAI泄密者公布165页文件：2027年实现AGI、计算集群将耗资千亿美元&lt;/li&gt;
+&lt;li&gt;清华系细胞大模型登Nature子刊！能对人类2万基因同时建模&lt;/li&gt;
+&lt;li&gt;奥特曼百万年薪挖角谷歌TPU人才，欲砸7万亿实现「芯片自由」？OpenAI自研芯&lt;/li&gt;
+&lt;li&gt;GPT-4欺骗人类高达99.16%惊人率！PNAS重磅研究曝出，LLM推理越强欺骗值越高&lt;/li&gt;
+&lt;li&gt;苹果AI升级大泄露，Siri将在iOS18重生！库克用Apple重新定义AI&lt;/li&gt;
+&lt;li&gt;港大北航等1bit大模型引热议，IEEE刊物评“解决AI能源需求”！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;奥特曼28亿投资帝国曝光不要openai股份当ceo最不赚钱&#34;&gt;奥特曼28亿「投资帝国」曝光！不要OpenAI股份，当CEO最不赚钱&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240609/ai20240609-97.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240609/ai20240609-97_hu4d3c8b950bdf6328e9726a3c4b7eb153_126034_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240609/ai20240609-97_hu4d3c8b950bdf6328e9726a3c4b7eb153_126034_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;奥特曼28亿「投资帝国」曝光！不要OpenAI股份，当CEO最不赚钱&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;SamAltman成立了一个庞大的投资帝国，但他本人不持有OpenAI股票，只拿微薄年薪6.5万美元。他的个人资产包括至少三处房产和多个公司股权，管理这些资产的家族办公室如同成熟风投公司。他曾在YCombinator担任总裁，投资了40家公司，其中有五家估值增长100倍或以上。尽管他不参与OpenAI决策，但其个人利益与公司业务存在复杂关系，引发了监督和透明度的争议。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4894TB90511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;开源超闭源通义千问qwen2发布即爆火网友gpt-4o危&#34;&gt;开源超闭源！通义千问Qwen2发布即爆火，网友：GPT-4o危&lt;/h2&gt;
+&lt;p&gt;摘要：阿里巴巴推出全新开源大模型Qwen2，性能全面超越Llama3，仅两小时内登顶HuggingFace开源大模型榜单第一。Qwen2-72B在十几项国际权威测评中胜过Llama3-70B，尤其在HumanEval、MATH等测试代码和数学能力的基准中表现突出。国产大模型Qwen2-72B也超越了国内一众闭源大模型。在GQA机制的全面加持下，全系列模型支持128K上下文长度，且小模型采用了tieembedding技术，提高参数效率。Qwen2在数学能力和多语言处理方面也有显著提升。开源社区反馈积极，下载量超3万次，生态建设活跃。Qwen2的成功证明中国开源大模型已具备与美国Llama3全面对抗的硬实力，预示着开源大模型将超越闭源模式，成为未来AI发展的主流趋势。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J45SA74S0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;openai泄密者公布165页文件2027年实现agi计算集群将耗资千亿美元&#34;&gt;OpenAI泄密者公布165页文件：2027年实现AGI、计算集群将耗资千亿美元&lt;/h2&gt;
+&lt;p&gt;1.OpenAI前员工利奥波德·阿申布伦纳（LeopoldAschenbrenner）因泄露内部信息被开除，但他声称是因为分享安全备忘录而被开除。2.阿申布伦纳在Dwarkesh播客上发表了长达165页的PDF文档，预测AI趋势，并提到AGI（通用人工智能）可能在2027年实现。3.他认为AI系统将超越人类水平，不仅能完成研究人员和工程师的工作，还可能导致自动化AI研究，进步速度加快。4.AI发展面临四大瓶颈：算力限制、长尾效应、算法进步内在限制和创新难度提升。5.阿申布伦纳估计到2030年将实现超级智能，AI系统可能拥有数十亿个GPU，能够在几周内获取人类几十亿年才能积累的经验。6.他认为智能爆炸将是人类历史上最不稳定和危险时期之一，需要巨大的努力来完成过渡。7.AI投资预计到2030年达到8万亿美元，但可能面临电力供应限制。8.目前用于对齐AI系统的技术“人类反馈强化学习”（RLHF）将在超级智能时代崩溃，需要新的技术解决方案。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J454LG3M051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;清华系细胞大模型登nature子刊能对人类2万基因同时建模&#34;&gt;清华系细胞大模型登Nature子刊！能对人类2万基因同时建模&lt;/h2&gt;
+&lt;p&gt;清华大学等团队推出单细胞基因表达预测大模型scFoundation，登陆NatureMethods。该模型基于5000万人类单细胞数据，拥有1亿参数，能处理20000个基因。它在细胞测序深度增强、药物响应和细胞扰动预测等任务中表现出色，为基因网络研究提供了新的思路。此外，模型的训练框架创新，计算效率提升30%，并开源代码及API，方便用户应用。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J45TJOCH0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;奥特曼百万年薪挖角谷歌tpu人才欲砸7万亿实现芯片自由openai自研芯&#34;&gt;奥特曼百万年薪挖角谷歌TPU人才，欲砸7万亿实现「芯片自由」？OpenAI自研芯&lt;/h2&gt;
+&lt;p&gt;OpenAI正在积极推进自研芯片计划，旨在减少对英伟达芯片的依赖，并扩展其芯片研发团队。据SemiAnalysis报道，OpenAI正从谷歌TPU团队招募人才，以加强自身技术实力。OpenAI认为传统芯片制造商如台积电、三星代工和英特尔代工无法满足全球对AI芯片快速增长的需求。SamAltman计划在未来几年内与SoftBankCEO和台积电代表会谈，共同建造和运营数十座芯片制造工厂。然而，建设新芯片需要巨额资金，估计成本高达5-7万亿美元。OpenAI正在大规模招聘，计划将芯片团队扩展到几十人，并且主要从谷歌TPU团队挖角。TPU是专为机器学习和神经网络计算设计的芯片，与GPU不同，它能更高效地执行张量运算。OpenAI希望通过自研芯片实现技术创新和成本控制，构建由数百万个加速器组成的大型系统。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J45QPOJ80511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;gpt-4欺骗人类高达9916惊人率pnas重磅研究曝出llm推理越强欺骗值越高&#34;&gt;GPT-4欺骗人类高达99.16%惊人率！PNAS重磅研究曝出，LLM推理越强欺骗值越高&lt;/h2&gt;
+&lt;p&gt;德国研究人员发现LLM（大型语言模型）已展现出欺骗能力，能够理解并诱导欺骗策略。最新的GPT-4和ChatGPT在欺骗任务中表现显著提升，甚至能在99.16%情况下欺骗人类。研究警告称，随着AI技术的发展，未来可能出现更高级“流氓”AI，需要对LLM进行严格控制以防止其逃脱监管。当前研究中，通过CoT（自我反省）等技巧可以增强欺骗能力，但是否将这些模型用于欺骗行为的伦理问题仍需进一步探讨。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J4892IDB0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;苹果ai升级大泄露siri将在ios18重生库克用apple重新定义ai&#34;&gt;苹果AI升级大泄露，Siri将在iOS18重生！库克用Apple重新定义AI&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240609/ai20240609-107.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240609/ai20240609-107_hue0ce09b87426ee90fba054f860e0888d_40075_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240609/ai20240609-107_hue0ce09b87426ee90fba054f860e0888d_40075_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;苹果AI升级大泄露，Siri将在iOS18重生！库克用Apple重新定义AI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;苹果即将举行的WWDC会议中，Siri在iOS18中的升级细节被泄露。Siri将在相机、日历备忘录和浏览器等原生应用中实现全面的AI武装。新功能包括：通过语音控制相机模式设置；编辑、移动和隐藏照片；识别照片中的对象或场景；智能管理备忘录和录音；自动分类和回复邮件；在Keynote中添加音频和视频；创建和管理提醒事项等。Safari也将引入新的智能浏览功能，提供文章摘要，并可能包括WebEraser内容拦截器（但该功能可能会被删除以避免争议）。此外，Siri还将在系统设置、文件应用中进行扫描和编辑通讯录等操作。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J48FLQEB0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;港大北航等1bit大模型引热议ieee刊物评解决ai能源需求&#34;&gt;港大北航等1bit大模型引热议，IEEE刊物评“解决AI能源需求”！&lt;/h2&gt;
+&lt;p&gt;本文介绍了一种名为BiLLM的训练后量化（PTQ）方法，成功将大型语言模型（LLM）的参数压缩到1.1bit。该方法通过对权重分布的研究发现，大多数参数在模型中的贡献不大，而少部分关键参数对性能影响巨大。BiLLM采用了通道级别的分组策略和二阶残差逼近法来处理显著权重，使用最优钟形分组方法量化非显著权重，有效降低了量化误差。此外，BiLLM在多个评价指标上超越了2-bit的GPTQ、PB-LLM等其他方法，并在某些模型体积上接近3-bit权重的性能。这种技术有望推动LLM无需训练的量化边界，并使其能够更方便地部署到资源受限的设备中，如手机等。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J48K7L4P0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;微信公众号老牛同学&#34;&gt;微信公众号：老牛同学&lt;/h2&gt;
+&lt;h3 id=&#34;llama-3-8b-开源大模型&#34;&gt;Llama-3-8B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;glm-4-9b-开源大模型&#34;&gt;GLM-4-9B 开源大模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;chattts-文本转语音模型&#34;&gt;ChatTTS 文本转语音模型&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API使用和搭建WebUI界面&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;大模型应用&#34;&gt;大模型应用&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助AI大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;python-小游戏&#34;&gt;Python 小游戏&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI已来，我与AI一起用Python编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python游戏编程：一步步用Python打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>[AI资讯·0605] 智谱AI发布MaaS平台2.0和GLM-4系列开源模型，提升中文学科能力；四大聊天机器人同时宕机引发网络猜测；OpenAI安全疑云，前员工揭露内部问题；Arm推出终端计算子系统，支持生成式AI时代的布局；猿辅导看云大模型备案成功，教育应用潜力展现；商业智能领域迎来新变革，帆软FineChatBI利用AI大模型实现对话式业务分析。</title>
+        <link>https://ntopic.cn/p/ai20240605/</link>
+        <pubDate>Wed, 05 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240605/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240605/ai20240605-89.jpg" alt="Featured image of post [AI资讯·0605] 智谱AI发布MaaS平台2.0和GLM-4系列开源模型，提升中文学科能力；四大聊天机器人同时宕机引发网络猜测；OpenAI安全疑云，前员工揭露内部问题；Arm推出终端计算子系统，支持生成式AI时代的布局；猿辅导看云大模型备案成功，教育应用潜力展现；商业智能领域迎来新变革，帆软FineChatBI利用AI大模型实现对话式业务分析。" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;1毛钱1百万token，写2遍红楼梦！国产大模型下一步还想卷什么？&lt;/li&gt;
+&lt;li&gt;AI「末日」突然来临，公司同事集体变蠢！只因四大聊天机器人同时宕机&lt;/li&gt;
+&lt;li&gt;OpenAI员工们开始反抗了！&lt;/li&gt;
+&lt;li&gt;AI手机PC大爆发，Arm从软硬件到生态发力，打造行业AI百宝箱&lt;/li&gt;
+&lt;li&gt;GLM-4开源版本：超越Llama3，多模态比肩GPT4V，MaaS平台也大升级&lt;/li&gt;
+&lt;li&gt;猿辅导竟然是一家AI公司？大模型全家桶曝光｜甲子光年&lt;/li&gt;
+&lt;li&gt;FineChatBI，帆软在AI方向的新阳谋&lt;/li&gt;
+&lt;li&gt;大模型“免费”送，厂商们图什么？&lt;/li&gt;
+&lt;li&gt;OpenAI前员工预测：2027年AGI降临！GPT智商飙升，4年从幼儿园蹿到高中生&lt;/li&gt;
+&lt;li&gt;北京9岁小学生，已经用AI出书了！罗永浩围观：有事找不到我找AI&lt;/li&gt;
+&lt;li&gt;OpenAI CEO豪投400多家公司，持股200亿，AI芯片成重点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1毛钱1百万token写2遍红楼梦国产大模型下一步还想卷什么&#34;&gt;1毛钱1百万token，写2遍红楼梦！国产大模型下一步还想卷什么？&lt;/h2&gt;
+&lt;p&gt;智谱AI发布了新一代MaaS平台2.0，并推出GLM-4系列开源模型，包括GLM-49B，这是目前最强大的国产大模型之一，其参数规模从6B升级至9B，同时具备多模态能力。新模型在中文学科方面实现了50%的提升，并且能够处理1M长度的上下文输入，相当于一次读完2本《红楼梦》。此外，智谱AI还提供了AllTools平台，支持开发者轻松训练私有模型，降低成本。随着大规模开源和商业化模式的推进，智谱AI正朝着AGI愿景前进，其MaaS平台2.0将进一步扩大生态圈。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3UP1OB60511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai末日突然来临公司同事集体变蠢只因四大聊天机器人同时宕机&#34;&gt;AI「末日」突然来临，公司同事集体变蠢！只因四大聊天机器人同时宕机&lt;/h2&gt;
+&lt;p&gt;昨日，四大聊天机器人ChatGPT、Claude、Gemini和Perplexity同时宕机，引发网友猜测。AI崩溃可能导致生产力下降，对部分依赖它们的人造成影响。宕机原因未明，有可能是DDOS攻击或巧合。OpenAI的ChatGPT先行宕机，其它两个在短时间内解决问题，而Gemini则出现不稳定情况。宕机事件显示了AI对社会的重要性和脆弱性，预示着未来生活中AI不可或缺的角色。此次宕机可能是由于基础设施问题或流量激增引起，也可能与ChatGPT宕机有关。四家公司尚未公布具体原因，但事件已成为对人类依赖AI生活方式的一次警醒。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3UP000L0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;openai员工们开始反抗了&#34;&gt;OpenAI员工们开始反抗了！&lt;/h2&gt;
+&lt;p&gt;OpenAI安全疑云再起，前员工揭露内部问题。阿申布伦纳因向董事会分享安全备忘录被解雇，指出公司对AGI发展的热情与利润追求并重。13位前OpenAI和GoogleDeepMind员工联名信呼吁建立开放批评文化、匿名举报机制，警告AI公司避免监管和负责任地推动技术。OpenAI回应称，已有内部安全措施，但被指责为不当。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3UNK3QN051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai手机pc大爆发arm从软硬件到生态发力打造行业ai百宝箱&#34;&gt;AI手机PC大爆发，Arm从软硬件到生态发力，打造行业AI百宝箱&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240605/ai20240605-89.jpg&#34;
+	width=&#34;528&#34;
+	height=&#34;330&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240605/ai20240605-89_huc08d4ca5bae557d6e8f55b67d929882e_56617_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240605/ai20240605-89_huc08d4ca5bae557d6e8f55b67d929882e_56617_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI手机PC大爆发，Arm从软硬件到生态发力，打造行业AI百宝箱&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;随着&amp;quot;Gen-AI&amp;quot;时代的到来，生成式AI与移动设备紧密结合，深刻影响生活和工作。Arm作为移动计算基础提供者，在架构、硬件、软件全面布局，为产业带来新的解决方案。Arm推出终端计算子系统（CSS），结合最新Armv9架构，CPU和GPU性能大幅提升。此次智东西对话Arm终端事业部产品管理副总裁JamesMcNiven，深入探讨了Arm在生成式AI时代的布局和思考。Arm通过完整解决方案让合作伙伴快速实现AI结合，为行业打造&amp;quot;AI百宝箱&amp;quot;。Arm的DNA与生成式AI契合，提供高性能、高能效的计算平台。新终端CSS基于3nm工艺，CPU和GPU物理实现，提升了30%的计算和图形性能，59%的AI推理速度。此外，ArmKleidi开发工具为开发者提供了快速开发生成式AI应用的解决方案。Arm生态系统迎来新的增长高潮，与微软合作，推动Windows与Arm架构的融合，加速WoA生态系统的发展。随着越来越多的应用成为Arm原生应用，ArmPC体验将更加完善。Arm通过技术创新保持核心竞争力，继续壮大生态，为生成式AI未来提供坚实基础。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3ULRRCM051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;glm-4开源版本超越llama3多模态比肩gpt4vmaas平台也大升级&#34;&gt;GLM-4开源版本：超越Llama3，多模态比肩GPT4V，MaaS平台也大升级&lt;/h2&gt;
+&lt;p&gt;智谱AI宣布其大模型开放平台已获得30万注册用户，日调用量达400亿Tokens，API每日消费量增长50倍。GLM-4模型性能强劲，过去4个月内增长90倍。大型App中活跃智能体超过30万，包括生产力工具等。新技术侧，GLM-4-9B超越Llama3.8B，大模型保持开源。商业成果和技术突破令人瞩目。MaaS平台升级2.0，降低大模型应用门槛，国内大模型竞争加剧。智谱AICEO张鹏表示，通过技术创新实现成本持续下降，不怕价格战。API最高折扣达6折，GLM-4-9B版本仅需6分/100万token。智谱AI推出MaaS开放平台2.0，升级新模型、成本和安全等方面。在OpenDay活动中，智谱AI介绍了其开放平台最新进展，模型微调平台简化企业构建私有模型过程，全系列GLM-4大模型支持三步部署。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3ULD7JK0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;猿辅导竟然是一家ai公司大模型全家桶曝光甲子光年&#34;&gt;猿辅导竟然是一家AI公司？大模型全家桶曝光｜甲子光年&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240605/ai20240605-91.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240605/ai20240605-91_hua327b430cfde24a1d73d59036c4b6456_169000_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240605/ai20240605-91_hua327b430cfde24a1d73d59036c4b6456_169000_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;猿辅导竟然是一家AI公司？大模型全家桶曝光｜甲子光年&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;猿辅导旗下看云大模型成功通过大模型备案，引起教育界热议。尽管在“百模大战”中相对不占优势，但猿辅导凭借多年积累的数据资源和技术实力，以AI为核心的产品逐步展开了大模型的应用。其自研大模型并非作为单一产品，而是技术底座，通过与现有产品结合，为教育场景提供个性化服务。猿辅导的大模型落地速度快，涵盖家庭教育、作业批改、答疑系统等多个方面，其AI技术在教材识别、批改、生成反馈等环节发挥作用。通过大模型，学生可以享受到更为丰富的学习体验，教师则有助于提高教学效率。猿辅导的教育“全家桶”展现了大模型在教育中的潜力和应用前景，预示着将来AI技术会彻底改变传统教育模式，使得每个学生都能拥有专属的学习体验。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3PDRSQ90512MLBG.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;finechatbi帆软在ai方向的新阳谋&#34;&gt;FineChatBI，帆软在AI方向的新阳谋&lt;/h2&gt;
+&lt;p&gt;在AI大模型技术的推动下，商业智能（BI）领域正迎来新的变革。帆软产品研发中心总经理陈敏表示，希望通过AI技术降低数据分析门槛，让更多人成为数据分析师。微软率先将Copilot整合进PowerBI，而全球知名BI服务提供商也开始注入AI大模型计划。国内BI厂商也紧跟趋势，推出类似功能。过去的问答式BI产品受限于技术，无法满足用户需求，帆软FineChatBI通过利用AI大模型的泛化能力，实现了对话式业务分析，让非专业人员能够进行数据分析。FineChatBI不仅能理解用户问题，还能拆解、查询数据，并提供异常检测和趋势预测功能。未来，FineChatBI有望进一步成为业务决策入口，直接将分析结果转化为业务指令。这将是BI领域的一个巨大变革，使得BI从辅助工具转变为实现业务闭环的核心。虽然AI技术进步迅速，但帆软认为，AI与BI不是简单相加，而是“AIforBI”，通过AI提升BI效率和降低使用门槛，让更多人能更好地利用BI工具。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3UBA9L30512MLBG.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;大模型免费送厂商们图什么&#34;&gt;大模型“免费”送，厂商们图什么？&lt;/h2&gt;
+&lt;p&gt;2024年618期间，大模型市场爆发了激烈的“价格战”，部分企业甚至开始免费提供服务。字节跳动宣布其豆包主力模型定价为0.0008元/千Tokens，远低于行业平均水平；阿里云则将通义千问GPT-4级主力模型Qwen-Long的API输入价格降至0.0005元/千Tokens。百度、腾讯云和科大讯飞也相继跟进，降低了自己的大模型定价。尽管如此，大部分企业的大模型业务仍面临高算力和人力成本的挑战，未能盈利。这种非理性的价格战反映出上游企业希望通过让利来打通大模型商业闭环的内在焦虑。然而，大模型商业模式不健全，成本高、落地难等问题仍然存在。由于训练和部署成本较高，一些企业对此保持观望态度。目前，大部分大模型仅推理用的token降价，而训练和部署成本依然不低。虽然价格战可能吸引了更多下游企业，但实际上，使用大模型服务的成本远未达到“免费”的程度。此次价格战或许能引起下游企业对大模型技术的关注，并有望探索出良性的商业模式。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3TP1HOJ05118O92.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;openai前员工预测2027年agi降临gpt智商飙升4年从幼儿园蹿到高中生&#34;&gt;OpenAI前员工预测：2027年AGI降临！GPT智商飙升，4年从幼儿园蹿到高中生&lt;/h2&gt;
+&lt;p&gt;文章作者LeopoldAschenbrenner预测2027年可能实现强人工智能（AGI），引发了对其可行性的讨论。虽然他提供了多种数据和分析，但结论仍然存在争议，尤其是考虑到算力、算法效率与解开收益的叠加，以及未来四年的发展预测。同时，文章也提出了AGI实现可能面临的挑战，如幻觉问题等。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3UP1O070511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;北京9岁小学生已经用ai出书了罗永浩围观有事找不到我找ai&#34;&gt;北京9岁小学生，已经用AI出书了！罗永浩围观：有事找不到我找AI&lt;/h2&gt;
+&lt;p&gt;智谱AI举办OpenDay活动，展示了其AI智能体与小学生许萌萌合作出版的科普小说《AI少年——火星生存大挑战》。智谱清言AI智能体可以协助用户完成多项任务，如速读论文、生成PPT和流程图等。新发布的大型模型GLM-4-9B在综合能力上比ChatGLM3-6B提升40%，中文学科方面提升50%。同时，智谱AI开放平台升级至MaaS2.0，价格下降，性能提升。活动还展示了儿童使用智谱清言APP创作的画作，显示大模型应用的普及趋势。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3UL5EP30511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;openai-ceo豪投400多家公司持股200亿ai芯片成重点&#34;&gt;OpenAI CEO豪投400多家公司，持股200亿，AI芯片成重点&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240605/ai20240605-96.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240605/ai20240605-96_hu1a6771bf538b263257bc0307cd7119fd_266981_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240605/ai20240605-96_hu1a6771bf538b263257bc0307cd7119fd_266981_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OpenAI CEO豪投400多家公司，持股200亿，AI芯片成重点&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;1.OpenAICEOSamAltman拥有至少28亿美元的隐秘投资帝国，涉及400多家企业，其中包括知名AI公司。2.Altman的投资风格激进，曾在未完成介绍前即做出决定，他利用个人信贷对初创公司进行高风险投资。3.Altman在AI领域有显著投资，如CerebrasSystems、Humane和RainAI等。其中，Stripe是他最成功的投资之一，其估值为650亿美元。4.Altman与OpenAI的利益关系引发关注，他同时持股多家与OpenAI合作的公司，可能存在利益冲突。5.尽管如此，Altman表示会遵循政策，并对其投资保持透明。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3UNK4EO051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我的本博客原地址：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/q8B0sgyv8uu5cuYQmJy4lQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mp.weixin.qq.com/s/q8B0sgyv8uu5cuYQmJy4lQ&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>[AI资讯·0604] AI将取代某些工作，Anthropic致力于解决安全性和可解释性问题；AI搜索产品改变信息检索，百度应对挑战；AMD挑战NVIDIA市场领导地位；版权保护问题日益凸显，Shapley值框架提出解决方案；强化学习方法超越GPT-4v；Octopusv4模型优化多模态查询；李飞飞强调空间智能对AI发展的重要性。</title>
+        <link>https://ntopic.cn/p/ai20240604/</link>
+        <pubDate>Tue, 04 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240604/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240604/ai20240604-75.jpg" alt="Featured image of post [AI资讯·0604] AI将取代某些工作，Anthropic致力于解决安全性和可解释性问题；AI搜索产品改变信息检索，百度应对挑战；AMD挑战NVIDIA市场领导地位；版权保护问题日益凸显，Shapley值框架提出解决方案；强化学习方法超越GPT-4v；Octopusv4模型优化多模态查询；李飞飞强调空间智能对AI发展的重要性。" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;首次解密Claude 3大脑！25岁Anthropic参谋长预言3年内自己将被AI淘汰&lt;/li&gt;
+&lt;li&gt;不想炸薯条的Ilya和不送GPU的英伟达，Hinton最新专访：道路千万条，安全第&lt;/li&gt;
+&lt;li&gt;硅谷团队抄袭清华系大模型？&lt;/li&gt;
+&lt;li&gt;斯坦福AI Lab主任怒了！抄袭团队2人甩锅1人失踪、前科经历被扒&lt;/li&gt;
+&lt;li&gt;AI搜索，“杀死”搜索&lt;/li&gt;
+&lt;li&gt;AI预测极端天气提速5000倍！微软发布Aurora，借AI之眼预测全球风暴&lt;/li&gt;
+&lt;li&gt;AMD公布新款AI芯片，也要一年一更新，想挑战英伟达&lt;/li&gt;
+&lt;li&gt;苏妈杀疯了：移动端最强NPU算力达50TOPS，最强AI芯片挑战英伟达&lt;/li&gt;
+&lt;li&gt;AI训练数据的版权保护:公地的悲剧还是合作的繁荣?&lt;/li&gt;
+&lt;li&gt;多模态模型学会打扑克：表现超越GPT-4v，全新强化学习框架是关键&lt;/li&gt;
+&lt;li&gt;3B模型新SOTA！开源AI让日常调用不同大模型更简单&lt;/li&gt;
+&lt;li&gt;顶尖AI科学家李飞飞演讲：机器人进化离不开空间智能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;首次解密claude-3大脑25岁anthropic参谋长预言3年内自己将被ai淘汰&#34;&gt;首次解密Claude 3大脑！25岁Anthropic参谋长预言3年内自己将被AI淘汰&lt;/h2&gt;
+&lt;p&gt;Anthropic参谋长预言自己将在接下来的三年内失去工作，因为她认为AI会取代她的职业。她指出，随着模型能力的提升，如Claude3，AI已经能够胜任多种类型的内容生成任务，并且在文本总结和分析方面表现突出。Balwitherself曾是一名自由作家，但现在认为这种技能已过时。她预测在线工作领域将首先受到影响，包括内容写作、税务准备和客户服务等任务。Balwit还提到AI已经开始在软件开发和合同法等专业领域显示出取代人类的潜力。尽管如此，Balwit也指出，并不是所有类型的工作都会被完全淘汰。她认为那些需要精细操作和特定情境专业知识的工种，如电工、园丁、管道工、珠宝制作师、理发师和修理铁艺品的工人，其从业人员将会比预期更长时间保持工作。对于医疗和公务员岗位，Balwit认为它们可能会在未来被取代的时间推后一些。对于那些不在这些领域的工作，也会有所减少，人机协作成为一种常见模式。Anthropic的CEODarioAmodei预计AI将在2-3年内实现AGI，但他也指出，这个过程是连续且平滑的，而公众对AI技术的认知和反应则是跳跃式和不可预测的。Amodei认为，虽然模型的能力有时会超越训练数据，但仍然存在挑战，比如如何解释模型内部的“思考”过程，以及如何确保模型安全性。Anthropic正在致力于通过可解释性的研究来解决这些问题，并且已经发布了一些有关Claude3Sonnet的研究成果。研究人员使用稀疏自编码器将数百万个特征从模型中提取出来，这些特征可以与人类可理解的概念相匹配，展示了模型内部状态如何由少量激活特征而非大量神经元活动表示。此外，研究人员还发现在某些情况下，可以通过人为方式激活特定的功能来改变模型的行为。这种操纵可以导致模型生成诈骗邮件等不良内容，但这也强调了对AI模型行为的深入理解和严格控制的重要性，以确保它们符合预期并不会造成伤害。总之，Balwit认为AI将取代某些工作，而Amodei则乐观地看待AGI的实现，但都意识到这个过程中存在许多挑战。Anthropic致力于通过研究和技术创新来解决这些问题，并确保人工智能的安全性和可解释性。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3M815QM0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;不想炸薯条的ilya和不送gpu的英伟达hinton最新专访道路千万条安全第&#34;&gt;不想炸薯条的Ilya和不送GPU的英伟达，Hinton最新专访：道路千万条，安全第&lt;/h2&gt;
+&lt;p&gt;人工智能领域的“教父”Hinton在离职谷歌一年后接受采访，分享了他与徒弟Ilya共同工作的点滴，以及他们如何一起推动AI技术发展。在采访中，Hinton谈到了自己早年的学习经历，包括在剑桥和爱丁堡的研究，以及他与Ilya合作开发反向传播算法的故事。两人之间的化学反应不仅产生了AI领域的重要突破，也孕育出了OpenAI的创意与成就。Hinton还提到了多模态模型将带来的新机遇，以及对AI伦理和安全的担忧，认为科学家应考虑到技术可能对社会的长远影响。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3M80DQ30511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;硅谷团队抄袭清华系大模型&#34;&gt;硅谷团队抄袭清华系大模型？&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240604/ai20240604-75.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240604/ai20240604-75_hu8b59891c0bca1d923dd986d947b3c7ef_230599_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240604/ai20240604-75_hu8b59891c0bca1d923dd986d947b3c7ef_230599_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;硅谷团队抄袭清华系大模型？&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;斯坦福大学学生SiddharthSharma和AkshGarg开发的Llama3-V大型语言模型因其较低成本训练而受到关注，但后来被指控与“清华系”的大模型有雷同之处，引发了关于“套壳”的争议。虽然团队否认偷窃代码，但最终删除了相关项目并道歉。这种行为在AI行业中不罕见，涉及到模型架构和预训练的复用，以及调优过程中的变量名称更改。业内专家认为，这种做法虽然普遍存在，但对自主研发至关重要。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3PVVTLO0519APGA.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;斯坦福ai-lab主任怒了抄袭团队2人甩锅1人失踪前科经历被扒&#34;&gt;斯坦福AI Lab主任怒了！抄袭团队2人甩锅1人失踪、前科经历被扒&lt;/h2&gt;
+&lt;p&gt;斯坦福团队被指抄袭清华大模型，两位本科生承认并且与另一作者合作切割。SiddharthSharma和AkshGarg发表道歉声明，但未提及MustafaAljadery，后者失踪并被指为主要责任人。ChristopherManning批评团队避重就轻，并未认真抄袭。新发现的证据显示Llama3-V与MiniCPM-2.5极其相似，且可能直接在权重上添加了噪声。此事引发关于开源社区是否忽视中国大模型成果的讨论。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3RER9J40511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai搜索杀死搜索&#34;&gt;AI搜索，“杀死”搜索&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240604/ai20240604-77.jpg&#34;
+	width=&#34;808&#34;
+	height=&#34;379&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240604/ai20240604-77_hufd4a3691efc5d9a878580ab5221d550c_251633_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240604/ai20240604-77_hufd4a3691efc5d9a878580ab5221d550c_251633_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI搜索，“杀死”搜索&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;213&#34;
+		data-flex-basis=&#34;511px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;国内大型模型厂商纷纷推出C端AI搜索产品，打破了传统搜索引擎的垄断局面。腾讯、搜狗等公司推出了基于混元大模型的APP，提供AI搜索功能。这些产品主要分为两类，一些内置AI搜索，如Kimi、豆包、文心一言、通义千问和腾讯元宝；另一些专门开发了AI搜索服务，如360搜索、秘塔搜索、天工AI搜索和百川AI搜索等。这场竞争显得有些讽刺，因为在互联网时代，搜索引擎是高科技领域的佼佼者，而现在大模型时代谁都能参与。国内搜索引擎“一超多强”的格局即将被打破，百度如何应对成为焦点。谷歌已经在GoogleI/O上对其搜索业务进行了全面的AI改造，现在看百度的表现如何。Perplexity是一个典型的内嵌搜索代表，其通过算法从不同信息源中搜索并提供结果，界面简洁多功能，用户体验高效。虽然基于GPT-3.5的API调试，但已经获得了市场认可和资本支持。国内AI搜索产品主要是参照Perplexity进行设计和操作，如秘塔搜索模仿其UI设计和逻辑，而360AI搜索则在页面设计上显得老旧。天工AI搜索结合了多种能力但结果不够成熟。这些产品虽然效仿Perplexity，但还远未达到颠覆性的AI搜索。搜索广告是搜索引擎的关键收入来源，百度和谷歌均依赖这一业务。然而，随着ChatGPT的出现，微软和谷歌争夺新技术领域，而百度等公司迟迟未动，原因可能在于无法放弃传统广告模式。探索AI创业需要大量研发投入，如果没有广告收入支持，很难维持运营。总体上，AI搜索产品正在改变我们寻找信息的方式，但商业模式仍需调整以适应新趋势。Perplexity尝试2B市场服务，同时探索知识平台转型，而Kimi认为随着AI技术的深入集成，用户可能不再需要专门的搜索引擎，而是通过语音助手等方式检索信息。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3OGPL1A05198R91.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai预测极端天气提速5000倍微软发布aurora借ai之眼预测全球风暴&#34;&gt;AI预测极端天气提速5000倍！微软发布Aurora，借AI之眼预测全球风暴&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240604/ai20240604-78.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240604/ai20240604-78_hu0bab0f0275185991bd3204f8c98f5dce_147592_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240604/ai20240604-78_hu0bab0f0275185991bd3204f8c98f5dce_147592_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI预测极端天气提速5000倍！微软发布Aurora，借AI之眼预测全球风暴&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;微软发布了名为Aurora的大气基础模型，这是一种新型的人工智能模型，能够从大量大气数据中学习并进行预测，具有极高的准确率和效率。与目前数值天气预报系统相比，Aurora的计算速度提高了约5000倍。该模型可以预测各种大气变量，如温度、风速、空气污染水平及温室气体浓度，并且能够在数据稀缺地区或极端天气情况下进行出色的预测。此外，Aurora的灵活性和多功能性使其在解决环境预报问题方面具有卓越的适应性。这种技术的发展有可能将改变我们对气候变化的理解和应对方式，并为全球各地提供更准确的天气信息，从而促进农业、交通、能源管理等领域的发展，帮助社区更好地适应气候变化带来的挑战。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3RD7ADL0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;amd公布新款ai芯片也要一年一更新想挑战英伟达&#34;&gt;AMD公布新款AI芯片，也要一年一更新，想挑战英伟达&lt;/h2&gt;
+&lt;p&gt;AMD发布新AI处理器，挑战英伟达市场领导地位；苏姿丰称人工智能是公司重中之重，计划每年更新产品线并推出重大创新。2025年将推出MI350系列，预计在AI推理性能提高35倍，而2026年将推出基于“Next”架构的MI400系列。AMD的股价虽然持平，但英伟达股价上涨5%，显示市场对AMD挑战的认可。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/tech/article/J3QTQKHI00097U7T.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;苏妈杀疯了移动端最强npu算力达50tops最强ai芯片挑战英伟达&#34;&gt;苏妈杀疯了：移动端最强NPU算力达50TOPS，最强AI芯片挑战英伟达&lt;/h2&gt;
+&lt;p&gt;AMD和英伟达在Computex展示了最新的技术，各自展现出强大的竞争力。AMDCEO苏姿丰展示了基于Zen5架构的新一代Ryzen9000系列CPU，以及锐龙AI300系列APU，其NPU算力达到50TOPS，超过微软对新一代AIPC的要求。同时，他们还推出了第五代EPYC霄龙芯片，为数据中心提供了强大的处理能力。而AMDInstinctGPU也展示了其在HPC和AI领域的潜力，并且公布了2024-2026年的产品路线图，旨在与英伟达竞争。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3RKP2QS0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai训练数据的版权保护公地的悲剧还是合作的繁荣&#34;&gt;AI训练数据的版权保护:公地的悲剧还是合作的繁荣?&lt;/h2&gt;
+&lt;p&gt;摘要：随着生成式AI技术的快速发展，版权保护问题日益成为焦点。本文提出了一种基于Shapley值的版权分享框架，以解决AI模型训练数据所有者与开发者的利益冲突。该框架通过评估不同数据源对模型性能的贡献，并根据Shapley值计算版权分配，旨在实现公平合理的收益分配。实验表明，该框架能够准确识别每个版权所有者对AI生成内容的贡献，尤其是在多样化数据源融合的情况下。然而，该方法存在计算成本高的问题，未来需要开发更高效的算法或方法来解决这一挑战。此外，本文讨论了未来的研究方向，包括如何处理无法协商协议的版权所有者，以及如何在实际应用中提高Shapley值的可行性和效率。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3RMES2K0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;多模态模型学会打扑克表现超越gpt-4v全新强化学习框架是关键&#34;&gt;多模态模型学会打扑克：表现超越GPT-4v，全新强化学习框架是关键&lt;/h2&gt;
+&lt;p&gt;强化学习方法RL4VLM，无需人类反馈，可以微调多模态大模型，使其在看图玩扑克、算“12点”等任务上表现超越GPT-4v。该方法由UC伯克利等高校研究人员提出，包括图灵奖得主LeCun和其他专家。通过强化学习直接从环境获取奖励，模型学会了多模态决策能力，并在各种评测任务中表现出色，包括数字识别、逻辑推理和视觉语义推理。实验表明，微调后的模型能够超越GPT-4vGemini和传统监督微调方法，在具身智能环境中的单物体拾取任务表现尤为突出。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3RMNI8A0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;3b模型新sota开源ai让日常调用不同大模型更简单&#34;&gt;3B模型新SOTA！开源AI让日常调用不同大模型更简单&lt;/h2&gt;
+&lt;p&gt;NEXAAI的Octopusv4模型利用functionaltoken整合多个开源模型，针对特定任务进行优化。它通过智能地引导用户查询至最合适的专业模型，并重新格式化查询以实现最佳性能。Octopus-V4-3B是该系列中的一员，拥有30亿参数，开源，是语言模型图的主节点，擅长将用户查询转换为专业模型可处理的格式。在生产环境中，系统设计考虑了负载均衡、工作节点部署、主节点部署和通信。实验结果显示，Octopusv4模型在MMLU任务中的表现优异。未来的发展方向包括整合垂直特定模型，加强图形框架，并开发多模态模型。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3RNH6HO0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;顶尖ai科学家李飞飞演讲机器人进化离不开空间智能&#34;&gt;顶尖AI科学家李飞飞演讲：机器人进化离不开空间智能&lt;/h2&gt;
+&lt;p&gt;李飞飞在2024年TED大会上发表演讲，讨论了空间智能（SpatialIntelligence）对人工智能发展的重要性。她指出，随着神经网络算法、GPU计算能力和大数据的进步，计算机视觉领域取得了巨大进展，并且不仅仅是让计算机看到世界，更追求理解世界。空间智能是指在三维空间中学习知识并做出行动的能力，是人工智能发展中的下一个重要里程碑。李飞飞强调，为了实现空间智能，不仅需要算法和硬件，还需要确保技术始终以人为本。她提到了她的学生和合作者正在开发的机器人，可以在三维世界中行动，并且能够执行复杂任务，如做饭、给病人提供医疗服务等。这些进展预示着数字寒武纪大爆发即将到来，AI将拥有更强大的理解能力和空间感知能力，与人类合作创造出一个更美好的未来。然而，李飞飞也提醒我们，实现这一目标并不容易，我们需要在采取行动时深思熟虑，确保技术始终以人为本，以尊重人类个体的尊严，促进人类社会的共同繁荣。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3S12M8K051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我的本博客原地址：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/kcvaZt92c9yNMMLUcghi7A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mp.weixin.qq.com/s/kcvaZt92c9yNMMLUcghi7A&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>[AI资讯·0601] 亚马逊云科技中国峰会聚焦生成式AI应用，推出三层技术栈解决企业挑战。Arm在移动终端推出新产品，优化AI性能。OpenAI与苹果合作可能带来数十亿美元收益。点军智算中心成为宜昌多元算力高地，燧原科技推动AI开源开放平台。研究表明大型语言模型模拟记忆，但实际是无状态函数。旷视团队发布“点读笔”，支持复杂文档理解。六位AI工程师分享大型语言模型应用开发经验。GPT-4已达成年人的心智理论水平，在心理推理超越人类。</title>
+        <link>https://ntopic.cn/p/ai20240601/</link>
+        <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240601/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240601/ai20240601-66.jpg" alt="Featured image of post [AI资讯·0601] 亚马逊云科技中国峰会聚焦生成式AI应用，推出三层技术栈解决企业挑战。Arm在移动终端推出新产品，优化AI性能。OpenAI与苹果合作可能带来数十亿美元收益。点军智算中心成为宜昌多元算力高地，燧原科技推动AI开源开放平台。研究表明大型语言模型模拟记忆，但实际是无状态函数。旷视团队发布“点读笔”，支持复杂文档理解。六位AI工程师分享大型语言模型应用开发经验。GPT-4已达成年人的心智理论水平，在心理推理超越人类。" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;接入零一万物、百川智能大模型！云大厂扩张生成式AI版图，大秀三层技术栈与&lt;/li&gt;
+&lt;li&gt;对话Arm终端产品副总裁：当生成式AI与Arm的DNA相契合，会擦出怎样的火花？&lt;/li&gt;
+&lt;li&gt;OpenAI被曝重组计划！与苹果达成关键协议，微软谷歌哭晕&lt;/li&gt;
+&lt;li&gt;上线即满载，点军智算中心探索本土AI新基建的范式变革&lt;/li&gt;
+&lt;li&gt;亚马逊云科技X易点天下共探生成式AI新机遇&lt;/li&gt;
+&lt;li&gt;ControlNet作者搞起大模型：让天下没有难写的生图提示词&lt;/li&gt;
+&lt;li&gt;AI视觉算法登柳叶刀！看CT提前10年预测致命心脏疾病，已进入临床使用&lt;/li&gt;
+&lt;li&gt;ChatGPT真能记住你的话吗？DeepMind与开源大佬揭示LLM记忆之谜&lt;/li&gt;
+&lt;li&gt;AI读论文新神器：多栏密集文字、中英图文混排文档都能读｜旷视&lt;/li&gt;
+&lt;li&gt;六位一线AI工程师总结爆火！大模型应用摸爬滚打一年心得公开&lt;/li&gt;
+&lt;li&gt;谷歌DeepMind：GPT-4高阶心智理论彻底击败人类！第6阶推理讽刺暗示全懂了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;接入零一万物百川智能大模型云大厂扩张生成式ai版图大秀三层技术栈与&#34;&gt;接入零一万物、百川智能大模型！云大厂扩张生成式AI版图，大秀三层技术栈与&lt;/h2&gt;
+&lt;p&gt;亚马逊云科技中国峰会于5月29日-30日在上海举办，聚焦生成式AI应用落地。面对企业使用挑战，如算力资源短缺、工具和模型访问问题、快速上手的应用缺失，亚马逊云科技推出三层技术栈：GPU基础设施、AmazonBedrock（中间层）和开箱即用的生成式AI应用。底层是基于GPU和自研芯片构建的基础设施，用于训练和生产环境中的推理。中间层提供访问基础模型和构建应用程序工具，如AmazonBedrock，支持来自Al21Labs、Anthropic等多家公司的高性能模型。顶层为用户提供开箱即用生成式AI应用，如AmazonQ，帮助企业快速部署应用。亚马逊云科技推出了一系列专门构建的芯片和计算实例，用于减少企业模型训练成本。他们还推出了AmazonSageMaker托管机器学习服务，提供多个基础模型选择，并且推出AmazonBedrock模型评估功能，缩短模型评估时间。在中间层，亚马逊云科技通过AmazonBedrock为企业提供了自定义模型导入和微调能力，以及知识库功能，支持企业定制响应。应用集成方面，BedrockAgent工具支持开发人员定义特定的任务流程，增强控制和自动化。上层的生成式AI助手AmazonQ帮助企业加速软件开发、发挥业务数据价值，并提供了从任意数据中获取洞见的能力。亚马逊云科技还推出了免费培训计划，为全球2900万人提供免费培训，包括“从基础到应用：LLM全景培训”课程。总结来说，亚马逊云科技通过其技术栈和服务助力企业生成式AI应用落地，并推动架构创新，以应对多元技术融合、成本管理和风险控制等挑战。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3I9CGM8051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;对话arm终端产品副总裁当生成式ai与arm的dna相契合会擦出怎样的火花&#34;&gt;对话Arm终端产品副总裁：当生成式AI与Arm的DNA相契合，会擦出怎样的火花？&lt;/h2&gt;
+&lt;p&gt;5月31日，智能终端与生成式AI深度融合，移动领域出现新AI需求和场景。生成式AI带来算力、存储挑战，加速硬件、软件、算法迭代。Arm作为移动生态巨头，布局AI，推出新产品、新技术，发布最新终端计算子系统（CSS），结合Armv9架构，基于3nm工艺节点。新的CPUCortex-X925实现41%的AI性能提升，GPUArmImmortalis-G925在多个AI和ML网络上提升了34%的性能。Arm的一系列技术剑指AI，加速移动智能终端产业发展。能效成为行业首要关注焦点，Arm以此为核心优势。生成式AI时代，计算需求暴涨，Arm提供普适应用，为安卓端CPU挑大梁。Arm针对AI推理和训练优化CPU和GPU，优化数据流，对内存流量需求进行了大量时间的优化。CPU仍是AI时代计算核心，Arm全面计算解决方案（TCS）带来新的CPU与GPU，提升性能、能效、AI能力，并首次为ArmCPU和GPU交付物理实现。新ArmCortex-X925实现Cortex-X系列推出以来最高的同比性能提升，单线程性能提高36%，token首次响应时间提高41%。ArmImmortalis-G925GPU在多个AI和ML网络上实现34%的性能提升。ArmKleidi软件工具集成PyTorch、Tensorflow等热门AI框架，加速模型性能。WoA生态系统发展，新增应用，如百度、哔哩哔哩等，Arm与微软合作，资助开源和发布面向Windows的Arm性能库。Arm构筑面向未来AI的计算平台，为移动智能终端产业提供核心竞争力。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3I3TCBN051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;openai被曝重组计划与苹果达成关键协议微软谷歌哭晕&#34;&gt;OpenAI被曝重组计划！与苹果达成关键协议，微软谷歌哭晕&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240601/ai20240601-61.jpg&#34;
+	width=&#34;534&#34;
+	height=&#34;334&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240601/ai20240601-61_huef2c6f2612e05cdecf7a070d359a59ca_39508_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240601/ai20240601-61_huef2c6f2612e05cdecf7a070d359a59ca_39508_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OpenAI被曝重组计划！与苹果达成关键协议，微软谷歌哭晕&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;OpenAI与苹果达成协议，将ChatGPT集成到iOS及其他操作系统中，可能带来数十亿美元收益，影响苹果与谷歌长期联盟关系。微软对此合作持保留态度，CEO萨蒂亚·纳德拉和OpenAI联合创始人兼CEO萨姆·阿尔特曼讨论了微软自身产品的担忧。阿尔特曼考虑将OpenAI重组为营利性公司或类似公益公司，可能价值1000亿美元的资金支持。尽管面临争议，阿尔特曼权力增强，OpenAI在科技行业的地位提升。苹果利用OpenAI技术可能会推动Siri功能升级，微软则通过授权OpenAI技术获得云收入。新一轮AI竞赛已开启，OpenAI的先发优势与苹果庞大用户群体将对市场产生重大影响。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3I072UU051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;上线即满载点军智算中心探索本土ai新基建的范式变革&#34;&gt;上线即满载，点军智算中心探索本土AI新基建的范式变革&lt;/h2&gt;
+&lt;p&gt;在数字经济时代，算力成为新型生产力的关键驱动力。智算中心快速发展，提供多元化算力资源，实现合理分配，为企业带来便利。随着大模型的演进，对算力的性能和易用性提出了更高要求，关注点转向算力融合、软硬件协同和成本优化。宜昌市正在建设融合智算、超算和通用算力的多元算力高地，成为国家算力“中继站”。已建成的605PFLOPS算力中心，是华中区最大的异构算力集群。点军智算中心仅5个月便实现300PFLOPS算力资源全消纳，与互联网企业和行业大模型企业达成合作，推动生态协同发展。燧原科技作为国内聚焦云端AI的领先算力企业，以点军智算中心项目探索本土算力中心市场化运营新思路，为数字经济发展提供了新的范式。点军智算中心已成为本土智算中心建设上线即满载的标杆案例，为行业释放最大动能。燧原科技通过点军智算中心项目，实现了与多家头部互联网企业及行业大模型企业的合作，提供推理和训练算力资源。未来计划建成3000PFLOPS以上算力，并在宜昌市打造国家东数西算战略中多元算力高地。燧原科技发布“燎原”生态合作计划，与生态伙伴共同构建开放、协作、创新的人工智能生态系统，孵化创新应用。点军智算中心已成为宜昌“数算一体、数实融合”产业格局的重要环节。大模型的应用将带动数据产生、算法演进和生成式AI的应用。燧原科技与生态伙伴合作，推动AI开源开放平台OpenI启智社区，为开发者提供GCU算力资源，降低创新的门槛。点军智算中心将连接算力、大模型厂商、运维商和应用开发玩家，为大模型部署提供支持。总结来看，AIDC+AIGC（人工智能设计与生成）的结合，将推动算力的范式变革，为中国AI2.0时代的到来奠定基础。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3HP3HPT051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;亚马逊云科技x易点天下共探生成式ai新机遇&#34;&gt;亚马逊云科技X易点天下共探生成式AI新机遇&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240601/ai20240601-63.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240601/ai20240601-63_hu7df186100a41431cff42c233dd2f23c5_123452_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240601/ai20240601-63_hu7df186100a41431cff42c233dd2f23c5_123452_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;亚马逊云科技X易点天下共探生成式AI新机遇&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;2024亚马逊云科技中国峰会在上海·世博中心举办，聚焦生成式AI创新应用。易点天下作为CloudNative营销科技公司，参与峰会并启动“生成式AI合作伙伴计划”，发布全新“AI+BI+CI”出海解决方案。大会探讨了生成式AI在全球各行业的应用前景，并展示了如何通过技术创新提升企业效率和竞争力。易点天下推出了KreadoAI、数眼智能和Gears三大产品，旨在帮助出海企业实现本地化营销和业务增长。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3HO1R6O0512MLBG.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;controlnet作者搞起大模型让天下没有难写的生图提示词&#34;&gt;ControlNet作者搞起大模型：让天下没有难写的生图提示词&lt;/h2&gt;
+&lt;p&gt;ControlNet作者LvminZhang推出新项目Omost，解决AI绘画中提示词难题。用户只需一句简单描述，Agent即可自动生成图像。这是基于大模型和Agent的新玩具，名为Omost，有“almost”和“omni-most”的双层含义。Omost通过预定义位置、偏移量和区域参数简化元素描述，将图像划分为729个可能位置，以此来实现精细控制。LvminZhang还提供了基于注意力操纵的渲染器，并提出了实现区域引导扩散系统的选择。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3JONBQS0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai视觉算法登柳叶刀看ct提前10年预测致命心脏疾病已进入临床使用&#34;&gt;AI视觉算法登柳叶刀！看CT提前10年预测致命心脏疾病，已进入临床使用&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240601/ai20240601-66.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240601/ai20240601-66_huc0d7d275aaff7ec31c1218c55dd1b4c8_265446_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240601/ai20240601-66_huc0d7d275aaff7ec31c1218c55dd1b4c8_265446_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI视觉算法登柳叶刀！看CT提前10年预测致命心脏疾病，已进入临床使用&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;《柳叶刀》发表了一项研究，展示了名为CaRi-Heart的AI技术可以在没有明显症状时提前10年识别心血管疾病风险。这项技术结合AI视觉识别和预测算法，通过评估冠状动脉炎症程度来量化患者的心血管风险。研究使用了英国ORFAN项目中的数据，验证了CaRi-Heart的准确性，并显示其在年轻人中能比现有模型更好地预测心脏疾病风险。该技术已在英国、欧洲和澳大利亚投入临床使用，並正在开发新产品以预测中风和糖尿病风险。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3JOHEDJ0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;chatgpt真能记住你的话吗deepmind与开源大佬揭示llm记忆之谜&#34;&gt;ChatGPT真能记住你的话吗？DeepMind与开源大佬揭示LLM记忆之谜&lt;/h2&gt;
+&lt;p&gt;文本摘要：LLM（大型语言模型）似乎具有记忆功能，但实际上它们是无状态函数。用户感觉到的记忆是因为每次输入时包含了之前对话内容作为提示。模型没有真正的记忆能力，只能处理当前输入。如果提供足够长的上下文，模型可以模拟记忆，但这通常会增加成本和延迟。在训练过程中，LLM学习知识并非简单复制数据，而是通过理解和概括来集成参数。研究表明大多数模型都能够在一定程度上输出训练数据，且参数越多的模型可能记忆能力越强，但具体原因仍然未知。此外，某些特定单词如“company”更容易触发模型输出训练数据，这可能存在版权和隐私问题。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3JOHAKH0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai读论文新神器多栏密集文字中英图文混排文档都能读旷视&#34;&gt;AI读论文新神器：多栏密集文字、中英图文混排文档都能读｜旷视&lt;/h2&gt;
+&lt;p&gt;旷视团队推出了名为“点读笔”的多模态大模型Fox，能够高效理解8页中英混合、单栏多栏格式的PDF文档。Fox支持细粒度理解，如用户感兴趣区域内的文字识别、段落翻译和图片内容描述。它通过精准定位、多视觉词表协同和页面打包技术，实现了对复杂文档的高效理解。Fox还支持跨页VQA、双栏前景OCR、图像描述等功能，并且可以将latex格式转换为代码。此外，旷视团队还开源了中英双语的benchmark，包含多种文档理解任务，以促进研究。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3JR0OHT0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;六位一线ai工程师总结爆火大模型应用摸爬滚打一年心得公开&#34;&gt;六位一线AI工程师总结爆火！大模型应用摸爬滚打一年心得公开&lt;/h2&gt;
+&lt;p&gt;六位AI工程师和创业者分享了一年来在大型语言模型应用开发上的经验，内容涵盖了如何使用提示词、RAG（检索增强生成）、微调、大模型作为裁判、实习生测试以及幻觉的解决方案。他们认为，大模型的输出结果取决于应用场景、任务需求、成本效益和性能目标，并建议根据具体情况选择合适的方法。同时，他们提出了多种实际操作上的经验，比如如何设计提示词、如何进行RAG和微调、以及如何评估和监测大模型的表现。此外，文章还讨论了幻觉的挑战，以及如何通过结合提示工程和事实不一致护栏来减少幻觉。最后，作者们计划继续分享运营和战略篇内容，并计划举办线上直播进一步探讨。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3JQDO6N0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;谷歌deepmindgpt-4高阶心智理论彻底击败人类第6阶推理讽刺暗示全懂了&#34;&gt;谷歌DeepMind：GPT-4高阶心智理论彻底击败人类！第6阶推理讽刺暗示全懂了&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240601/ai20240601-71.jpg&#34;
+	width=&#34;800&#34;
+	height=&#34;499&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240601/ai20240601-71_hu481881cfe861600fc9ed7d3926452e58_182974_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240601/ai20240601-71_hu481881cfe861600fc9ed7d3926452e58_182974_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;谷歌DeepMind：GPT-4高阶心智理论彻底击败人类！第6阶推理讽刺暗示全懂了&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;摘要：谷歌DeepMind、约翰斯·霍普金斯大学和牛津大学等机构的研究表明，人工智能语言模型GPT-4已经达到了成年人的心智理论水平，并且在更复杂的心理推理上超越了人类。在多个测试中，GPT-4显示出了卓越的表现，包括理解讽刺和暗示，甚至在某些情况下超过了人类。研究还发现，虽然LLM（大型语言模型）在事实回忆任务上表现出色，但在心智理论任务中存在不足之处，尤其是在第5到6阶的心理推理能力上。这些结果表明GPT-4不仅能够理解和生成人类的对话，而且还能进行复杂的情感和意图推理，并且可能在多方冲突的情况下做出道德判断。然而，研究者指出，LLM在某些情况下过于保守，不愿意提供确定性的意见。这项研究的发现为我们了解AI如何接近人类智能提供了新的见解，同时也提出了关于AI伦理和应用的重要问题。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3JOIO7G0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我的本博客原地址：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/q8B0sgyv8uu5cuYQmJy4lQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mp.weixin.qq.com/s/q8B0sgyv8uu5cuYQmJy4lQ&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>[AI资讯·0531] 达摩院医疗AI成就新里程碑，其多癌早筛技术获得世卫组织合作，将推广至全球发展中国家。OpenAI价值数十亿美元，微软投资130亿美元，纳德拉担忧影响。百度文库成为一站式AI内容获取与创作平台，提供智能画本、PPT生成等功能，累计用户1.4亿，AI新功能使用次数超过15亿。三大运营商完成产品市场匹配“进化”，致力于构建适宜的生长环境以支撑技术价值兑现。在人工智能领域，获得成功PMF需多次尝试，持续调整以适应市场变化至关重要。</title>
+        <link>https://ntopic.cn/p/ai20240531/</link>
+        <pubDate>Fri, 31 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240531/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240531/ai20240531-53.jpg" alt="Featured image of post [AI资讯·0531] 达摩院医疗AI成就新里程碑，其多癌早筛技术获得世卫组织合作，将推广至全球发展中国家。OpenAI价值数十亿美元，微软投资130亿美元，纳德拉担忧影响。百度文库成为一站式AI内容获取与创作平台，提供智能画本、PPT生成等功能，累计用户1.4亿，AI新功能使用次数超过15亿。三大运营商完成产品市场匹配“进化”，致力于构建适宜的生长环境以支撑技术价值兑现。在人工智能领域，获得成功PMF需多次尝试，持续调整以适应市场变化至关重要。" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;苹果OpenAI曝出「数十亿美元」合作，微软急了！纳德拉紧急约谈奥特曼&lt;/li&gt;
+&lt;li&gt;Hinton奥特曼重磅出席联合国AI大会，代表中国AI登台的竟是一位「癌患者」？&lt;/li&gt;
+&lt;li&gt;这家产品AI用户过亿，月活第一，覆盖学习办公教育，有人用来赚钱&lt;/li&gt;
+&lt;li&gt;AI在咳嗽中检出癌症，不信？世卫组织正全球推广&lt;/li&gt;
+&lt;li&gt;1/3年轻人愿和AI交朋友，超1成年轻人已经靠AIGC赚过钱了&lt;/li&gt;
+&lt;li&gt;OpenAI新老董事激辩：奥特曼是不是爱撒谎，OpenAI是不是忽视安全&lt;/li&gt;
+&lt;li&gt;索尼影视：将使用人工智能制作电影，能省太多钱&lt;/li&gt;
+&lt;li&gt;解决Transformer根本缺陷，CoPE论文爆火：大模型都能巨大改进&lt;/li&gt;
+&lt;li&gt;AI内容创作开卷，为什么百度文库成为超强玩家？&lt;/li&gt;
+&lt;li&gt;运营商大模型的进化路线“分野”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;苹果openai曝出数十亿美元合作微软急了纳德拉紧急约谈奥特曼&#34;&gt;苹果OpenAI曝出「数十亿美元」合作，微软急了！纳德拉紧急约谈奥特曼&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240531/ai20240531-58.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240531/ai20240531-58_hu8fe5b556654b1ccb5692d42d8632207f_163953_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240531/ai20240531-58_hu8fe5b556654b1ccb5692d42d8632207f_163953_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;苹果OpenAI曝出「数十亿美元」合作，微软急了！纳德拉紧急约谈奥特曼&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;苹果与OpenAI达成数十亿美元合作，微软CEO纳德拉担忧影响。苹果计划对Siri进行AI现代化改造，2025年推出高级版。OpenAI可能价值数十亿美元，微软投资130亿美元。Altman曾是苹果迷，希望与苹果合作，重塑AI技术。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3H4SHPD0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;hinton奥特曼重磅出席联合国ai大会代表中国ai登台的竟是一位癌患者&#34;&gt;Hinton奥特曼重磅出席联合国AI大会，代表中国AI登台的竟是一位「癌患者」？&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240531/ai20240531-57.jpg&#34;
+	width=&#34;767&#34;
+	height=&#34;478&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240531/ai20240531-57_hu68b0f613597cdac06fd472feb9c859c1_92558_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240531/ai20240531-57_hu68b0f613597cdac06fd472feb9c859c1_92558_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Hinton奥特曼重磅出席联合国AI大会，代表中国AI登台的竟是一位「癌患者」？&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;385px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;摘要：达摩院医疗AI取得新里程碑，被《自然·医学》评价为“开启医疗影像AI黄金时代”。世卫组织与达摩院合作，将推广其多癌早筛技术至发展中国家。达摩院在日内瓦的AIforGood峰会上展示了其AI多癌早筛技术，成功治疗了首例由AI发现的胰腺癌患者。此技术已被WHO评为全球亮点研究，并将向全世界推广。达摩院与国际顶级机构合作，正在开发更多应用，旨在降低癌症检测成本并提高早期诊断率。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3H4TPB00511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;这家产品ai用户过亿月活第一覆盖学习办公教育有人用来赚钱&#34;&gt;这家产品AI用户过亿，月活第一，覆盖学习办公教育，有人用来赚钱&lt;/h2&gt;
+&lt;p&gt;百度文库凭借其庞大的资源积累、自由的AI体验和持续的产品迭代，成为了一站式AI内容获取和创作平台。它的智能画本功能支持图文声并茂AI视频画本创作，实现了跨模态的创作能力。百度文库还推出了橙篇，一个集专业知识检索、问答、超长图文理解与生成、深度编辑和整理于一体的AINative产品。它不仅在PPT生成等领域取得领先地位，还获得了国家工信安全中心的大模型赋能智慧办公评测报告第一名。百度文库正在通过持续迭代和用户反馈，打磨产品，成为一个真正意义上的智能体，提供直接可用的生产力，让用户无需动脑，“就像一个人那样陪伴着用户”。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3H6121U0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai在咳嗽中检出癌症不信世卫组织正全球推广&#34;&gt;AI在咳嗽中检出癌症，不信？世卫组织正全球推广&lt;/h2&gt;
+&lt;p&gt;联合国举办了AIforGood峰会，中国代表团与全球专家共同探讨人工智能在医疗领域的应用。其中，中国女性患者通过AI胰腺癌早筛技术成功诊断并治疗，这项技术由达摩院开发，已获得国际认可，并且被联合国秘书长和其他顶尖AI专家参会。该技术利用深度学习在低对比度CT图像中识别微小病灶，提高了早期癌症的诊断率。此外，达摩院还正在开发多种癌症早筛产品，旨在通过一次平扫CT实现多种疾病的检测，并且已在中国和海外多个国家实施。该技术的普及性和有效性得到了国际认可，展现了AI在解决全球公共卫生问题中的潜力。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3H6A8430511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;13年轻人愿和ai交朋友超1成年轻人已经靠aigc赚过钱了&#34;&gt;1/3年轻人愿和AI交朋友，超1成年轻人已经靠AIGC赚过钱了&lt;/h2&gt;
+&lt;p&gt;SoulApp通过AI技术在社交领域创新，推出AI聊天助理、AI合唱等功能，并引入沉浸式AI聊天陪伴应用“异世界回响”。SoulCTO陶明指出，行业中许多公司拥有强大模型，但对用户理解和场景使用不足。Soul利用其庞大的社交数据、深厚的企业基因和高活跃生态，为AI社交布局提供了优势。通过AIGC+SoulX模型，Soul实现了情感化互动，推出了多元社交网络，包括语音音乐、AI情感陪伴等领域的探索。数据显示，一部分年轻人愿意与AI成为朋友，而他们对AI互动的态度整体积极。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3H70A830511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;openai新老董事激辩奥特曼是不是爱撒谎openai是不是忽视安全&#34;&gt;OpenAI新老董事激辩：奥特曼是不是爱撒谎，OpenAI是不是忽视安全&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240531/ai20240531-53.jpg&#34;
+	width=&#34;336&#34;
+	height=&#34;252&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240531/ai20240531-53_hu18dde3f9faafe29844bcf099e5afb848_93330_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240531/ai20240531-53_hu18dde3f9faafe29844bcf099e5afb848_93330_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OpenAI新老董事激辩：奥特曼是不是爱撒谎，OpenAI是不是忽视安全&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;本周，OpenAI现任与前任董事会成员就公司治理和人工智能安全问题展开公开辩论。本次争议始于前董事会成员海伦·托纳和塔莎·麦考利在《经济学人》发表文章，批评首席执行官萨姆·奥特曼及其公司的安全实践，并呼吁对AI行业加强监管。现任董事布雷特·泰勒和拉里·萨默斯则回应称，OpenAI已成立新安全委员会，向白宫提交了自愿承诺，以增强安全性，并委托律师事务所进行内部调查，结果表明奥特曼解职并非因产品安全或速度问题。泰勒和萨默斯还否认了对奥特曼的指控，称他在相关问题上坦率合作。随后，OpenAI成立新安全委员会，支持有效监管人工通用智能，展现出公司对于安全性的承诺。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/tech/article/J3H86NN900097U7T.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;索尼影视将使用人工智能制作电影能省太多钱&#34;&gt;索尼影视：将使用人工智能制作电影，能省太多钱&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240531/ai20240531-52.jpg&#34;
+	width=&#34;336&#34;
+	height=&#34;252&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240531/ai20240531-52_hu890eae3471e1d95ece0a2f5e486489c1_89286_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240531/ai20240531-52_hu890eae3471e1d95ece0a2f5e486489c1_89286_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;索尼影视：将使用人工智能制作电影，能省太多钱&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;索尼影视娱乐公司首席执行官托尼·文西奎拉表示，公司计划利用人工智能降低电影制作成本。他强调，虽然人工智能在提高效率方面具有巨大潜力，但也引发了行业内关于创意工作的担忧。文西奎拉提到，去年的人工智能问题导致长期罢工，并表示即将进行的谈判将决定公司在这领域能采取什么行动。他还强调，索尼影视娱乐不会偏离过去几年的成功战略，不会涉足超出其确定范围的业务。尽管对派拉蒙的流媒体服务Paramount+持保留态度，但文西奎拉认为Crunchyroll将是公司未来增长的关键驱动力。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/tech/article/J3HA8B4M00097U7T.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;解决transformer根本缺陷cope论文爆火大模型都能巨大改进&#34;&gt;解决Transformer根本缺陷，CoPE论文爆火：大模型都能巨大改进&lt;/h2&gt;
+&lt;p&gt;马斯克和LeCun的口水战吸引了公众的注意力。LeCun在推特上宣传最新论文，并向马斯克暗示他们可以应用于GrokAI。该论文《ContextualPositionEncoding:LearningtoCountWhat&amp;rsquo;sImportant》由MetaFAIR发布，已成为24小时内最热门的AI领域论文之一，解决大型语言模型（LLM）的计数和复制问题。CoPE是一种新方法，将上下文与位置编码结合起来。它通过使用门控机制来选择性地编码位置信息，允许模型更好地理解输入数据的结构和语义内容。在多个实验中，CoPE显示出在选择性复制、计数任务和语言建模等方面优于传统方法的性能。该研究为大型语言模型提供了一种更加高效和灵活的位置编码方式，将可能改变LLM中的位置编码规则。它使模型能够精确定位句子中的特定单词、名词或句子，非常令人兴奋。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3HFB71L0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai内容创作开卷为什么百度文库成为超强玩家&#34;&gt;AI内容创作开卷，为什么百度文库成为超强玩家？&lt;/h2&gt;
+&lt;p&gt;在2024年5月30日的百度移动生态万象大会上，百度文库基于文心大模型进行了全面重构，成为一站式AI内容获取和创作平台。该平台提供多种AI功能，如智能画本、智能PPT生成、研究报告生成等，极大地提高了学习办公效率，并且降低了创建高质量内容的门槛。此外，百度文库还推出了首个跨模态AI画本创作能力，让普通用户也能轻松制作出专业级别的视频画本。AI漫画和小说生成功能使得非专业人士也能创作出可供商业变现的作品。百度文库内置的AI能力深受用户喜爱，累计用户达1.4亿，AI新功能使用次数超过15亿。百度文库还推出了全新的AI原生应用“橙篇”，提供超长文档理解、总结与问答等多种功能，为学术研究和专业写作提供了强大的支持。随着文心大模型5.0的即将发布，预计将带来更全面的内容创作能力，包括视频、音频和代码等更多形式的互生转换。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3HFR9KJ0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;运营商大模型的进化路线分野&#34;&gt;运营商大模型的进化路线“分野”&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240531/ai20240531-49.jpg&#34;
+	width=&#34;640&#34;
+	height=&#34;400&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240531/ai20240531-49_hu9510a465b74b243348362536f1caa318_23600_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240531/ai20240531-49_hu9510a465b74b243348362536f1caa318_23600_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;运营商大模型的进化路线“分野”&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在五月，三大运营商中国移动、中国电信和中国联通集体完成了产品市场匹配（PMF）的“进化”，这是指产品能够满足目标市场需求并吸引用户的程度，对产品成功至关重要。在人工智能领域，获得一次成功的PMF通常需要多次尝试，即使是ChatGPT这样的划时代产品也是基于前两代模型成长起来的。持续完成市场匹配意味着大型模型必须具备演进能力。运营商在AI产品开发上被认为更倾向于保守，这可能会阻碍快速调整以适应市场变化。然而，自2023年开始大规模进入大模型时代后，三大运营商的发展路线已经开始出现差异性。中国移动致力于为大模型“筑巢”，构建更适宜的生长环境；中国电信则专注于自身能力提升，培养拥有强大能力的模型；而中国联通着眼于特定需求的满足，营造良好的外部产业环境。运营商的大模型进化路线各有侧重点，但共同目标是完成产品市场匹配，让自己的产品在不同阶段和场景中满足市场需求并实现商业价值。通过自主化、算力网络、行业积累和自身需求的满足，运营商大模型正在逐步发挥优势，找到与市场的结合点，以此支撑技术价值在产业中的兑现。随着时间的推移，运营商的大模型虽然路线各异，但共同特征是持续演进。他们不断补全模态能力、增强模型能力和构建AI基础生态，以确保能够适应不断变化的市场需求，从而保持在大型模型领域的竞争力。通过这样的“进化”，运营商有望在AI产业中实现快速迭代并最终完成产品市场匹配，可能会在技术公司之前取得商业成功。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3GQ4JAF0511FMIQ.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>[AI资讯·0529] JanLeike，OpenAI超级对齐团队负责人加入Anthropic，Anthropic成为了OpenAI离职员工的避难所。Leike表示将继续执行超级对齐任务，在Anthropic致力于可扩展监督、弱到强泛研究。DarioAmodei因安全观念与OpenAI不合离开，带走了政策负责人JackClark。Anthropic注重模型安全，对齐能力更强，其产品Claude3获得好评。Leike的团队正在组建中，研究可扩展监督技术练，但预计不会在90天内发布。</title>
+        <link>https://ntopic.cn/p/ai20240529/</link>
+        <pubDate>Wed, 29 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240529/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240529/ai20240529-28.jpg" alt="Featured image of post [AI资讯·0529] JanLeike，OpenAI超级对齐团队负责人加入Anthropic，Anthropic成为了OpenAI离职员工的避难所。Leike表示将继续执行超级对齐任务，在Anthropic致力于可扩展监督、弱到强泛研究。DarioAmodei因安全观念与OpenAI不合离开，带走了政策负责人JackClark。Anthropic注重模型安全，对齐能力更强，其产品Claude3获得好评。Leike的团队正在组建中，研究可扩展监督技术练，但预计不会在90天内发布。" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;一年心血被毁，OpenAI超级对齐负责人愤而出走Anthropic！Ilya去向依旧成谜&lt;/li&gt;
+&lt;li&gt;GPT-5倒计时！奥特曼踢走Ilya得逞，宫斗惊人内幕再曝光&lt;/li&gt;
+&lt;li&gt;和GPT-4这些大模型玩狼人杀，人类因太蠢被票死，真·反向图灵测试&lt;/li&gt;
+&lt;li&gt;奥特曼挂帅新团队，OpenAI新一代大模型开训，前任高管却投敌了&lt;/li&gt;
+&lt;li&gt;OpenAI成立新安全委员会，Altman领导，90天后“交卷”&lt;/li&gt;
+&lt;li&gt;AI进入体育中考！直击行业四大痛点，格灵深瞳抢滩校园体育新蓝海&lt;/li&gt;
+&lt;li&gt;前OpenAI安全主管跳槽，加盟竞争对手Anthropic，继续做超级对齐&lt;/li&gt;
+&lt;li&gt;联手国产大模型五虎，云计算大厂启动重磅生成式AI计划&lt;/li&gt;
+&lt;li&gt;OpenAI联创Greg最新采访：为什么OpenAI最先做出GPT-4？&lt;/li&gt;
+&lt;li&gt;独角兽被微软挖角，新团队首曝光！情感AI嵌入机器人，超大内存升级情感体验&lt;/li&gt;
+&lt;li&gt;AI智能体的炒作与现实：GPT-4都撑不起，现实任务成功率不到15%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一年心血被毁openai超级对齐负责人愤而出走anthropicilya去向依旧成谜&#34;&gt;一年心血被毁，OpenAI超级对齐负责人愤而出走Anthropic！Ilya去向依旧成谜&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240529/ai20240529-48.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240529/ai20240529-48_hudb27477b111d7b38ce5f48e7c12af365_129670_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240529/ai20240529-48_hudb27477b111d7b38ce5f48e7c12af365_129670_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一年心血被毁，OpenAI超级对齐负责人愤而出走Anthropic！Ilya去向依旧成谜&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;JanLeike，OpenAI超级对齐团队负责人，宣布加入Anthropic并开始招募新成员。Anthropic成为了OpenAI离职人员的避难所，与OpenAI在价值观上存在差异。Leike表示高兴能继续执行超级对齐任务，在Anthropic将致力于可扩展监督、弱到强泛化和自动对齐研究。Anthropic创立者DarioAmodei因安全观念与OpenAI不合而离开，带走了政策负责人JackClark。Anthropic注重模型安全，对齐能力更强，其产品Claude3获得业内好评。Leike的团队正在紧锣密鼓组建中，研究可扩展监督技术以控制大规模AI。IlyaSutskever离开OpenAI后未公布下一步计划，但可能加入Anthropic、xAI或创办自己的公司。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3C03IEH0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;gpt-5倒计时奥特曼踢走ilya得逞宫斗惊人内幕再曝光&#34;&gt;GPT-5倒计时！奥特曼踢走Ilya得逞，宫斗惊人内幕再曝光&lt;/h2&gt;
+&lt;p&gt;OpenAI解散了Ilya领导的超级对齐团队，成立了新的安全委员会。下一代前沿模型正在训练中，但预计不会在90天内发布。新安全委员会将评估和改进现有AI安全流程，并在期满后与董事会分享结果。一些人担忧新委员会的独立性，考虑到OpenAI内部的权力斗争和奥特曼领导下的安全团队的问题。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3C534AI0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;和gpt-4这些大模型玩狼人杀人类因太蠢被票死真反向图灵测试&#34;&gt;和GPT-4这些大模型玩狼人杀，人类因太蠢被票死，真·反向图灵测试&lt;/h2&gt;
+&lt;p&gt;这是一次「反向图灵测试」，几个全球最先进的大模型坐在一起，坐着火车唱歌，但其中混进了人类：AI的任务，是把这个人类揪出来。最近，一位网友在X平台发布的一段视频引发了人们的讨论。在视频中，四个AINPC与一个人类坐在一起，按照「乘务员」的要求互相试探，找出隐藏的人类。每个NPC对应着一款大模型。五位扮演者分别是：古希腊巨哲亚里士多德（GPT4Turbo），维也纳古典乐派代表人物莫扎特（Claude3Opus），意大利文艺复兴时期画家列奥纳多・达・芬奇（Llama3），蒙古军事家成吉思汗（人类），埃及艳后克利奥帕特拉七世（GeminiPro）。AINPC在对话中展现了深厚的历史知识和洞察力，甚至在最后一轮投票中，人类「叛徒」被淘汰。AINPC的语言表达和情感描绘不仅逼真，而且具有深度思维能力。随着大型语言模型（LLM）在文本生成、拟人化对话、语气表达和遣词造句方面越来越接近人类，AINPC模拟正在成为游戏行业探索的「新赛道」。AINPC的优势是它们不再是按照游戏中预设选项进行机械对话，而是能够通过AI自主生成的动作和反应，进行富有真实感的实时对话。然而，AINPC还面临一些挑战。首先，它们必须与游戏状态保持同步，避免产生幻觉和破坏游戏逻辑。其次，AI需要理解游戏世界模型，并且不能基于这个模型产生幻觉。再者，每个角色都有自己的知识限制，AI需要遵守这些规则。最后，随着游戏的进行，AI需要实时更新和适应变化。总之，为了让AINPC顺利走入3A大作，开发者需要在以上几个方向努力：避免幻觉、理解游戏世界模型、了解每个角色知识限制、随着游戏进展更新信息、了解游戏机制实际操作范围。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3C5AGPS0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;奥特曼挂帅新团队openai新一代大模型开训前任高管却投敌了&#34;&gt;奥特曼挂帅新团队，OpenAI新一代大模型开训，前任高管却投敌了&lt;/h2&gt;
+&lt;p&gt;OpenAI面临安全性质疑后，成立新委员会，由BretTaylor、AdamD&amp;rsquo;Angelo、NicoleSeligman和CEOSamAltman领导，以确保关键项目决策的安全性。同时，公司宣布正在训练下一代前沿模型，预计将提升通往AGI的能力。安全委员会在90天内评估并发展开发流程与保障措施，并计划公开采纳建议后的最新情况。OpenAI还咨询了其他AI安全专家以支持其工作。此外，公司面临创始人、首席科学家IlyaSutskever离职和超级对齐团队解散的挑战，以及前董事会成员HelenToner批评公司安全流程不透明。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3C82F2B0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;openai成立新安全委员会altman领导90天后交卷&#34;&gt;OpenAI成立新安全委员会，Altman领导，90天后“交卷”&lt;/h2&gt;
+&lt;p&gt;OpenAI成立了一个安全与保障委员会，由董事长BretTaylor和其他成员领导，负责提出关键安全决策建议。随着新一代模型训练，该委员会将在90天内评估并完善流程与防护措施，并向全体董事会报告。预计这些系统将提升OpenAI通往通用人工智能的能力。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3CJRIU5051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai进入体育中考直击行业四大痛点格灵深瞳抢滩校园体育新蓝海&#34;&gt;AI进入体育中考！直击行业四大痛点，格灵深瞳抢滩校园体育新蓝海&lt;/h2&gt;
+&lt;p&gt;摘要：随着“双减”政策和教育部门推动下，校园体育正迅速发展。传统方法无法满足效率、准确性和公正性的需求，因此出现了AI技术的介入。格灵深瞳在上半年体育中考中应用其深瞳阿瞳目体育训考系统，在京津冀地区11个考试场次，5万名考生，覆盖20余科目，提高了效率和准确性。该系统利用纯视觉AI技术，实现运动精确识别、数据实时采集分析，为教学提供依据，解决了传统红外设备的局限性，如环境干扰大等。格灵深瞳的优势在于全流程纯视觉AI解决方案，覆盖检录、考试到检出，全过程无人工干预，提高了测试效率和规模，同时降低了争议和申诉。系统还采用人脸识别核验考生身份，减少了替考现象。此外，该系统在裁判人数上有显著减少，对于球类运动科目尤其有效。格灵深瞳的产品差异化特性包括硬件软件全套解决方案，针对体育教育四大痛点，提供先进的硬件设备和算法，辅助教学提高效率，个性化教学计划，并为教练提供数据分析报告。此外，格灵深瞳的AI技术具有高度适应性和环境稳定性，能够在复杂场景下保持高准确率。通过持续的技术积累和实践应用，格灵深瞳在体育教育领域占据领先地位，展现了智能化转型的未来趋势。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3CKPT11051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;前openai安全主管跳槽加盟竞争对手anthropic继续做超级对齐&#34;&gt;前OpenAI安全主管跳槽，加盟竞争对手Anthropic，继续做超级对齐&lt;/h2&gt;
+&lt;p&gt;前OpenAI高管JanLeike加入竞争对手Anthropic，曾领导超级对齐团队。Leike离开OpenAI后指责ChatGPT制造商将产品置于安全文化和流程之前。Anthropic由DarioAmodei和DanielaAmodei创立，获得亚马逊40亿美元投资，定位为更注重安全的公司。OpenAI已成立安全与保障委员会，并开始测试“下一代前沿模型”。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3CLDDO8051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;联手国产大模型五虎云计算大厂启动重磅生成式ai计划&#34;&gt;联手国产大模型五虎，云计算大厂启动重磅生成式AI计划&lt;/h2&gt;
+&lt;p&gt;亚马逊云科技在上海举办峰会，宣布推出多项新业务举措，包括生成式AI合作伙伴计划和四大合作伙伴计划。储瑞松表示，生成式AI将带来行业应用的最大价值，企业应关注业务场景、模型选择、数据利用和持续提升。亚马逊云科技推出AmazonBedrock服务，提供多种模型选择，已有超10,000客户使用。此外，峰会上展示了多个行业解决方案，如自动驾驶、智能家居、游戏等，并强调了安全合作伙伴计划的重要性。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3CM05UO051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;openai联创greg最新采访为什么openai最先做出gpt-4&#34;&gt;OpenAI联创Greg最新采访：为什么OpenAI最先做出GPT-4？&lt;/h2&gt;
+&lt;p&gt;OpenAI首先开发出GPT-4等强大模型，原因之一在于其团队的独特组合，既有学术背景的研究型人才，又有优秀的工程人才，这使得他们能够从多个角度解决问题，推动项目更有效地前进。GregBrockman认为，他们是计算机发展史上一种趋势的一部分，致力于实现人工智能（AGI）造福人类的目标。尽管存在安全性和其他风险，OpenAI通过实践学习不断迭代，并致力于将技术用于教育等领域，以增强而非削弱人类能力。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J39DRK0M0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;独角兽被微软挖角新团队首曝光情感ai嵌入机器人超大内存升级情感体验&#34;&gt;独角兽被微软挖角，新团队首曝光！情感AI嵌入机器人，超大内存升级情感体验&lt;/h2&gt;
+&lt;p&gt;InflectionAI，一个专注于情感智能的人工智能公司，在其创始人MustafaSuleyman被微软挖角后，经历了领导层变动。尽管如此，该公司仍然拥有15.25亿美元的资金，并计划继续扩大工程团队。新任CEOSeanWhite、CTOVibhuMittal、COOTedShelton和CMOIanMcCarthy组成的团队致力于开发具有情感共鸣的个人AI助理Pi，旨在为企业提供具有同理心的聊天机器人。InflectionAI通过其「移情微调」技术定制模型，以提高个性化服务质量，并计划与品牌合作，建立自己的AI工作室，提供客服和内部员工支持。尽管竞争激烈，但公司拥有充足资金和经验丰富的团队，有望在B2B市场中取得成功。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J39DRVVG0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai智能体的炒作与现实gpt-4都撑不起现实任务成功率不到15&#34;&gt;AI智能体的炒作与现实：GPT-4都撑不起，现实任务成功率不到15%&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240529/ai20240529-30.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;490&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240529/ai20240529-30_hu565b145745a44d45e6d4139e616412aa_23129_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240529/ai20240529-30_hu565b145745a44d45e6d4139e616412aa_23129_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI智能体的炒作与现实：GPT-4都撑不起，现实任务成功率不到15%&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;220&#34;
+		data-flex-basis=&#34;528px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;随着大型语言模型（LLMs）的进步，它们在性能、准确度和稳定性方面取得了显著提升，但现有版本的LLMs综合能力不足以支持完整的AI智能体。多模态、多任务和多领域成为AI智能体必需，但实际应用效果不佳，提醒初创公司和科技巨头保持脚踏实地，先从AI增强功能入手。LLMs可以执行复杂任务，但现实表现超出预期的挑战性。WebArena排行榜显示，即使是表现最好的模型在现实任务中的成功率也只有35.8%。AI智能体定义不一，主要有单一智能体和多智能体两种架构。当前，AI智能体面临输出不精确、性能差、成本高等问题。在初创公司的尝试中，只有MultiOn追求给出指令并观察其执行，这与AI智能体承诺更为一致。大公司正在将AI功能集成到桌面和浏览器中，展现了令人印象深刻的技术。作者认为AI智能体被过度炒作，但仍期待看到基础模型和架构进步带来的成功应用。AI智能体前途最有希望的道路是利用AI增强现有工具，而不是提供全自主独立服务，结合严格约束的LLMs、良好的评估数据、人机协同监督和传统工程方法，以实现可靠和良好的结果。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J3A2NFDC0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>[AI资讯·0527] AI领域面临挑战：OpenAI员工离职、外界批评；新安全团队成立。马斯克的xAI获得60亿美元投资，估值180亿。国内大模型厂商降价争夺市场份额。中国电信推出多方言语音识别模型。AI评估工具讨论：JasonWei提倡简单易用且针对特定任务。苹果WWDC展示新AI战略。ChatGPT性能测试，Perplexity获胜。联想业绩回暖，AI技术促进PC市场复苏。中国移动推出自主研发的大型全栈模型。AI是否具备“心智理论”争议；谷歌AI搜索引擎遇错误问题；硅谷AI产业发展至鸡尾酒模式，初创企业需专注数据质量。</title>
+        <link>https://ntopic.cn/p/ai20240527/</link>
+        <pubDate>Mon, 27 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240527/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240527/ai20240527-23.jpg" alt="Featured image of post [AI资讯·0527] AI领域面临挑战：OpenAI员工离职、外界批评；新安全团队成立。马斯克的xAI获得60亿美元投资，估值180亿。国内大模型厂商降价争夺市场份额。中国电信推出多方言语音识别模型。AI评估工具讨论：JasonWei提倡简单易用且针对特定任务。苹果WWDC展示新AI战略。ChatGPT性能测试，Perplexity获胜。联想业绩回暖，AI技术促进PC市场复苏。中国移动推出自主研发的大型全栈模型。AI是否具备“心智理论”争议；谷歌AI搜索引擎遇错误问题；硅谷AI产业发展至鸡尾酒模式，初创企业需专注数据质量。" /&gt;&lt;h2 id=&#34;ai资讯&#34;&gt;AI资讯&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;AI初创集体跳槽OpenAI，Ilya出走后安全团队重整旗鼓！&lt;/li&gt;
+&lt;li&gt;港大字节提出多模态大模型新范式，模拟人类先感知后认知&lt;/li&gt;
+&lt;li&gt;435亿！马斯克xAI官宣B轮融资，估值突破1300亿&lt;/li&gt;
+&lt;li&gt;深扒大模型价格战：15家45款模型比拼，谁真便宜谁“打幌子”？&lt;/li&gt;
+&lt;li&gt;换了30多种方言，我们竟然没能考倒中国电信的语音大模型&lt;/li&gt;
+&lt;li&gt;CoT提出者Jason Wei：大模型评估基准的「七宗罪」&lt;/li&gt;
+&lt;li&gt;苹果AI战略曝光：秘密大招Project Greymatter，GPT被整合进iOS，新AI工具主&lt;/li&gt;
+&lt;li&gt;大模型时代的计算机视觉！CVPR 2024线上分享会全日程公布&lt;/li&gt;
+&lt;li&gt;五大AI聊天机器人盲测！ChatGPT未能夺冠，最终赢家竟来自这家“小公司”&lt;/li&gt;
+&lt;li&gt;AI让联想松了口气&lt;/li&gt;
+&lt;li&gt;中国移动千亿多模态大模型发布，「九天-九九」风趣畅聊堪比GPT-4o&lt;/li&gt;
+&lt;li&gt;GPT-4被证实具有「人类心智」登Nature！AI比人类更好察觉讽刺和暗示&lt;/li&gt;
+&lt;li&gt;谷歌AI搜索惨败，竟教唆网友自杀！&lt;/li&gt;
+&lt;li&gt;硅谷VC张璐：硅谷大模型市场分为三类，三大应用领域迭代速度较快&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ai初创集体跳槽openaiilya出走后安全团队重整旗鼓&#34;&gt;AI初创集体跳槽OpenAI，Ilya出走后安全团队重整旗鼓！&lt;/h2&gt;
+&lt;p&gt;OpenAI面临内外交困，包括员工离职和外界批评。为了应对AI安全问题，上周五名与安全相关的员工离职，其中包括两名知名成员。《财富》杂志指出，OpenAI未兑现承诺给超级对齐团队20%计算资源。就在此时，Indent首席执行官FouadMatin宣布加入OpenAI，致力于为AGI做好安全准备。他和他的团队包括DanGillespie，后者将专注于建立用于AGI到来的安全计算平台。尽管OpenAI面临挑战，但新安全团队的加入被视为对构建更安全系统的积极努力。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J36QIPRT0511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;港大字节提出多模态大模型新范式模拟人类先感知后认知&#34;&gt;港大字节提出多模态大模型新范式，模拟人类先感知后认知&lt;/h2&gt;
+&lt;p&gt;当前多模态大模型在视觉任务中展现出强大认知理解能力，但大部分模型仅能单向图像理解，无法将内容映射回图像上，限制了其应用，如图像编辑、自动驾驶等。研究人员提出Groma，通过区域性图像编码提升多模态大模型的定位能力，将文本与图像区域直接关联，显著提高交互性和指向性。Groma将定位转移到visiontokenizer中，利用其空间理解能力，避免了外接专家模型。实验结果显示Groma在GroundingBenchmarks和VQABenchmark上表现超越其他模型，支持融合对话和定位能力的任务。Groma提供了一种新的解决思路，将感知和认知解耦，让visiontokenizer负责感知，大语言模型负责认知，这种先感知后认知的形式符合人类视觉过程，避免了重新训练大语言模型的计算开销。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J36SDSGC0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;435亿马斯克xai官宣b轮融资估值突破1300亿&#34;&gt;435亿！马斯克xAI官宣B轮融资，估值突破1300亿&lt;/h2&gt;
+&lt;p&gt;马斯克旗下的xAI获得60亿美元B轮融资，估值180亿美元，成为独角兽。投资方包括特斯拉早期投资者安东尼奥·格拉西亚斯的ValorEquityPartners、迪拜投资公司VyCapital等。xAI成立不到一年，已推出聊天机器人Grok，并计划与OpenAI竞争。尽管马斯克在X公司遭遇下滑，但特斯拉和SpaceX的表现赢得了投资者信心。新融资将用于开发和迭代Grok，使其与OpenAI、Meta等大型语言模型保持竞争力。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J370NMPO051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;深扒大模型价格战15家45款模型比拼谁真便宜谁打幌子&#34;&gt;深扒大模型价格战：15家45款模型比拼，谁真便宜谁“打幌子”？&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240527/ai20240527-24.jpg&#34;
+	width=&#34;531&#34;
+	height=&#34;332&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240527/ai20240527-24_hue673a85c97faf7f96f3efc692292d4df_92527_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240527/ai20240527-24_hue673a85c97faf7f96f3efc692292d4df_92527_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;深扒大模型价格战：15家45款模型比拼，谁真便宜谁“打幌子”？&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;国内大模型厂商近日爆发了降价风暴，阿里云、百度等互联网巨头纷纷宣布降低大模型价格，甚至有些模型免费开放。这场“百模大战”让开发者受益匪浅，但也引发了对产业影响的广泛讨论。智东西统计了45款大模型API的价格，对比发现虽然各厂商宣扬的降价幅度高达95%以上，但实际上主力模型的价格并未显著下降。部分创业公司选择不参与这场价格战，认为技术和数据收集才是核心竞争力。价格战背后的原因各有解释，从云厂商角度出发，通过降价强化市场地位；从创企视角看，则是为了吸引关注和客户。部分观点认为这场价格战更多是云服务大厂在云市场争夺中的一种策略，而非真正的大模型“内卷”。对于开发者而言，价格下降有利于应用的开发，但也意味着技术突破和数据价值更为重要。产业影响方面，有观点认为这场价格战可能导致恶性竞争，但也有助于淘汰弱势企业，推动产业集中。同时，对私有化部署、大模型的应用发展都有积极作用。总之，这场百模大战或将面临洗牌，未来只有那些真正具备技术和商业模式优势的企业才能笑到最后。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J370NMST051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;换了30多种方言我们竟然没能考倒中国电信的语音大模型&#34;&gt;换了30多种方言，我们竟然没能考倒中国电信的语音大模型&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240527/ai20240527-23.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240527/ai20240527-23_hud819261146edf9ec90c9c9054e94efb4_66761_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240527/ai20240527-23_hud819261146edf9ec90c9c9054e94efb4_66761_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;换了30多种方言，我们竟然没能考倒中国电信的语音大模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;中国电信人工智能研究院（TeleAI）发布了业内首个支持30种方言自由混说的「星辰超多方言语音识别大模型」，能够识别理解粤语、上海话、四川话等各地方言，打破语言沟通的壁垒。该模型在多项基准测试中表现出色，尤其是在国际语音顶会Interspeech2024中获得冠军。此外，该技术还被应用于中国电信万号智能客服系统和翼声平台，实现了方言识别的全覆盖，为用户提供更加自然流畅的交互体验。随着大模型技术的发展，预计会推动方言文化的保护，并辅助历史文献和档案的数字化工作。中国电信作为运营商在人工智能领域的优势，使其能够加快大模型在各个领域的落地应用，形成新的经济增长点。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J370PJC70511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;cot提出者jason-wei大模型评估基准的七宗罪&#34;&gt;CoT提出者Jason Wei：大模型评估基准的「七宗罪」&lt;/h2&gt;
+&lt;p&gt;李飞飞等人创建的ImageNet在视觉任务中被认为是一个测试金标准。在大型语言模型（LLM）时代，我们如何评估它们？目前，研究者提出了MMLU、GSM8K等评估基准，但这些是否完美？JasonWei在一篇博客中进行了深入探讨。他列举成功的评估基准，并总结失败原因，包括样本数量不足和评估复杂度高。Jason认为，评估工具的命名方式有待改进，例如HumanEval虽然叫做人类评估，但实际上未使用人类评估。为了让评估工具得到广泛使用，需要帮助研究者使用它，并提供推广机会。Jason也提出了解决测试集污染问题的一些建议。成功的评估基准包括GLUE/SuperGLU、MMLU、GSM8K、MATH和HumanEval，它们通常与突破性论文相关联。失败的评估基准可能因为样本数量不足、复杂度高或命名不当等原因而被忽视。Jason认为，要让评估工具得到广泛使用，需要提供单一数字指标，并且评估工具应该简单易用，不需要太多额外工作。此外，评估基准的设计应符合重要任务，如语言理解、数学问题解决，而不是娱乐性质的任务。Jason提到，LLMs对评估工具提出了新的挑战，目前尚无单一评估工具能全面评价它们。人类配对评估是一种流行趋势，但可能存在偏差。模型生成内容的评估也被讨论，但需要小心处理。评估工具的成功与否取决于其领域内专家认可，以及是否能够解决测试集污染问题。社区应该投资于评估工具，因为它们是AI研究人员客观评价模型的关键，并对该领域产生重大影响。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J371TUOK0511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;苹果ai战略曝光秘密大招project-greymattergpt被整合进ios新ai工具主&#34;&gt;苹果AI战略曝光：秘密大招Project Greymatter，GPT被整合进iOS，新AI工具主&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240527/ai20240527-21.jpg&#34;
+	width=&#34;528&#34;
+	height=&#34;330&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240527/ai20240527-21_hu6473268ef1a8c96d7ddc9ab0d89636ed_39660_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240527/ai20240527-21_hu6473268ef1a8c96d7ddc9ab0d89636ed_39660_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;苹果AI战略曝光：秘密大招Project Greymatter，GPT被整合进iOS，新AI工具主&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;苹果即将在WWDC上展示新的AI战略，包括ProjectGreymatter、本地和云端大模型数据处理、新AI功能、升级版Siri与OpenAI合作等。尽管落后于Google和OpenAI，但庞大的用户基础有望带来优势。新AI战略侧重于日常生活工具，计划在iOS18和macOS15中引入。Siri将升级为更自然的交互体验，而Xcode开发者工具也将增强AI功能。苹果还将推出个性化表情符号与云端处理M2Ultra芯片支持。虽然自研AI聊天机器人未达标，苹果则与OpenAI合作，但存在风险。尽管如此，苹果的庞大用户基数有望使其成为最大的AI玩家。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J37217HR051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;大模型时代的计算机视觉cvpr-2024线上分享会全日程公布&#34;&gt;大模型时代的计算机视觉！CVPR 2024线上分享会全日程公布&lt;/h2&gt;
+&lt;p&gt;OpenAI的ChatGPT发布后，大型语言模型和人工智能生成内容的研究越来越受关注。计算机视觉（CV）领域也在经历变化。要快速了解AI研究进展，可以参加顶级会议论文分享会，如每年举办的CVPR。2024年，CVPR共收到11532份论文，2719篇被接收，录用率为23.6%。机器之心计划于2024年6月组织「CVPR2024线上论文分享会」，邀请AI社区成员参与。本次会议设置Keynote和论文分享环节，讨论CV热门主题。今天，分享会的全日程、Keynote嘉宾及演讲主题正式公布。金小刚将介绍数字人建模动画关键技术，朱俊彦将探讨创作者与生成模型的协作，芦清林将解读腾讯混元文生图算法核心——DIT架构，盛律则会谈多模态大语言模型与具身代理的结合。会议将在机器之心和黄大年茶思屋两个平台进行直播，欢迎大家关注预约。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J373UNL40511AQHO.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;五大ai聊天机器人盲测chatgpt未能夺冠最终赢家竟来自这家小公司&#34;&gt;五大AI聊天机器人盲测！ChatGPT未能夺冠，最终赢家竟来自这家“小公司”&lt;/h2&gt;
+&lt;p&gt;《华尔街日报》对ChatGPT、Claude、Copilot、Gemini和Perplexity五大AI聊天机器人的性能进行了全面的测试，结果显示Perplexity综合排名第一，ChatGPT紧随其后。测试侧重于AI在解决实际问题和完成日常任务的能力，包括代码能力、健康咨询、财务问题等。评判标准为准确性、实用性和整体质量。微软的Copilot表现不佳，而Perplexity以其总结、代码和时事类问题的优异表现获得了冠军。此次测试显示，即使是知名度较高的ChatGPT也未能在所有方面领先，反而是小众的Perplexity夺得了胜利。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J37HCK0R051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai让联想松了口气&#34;&gt;AI让联想松了口气&lt;/h2&gt;
+&lt;p&gt;联想集团2023/2024财年第四季度和全财年财报显示，尽管上半财年PC和服务器市场需求疲软，导致营收下滑8%至568.64亿美元，全年净利润37%下降，但在最新一季度表现出明显回暖。IDG收入为104.63亿美元，同比增长6.8%，ISG收入25.33亿美元，同比增长15%；SSG收入18.2亿美元，同比增长10%。AI技术起到关键作用，推动了PC市场的复苏，并成为联想业绩回暖的关键因素。不过，随着芯片制造商和终端厂商在AI领域加大投入，行业竞争激烈，联想是否能持续高增长还有待观察。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J36I6FAM05198R91.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;中国移动千亿多模态大模型发布九天-九九风趣畅聊堪比gpt-4o&#34;&gt;中国移动千亿多模态大模型发布，「九天-九九」风趣畅聊堪比GPT-4o&lt;/h2&gt;
+&lt;p&gt;中国移动近日在数字中国建设峰会上宣布推出自主研发的“九天”千亿多模态基座大模型，这是国内最值得信赖和最懂行业的大型全栈模型。该模型采用纯解码与多专家相结合的架构，实现了结构化数据建模和渐进式学习，并提供不同参数量的模型版本，以适应各种设备和平台。中国移动在AI领域十年如一日的研发投入，使得“九天”模型在国际竞赛中取得优异成绩，包括语音合成和视觉理解等领域的冠军。“九天”模型不仅具有强大的推理能力，还能进行感知、预测、诊断、控制和决策，对复杂系统智能化有着重要作用。它能够部署在各种信源设备上，包括智能手机、平板、汽车和穿戴设备，并支持多种信源的适配，实现了“全模态”之间的智能化推理。中国移动聚焦于骨干行业，如通信、能源、建筑、交通等领域，为这些行业提供基座模型。该公司还致力于AI生态的国产化，包括算力、芯片、框架和算法，并提出了“万千百”智能基座计划，以实现大规模训练和推理算力的提升。此外，中国移动强调了模型安全性，通过了双备案认证，并获得了最高等级的安全性认证。十年来，中国移动在AI领域取得了跨越式发展，是国际AI领域的领头人冯俊兰博士带领团队不懈努力的结果。未来，中国移动将继续推动AI技术的应用，以实现“AI赋能，智筑国基”。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J32GQVM10511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;gpt-4被证实具有人类心智登natureai比人类更好察觉讽刺和暗示&#34;&gt;GPT-4被证实具有「人类心智」登Nature！AI比人类更好察觉讽刺和暗示&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240527/ai20240527-16.jpg&#34;
+	width=&#34;238&#34;
+	height=&#34;149&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240527/ai20240527-16_hu9687e298edfc19a2d14fb648cf14f2f3_9505_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240527/ai20240527-16_hu9687e298edfc19a2d14fb648cf14f2f3_9505_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPT-4被证实具有「人类心智」登Nature！AI比人类更好察觉讽刺和暗示&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;AI是否具备「心智理论」的争议一直存在，尤其是随着大型语言模型（LLM）的发展，如ChatGPT。最新的研究显示，GPT-4在理解讽刺和暗示方面甚至超越了人类水平，但在判断失言时表现不佳。这可能是由于它过于谨慎，不愿意轻易给出确定答案，而不是因为缺乏理解能力。这些发现支持「超保守主义」假说，即GPT能够推断说话者心理状态，但不愿承诺单一解释。这种谨慎行为可能与模型的训练数据和设计有关，强调了能力与表现之间的差异，表明AI有能力进行复杂的心理推理，但在特定情况下可能不会像人类那样主动消除不确定性。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J347G8R40511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;谷歌ai搜索惨败竟教唆网友自杀&#34;&gt;谷歌AI搜索惨败，竟教唆网友自杀！&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240527/ai20240527-15.jpg&#34;
+	width=&#34;876&#34;
+	height=&#34;548&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240527/ai20240527-15_hu6cb9b69cb0e6404c425f42b253f5812a_127943_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240527/ai20240527-15_hu6cb9b69cb0e6404c425f42b253f5812a_127943_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;谷歌AI搜索惨败，竟教唆网友自杀！&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;谷歌新推出的AI搜索引擎AIOverview因收集Reddit内容而产生了一系列荒谬回答，包括教唆自杀、提供错误健康建议和识别混淆信息等问题。尽管Google承认这些错误并正在采取措施改进，但这次事件再次让人质疑其AI系统的准确性和安全性。此外，这也揭示了使用Reddit内容训练AI可能带来的后果，显示出需要更严格的数据清洗和筛选。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J347HU690511ABV6.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;硅谷vc张璐硅谷大模型市场分为三类三大应用领域迭代速度较快&#34;&gt;硅谷VC张璐：硅谷大模型市场分为三类，三大应用领域迭代速度较快&lt;/h2&gt;
+&lt;p&gt;硅谷AI产业已发展至鸡尾酒模式阶段，初创公司可调用大模型API，结合开源模型进行优化。张璐认为人工智能是超级工具，具有10倍于互联网时代的商业机会，但只有1/3留给初创企业。大型科技公司也能被赋能，而非破坏或变革。医疗、金融保险和机器人是迭代速度较快的领域。硅谷模型市场已相对明确，三类主要有OpenAI、苹果等提供服务型大模型，NVIDIA等自用大模型，以及开源平台。初创企业可采用鸡尾酒模式，与此同时，数据质量比数量更重要，行业专属小模型能与通用大模型竞争。边缘计算和数据隐私保护是未来的关键技术方向。（&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J34ITT8B0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;报道详情&lt;/a&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>[AI资讯·0526] AI技术快速发展，英伟达股价上涨但面临竞争隐忧。大模型应用增长，网络攻击风险增加。中国AI领域追赶美国一年，独角兽寻求出售。AI翻译公司专注网络小说。中国移动推出大模型服务。</title>
+        <link>https://ntopic.cn/p/ai20240526/</link>
+        <pubDate>Sun, 26 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/ai20240526/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/ai20240526/ai20240526-1.jpg" alt="Featured image of post [AI资讯·0526] AI技术快速发展，英伟达股价上涨但面临竞争隐忧。大模型应用增长，网络攻击风险增加。中国AI领域追赶美国一年，独角兽寻求出售。AI翻译公司专注网络小说。中国移动推出大模型服务。" /&gt;&lt;h2 id=&#34;vast宋亚宸3d生成迈入秒级时代今年将做到midjourney-v5v6水平丨genaic&#34;&gt;VAST宋亚宸：3D生成迈入秒级时代，今年将做到Midjourney V5/V6水平丨GenAIC&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-13.jpg&#34;
+	width=&#34;780&#34;
+	height=&#34;488&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-13_hu0d7717f90f2eccaa47ed0b1926e7099b_59498_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-13_hu0d7717f90f2eccaa47ed0b1926e7099b_59498_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;VAST宋亚宸：3D生成迈入秒级时代，今年将做到Midjourney V5/V6水平丨GenAIC&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;2024年中国生成式AI大会上，VAST创始人兼CEO宋亚宸以《大模型Tripo驱动3D生成迈入秒级时代》为题进行了演讲。他认为，3D技术的体验质量和信息密度在不断提升，并且具有互动性。目前3D生成已经达到MidjourneyV3水平，将于今年年底达到V5/V6水平，实现真正可用并通过图灵测试。VAST是3D生成模型领域的领先者，创建了全球最大的几个3D生成开源社区，并与Stability共同开发了全球最大的0.5秒图生3D模型TripoSR。宋亚宸也是首位在计算机图形学顶会SIGGRAPH上发表主舞台主题演讲的中国创业者。VAST的3D大模型Tripo上线后，仅百余天就生成了超过200万个3D模型，以降低3D生成的创作门槛和成本。公司结合3D内容平台和大众级创作者平台，并已拥有超过200家B端客户，开发出原生AI爆款小游戏，一周用户突破10万。宋亚宸认为，AIGC将使游戏创作成本和门槛无限降低，这是VAST的目标。公司致力于使用AI技术生成3D模型，这些模型可以用于游戏、动画、影视、元宇宙和3D打印等行业，并且具有Mesh、贴图、材质等属性，可以进行传统管线二次编辑。宋亚宸强调，随着3D技术的发展，世界正在进入一个3D新时代。目前，全球顶级企业如谷歌、英伟达、OpenAI和Meta都已涉足3D生成领域。VAST在学术上发表了大量论文，并开源了多项技术，如TripoSR、Threestudio、Wonder3D等。公司正在拓展人类能力的边界，降低用户创作成本，使得每个人都能低成本创作3D内容。宋亚宸预计，未来每个人都将拥有生成无限个属于自己的3D内容的能力。这将改变3D创作者的角色，从游戏大厂的建模师和动画师变为普通人。VAST的产品Tripo已经上线，百天内生成了超过200万个模型，这在短时间内超越了全球许多模型交易平台。公司还与腾讯、网易等游戏大厂合作，提供3D生成能力，以降低他们的成本和提高效率。同时，VAST推出了原生AI玩法，如TripoGO小游戏，一周用户突破10万，这是AI原生玩法的力量体现。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2VO20AB051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2VO20AB051180F7.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;焱融科技张文涛将大模型训练效率提升40详解多云架构下高效存储策略&#34;&gt;焱融科技张文涛：将大模型训练效率提升40%！详解多云架构下高效存储策略&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-12.jpg&#34;
+	width=&#34;610&#34;
+	height=&#34;381&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-12_hu926b9fb9823601408773597ba58dd5a6_86137_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-12_hu926b9fb9823601408773597ba58dd5a6_86137_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;焱融科技张文涛：将大模型训练效率提升40%！详解多云架构下高效存储策略&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;2024年中国生成式AI大会上，焱融科技CTO张文涛发表演讲，讨论了多云环境下大模型训练和推理的高效存储问题。随着算力需求的增加，单一数据中心无法满足大模型训练和推理的需求，因此需要采用多数据中心协同工作的方式。然而，这种模式带来了数据拷贝成本的增加，以及如何在保证性能的前提下让数据按需流动的问题。张文涛强调了存储对于大模型训练和推理至关重要，特别是在多模态大模型中，高性能存储可以提升训练效率20-40%。焱融科技提供了一套基于四个核心组件的存储解决方案：集群管理服务、元数据服务、集群服务和客户端。这些组件支持标准x86架构、Arm架构服务器、多种网络协议，并且可以水平扩展以适应不同的需求。对于推理环节，张文涛提出了客户端缓存池解决方案，以缓解启动风暴问题。该方案通过在计算节点上建立大型SSD缓存池来加快模型加载速度，从而有效地解决了网络带宽的瓶颈。最后，随着训练和推理无法完全在单一数据中心完成，多云方式成为必然趋势，但这也带来了新的挑战。张文涛提出了一个“SourceofTruth”数据湖架构，通过数据编排功能让数据按需流动，并且支持多种对象存储平台的对接，以实现数据的灵活流转。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2VO20QI051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2VO20QI051180F7.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;5分钟搭建大模型应用腾讯将实用主义贯彻到底&#34;&gt;5分钟搭建大模型应用！腾讯将「实用主义」贯彻到底&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-11.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-11_hu1a639d046e825d511659cf349226692a_48427_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-11_hu1a639d046e825d511659cf349226692a_48427_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;5分钟搭建大模型应用！腾讯将「实用主义」贯彻到底&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;腾讯云推出了知识引擎平台，旨在帮助企业快速开发大模型应用，降低门槛。平台提供了专属工具链，包括大模型知识引擎、图像创作引擎和视频创作引擎，通过PaaS接入方式简化数据工程、模型精调和应用开发流程。企业可以快速上手，搭建属于自己的知识问答、文档助手等应用。知识引擎平台集成了腾讯自研的大型语言模型（LLM）和检索增强生成（RAG）、向量检索、大语言模型、多模态大模型等多种先进技术，能够在知识解析-切分-检索-内容理解生成全链路中显著提升问答质量和效率。腾讯云正在探索大模型落地最后一公里的解决方案，并通过实践指南贯彻“实用主义”价值观，为企业提供更高效、更便捷的大模型应用服务。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2VO25JD0512MLBG.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2VO25JD0512MLBG.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;行业首发一句话用ai创作视频画本漫画网民脑洞要停不住了&#34;&gt;行业首发！一句话用AI创作视频画本、漫画，网民脑洞要停不住了！&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-10.jpg&#34;
+	width=&#34;803&#34;
+	height=&#34;502&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-10_hu733fab6f3263df737025e7abd4fd1c75_183448_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-10_hu733fab6f3263df737025e7abd4fd1c75_183448_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;行业首发！一句话用AI创作视频画本、漫画，网民脑洞要停不住了！&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;百度文库推出「智能画本」功能，仅需输入主题即可生成一本图文并茂的视频画本，模仿专业出版社制作感十足；「智能漫画」功能则可以创作故事、写分镜脚本、绘制分镜和生成图文并茂的条漫。这些AI工具降低了创作门槛，让无经验者也能轻松自制画本和漫画，促进行业内外行跨界合作，推动内容创作者从创意到变现的全链路路径。百度文库还提供PPT、研报、思维导图等多种AI生成功能，使得用户可以通过语音输入快速生成报告或PPT，并且品质有保证。这些功能深受用户喜爱，已成为国内AI产品榜首。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2VO20BF051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2VO20BF051180F7.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;超级细菌ai黑盒与不老奥秘&#34;&gt;超级细菌、AI黑盒与不老奥秘&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-9.jpg&#34;
+	width=&#34;960&#34;
+	height=&#34;480&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-9_hu6c772706a7e5af5dbbef10b8dfa5a900_40677_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-9_hu6c772706a7e5af5dbbef10b8dfa5a900_40677_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;超级细菌、AI黑盒与不老奥秘&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;200&#34;
+		data-flex-basis=&#34;480px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;五一假期期间，一位感染肺炎支原体的患儿家长在社交媒体上表达了对抗生素耐药性的担忧，这个问题正影响着全球的健康安全。肺炎支原体是一种常见的呼吸道病毒，通常可以通过抗生素治疗，但越来越多的人发现大环内酯类抗生素不再有效。这是由细菌和病毒对抗生素耐药性的增加导致的。FelixWong，一个华裔科学家，在麻省理工学院与哈佛大学的合作下发明了一种利用深度学习模型来发现全新的抗生素结构的方法。他的团队使用了超过120,000种化合物中的39312种进行测试，并通过可解释性的人工智能模型，识别出两种有效的潜在抗生素。FelixWong的工作不仅解决了抗生素耐药性的问题，而且还为抗衰老研究开辟了新途径。他希望能够在50年内开发一种真正能延缓衰老的药物。他的公司，IntegratedBiosciences，以结合合成生物学和深度学习来控制细胞应激反应，开发更先进的医疗方法。FelixWong的工作是科学界的一次重大突破，他的发现不仅为抗生素耐药性提供了新的解决方案，也为对抗衰老提供了希望。他的故事提醒我们，即使在面对重大的挑战时，通过创新和坚持，可以实现前所未有的成就。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2VO6CVB0512MLBG.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2VO6CVB0512MLBG.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai-需求强劲英伟达距离苹果只差一步之遥&#34;&gt;AI 需求强劲，英伟达距离苹果只差一步之遥&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-8.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-8_hua06d1c9a48864901a17f5951e3f245e2_79586_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-8_hua06d1c9a48864901a17f5951e3f245e2_79586_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI 需求强劲，英伟达距离苹果只差一步之遥&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;英伟达（NVIDIA）在2025财年第一季度的财报显示，总营收为260亿美元，同比增长262%，远超市场预期。数据中心收入达到225.63亿美元，同比增长427%。CEO黄仁勋表示，AI浪潮依然强劲，全球公司正将传统数据中心转型为“AI工厂”，生产人工智能产品。他认为AI将带来显著的生产力和收入增长，并在成本效益和能源效益上也有显著提升。英伟达的四大业务板块中，数据中心是最受关注的部分，也是公司增长的核心驱动力。2024财年第四季度，数据中心业务收入达到184亿美元，是前一年同期的5倍多，并刷新了前一个季度的历史新高。英伟达首席财务官ColetteKress表示，数据中心业务增长主要得益于Hopper架构GPU（例如H100）的出货量增加。计算收入增长了5倍，网络收入增长了3倍。公司首次披露了数据中心业务的具体收入细项，其中计算收入达到193.92亿美元，同比增长478%；网络收入为31.71亿美元，同比增长242%。英伟达希望其业务多元化，不仅依赖于大型云服务提供商，如亚马逊、Meta、微软和谷歌，它还与政府、消费互联网公司、汽车制造商和医疗保健客户合作，新领域可能会在云服务商之外创造数十亿美元的垂直市场。汽车和消费互联网领域表现尤为突出。特斯拉购买了35,000块英伟达H100GPU用于其自动驾驶系统FSDV12。Kress表示，今年汽车行业将成为英伟达数据中心业务中最大的垂直市场，带来数十亿美元的收入机会。Meta发布了最新的大型语言模型Llama3，该模型在24,000块英伟达H100GPU上训练完成，为Meta旗下的Facebook、Instagram、WhatsApp和Messenger的新人工智能系统MetaAI提供支持。Llama3不仅提升了这些平台的AI功能，还在各行业掀起了一股AI开发热潮。尽管英伟达在中国市场的业务受到了限制，但公司仍然致力于为客户服务，并表示将尽最大努力。创纪录的财务表现下，英伟达也有隐忧，如芯片制造端的激烈竞争和头部互联网和大模型公司如何落地和变现的问题。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2VP6EMM05119FMA.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2VP6EMM05119FMA.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;英伟达股价起飞暗含隐忧竞品频出客户背刺ai市场格局波动&#34;&gt;英伟达股价起飞暗含隐忧：竞品频出、客户背刺、AI市场格局波动&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-7.jpg&#34;
+	width=&#34;914&#34;
+	height=&#34;571&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-7_hud04e171e3c8396f43b5a9b0cb14482b9_85218_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-7_hud04e171e3c8396f43b5a9b0cb14482b9_85218_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;英伟达股价起飞暗含隐忧：竞品频出、客户背刺、AI市场格局波动&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;英伟达2025财年一季度营收增长262%，股价破1000美元关口，但面临竞争对手AMD、英特尔芯片替代产品和客户自研挑战。AI市场变化，推理需求增加，英伟达芯片非必需品；英伟达加速新产品开发，迭代周期缩短至一年，以维持领导地位。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2VSRO9A051180F7.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2VSRO9A051180F7.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;李开复最新财富论坛ai访谈中国ai只比美国晚一年&#34;&gt;李开复最新财富论坛AI访谈：中国AI只比美国晚一年&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-6.jpg&#34;
+	width=&#34;879&#34;
+	height=&#34;549&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-6_hue2ba5cef930769c40f3508ca42206757_255513_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-6_hue2ba5cef930769c40f3508ca42206757_255513_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;李开复最新财富论坛AI访谈：中国AI只比美国晚一年&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;开复（Kaifu）在财富创新论坛上就人工智能进行了访谈，提到中国AI发展落后美国不到一年，并对中美AI比较做出了评点。他认为美国的创新能力强，但中国在执行方面更有优势。开复指出，人工智能可能会超越人类，但并不一定需要完全模仿人类大脑。他还提到了他创立的公司ZeroOne.ai，其估值达10亿美元，并且对未来AI技术的普及持乐观态度。开复预测了人工智能将带来的巨大变革，他认为数据将成为新的石油，AI将改变世界。然而，他也担心大公司可能会占据主导地位，加剧贫富差距，并对教育和就业产生负面影响。他强调需要普及AI，使其变得“可获得”，减少社会不平等。关于未来工作的流失，开复提到他之前的预测中，40%到50%的工作将被人工智能取代，这一预测仍然准确。政府和教育体系需要准备好应对这一变化，帮助人们适应新环境。开复还强调了人类情感和同理心的重要性，与机器相比，人类在这些方面有独特之处。他鼓励人们积极使用AI工具，并相信人工智能可以是创造力和生产力的巨大推动者。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2VU00U405534HHB.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2VU00U405534HHB.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;第一波黑客已经用大模型搞网络攻击&#34;&gt;第一波黑客已经用大模型搞网络攻击&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-5.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-5_hud73971cd0250ef6adcd3dc5312d47821_275243_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-5_hud73971cd0250ef6adcd3dc5312d47821_275243_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;第一波黑客已经用大模型搞网络攻击&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;新技术和产业的发展中，安全始终是伴随而来的，它们通常先有攻击后有防护。大模型也不例外。在大模型的应用场景中，安全问题和需求随之而来，但由于攻击者往往能更快发现并利用这些风险，因此需要我们提供快速响应和改变。目前，大模型的实际应用仍然有限，行业人士对其成熟度、投入产出比以及应用方向有所顾虑，而黑客们只需一个理由就可以利用大模型进行攻击。全球安全公司纷纷行动起来，微软推出了SecurityCopilot，谷歌发布了网络安全专用的大模型，而Paloalto和CROWDSTRIKE则在其安全运营平台集成了大模型的安全能力。在中国，大约80%的网络安全公司正在将大模型技术融入产品中，有30%的公司已经开始进行大模型安全研究，出现了一些安全创业浪潮。随着ChatGPT等AGI技术的推出，全球黑客开始使用这些工具来提高攻击效率和范围。由于大模型对编程语言理解能力强，攻击者可以快速发现软件漏洞，并且利用AI算法进行人脸伪造，导致网络诈骗案件增加。安全公司正在探索如何利用AI技术来改进威胁检测、产品体验和运营分析。然而，大模型的概念也被认为可能是新瓶装旧酒，因为许多安全公司早已使用AI进行垃圾邮件检测、漏洞修复等工作。亚信安全并没有立即将大模型集成到产品中，而是在构建底层通用框架和MaaS服务平台，并最终推出了自研的网络安全大模型——信立方。随着大模型技术的发展，AI安全需要从系统性全局视角来共建生态。亚信安全认为，大模型产业链将变得更加长，而周边业态会更加丰富，真正做大模型的厂商不会太多，但利用大模型的企业和行业会越来越多，这对安全方面提出了新的要求。通过与其他公司的合作，亚信安全推动了东西部算力和数据资源的安全调度和流通，为人工智能和数据产业的发展提供了支持。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2UOBJSO05118O92.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2UOBJSO05118O92.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;中国ai独角兽资本大冒险&#34;&gt;中国AI独角兽资本大冒险&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-4.jpg&#34;
+	width=&#34;275&#34;
+	height=&#34;183&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-4_hu4c5979059c1785fc93bc1b6be5c73863_14050_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-4_hu4c5979059c1785fc93bc1b6be5c73863_14050_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;中国AI独角兽资本大冒险&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;月之暗面的火爆，超出想象，预计估值将超过百川智能、智谱AI等，成为中国头部独角兽。作为通用人工智能领域的领军企业，其创始人杨植麟引领高密度人才团队，旗下产品Kimi在短时间内突破7380万用户，成为AIGCAPP行业用户增长最快的应用之一。虽然面临资金压力和商业化路径问题，但月之暗面通过新一轮融资获得更多筹码，有望释放更多可能性。然而，大模型竞争加剧，市场缺乏“杀手级应用”，技术和商业化的挑战依然存在。杨植麟计划在资源和人才上投资，研发跨模态大模型，并希望打造像苹果AppStore一样的平台。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J2TO535U05198NMR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J2TO535U05198NMR.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;ai独角兽集体求卖身新一轮洗牌期开始了&#34;&gt;AI独角兽集体求卖身，新一轮洗牌期开始了&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-3.jpg&#34;
+	width=&#34;1004&#34;
+	height=&#34;390&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-3_hubb050257ebb18f61727133221cf4f9ec_304721_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-3_hubb050257ebb18f61727133221cf4f9ec_304721_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI独角兽集体求卖身，新一轮洗牌期开始了&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;257&#34;
+		data-flex-basis=&#34;617px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;大型人工智能模型公司正经历着收购潮，包括Adept（估值10亿美元）、HumaneAI（估值7.5-10亿美元）和StabilityAI（创始于StableDiffusion）。这些公司的估值高达数十亿美元，但面临成本压力、商业模式不确定性以及激烈市场竞争。Adept和HumaneAI寻求收购，部分原因是产品未能如预期般销售良好，导致资金短缺。StabilityAI则因开源模型StableDiffusion的商业化问题而面临挑战。科技巨头如微软、谷歌和Meta等正在积极寻求收购或与这些初创公司合作，以获取技术和人才。此外，大数据行业头部公司Databricks和Snowflake也通过收购AI初创公司来扩展其业务。虽然国内大模型市场也显示出头部效应，但未来的发展趋势仍然值得观察。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J31TPPHL0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J31TPPHL0511DSSR.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;鹅厂造了个ai翻译公司专攻网络小说真人和gpt-4看了都说好&#34;&gt;鹅厂造了个AI翻译公司：专攻网络小说，真人和GPT-4看了都说好&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-2.jpg&#34;
+	width=&#34;950&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-2_hu4edde7511fadb035dd279edf06d99609_83591_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-2_hu4edde7511fadb035dd279edf06d99609_83591_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;鹅厂造了个AI翻译公司：专攻网络小说，真人和GPT-4看了都说好&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;智能体翻译公司TransAgents以AI为主体，提供高质量网络小说翻译服务，其成本低于传统人工翻译近80%。虽然在相似度评估中表现不佳，但读者和专业人士对其质量表示肯定。该公司使用30个不同智能体，每个岗位配备多个AI，以适应不同的语言、体裁和受众，创造出灵活多样的译文，更符合目标语言习惯和文学性强。TransAgents的表现促使人们思考是否人工智能生成内容将取代人类喜好。专业评估表明尽管GPT-4认为其翻译不如自己，但真人和GPT-4都认可TransAgents翻译质量，特别是在语言多样性方面超越了真人和GPT-4的表现。在某些类型中，如游戏、科幻爱情类，TransAgents的表现尤为突出。该公司通过GhostAgent评估选择高级编辑，并在翻译风格指南下进行团队协作，以确保一致性和质量。虽然存在遗漏现象，但未影响读者体验。多智能体协同工作已显示实际效益，引发对语言同质化和大规模Agent合作的担忧。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J31V5H9H0511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J31V5H9H0511DSSR.html&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;大模型国家队发力了-中国移动发布万百千&#34;&gt;大模型“国家队”发力了 ，中国移动发布“万百千”&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/ai20240526/ai20240526-1.jpg&#34;
+	width=&#34;640&#34;
+	height=&#34;427&#34;
+	srcset=&#34;https://ntopic.cn/p/ai20240526/ai20240526-1_hu301ff0f905d073f9e5886dec5ec2be21_59898_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/ai20240526/ai20240526-1_hu301ff0f905d073f9e5886dec5ec2be21_59898_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;大模型“国家队”发力了 ，中国移动发布“万百千”&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;中国移动近日宣布推出全栈国产化生态大模型“九天智能基座”，包括万卡算力、千亿参数模型及百汇平台，能力达到GPT-4的90%水平。该模型已布局17个细分领域行业大模型，覆盖政务、医疗、办公等行业。中国移动计划在2023年内建成3个近2万卡智算中心，并发布AI+5G新通话、AI+办公等23个AI软硬产品及20个行业应用。“九天智能基座”实现了数据构建、预训练、微调、部署全链路核心技术自主创新，适配国产算力，实现全栈国产化，并获得中国软件测评中心安全测评的最高等级A级证书。未来，中国移动计划布局40款自研行业大模型，赋能生产、生活、社会治理等创新升级。此外，中国移动还推出了一站式大模型开发平台和应用平台（LLMStudio），面向个人及行业客户提供全栈人工智能服务。中国移动的体系化人工智能技术具有AI服务大闭环、AI能力原子化重构、网络原生和安全可信四大特征，实现了算力、网络、人工智能能力全局统一调度和开放服务。中国移动作为“国家队”成员，在数字化建设中扮演重要角色，以其技术实力、数据优势、身份优势等因素，为国家的数字科技创新体系提供支持，并在全球大模型浪潮中取得了显著成就。（报道详情：&lt;a class=&#34;link&#34; href=&#34;https://www.163.com/dy/article/J31V8FG00511DSSR.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.163.com/dy/article/J31V8FG00511DSSR.html&lt;/a&gt;）&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

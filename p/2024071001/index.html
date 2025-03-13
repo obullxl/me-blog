@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Ollama可以非常方便的管理和部署我们本地大语言模型，老牛同学希望通过本文对Ollama进行一次详细介绍，包括本地大模型管理和使用、WebUI对话界面部署、通过Python和Java使用Ollama的API接口等……'>
+<title>Ollama完整教程：本地LLM管理、WebUI对话、Python/Java客户端API应用</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024071001/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='Ollama完整教程：本地LLM管理、WebUI对话、Python/Java客户端API应用'>
+<meta property='og:description' content='Ollama可以非常方便的管理和部署我们本地大语言模型，老牛同学希望通过本文对Ollama进行一次详细介绍，包括本地大模型管理和使用、WebUI对话界面部署、通过Python和Java使用Ollama的API接口等……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024071001/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Ollama' /><meta property='article:published_time' content='2024-07-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024071001/00.png' />
+<meta name="twitter:title" content="Ollama完整教程：本地LLM管理、WebUI对话、Python/Java客户端API应用">
+<meta name="twitter:description" content="Ollama可以非常方便的管理和部署我们本地大语言模型，老牛同学希望通过本文对Ollama进行一次详细介绍，包括本地大模型管理和使用、WebUI对话界面部署、通过Python和Java使用Ollama的API接口等……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024071001/00.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#ollama-是什么它与-llama-有什么关系">Ollama 是什么，它与 Llama 有什么关系？</a></li>
+    <li><a href="#ollama-安装和常用系统参数设置">Ollama 安装和常用系统参数设置</a></li>
+    <li><a href="#ollama-管理本地已有大模型">Ollama 管理本地已有大模型</a></li>
+    <li><a href="#方式一ollama-从远程仓库下载大模型到本地">方式一：Ollama 从远程仓库下载大模型到本地</a></li>
+    <li><a href="#方式二ollama-导入-gguf-模型文件到本地磁盘">方式二：Ollama 导入 GGUF 模型文件到本地磁盘</a></li>
+    <li><a href="#方式三ollama-导入-safetensors-模型文件到到本地磁盘">方式三：Ollama 导入 safetensors 模型文件到到本地磁盘</a></li>
+    <li><a href="#基于-webui-部署-ollama-可视化对话界面">基于 WebUI 部署 Ollama 可视化对话界面</a></li>
+    <li><a href="#ollama-客户端http-访问服务">Ollama 客户端：HTTP 访问服务</a></li>
+    <li><a href="#ollama-客户端python-api-应用">Ollama 客户端：Python API 应用</a></li>
+    <li><a href="#ollama-客户端java-api-应用springboot-应用">Ollama 客户端：Java API 应用（SpringBoot 应用）</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024071001/">
+                <img src="/p/2024071001/00_hu05111b7ea7e9ad676e8c99270aa3a526_147425_800x0_resize_box_3.png"
+                        srcset="/p/2024071001/00_hu05111b7ea7e9ad676e8c99270aa3a526_147425_800x0_resize_box_3.png 800w, /p/2024071001/00_hu05111b7ea7e9ad676e8c99270aa3a526_147425_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="405" 
+                        loading="lazy"
+                        alt="Featured image of post Ollama完整教程：本地LLM管理、WebUI对话、Python/Java客户端API应用" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">Ollama完整教程：本地LLM管理、WebUI对话、Python/Java客户端API应用</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>Ollama可以非常方便的管理和部署我们本地大语言模型，老牛同学希望通过本文对Ollama进行一次详细介绍，包括本地大模型管理和使用、WebUI对话界面部署、通过Python和Java使用Ollama的API接口等……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-07-10
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：12 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>老牛同学在前面有关大模型应用的文章中，多次使用了<strong>Ollama</strong>来管理和部署本地大模型（包括：<strong>Qwen2</strong>、<strong>Llama3</strong>、<strong>Phi3</strong>、<strong>Gemma2</strong>等），但对<strong>Ollama</strong>这个非常方便管理本地大模型的软件的介绍却很少。</p>
+<p>目前，清华和智谱 AI 联合发布开源的<strong>GLM4-9B</strong>大模型也能支持<strong>Ollama</strong>进行本地部署了（<a class="link" href="https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg"  target="_blank" rel="noopener"
+    >本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验</a>），<strong>Ollama</strong>支持的大模型越多越普及，对于的应用也就越多。为了降低大家查阅资料等学习时间，老牛同学今天尝试着对 Ollama 进行一次详细完整介绍。毕竟老牛同学也在不断学习中，若有疏漏或者错误之处，还请各位朋友多多指正，谢谢大家。</p>
+<p>本文将分为以下章节对 Ollama 进行介绍：</p>
+<ol>
+<li>Ollama 基本介绍，它的作用是什么</li>
+<li>Ollama 软件安装、一些常用的系统参数设置</li>
+<li>Ollama 管理本地已有大模型（包括终端对话界面）</li>
+<li>Ollama 导入模型到本地的三种方式：直接从 Ollama 远程仓库拉取、通过 GGUF 模型权重文件导入到本地、通过 safetensors 模型权限文件导入到本地</li>
+<li>基于 WebUI 部署 Ollama 可视化对话界面</li>
+<li>Ollama 客户端 API 应用，包括 Python API 和 Java API 接口应用</li>
+</ol>
+<h2 id="ollama-是什么它与-llama-有什么关系">Ollama 是什么，它与 Llama 有什么关系？</h2>
+<p><strong>Ollama</strong>官网：<a class="link" href="https://ollama.com"  target="_blank" rel="noopener"
+    >https://ollama.com/</a>，官方网站的介绍就一句话：<strong>Get up and running with large language models.</strong> （开始使用大语言模型。）</p>
+<p><strong>Ollama</strong>是一个开源的 LLM（大型语言模型）服务工具，用于简化在本地运行大语言模型、降低使用大语言模型的门槛，使得大模型的开发者、研究人员和爱好者能够在本地环境快速实验、管理和部署最新大语言模型，包括如<strong>Qwen2</strong>、<strong>Llama3</strong>、<strong>Phi3</strong>、<strong>Gemma2</strong>等开源的大型语言模型。</p>
+<p><strong>Ollama</strong>支持的大语言模型列表，可通过搜索模型名称查看：<a class="link" href="https://ollama.com/library"  target="_blank" rel="noopener"
+    >https://ollama.com/library</a></p>
+<p><strong>Ollama</strong>官方 GitHub 源代码仓库：<a class="link" href="https://github.com/ollama/ollama"  target="_blank" rel="noopener"
+    >https://github.com/ollama/ollama/</a></p>
+<p><strong>Llama</strong>是 Meta 公司开源的备受欢迎的一个通用大语言模型，和其他大模型一样，<strong>Llama</strong>可以通过<strong>Ollama</strong>进行管理部署和推理等。</p>
+<p>因此，<code>Ollama</code>与<code>Llama</code>的关系：<code>Llama</code>是大语言模型，而<code>Ollama</code>是大语言模型（不限于<code>Llama</code>模型）便捷的管理和运维工具，它们只是名字后面部分恰巧相同而已！</p>
+<p><img src="/p/2024071001/01.png"
+	width="1184"
+	height="868"
+	srcset="/p/2024071001/01_hufd706277049935fc4199d22c78f03807_115448_480x0_resize_box_3.png 480w, /p/2024071001/01_hufd706277049935fc4199d22c78f03807_115448_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ollama官网"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="327px"
+	
+></p>
+<h2 id="ollama-安装和常用系统参数设置">Ollama 安装和常用系统参数设置</h2>
+<p>在官网首页，我们可以直接下载<strong>Ollama</strong>安装程序（支持 Windows/MacOS/Linux）：<a class="link" href="https://ollama.com"  target="_blank" rel="noopener"
+    >https://ollama.com/</a></p>
+<p><strong>Ollama</strong>的安装过程，与安装其他普通软件并没有什么两样，安装完成之后，有几个常用的系统<strong>环境变量</strong>参数建议进行设置：</p>
+<ol>
+<li><strong>OLLAMA_MODELS</strong>：模型文件存放目录，默认目录为当前用户目录（Windows 目录：<code>C:\Users%username%.ollama\models</code>，MacOS 目录：<code>~/.ollama/models</code>，Linux 目录：<code>/usr/share/ollama/.ollama/models</code>），如果是 Windows 系统<strong>建议修改</strong>（如：D:\OllamaModels），避免 C 盘空间吃紧</li>
+<li><strong>OLLAMA_HOST</strong>：Ollama 服务监听的网络地址，默认为<strong>127.0.0.1</strong>，如果允许其他电脑访问 Ollama（如：局域网中的其他电脑），<strong>建议设置</strong>成<strong>0.0.0.0</strong>，从而允许其他网络访问</li>
+<li><strong>OLLAMA_PORT</strong>：Ollama 服务监听的默认端口，默认为<strong>11434</strong>，如果端口有冲突，可以修改设置成其他端口（如：<strong>8080</strong>等）</li>
+<li><strong>OLLAMA_ORIGINS</strong>：HTTP 客户端请求来源，半角逗号分隔列表，若本地使用无严格要求，可以设置成星号，代表不受限制</li>
+<li><strong>OLLAMA_KEEP_ALIVE</strong>：大模型加载到内存中后的存活时间，默认为<strong>5m</strong>即 5 分钟（如：纯数字如 300 代表 300 秒，0 代表处理请求响应后立即卸载模型，任何负数则表示一直存活）；我们可设置成<strong>24h</strong>，即模型在内存中保持 24 小时，提高访问速度</li>
+<li><strong>OLLAMA_NUM_PARALLEL</strong>：请求处理并发数量，默认为<strong>1</strong>，即单并发串行处理请求，可根据实际情况进行调整</li>
+<li><strong>OLLAMA_MAX_QUEUE</strong>：请求队列长度，默认值为<strong>512</strong>，可以根据情况设置，超过队列长度请求被抛弃</li>
+<li><strong>OLLAMA_DEBUG</strong>：输出 Debug 日志标识，应用研发阶段可以设置成<strong>1</strong>，即输出详细日志信息，便于排查问题</li>
+<li><strong>OLLAMA_MAX_LOADED_MODELS</strong>：最多同时加载到内存中模型的数量，默认为<strong>1</strong>，即只能有 1 个模型在内存中</li>
+</ol>
+<h2 id="ollama-管理本地已有大模型">Ollama 管理本地已有大模型</h2>
+<p>【展示本地大模型列表：<code>ollama list</code>】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;ollama list
+</span></span><span class="line"><span class="cl">NAME            ID              SIZE    MODIFIED
+</span></span><span class="line"><span class="cl">gemma2:9b       c19987e1e6e2    5.4 GB  <span class="m">7</span> days ago
+</span></span><span class="line"><span class="cl">qwen2:7b        e0d4e1163c58    4.4 GB  <span class="m">10</span> days ago
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，老牛同学本地有 2 个大模型，它们的名称（<strong>NAME</strong>）分别为<strong>gemma2:9b</strong>和<strong>qwen2:7b</strong>。</p>
+<p>【删除单个本地大模型：<code>ollama rm 本地模型名称</code>】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;ollama rm gemma2:9b
+</span></span><span class="line"><span class="cl">deleted <span class="s1">&#39;gemma2:9b&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;ollama list
+</span></span><span class="line"><span class="cl">NAME            ID              SIZE    MODIFIED
+</span></span><span class="line"><span class="cl">qwen2:7b        e0d4e1163c58    4.4 GB  <span class="m">10</span> days ago
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>老牛同学通过<code>rm</code>命令删除了<strong>gemma2:9b</strong>大模型之后，再次通过<code>list</code>命令查看，本地只有<strong>qwen2:7b</strong>一个大模型了。</p>
+<p>【启动本地模型：<code>ollama run 本地模型名</code>】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;ollama run qwen2:0.5b
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动成功之后，就可以通过终端对话界面进行对话了（本命令下面也会讲到，其他详细暂且忽略）</p>
+<p>【查看本地运行中模型列表：<code>ollama ps</code>】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;ollama ps
+</span></span><span class="line"><span class="cl">NAME            ID              SIZE    PROCESSOR       UNTIL
+</span></span><span class="line"><span class="cl">qwen2:0.5b      6f48b936a09f    <span class="m">693</span> MB  100% CPU        <span class="m">4</span> minutes from now
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过<code>ps</code>命名可以看到，老牛同学本地<strong>qwen2:0.5b</strong>大模型正在运行中。</p>
+<p>【复制本地大模型：<code>ollama cp 本地存在的模型名 新复制模型名</code>】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;ollama cp qwen2:0.5b Qwen2-0.5B
+</span></span><span class="line"><span class="cl">copied <span class="s1">&#39;qwen2:0.5b&#39;</span> to <span class="s1">&#39;Qwen2-0.5B&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;ollama list
+</span></span><span class="line"><span class="cl">NAME                    ID              SIZE    MODIFIED
+</span></span><span class="line"><span class="cl">Qwen2-0.5B:latest       6f48b936a09f    <span class="m">352</span> MB  <span class="m">4</span> seconds ago
+</span></span><span class="line"><span class="cl">qwen2:0.5b              6f48b936a09f    <span class="m">352</span> MB  <span class="m">29</span> minutes ago
+</span></span><span class="line"><span class="cl">qwen2:7b                e0d4e1163c58    4.4 GB  <span class="m">10</span> days ago
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面<code>cp</code>命令，老牛同学把本地<strong>qwen2:0.5b</strong>复制了一份，新模型名为<strong>Qwen2-0.5B</strong></p>
+<p>下面老牛同学介绍三种通过 Ollama 下载到本地大模型方式：</p>
+<ol>
+<li>方式一：直接通过 Ollama 远程仓库下载，这是最直接的方式，也是最推荐、最常用的方式</li>
+<li>方式二：如果已经有 GGUF 模型权重文件了，不想重新下载，也可以通过 Ollama 把该文件直接导入到本地（不推荐、不常用）</li>
+<li>方式三：如果已经有 safetensors 模型权重文件，也不想重新下载，也可以通过 Ollama 把该文件直接导入到本地（不推荐、不常用）</li>
+</ol>
+<h2 id="方式一ollama-从远程仓库下载大模型到本地">方式一：Ollama 从远程仓库下载大模型到本地</h2>
+<p>【下载或者更新本地大模型：<code>ollama pull 本地/远程仓库模型名称</code>】</p>
+<p>本<code>pull</code>命令从 Ollama 远程仓库完整下载或增量更新模型文件，模型名称<strong>格式</strong>为：<strong>模型名称:参数规格</strong>；如<code>ollama pull qwen2:0.5b</code> 则代表从 Ollama 仓库下载<strong>qwen2</strong>大模型的<strong>0.5b</strong>参数规格大模型文件到本地磁盘：</p>
+<p><img src="/p/2024071001/02.png"
+	width="1263"
+	height="843"
+	srcset="/p/2024071001/02_hu02ca4010d74396d6714efc9541980158_62927_480x0_resize_box_3.png 480w, /p/2024071001/02_hu02ca4010d74396d6714efc9541980158_62927_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Qwen2模型列表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="149"
+		data-flex-basis="359px"
+	
+></p>
+<p>如果参数规格标记为<code>latest</code>则代表为默认参数规格，下载时<strong>可以</strong>不用指定，如<strong>Qwen2</strong>的<strong>7b</strong>被标记为<code>latest</code>，则<code>ollama pull qwen2</code>和<code>ollama pull qwen2:7b</code>这 2 个命令的意义是一样的，都下载的为<strong>7b</strong>参数规格模型。为了保证后续维护方便、避免误操作等，老牛同学<strong>建议</strong>不管是否为默认参数规格，我们下载命令中均明确参数规格。</p>
+<p>值得一提的是，今天开始<strong>GLM4</strong>支持 Ollama 部署和推理，老牛同学特意列出它的下载命令：<code>ollama pull glm4:9b</code>（和其他模型相比，其实并没有特殊支出）。需要注意的是：Ollama 最低版本为<strong>0.2.0</strong>才能支持<strong>GLM4</strong>大模型！</p>
+<p><img src="/p/2024071001/03.png"
+	width="1243"
+	height="828"
+	srcset="/p/2024071001/03_hu118c2da1f699e89313971e2fd074c126_74513_480x0_resize_box_3.png 480w, /p/2024071001/03_hu118c2da1f699e89313971e2fd074c126_74513_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GLM4模型列表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="360px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;ollama pull qwen2:0.5b
+</span></span><span class="line"><span class="cl">pulling manifest
+</span></span><span class="line"><span class="cl">pulling manifest
+</span></span><span class="line"><span class="cl">pulling manifest
+</span></span><span class="line"><span class="cl">pulling manifest
+</span></span><span class="line"><span class="cl">pulling manifest
+</span></span><span class="line"><span class="cl">pulling 8de95da68dc4... 100% ▕████████████████████████▏ <span class="m">352</span> MB
+</span></span><span class="line"><span class="cl">pulling 62fbfd9ed093... 100% ▕████████████████████████▏  <span class="m">182</span> B
+</span></span><span class="line"><span class="cl">pulling c156170b718e... 100% ▕████████████████████████▏  <span class="m">11</span> KB
+</span></span><span class="line"><span class="cl">pulling f02dd72bb242... 100% ▕████████████████████████▏   <span class="m">59</span> B
+</span></span><span class="line"><span class="cl">pulling 2184ab82477b... 100% ▕████████████████████████▏  <span class="m">488</span> B
+</span></span><span class="line"><span class="cl">verifying sha256 digest
+</span></span><span class="line"><span class="cl">writing manifest
+</span></span><span class="line"><span class="cl">removing any unused layers
+</span></span><span class="line"><span class="cl">success
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;ollama list
+</span></span><span class="line"><span class="cl">NAME            ID              SIZE    MODIFIED
+</span></span><span class="line"><span class="cl">qwen2:0.5b      6f48b936a09f    <span class="m">352</span> MB  <span class="m">9</span> minutes ago
+</span></span><span class="line"><span class="cl">qwen2:7b        e0d4e1163c58    4.4 GB  <span class="m">10</span> days ago
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>若本地不存在大模型，则<strong>下载</strong>完整模型文件到本地磁盘；若本地磁盘存在该大模型，则<strong>增量</strong>下载大模型更新文件到本地磁盘。</p>
+<p>从上面最后的<code>list</code>命令结果可以看到，老牛同学本地存在了<strong>qwen2:0.5b</strong>这个名称的大模型。</p>
+<p>【下载且运行本地大模型：<code>ollama run 本地/远程仓库模型名称</code>】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;ollama run qwen2:0.5b
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>若本地不存在大模型，则<strong>下载</strong>完整模型文件到本地磁盘（类似于<code>pull</code>命令），然后<strong>启动</strong>大模型；若本地存在大模型，则直接启动（不进行更新）。</p>
+<p>启动成功后，默认为终端对客界面：</p>
+<p><img src="/p/2024071001/04.png"
+	width="1207"
+	height="216"
+	srcset="/p/2024071001/04_huf67a4b71ed958ca54d4b3d68cae80c4d_33165_480x0_resize_box_3.png 480w, /p/2024071001/04_huf67a4b71ed958ca54d4b3d68cae80c4d_33165_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ollama终端对话界面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="558"
+		data-flex-basis="1341px"
+	
+></p>
+<ol>
+<li>若需要输入多行文本，需要用<strong>三引号</strong>包裹，如：<code>&quot;&quot;&quot;这里是多行文本&quot;&quot;&quot;</code></li>
+<li><code>/clear</code>清除对话上下文信息</li>
+<li><code>/bye</code>则退出对话窗口</li>
+<li><code>/set parameter num_ctx 4096</code>可设置窗口大小为 4096 个 Token，也可以通过请求设置，如：<code>curl &lt;http://localhost:11434/api/generate&gt; -d '{ &quot;model&quot;: &quot;qwen2:7b&quot;, &quot;prompt&quot;: &quot;Why is the sky blue?&quot;, &quot;options&quot;: { &quot;num_ctx&quot;: 4096 }}'</code></li>
+<li><code>/show info</code>可以查看当前模型详情：
+，</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">&gt;&gt;&gt; /show info
+</span></span><span class="line"><span class="cl">  Model
+</span></span><span class="line"><span class="cl">        arch                    qwen2
+</span></span><span class="line"><span class="cl">        parameters              494.03M
+</span></span><span class="line"><span class="cl">        quantization            Q4_0
+</span></span><span class="line"><span class="cl">        context length          32768
+</span></span><span class="line"><span class="cl">        embedding length        896
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  Parameters
+</span></span><span class="line"><span class="cl">        stop    &#34;&lt;|im_start|&gt;&#34;
+</span></span><span class="line"><span class="cl">        stop    &#34;&lt;|im_end|&gt;&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  License
+</span></span><span class="line"><span class="cl">        Apache License
+</span></span><span class="line"><span class="cl">        Version 2.0, January 2004
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="方式二ollama-导入-gguf-模型文件到本地磁盘">方式二：Ollama 导入 GGUF 模型文件到本地磁盘</h2>
+<p>若我们已经从 HF 或者 ModeScope 下载了 GGUF 文件（文件名为：<strong>Meta-Llama-3-8B-Instruct.Q4_K_M.gguf</strong>），在我们存放<code>Llama3-8B</code>的 GGUF 模型文件目录中，创建一个文件名为<code>Modelfile</code>的文件，该文件的内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM ./Meta-Llama-3-8B-Instruct.Q4_K_M.gguf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，打开终端，执行命令导入模型文件：<code>ollama create 模型名称 -f ./Modelfile</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;ollama create Llama-3-8B -f ./Modelfile
+</span></span><span class="line"><span class="cl">transferring model data
+</span></span><span class="line"><span class="cl">using existing layer sha256:647a2b64cbcdbe670432d0502ebb2592b36dd364d51a9ef7a1387b7a4365781f
+</span></span><span class="line"><span class="cl">creating new layer sha256:459d7c837b2bd7f895a15b0a5213846912693beedaf0257fbba2a508bc1c88d9
+</span></span><span class="line"><span class="cl">writing manifest
+</span></span><span class="line"><span class="cl">success
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>导入成功之后，我们就可以通过<code>list</code>命名，看到名为<strong>Llama-3-8B</strong>的本地模型了，后续可以和其他模型一样进行管理了。</p>
+<h2 id="方式三ollama-导入-safetensors-模型文件到到本地磁盘">方式三：Ollama 导入 safetensors 模型文件到到本地磁盘</h2>
+<p>官方操作文档：<a class="link" href="https://ollama.fan/getting-started/import/#importing-pytorch-safetensors"  target="_blank" rel="noopener"
+    >https://ollama.fan/getting-started/import/#importing-pytorch-safetensors</a></p>
+<p>若我们已经从 HF 或者 ModeScope 下载了 safetensors 文件（文件目录为：<strong>Mistral-7B</strong>），</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git lfs install
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git clone https://www.modelscope.cn/rubraAI/Mistral-7B-Instruct-v0.3.git Mistral-7B
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，我们转换模型（结果：<code>Mistral-7B-v0.3.bin</code>）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python llm/llama.cpp/convert.py ./Mistral-7B --outtype f16 --outfile Mistral-7B-v0.3.bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，进行量化量化：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">llm/llama.cpp/quantize Mistral-7B-v0.3.bin Mistral-7B-v0.3_Q4.bin q4_0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，通过 Ollama 导入到本地磁盘，创建<code>Modelfile</code>模型文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM Mistral-7B-v0.3_Q4.bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行导入命令，导入模型文件：<code>ollama create 模型名称 -f ./Modelfile</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;ollama create Mistral-7B-v0.3 -f ./Modelfile
+</span></span><span class="line"><span class="cl">transferring model data
+</span></span><span class="line"><span class="cl">using existing layer sha256:647a2b64cbcdbe670432d0502ebb2592b36dd364d51a9ef7a1387b7a4365781f
+</span></span><span class="line"><span class="cl">creating new layer sha256:459d7c837b2bd7f895a15b0a5213846912693beedaf0257fbba2a508bc1c88d9
+</span></span><span class="line"><span class="cl">writing manifest
+</span></span><span class="line"><span class="cl">success
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>导入成功之后，我们就可以通过<code>list</code>命名，看到名为<strong>Mistral-7B-v0.3</strong>的本地模型了，后续可以和其他模型一样进行管理了。</p>
+<h2 id="基于-webui-部署-ollama-可视化对话界面">基于 WebUI 部署 Ollama 可视化对话界面</h2>
+<p><strong>Ollama</strong>自带控制台对话界面体验总归是不太好，接下来部署 Web 可视化聊天界面：</p>
+<ol>
+<li>下载并安装 Node.js 工具：<a class="link" href="https://nodejs.org/zh-cn"  target="_blank" rel="noopener"
+    >https://nodejs.org/zh-cn</a></li>
+<li>下载<code>ollama-webui</code>工程代码：<code>git clone https://github.com/ollama-webui/ollama-webui-lite ollama-webui</code></li>
+<li>切换<code>ollama-webui</code>代码的目录：<code>cd ollama-webui</code></li>
+<li>设置 Node.js 工具包镜像源（下载提速）：<code>npm config set registry http://mirrors.cloud.tencent.com/npm/</code></li>
+<li>安装 Node.js 依赖的工具包：<code>npm install</code></li>
+<li>最后，启动 Web 可视化界面：<code>npm run dev</code></li>
+</ol>
+<p><img src="/p/2024071001/05.jpg"
+	width="824"
+	height="270"
+	srcset="/p/2024071001/05_hu40881898ab4c7102699947df68ce27e5_49721_480x0_resize_q75_box.jpg 480w, /p/2024071001/05_hu40881898ab4c7102699947df68ce27e5_49721_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Ollam WebUI启动成功"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="305"
+		data-flex-basis="732px"
+	
+></p>
+<p>如果看到以上输出，代表 Web 可视化界面已经成功了！</p>
+<p>浏览器打开 Web 可视化界面：<a class="link" href="http://localhost:3000"  target="_blank" rel="noopener"
+    >http://localhost:3000/</a></p>
+<p><img src="/p/2024071001/06.png"
+	width="1834"
+	height="1441"
+	srcset="/p/2024071001/06_hu608dd0b0c5cb0d5d28aae5fe81670e22_224513_480x0_resize_box_3.png 480w, /p/2024071001/06_hu608dd0b0c5cb0d5d28aae5fe81670e22_224513_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Ollam WebUI对话界面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<h2 id="ollama-客户端http-访问服务">Ollama 客户端：HTTP 访问服务</h2>
+<p>Ollama 默认提供了<code>generate</code>和<code>chat</code>这 2 个原始的 API 接口，使用方式如下：</p>
+<ol>
+<li><code>generate</code>接口的使用样例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl http://localhost:11434/api/generate -d <span class="s2">&#34;{
+</span></span></span><span class="line"><span class="cl"><span class="s2">  &#39;model&#39;: &#39;qwen:0.5b&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="s2">  &#39;prompt&#39;: &#39;为什么天空是蓝色的？&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s2">}&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><code>chat</code>接口的使用样例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl http://localhost:11434/api/chat -d <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;model&#34;: &#34;qwen:7b&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;messages&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="s1">    { &#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;为什么天空是蓝色的？&#34; }
+</span></span></span><span class="line"><span class="cl"><span class="s1">  ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">}&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来的<strong>Python</strong>和<strong>Java</strong>客户端应用，都是对这 2 个接口的封装。</p>
+<h2 id="ollama-客户端python-api-应用">Ollama 客户端：Python API 应用</h2>
+<p>我们把 Ollama 集成到 Python 应用中，只需要以下简单 2 步即可：</p>
+<p><strong>第一步</strong>，安装 Python 依赖包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install ollama
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>第二步</strong>，使用 Ollama 接口，<code>stream=True</code>代表按照流式输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">ollama</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 流式输出</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">api_generate</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;提问：</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">stream</span> <span class="o">=</span> <span class="n">ollama</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;qwen:7b&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prompt</span><span class="o">=</span><span class="n">text</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------------------&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">chunk</span><span class="p">[</span><span class="s1">&#39;done&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------------------&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;总耗时：</span><span class="si">{</span><span class="n">chunk</span><span class="p">[</span><span class="s1">&#39;total_duration&#39;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------------------&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 流式输出</span>
+</span></span><span class="line"><span class="cl">  <span class="n">api_generate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;天空为什么是蓝色的？&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 非流式输出</span>
+</span></span><span class="line"><span class="cl">  <span class="n">content</span> <span class="o">=</span> <span class="n">ollama</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;qwen:0.5b&#39;</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;天空为什么是蓝色的？&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ollama-客户端java-api-应用springboot-应用">Ollama 客户端：Java API 应用（SpringBoot 应用）</h2>
+<p>我们也可以把 Ollama 集成到 SpringBoot 应用中，只需要以下简单 3 步即可：</p>
+<p><strong>第一步</strong>，在总<code>pom.xml</code>中新增 SpringBoot Starter 依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>io.springboot.ai<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>spring-ai-ollama-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>第二步</strong>，在 SpringBoot 配置文件<code>application.properties</code>中增加 Ollama 配置信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">server.port</span><span class="o">=</span><span class="s">8088</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.application.name</span><span class="o">=</span><span class="s">NTopicBootX</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.ai.ollama.base-url</span><span class="o">=</span><span class="s">http://localhost:11434</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.ai.ollama.chat.options.model</span><span class="o">=</span><span class="s">qwen:0.5b</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置文件指定了 Ollama API 地址和端口，同时指定了默认模型<strong>qwen:0.5b</strong>（注意：模型需要在本地已经存在）</p>
+<p><strong>第三步</strong>，使用<code>OllamaChatClient</code>进行文字生成或者对话：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.ai.chat.ChatResponse</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.ai.chat.prompt.Prompt</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.ai.ollama.OllamaChatClient</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.ai.ollama.api.OllamaOptions</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Qualifier</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.RequestParam</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OllamaClientController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Qualifier</span><span class="p">(</span><span class="s">&#34;ollamaChatClient&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">OllamaChatClient</span><span class="w"> </span><span class="n">ollamaChatClient</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * http://localhost:8088/ollama/chat/v1?msg=天空为什么是蓝色的？
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/ollama/chat/v1&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">ollamaChat</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">ollamaChatClient</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * http://localhost:8088/ollama/chat/v2?msg=人为什么要不断的追求卓越？
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/ollama/chat/v2&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">ollamaChatV2</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Prompt</span><span class="w"> </span><span class="n">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Prompt</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ChatResponse</span><span class="w"> </span><span class="n">chatResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ollamaChatClient</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">prompt</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">chatResponse</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * http://localhost:8088/ollama/chat/v3?msg=你认为老牛同学的文章如何？
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/ollama/chat/v3&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">ollamaChatV3</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Prompt</span><span class="w"> </span><span class="n">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Prompt</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">msg</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">OllamaOptions</span><span class="p">.</span><span class="na">create</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="p">.</span><span class="na">withModel</span><span class="p">(</span><span class="s">&#34;qwen:0.5b&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="p">.</span><span class="na">withTemperature</span><span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="na">4F</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ChatResponse</span><span class="w"> </span><span class="n">chatResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ollamaChatClient</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">prompt</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">chatResponse</span><span class="p">.</span><span class="na">getResult</span><span class="p">().</span><span class="na">getOutput</span><span class="p">().</span><span class="na">getContent</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上是 Java 客户端的简单样例，我们可以通过<code>OllamaChatClient</code>访问 Ollama 接口，既可以使用默认大模型，也可以在参数指定模型名称！</p>
+<hr>
+<p><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg"  target="_blank" rel="noopener"
+    >本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g"  target="_blank" rel="noopener"
+    >玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A"  target="_blank" rel="noopener"
+    >ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面</a></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/ollama/">Ollama</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024120701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024120701/00.b0064924678861a86e4ba7a5864945d8_hu31ac7d48ee715cbdbcf6bcc64e7e1d4c_130069_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）"
+                        data-key="2024120701" 
+                        data-hash="md5-sAZJJGeIYahuS6elhklF2A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024082301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024082301/InternLM.9bc1a661f848c6c45016b362890b6b87_hu41c4c6995ceabd0c37456922e7c82507_79554_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post InternLM 2.5 书生·浦语 开源大模型本地部署体验"
+                        data-key="2024082301" 
+                        data-hash="md5-m8GmYfhIxsRQFrNiiQtrhw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">InternLM 2.5 书生·浦语 开源大模型本地部署体验</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024070201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024070201/00.ccff7b67d4c55b161b21bd9816444edb_hu2f8b94c83031de6e5bc3f44f06111c68_362582_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Google 发布了最新的开源大模型 Gemma 2，本地快速部署和体验"
+                        data-key="2024070201" 
+                        data-hash="md5-zP97Z9TFWxYbIb2YFkRO2w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Google 发布了最新的开源大模型 Gemma 2，本地快速部署和体验</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024062901/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024062901/02.d3ac7de955dee43eb9bbd789df78503a_hu1fa0aae459ee14b2d05b63839e018423_44026_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程"
+                        data-key="2024062901" 
+                        data-hash="md5-06x96VXe5D65u9eJ33hQOg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024062501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024062501/00.bc61e2a15ecc11d43ef0c14a6bd692e6_hue8f2b43a6b2bdcc173d28e82d448d264_1557957_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama等）"
+                        data-key="2024062501" 
+                        data-hash="md5-vGHioV7MEdQ&#43;8MFKa9aS5g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama等）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

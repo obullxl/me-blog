@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='【AI魔法让古诗会唱歌！】利用免费AI工具，带你把《游子吟》变成音乐动画：用豆包AI生成国风歌曲，Python提取音频；用即梦AI制作3:2古风插画；电脑自带软件合成MV。无需专业基础，三步打造视听盛宴，让孩子在旋律中轻松记忆古诗……'>
+<title>让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2025030301/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！'>
+<meta property='og:description' content='【AI魔法让古诗会唱歌！】利用免费AI工具，带你把《游子吟》变成音乐动画：用豆包AI生成国风歌曲，Python提取音频；用即梦AI制作3:2古风插画；电脑自带软件合成MV。无需专业基础，三步打造视听盛宴，让孩子在旋律中轻松记忆古诗……'>
+<meta property='og:url' content='https://ntopic.cn/p/2025030301/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='文生图' /><meta property='article:tag' content='AI音乐' /><meta property='article:tag' content='AI视频' /><meta property='article:published_time' content='2025-03-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2025030301/00.jpg' />
+<meta name="twitter:title" content="让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！">
+<meta name="twitter:description" content="【AI魔法让古诗会唱歌！】利用免费AI工具，带你把《游子吟》变成音乐动画：用豆包AI生成国风歌曲，Python提取音频；用即梦AI制作3:2古风插画；电脑自带软件合成MV。无需专业基础，三步打造视听盛宴，让孩子在旋律中轻松记忆古诗……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2025030301/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2025030301/">
+                <img src="/p/2025030301/00_hu42cdc8535b0a762ff23c72abe3e7986b_81971_800x0_resize_q75_box.jpg"
+                        srcset="/p/2025030301/00_hu42cdc8535b0a762ff23c72abe3e7986b_81971_800x0_resize_q75_box.jpg 800w, /p/2025030301/00_hu42cdc8535b0a762ff23c72abe3e7986b_81971_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post 让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>【AI魔法让古诗会唱歌！】利用免费AI工具，带你把《游子吟》变成音乐动画：用豆包AI生成国风歌曲，Python提取音频；用即梦AI制作3:2古风插画；电脑自带软件合成MV。无需专业基础，三步打造视听盛宴，让孩子在旋律中轻松记忆古诗……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2025-03-03
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：4 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>新学期了，为了帮小朋友们更好的记忆和学习生字、词语和古诗词，“<strong>老牛同学</strong>”微信小程序特意上线了“爱学习”模块。但当问小朋友们“怎么样”时，得到的答复却是“不怎么样”！</p>
+<p>上周，同事使用豆包生成了一首歌曲，这给老牛同学带来了一点灵感：如果古诗词能以歌唱的形式呈现，小朋友们是否会更感兴趣呢？小朋友告诉我说：在古代，古诗词就是唱出来的，可以试试看！</p>
+<p>对啊，为何不试试看呢？接下来，老牛同学将借助各大厂商的免费大模型，创作一首唐诗《游子吟》歌曲，总体分为以下三步：</p>
+<ol>
+<li>生成音乐：把古诗制作成音乐，先给唱出来</li>
+<li>图片制作：通过 DeepSeek/Qwen 等大模型，根据我们的需求生成图片提示词，然后使用文生图大模型生成对应的图片</li>
+<li>制作短视频：最后一步，合成音乐和图片内容，制作短视频</li>
+</ol>
+<p>【请到“老牛同学”公众号预览视频】</p>
+<h1 id="1-唱出古诗内容">1. 唱出古诗内容</h1>
+<p>文本生成音乐，目前比较好的模型是<strong>Suno</strong>：<a class="link" href="https://suno.com"  target="_blank" rel="noopener"
+    >https://suno.com</a>，它是收费的且需要通畅的网络。</p>
+<p>老牛同学本次使用字节的豆包：<a class="link" href="https://www.doubao.com/chat/"  target="_blank" rel="noopener"
+    >https://www.doubao.com/chat/</a></p>
+<p>点击“音乐生成” - “自定义歌词”，采用“国风”的音乐风格，表达“怀旧”的情形：</p>
+<p><img src="/p/2025030301/11.jpg"
+	width="1345"
+	height="490"
+	srcset="/p/2025030301/11_hu1f767874e7480b977624a6888038acc8_53742_480x0_resize_q75_box.jpg 480w, /p/2025030301/11_hu1f767874e7480b977624a6888038acc8_53742_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="音乐歌词"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="274"
+		data-flex-basis="658px"
+	
+></p>
+<p>为了能产生更好的效果，我们可以通过 <strong>(主歌)</strong>、<strong>(副歌)</strong>、<strong>(前奏)</strong>、<strong>(尾奏)</strong> 和 <strong>(间奏)</strong> 等结构组织歌词内容，老牛同学歌词内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">(前奏)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">(主歌)
+</span></span><span class="line"><span class="cl">慈母手中线，
+</span></span><span class="line"><span class="cl">游子身上衣。
+</span></span><span class="line"><span class="cl">临行密密缝，
+</span></span><span class="line"><span class="cl">意恐迟迟归。
+</span></span><span class="line"><span class="cl">谁言寸草心，
+</span></span><span class="line"><span class="cl">报得三春晖。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">(间奏)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">(主歌)
+</span></span><span class="line"><span class="cl">慈母手中线，
+</span></span><span class="line"><span class="cl">游子身上衣。
+</span></span><span class="line"><span class="cl">临行密密缝，
+</span></span><span class="line"><span class="cl">意恐迟迟归。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">(副歌)
+</span></span><span class="line"><span class="cl">谁言寸草心，
+</span></span><span class="line"><span class="cl">报得三春晖。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">(尾奏)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>提交之后，一首音乐很快就生成好了。试听一下，如果不满意可以多次提交生成音乐。对于满意的音乐，我们可以修改音乐名称，并下载保存：</p>
+<p><img src="/p/2025030301/12.jpg"
+	width="1417"
+	height="802"
+	srcset="/p/2025030301/12_hu9b6ab1ba842dd45d819b22250f6d68fb_66866_480x0_resize_q75_box.jpg 480w, /p/2025030301/12_hu9b6ab1ba842dd45d819b22250f6d68fb_66866_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="生成音乐"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="424px"
+	
+></p>
+<p>豆包生成音乐确实又快又好，但是有个问题：即使增加了提示词，同样的歌词每次生成的音乐效果仍可能不同！</p>
+<p>生成的音乐文件默认为<code>mp4</code>格式，为了提取纯净的音频部分，老牛同学利用 Python 编写了一个脚本将其转换为<code>mp3</code>格式。：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 需提前安装ffmpeg库</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">ffmpeg</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">extract_audio_ffmpeg_lib</span><span class="p">(</span><span class="n">mp4_file</span><span class="p">,</span> <span class="n">mp3_file</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stream</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">mp4_file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stream</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">audio</span><span class="p">,</span> <span class="n">mp3_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;mp3&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;q:a&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">input_mp4</span> <span class="o">=</span> <span class="s2">&#34;游子吟-孟郊(唐).mp4&#34;</span>  <span class="c1"># MP4文件路径</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output_mp3</span> <span class="o">=</span> <span class="s2">&#34;游子吟-孟郊(唐).mp3&#34;</span> <span class="c1"># MP3文件路径</span>
+</span></span><span class="line"><span class="cl">    <span class="n">extract_audio_ffmpeg_lib</span><span class="p">(</span><span class="n">input_mp4</span><span class="p">,</span> <span class="n">output_mp3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;音频已成功提取到 </span><span class="si">{</span><span class="n">output_mp3</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="2-制作视频图片">2. 制作视频图片</h1>
+<p>接下来，我需要制作几张与音乐相匹配的图片，以便更好的生成音乐 MV 视频，这里需要使用文生图大模型。</p>
+<p>我们首先通过元宝的 DeepSeek-R1 产出提示词：<a class="link" href="https://yuanbao.tencent.com/chat"  target="_blank" rel="noopener"
+    >https://yuanbao.tencent.com/chat</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">我需要把《游子吟》这首唐诗做成短视频，需要短视频图片素材。请为我提供腾讯元宝绘图的提示词。
+</span></span><span class="line"><span class="cl">要求：图片高清，比例3:2，尺寸为1024*682像素
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2025030301/21.jpg"
+	width="1684"
+	height="1377"
+	srcset="/p/2025030301/21_hu528571f662548c0186b986cfe0359309_254904_480x0_resize_q75_box.jpg 480w, /p/2025030301/21_hu528571f662548c0186b986cfe0359309_254904_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="文生图提示词"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="122"
+		data-flex-basis="293px"
+	
+></p>
+<p>DeepSeek-R1 把视频分成了 3 个场景，与古诗的意境一一对应。</p>
+<p>接下来，我们根据提示词，使用文生图大模型生成图片。老牛同学尝试了豆包和元宝的绘图功能，生成的图片都不理想，发现免费模型的图片生成效果有限。</p>
+<p>最后采用抖音的即梦 AI，一样的提示词，感觉效果就好多了：<a class="link" href="https://jimeng.jianying.com/ai-tool/image/generate"  target="_blank" rel="noopener"
+    >https://jimeng.jianying.com/ai-tool/image/generate</a></p>
+<p><img src="/p/2025030301/22.jpg"
+	width="1495"
+	height="1188"
+	srcset="/p/2025030301/22_hu6e974412b7f6a0b73c8b6da3f444facd_150846_480x0_resize_q75_box.jpg 480w, /p/2025030301/22_hu6e974412b7f6a0b73c8b6da3f444facd_150846_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="文生图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="125"
+		data-flex-basis="302px"
+	
+></p>
+<p>把几个场景都生成一下图片，然后挑选几张感觉还不错的图片，作为接下来视频的图片：</p>
+<p><img src="/p/2025030301/23.jpg"
+	width="2425"
+	height="1072"
+	srcset="/p/2025030301/23_hu9445508da5d156793b9ff4430cd824f5_335413_480x0_resize_q75_box.jpg 480w, /p/2025030301/23_hu9445508da5d156793b9ff4430cd824f5_335413_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="场景图片"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="226"
+		data-flex-basis="542px"
+	
+></p>
+<h1 id="3-合成古诗视频">3. 合成古诗视频</h1>
+<p>有了以上图片和音乐素材，我们就可以剪辑成视频了。视频剪辑软件有很多，但大多数都需要付费使用，比如比较流行的“剪映”软件。</p>
+<p>其实我们也可以使用电脑自带的免费软件进行剪辑，比如苹果电脑有<strong>iMovie</strong>，Windows 电脑有<strong>Clipchamp</strong>都是非常好用的剪辑软件：</p>
+<ol>
+<li>导入素材，图片和音乐文件</li>
+<li>拖到编辑器中，对于图片可以调整时长，对于音乐可以截掉头尾</li>
+<li>根据音乐内容，增加对应字幕</li>
+<li>最后，导出视频文件即可</li>
+</ol>
+<p><img src="/p/2025030301/31.jpg"
+	width="1897"
+	height="1158"
+	srcset="/p/2025030301/31_hud17f261141c7ec51bb6565f94025de9b_220704_480x0_resize_q75_box.jpg 480w, /p/2025030301/31_hud17f261141c7ec51bb6565f94025de9b_220704_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="视频剪辑"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="163"
+		data-flex-basis="393px"
+	
+></p>
+<p>导出视频，保存到本地即可！</p>
+<p>到此整个制作流程已经结束，总体来说比较简单，大家可以动手试下哈，如果有不清楚的地方，请留言沟通交流！</p>
+<h1 id="4-结尾">4. 结尾</h1>
+<p>最终导出 《游子吟》 唐诗视频，我已经上传到视频号里，大家也可以搜索收看。</p>
+<p>本次制作的视频，图片都是静态，下次老牛同学继续优化！</p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/%E6%96%87%E7%94%9F%E5%9B%BE/">文生图</a>
+        
+            <a href="/tags/ai%E9%9F%B3%E4%B9%90/">AI音乐</a>
+        
+            <a href="/tags/ai%E8%A7%86%E9%A2%91/">AI视频</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024111601/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024111601/00.2c5f4db9ec5091dbb979f6da7fd44c22_hu142be318d759fb7240397bc41b49c8da_142414_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Meissonic 文生图模型：小参数，超轻量，本地部署推理教程"
+                        data-key="2024111601" 
+                        data-hash="md5-LF9NuexQkdu5efbaf9RMIg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Meissonic 文生图模型：小参数，超轻量，本地部署推理教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025021401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025021401/00.78d40d30b90012309e2e0c835aef8ac4_hu38a63772fa259397b2f70878a2b36caa_40924_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 欧拉角和四元数，3D 游戏开发中“旋转”难题的通俗讲解和应用实战"
+                        data-key="2025021401" 
+                        data-hash="md5-eNQNMLkAEjCeLgyDWu&#43;KxA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">欧拉角和四元数，3D 游戏开发中“旋转”难题的通俗讲解和应用实战</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025020901/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020901/00.bd904e836f1f55b5f6204ef73662e639_hu8a5434afd7142d25bc7a2119bc98b479_227024_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？"
+                        data-key="2025020901" 
+                        data-hash="md5-vZBOg28fVbX2IE73NmLmOQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文主要介绍 Qwen2.5-Math 特点和能力，并在本地进行部署和数学推理，最后验证小学和初中的奥数题目，Qwen2.5-Math 不仅解题步骤清晰明了，正确率也达到惊人的 100%……'>
+<title>使用世界领先的 Qwen2.5-Math 开源模型当 AI 数学老师，让奥数解题辅导父慈子孝（文末有福利）</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024092801/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='使用世界领先的 Qwen2.5-Math 开源模型当 AI 数学老师，让奥数解题辅导父慈子孝（文末有福利）'>
+<meta property='og:description' content='本文主要介绍 Qwen2.5-Math 特点和能力，并在本地进行部署和数学推理，最后验证小学和初中的奥数题目，Qwen2.5-Math 不仅解题步骤清晰明了，正确率也达到惊人的 100%……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024092801/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Qwen2.5' /><meta property='article:tag' content='奥数' /><meta property='article:published_time' content='2024-09-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-09-28T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024092801/00.jpg' />
+<meta name="twitter:title" content="使用世界领先的 Qwen2.5-Math 开源模型当 AI 数学老师，让奥数解题辅导父慈子孝（文末有福利）">
+<meta name="twitter:description" content="本文主要介绍 Qwen2.5-Math 特点和能力，并在本地进行部署和数学推理，最后验证小学和初中的奥数题目，Qwen2.5-Math 不仅解题步骤清晰明了，正确率也达到惊人的 100%……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024092801/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024092801/">
+                <img src="/p/2024092801/00_huf5e64d048c9e740a245b54ea56ec0df5_108371_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024092801/00_huf5e64d048c9e740a245b54ea56ec0df5_108371_800x0_resize_q75_box.jpg 800w, /p/2024092801/00_huf5e64d048c9e740a245b54ea56ec0df5_108371_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="333" 
+                        loading="lazy"
+                        alt="Featured image of post 使用世界领先的 Qwen2.5-Math 开源模型当 AI 数学老师，让奥数解题辅导父慈子孝（文末有福利）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">使用世界领先的 Qwen2.5-Math 开源模型当 AI 数学老师，让奥数解题辅导父慈子孝（文末有福利）</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>本文主要介绍 Qwen2.5-Math 特点和能力，并在本地进行部署和数学推理，最后验证小学和初中的奥数题目，Qwen2.5-Math 不仅解题步骤清晰明了，正确率也达到惊人的 100%……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-09-28
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：10 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>在上篇文章中，我们使用<strong>Qwen2.5-Coder</strong>编写了一个自动编程的多智能体系统（<a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a>），着实感受到了<strong>Qwen2.5-Coder</strong>和<strong>CrewAI</strong>强强联合所发挥出来的强大威力。</p>
+<p>我们知道最新发布的<strong>Qwen2.5</strong>全家桶共有 3 个模型，除常规的大语言模型 Qwen2.5 和专门针对编程的 Qwen2.5-Coder 模型之外，还有一个专门针对数学的 <strong>Qwen2.5-Math</strong> 模型，它号称是<strong>世界领先的数学开源大语言模型</strong>，我们今天就通过奥数题目来实实在在的感受一下它的强大之处。</p>
+<p><img src="/p/2024092801/10.jpg"
+	width="1920"
+	height="1080"
+	srcset="/p/2024092801/10_hub20bbea5694ca3a59339a693ae8ca887_102889_480x0_resize_q75_box.jpg 480w, /p/2024092801/10_hub20bbea5694ca3a59339a693ae8ca887_102889_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Qwen2.5-Math评测结果世界领先"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<p>因此，我们将通过以下 3 个主要部分来完成 <strong>Qwen2.5-Math</strong> 模型的实战之旅：</p>
+<ol>
+<li><strong>Qwen2.5-Math</strong>的基本介绍，主要是简单了解一下<strong>Qwen2.5-Math</strong>的特点和能力</li>
+<li>本地部署<strong>Qwen2.5-Math-1.5B</strong>模型，通过一个一元一次方程简单数学题，体验一下其数学推理能力</li>
+<li>我们选取<strong>小学</strong>和<strong>初中</strong>阶段经典的几道奥数题，让 <strong>Qwen2.5-Math-72B</strong> 作为 AI 老师，来实战验证其逻辑推导能力</li>
+</ol>
+<h1 id="qwen25-math-基本介绍cot-和-tir-推理方式">Qwen2.5-Math 基本介绍、CoT 和 TIR 推理方式</h1>
+<p><strong>Qwen2.5-Math</strong> 明确说明：Qwen2.5-Math 主要被设计用于通过<strong>CoT</strong>或<strong>TIR</strong>的方式解中英数学题，不推荐在其他任务上使用该系列模型。那么，什么是 <strong>CoT</strong> 和 <strong>TIR</strong> 推理方式呢？</p>
+<p>【<strong>CoT</strong> 推理方式：】即思维链（Chain of Thought），主要目的是让大模型一步一步的展现出其推理过程，而不是直接给答案，就像我们人类逻辑思维过程一样，通过多步分解的方式，能更好的理解和解决复杂问题。如下数学题目的解答过程：</p>
+<ul>
+<li>题目：小明有 10 个苹果，他给了小红 3 个苹果，然后又买了 5 个苹果，请问小明现在有几个苹果？</li>
+<li><strong>CoT</strong> 推理过程：
+<ul>
+<li>第一步：小明最初有 10 个苹果。</li>
+<li>第二步：小明给了小红 3 个苹果，所以现在剩下 10-3=7 个苹果。</li>
+<li>第三步：小明又买了 5 个苹果，所以现在共有 7+5=12 个苹果。</li>
+<li>答案：现在小明有 12 个苹果。</li>
+</ul>
+</li>
+</ul>
+<p>【<strong>TIR</strong> 推理方式：】即工具集成推理（Tool integrated Reasoning），就是在推理过程中使用外部工具（如：使用 Python 执行代码获取结果）。<strong>TIR</strong> 是<strong>Qwen2.5-Math</strong>的新特性，它能显著提升中英文的数学解题能力，包括精确计算、符号操作和算法操作等方面。具体用法可以阅读样例代码：<a class="link" href="https://github.com/QwenLM/Qwen-Agent"  target="_blank" rel="noopener"
+    >https://github.com/QwenLM/Qwen-Agent</a></p>
+<p>另外，有关 <strong>Qwen2.5-Math</strong> 的预训练架构设计，有个特别<strong>有趣</strong>的地方：<strong>Qwen2.5-Math</strong>的部分预训练数据，竟然是由<strong>Qwen2-Math-Instruct</strong> 模型提供的，感觉它们已经开始在左右互搏了，因此<strong>世界领先</strong>也就不为奇了。</p>
+<p><img src="/p/2024092801/11.jpg"
+	width="1920"
+	height="1080"
+	srcset="/p/2024092801/11_hub20bbea5694ca3a59339a693ae8ca887_132357_480x0_resize_q75_box.jpg 480w, /p/2024092801/11_hub20bbea5694ca3a59339a693ae8ca887_132357_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Qwen2.5-Math架构设计"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<p>更多 <strong>Qwen2.5-Math</strong> 的详细介绍，可查看官网：<a class="link" href="https://qwenlm.github.io/zh/blog/qwen2.5-math"  target="_blank" rel="noopener"
+    >https://qwenlm.github.io/zh/blog/qwen2.5-math/</a></p>
+<h1 id="qwen25-math-本地部署和体验"><strong>Qwen2.5-Math</strong> 本地部署和体验</h1>
+<p>我们先本地部署 <strong>Qwen2.5-Math</strong> 模型，然后进行简单的数学题推理。由于老牛同学电脑配置不够强悍，因此本次演示我们使用<strong>1.5B</strong>参数版本（大家可根据自己硬件配置，选择不同的参数量版本）。我们通过以下三步完成整个流程：</p>
+<p>【<strong>第一步</strong>：下载 <strong>Qwen2.5-Math</strong> 模型权重文件】</p>
+<p>存放权重文件目录：<code>Qwen2.5-Math-1.5B-Instruct</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Git大文件系统</span>
+</span></span><span class="line"><span class="cl">git lfs install
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 下载模型权重文件</span>
+</span></span><span class="line"><span class="cl">git clone https://www.modelscope.cn/qwen/Qwen2.5-math-1.5B-Instruct.git Qwen2.5-Math-1.5B-Instruct
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>若下载过程中异常中断，可以通过<code>git lfs install</code>命令继续下载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 切换到Git目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> Qwen2.5-Math-1.5B-Instruct
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 继续下载</span>
+</span></span><span class="line"><span class="cl">git lfs install
+</span></span><span class="line"><span class="cl">git lfs pull
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>【<strong>第二步</strong>：设置 Python 虚拟环境和安装依赖】</p>
+<p><strong>工欲善其事，必先利其器</strong>，我们通过<strong>Miniconda</strong>管理 Python 虚拟环境，<strong>Miniconda</strong>的安装和使用可以参考老牛同学之前的文章：<a class="link" href="https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w"  target="_blank" rel="noopener"
+    >大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Python虚拟环境名：Qwen2.5，版本号：3.10</span>
+</span></span><span class="line"><span class="cl">conda create -n Qwen2.5 <span class="nv">python</span><span class="o">=</span>3.10 -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 激活虚拟环境</span>
+</span></span><span class="line"><span class="cl">conda activate Qwen2.5
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，在虚拟环境中下载依赖包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install torch
+</span></span><span class="line"><span class="cl">pip install modelscope
+</span></span><span class="line"><span class="cl">pip install <span class="s2">&#34;transformers&gt;=4.37.0&#34;</span>
+</span></span><span class="line"><span class="cl">pip install <span class="s2">&#34;accelerate&gt;=0.26.0&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>【<strong>第三步</strong>：使用<strong>CoT</strong>方式进行数学推理验证】</p>
+<p>我们先通过一个简单数学方程：<code>4X+5=6X+7</code>，验证一下 <strong>Qwen2.5-Math</strong> 的推理能力：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Qwen2.5-Math-Eval-01.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">modelscope</span> <span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 权重文件目录</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;D:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s1">&#39;ModelSpace&#39;</span><span class="p">,</span> <span class="s1">&#39;Qwen2.5&#39;</span><span class="p">,</span> <span class="s1">&#39;Qwen2.5-Math-1.5B-Instruct&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;权重目录: </span><span class="si">{</span><span class="n">model_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 初始化模型</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model_dir</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">torch_dtype</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">device_map</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">local_files_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 初始化分词器</span>
+</span></span><span class="line"><span class="cl"><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="n">model_dir</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">local_files_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Prompt提示词</span>
+</span></span><span class="line"><span class="cl"><span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;请计算等式中的X值: 4X+5=6X+7&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;你是一位数学专家，特别擅长解答数学题。&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">messages</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tokenize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_inputs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="n">text</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;开始推理: </span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">generated_ids</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">**</span><span class="n">model_inputs</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;推理完成.&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">generated_ids</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output_ids</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">input_ids</span><span class="p">):]</span> <span class="k">for</span> <span class="n">input_ids</span><span class="p">,</span> <span class="n">output_ids</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">model_inputs</span><span class="o">.</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">generated_ids</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">batch_decode</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">generated_ids</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;推理结果: </span><span class="si">{</span><span class="n">response</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行本 Python 程序：<code>python Qwen2.5-Math-Eval-01.py</code>，可以看到 <strong>Qwen2.5-Math</strong> 模型通过 <strong>CoT</strong> 的推理方式给出了结果：</p>
+<p><img src="/p/2024092801/20.jpg"
+	width="1717"
+	height="1080"
+	srcset="/p/2024092801/20_huea48afaf32902b2dc2b4035370e488ed_121736_480x0_resize_q75_box.jpg 480w, /p/2024092801/20_huea48afaf32902b2dc2b4035370e488ed_121736_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Qwen2.5-Math解方程推理过程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="158"
+		data-flex-basis="381px"
+	
+></p>
+<p>从最终结果来看，<strong>Qwen2.5-Math</strong> 推理过程很清晰，和我们的思维模型比较相近（唯一不足就是老牛同学电脑配置有点吃力）。</p>
+<h1 id="qwen25-math-72b-推理小学和初中奥数题挑战">Qwen2.5-Math-72B 推理小学和初中奥数题挑战</h1>
+<p>上面一元一次方程只是简单体验，接下来我们通过奥数题目，对 <strong>Qwen2.5-Math</strong> 发出挑战。因此，我们将采用 <strong>Qwen2.5-Math-72B</strong> 目前地表最强数学模型，来解答<strong>小学</strong>和<strong>初中</strong>奥数题目。（那为啥没有高中奥数题呢？因为老牛同学有点担心自己不会，当不了裁判，因此就不好去挑战大模型了^_^）</p>
+<p>我们将通过以下 3 个步骤，完成 <strong>Qwen2.5-Math</strong> 整个奥数题挑战验证：</p>
+<p>【<strong>第一步</strong>：整理奥数题目，小学和初中分别 3 道题目】</p>
+<p>老牛同学在网上分别找了 3 道奥数题目，我们通过 JSON 格式文件存储每道题目，每道题由等级、题目和答案组成：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;level&#34;</span><span class="p">:</span> <span class="s2">&#34;小学&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;小明和小红共有100元钱，小明比小红多20元。请问小明和小红分别有多少钱？&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;answer&#34;</span><span class="p">:</span> <span class="s2">&#34;小明：60元，小红：40元&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;level&#34;</span><span class="p">:</span> <span class="s2">&#34;小学&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;小明围绕长方形操场跑步，跑了3圈共480米，操场的长比宽多20米。请问操场面积是多少平方米？&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;answer&#34;</span><span class="p">:</span> <span class="s2">&#34;操场面积：1500平方米&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;level&#34;</span><span class="p">:</span> <span class="s2">&#34;小学&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;甲乙二人从两地沿直线同时相对而行，经过4小时，在距离中点4千米处相遇，甲比乙的速度快。请问甲每小时比乙快多少千米？&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;answer&#34;</span><span class="p">:</span> <span class="s2">&#34;甲每小时比乙快：2千米&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;level&#34;</span><span class="p">:</span> <span class="s2">&#34;初中&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;小明和小红以同样多的钱买了同一种铅笔，小明要了13支，小红要了7支，小明又给小红0.6元钱。请问每支铅笔多少钱？&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;answer&#34;</span><span class="p">:</span> <span class="s2">&#34;每支铅笔：0.2元&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;level&#34;</span><span class="p">:</span> <span class="s2">&#34;初中&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;父亲今年45岁，儿子今年15岁。请问多少年前父亲的年龄是儿子年龄的11倍？&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;answer&#34;</span><span class="p">:</span> <span class="s2">&#34;12年前&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;level&#34;</span><span class="p">:</span> <span class="s2">&#34;初中&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;商店有一套运动服，成本价为100元，按标价的8折出售仍可获利20元。请问这套运动服的标价是多少元？&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;answer&#34;</span><span class="p">:</span> <span class="s2">&#34;这套运动服的标价：150元&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>【<strong>第二步</strong>：调用 <strong>Qwen2.5-Math-72B</strong> API 完成推理】</p>
+<p>由于老牛同学本地推理比较慢，接下来将使用阿里云百炼平台 API 完成奥数推理。大家如果对自己电脑配置有信心的话，可以直接使用本地模型进行验证，可以免费完全接下来的推理。</p>
+<p>有关阿里云百炼平台的介绍，可参考老牛同学之前的文章：<a class="link" href="https://mp.weixin.qq.com/s/xclHiuy7gFPUlWZW5oOBSg"  target="_blank" rel="noopener"
+    >太卷了，阿里云免费 1 个月大模型算力额度，玩转 Llama3.1/Qwen2 等训练推理</a></p>
+<p>奥数题目的推理程序逻辑有 3 部分组成（<code>Qwen2.5-Math-奥数推理.py</code>）：</p>
+<ol>
+<li>读取奥数题目 JSON 文件，并循环每一道题</li>
+<li>使用 <strong>Qwen2-Math</strong> 模型进行推理（或者：百炼平台 API），获取结果</li>
+<li>存储奥数题目和推理结果到新文件，便于我们进行查看检测</li>
+</ol>
+<p>如果大家是通过调用 API 完成推理，请先安装依赖包：<code>pip install OpenAI</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Qwen2.5-Math-奥数推理.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 初始化客户端：提前配置好`DASHSCOPE_API_KEY`环境变量</span>
+</span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DASHSCOPE_API_KEY&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;https://dashscope.aliyuncs.com/compatible-mode/v1&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 读取奥数题目</span>
+</span></span><span class="line"><span class="cl"><span class="n">input_file</span> <span class="o">=</span> <span class="s1">&#39;Qwen2.5-Math-奥数题目.json&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 循环每道题目，请求推理服务</span>
+</span></span><span class="line"><span class="cl"><span class="n">output_data</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;奥数题目-&gt; </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&#34;title&#34;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;期望答案-&gt; </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&#34;answer&#34;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">completion</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model</span><span class="o">=</span><span class="s1">&#39;qwen2.5-math-72b-instruct&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;你是一位数学专家，特别擅长解答数学题。&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;title&#34;</span><span class="p">]}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 获取推理结果</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">completion</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">content</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;choices&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;content&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;推理结果-&gt; </span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 暂存结果，后面统一存储到文件</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;answer&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;answer&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="n">content</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">output_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 保存推理结果</span>
+</span></span><span class="line"><span class="cl"><span class="n">output_file</span> <span class="o">=</span> <span class="s1">&#39;Qwen2.5-Math-推理结果.md&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">output_data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output</span><span class="p">[</span><span class="s2">&#34;level&#34;</span><span class="p">]</span><span class="si">}</span><span class="s1">题目：</span><span class="si">{</span><span class="n">output</span><span class="p">[</span><span class="s2">&#34;title&#34;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s1">期望答案：</span><span class="si">{</span><span class="n">output</span><span class="p">[</span><span class="s2">&#34;answer&#34;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output</span><span class="p">[</span><span class="s2">&#34;result&#34;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s1">---</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Qwen2.5-Math-72B</strong> 果然没有让人失望，推理过程较快，并且推理的每一步都清晰明了：</p>
+<p><img src="/p/2024092801/30.jpg"
+	width="1710"
+	height="1324"
+	srcset="/p/2024092801/30_hucdd2296bc4e602fb49f38ace71be8fa4_125358_480x0_resize_q75_box.jpg 480w, /p/2024092801/30_hucdd2296bc4e602fb49f38ace71be8fa4_125358_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Qwen2.5-Math-72B推理过程样例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="309px"
+	
+></p>
+<p>【<strong>第三步</strong>：验证推理结果的正确性，给出评分】</p>
+<p>最后一步，我们打开 <strong>Qwen2.5-Math-72B</strong> 推理结果文件<code>Qwen2.5-Math-推理结果.md</code>，确定其准确率：<strong>100%</strong>（奥数题全对）</p>
+<p><img src="/p/2024092801/31.jpg"
+	width="1225"
+	height="1090"
+	srcset="/p/2024092801/31_hu44871628d673bc79b2409cc9967f4a8d_124618_480x0_resize_q75_box.jpg 480w, /p/2024092801/31_hu44871628d673bc79b2409cc9967f4a8d_124618_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="所有奥数题结果样例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="112"
+		data-flex-basis="269px"
+	
+></p>
+<p>说实话，老牛同学还是挺吃惊的，它的推理速度，比老牛同学要快得多，并且推理的步骤都非常清晰明了。</p>
+<p>对于有娃的朋友们，如果您在辅导家庭作业感到头疼的话，<strong>Qwen2.5-Math</strong> 赶紧使用起来吧，让我们真正体验一下父慈子孝的和谐乐趣~</p>
+<h1 id="最后又来给大家免费包邮送几本新书">最后：又来给大家免费包邮送几本新书</h1>
+<p>送书小活动我们举办过 1 次，送的是大模型书：<a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程（文末有福利）</a></p>
+<p>本期老牛同学和出版社朋友合作，继续举办送书福利小活动，送的书是《<strong>AI 绘画基础与商业实战</strong>》</p>
+<p><img src="/p/2024092801/book.jpg"
+	width="500"
+	height="500"
+	srcset="/p/2024092801/book_hub1f2cc7b18627d9d5619e74089be069f_60510_480x0_resize_q75_box.jpg 480w, /p/2024092801/book_hub1f2cc7b18627d9d5619e74089be069f_60510_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="AI 绘画基础与商业实战"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<p>这本新出版的书比较偏应用，通过 <strong>Midjourney</strong> 和 <strong>Stable Diffusion</strong> 等 AI 绘图大模型，协助我们在日常的餐饮、服饰等各个领域落地的应用教程，值得我们学习（正所谓<strong>肚中有货，从容不迫</strong>）。</p>
+<p>那么本期福利小活动的规则如下，和上期基本类似：</p>
+<ol>
+<li>关注<strong>老牛同学</strong>微信公众号，因为这是老牛同学公众号关注者的小福利</li>
+<li>本文评论区<strong>留言</strong>，留言的<strong>点赞</strong>数排名<strong>前 3 名</strong>的朋友，<strong>免费</strong>且<strong>包邮</strong>获得 1 本书（即：默认送 3 本书）</li>
+<li>若本文的<strong>阅读量</strong>和<strong>老牛同学</strong> CSDN 同文的阅读量之和达到了<strong>2000</strong>（含<strong>2000</strong>），则留言的<strong>点赞</strong>数排名<strong>前 6 名</strong>的朋友均免费包邮送书（即：最多送 6 本书）</li>
+<li>活动时间：2024 年 9 月 28 日到 2024 年 10 月 5 号上午 12 点整（正好 1 周，恰逢国庆假期，便于老牛同学统计和收集寄件地址）</li>
+<li>老牛同学不参与本次活动（因为老牛同学默认就有 1 本）</li>
+</ol>
+<p>最后的最后，为了方便大家购买，老牛同学贴上京东商品链接（大家也可在购书网站搜索“AI 绘画基础与商业实战”直接购买）：</p>
+<p>【书籍购买链接】</p>
+<hr>
+<p>往期推荐文章：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/qwen2.5/">Qwen2.5</a>
+        
+            <a href="/tags/%E5%A5%A5%E6%95%B0/">奥数</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024110801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024110801/00.0b639c15742216190bc149fdbd8e2857_huaf4d4384d74399782110fa538598e630_129596_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 深入解析 Transformers 框架（四）：Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解"
+                        data-key="2024110801" 
+                        data-hash="md5-C2OcFXQiFhkLwUn9vY4oVw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">深入解析 Transformers 框架（四）：Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024103101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024103101/00.9016b1687260f6995bfe07e2c09b016b_huc89b245422ea1f5d6529b8e431bfaabe_174035_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 深入解析 Transformers 框架（三）：Qwen2.5 大模型的 AutoTokenizer 技术细节"
+                        data-key="2024103101" 
+                        data-hash="md5-kBaxaHJg9plb/gfiwJsBaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">深入解析 Transformers 框架（三）：Qwen2.5 大模型的 AutoTokenizer 技术细节</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024102601/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024102601/00.2e8f89f3e07816384b3b60f7180a39df_hu9af697bca531050727e02c25c2fd1c01_132520_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post transformers 推理 Qwen2.5 等大模型技术细节详解(二)AutoModel 初始化和模型加载（免费送新书）"
+                        data-key="2024102601" 
+                        data-hash="md5-Lo&#43;J8&#43;B4FjhLO2D3GAo53w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">transformers 推理 Qwen2.5 等大模型技术细节详解(二)AutoModel 初始化和模型加载（免费送新书）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024101801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024101801/00.a5fdbd163b146cccea3d86c0a8743f58_hu0fbce01b01350acd5184d40c8b394d68_277717_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post transformers 推理 Qwen2.5 等大模型技术细节详解(一)transformers 初始化和对象加载（文末免费送书）"
+                        data-key="2024101801" 
+                        data-hash="md5-pf29FjsUbMzqPYbAqHQ/WA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">transformers 推理 Qwen2.5 等大模型技术细节详解(一)transformers 初始化和对象加载（文末免费送书）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024092101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024092101/01.a058ce6764f78fbd961d039febaef4fc_hu4a69ce90e6d0acdf7131434eb5356c98_280965_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程"
+                        data-key="2024092101" 
+                        data-hash="md5-oFjOZ2T3j72WHQOf6670/A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

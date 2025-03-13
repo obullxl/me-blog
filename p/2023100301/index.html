@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='我们来继续学习Dart语言的类型，包括Dart内置类型、Record记录类型（Dart 3开始支持）、集合类型、泛型和typedef类型别名。在前面的学习中，基础内置类型、集合和泛型都有所涉及和应用，本文我们和其他类型逐一进行介绍……'>
+<title>Flutter/Dart第08天：Dart类型（内置类型、记录、集合、泛型和类型别名）</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2023100301/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='Flutter/Dart第08天：Dart类型（内置类型、记录、集合、泛型和类型别名）'>
+<meta property='og:description' content='我们来继续学习Dart语言的类型，包括Dart内置类型、Record记录类型（Dart 3开始支持）、集合类型、泛型和typedef类型别名。在前面的学习中，基础内置类型、集合和泛型都有所涉及和应用，本文我们和其他类型逐一进行介绍……'>
+<meta property='og:url' content='https://ntopic.cn/p/2023100301/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Dart' /><meta property='article:tag' content='Flutter' /><meta property='article:tag' content='跨平台' /><meta property='article:published_time' content='2023-10-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2023100301/00.jpg' />
+<meta name="twitter:title" content="Flutter/Dart第08天：Dart类型（内置类型、记录、集合、泛型和类型别名）">
+<meta name="twitter:description" content="我们来继续学习Dart语言的类型，包括Dart内置类型、Record记录类型（Dart 3开始支持）、集合类型、泛型和typedef类型别名。在前面的学习中，基础内置类型、集合和泛型都有所涉及和应用，本文我们和其他类型逐一进行介绍……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2023100301/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#dart内置类型共10类">Dart内置类型（共10类）</a>
+      <ol>
+        <li><a href="#数字类型int和double">数字类型（int和double）</a></li>
+        <li><a href="#字符串类型string">字符串类型（String）</a></li>
+        <li><a href="#布尔类型bool">布尔类型（bool）</a></li>
+        <li><a href="#字符和符号characters">字符和符号（characters）</a></li>
+        <li><a href="#符号symbol">符号（Symbol）</a></li>
+      </ol>
+    </li>
+    <li><a href="#记录类型record">记录类型（Record）</a></li>
+    <li><a href="#集合类型listsetmap">集合类型（list/set/map）</a></li>
+    <li><a href="#泛型类型">泛型类型</a></li>
+    <li><a href="#类型别名typedef">类型别名（typedef）</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2023100301/">
+                <img src="/p/2023100301/00_hua251d1ea2589f24e4f220f2de00fe773_52076_800x0_resize_q75_box.jpg"
+                        srcset="/p/2023100301/00_hua251d1ea2589f24e4f220f2de00fe773_52076_800x0_resize_q75_box.jpg 800w, /p/2023100301/00_hua251d1ea2589f24e4f220f2de00fe773_52076_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="258" 
+                        loading="lazy"
+                        alt="Featured image of post Flutter/Dart第08天：Dart类型（内置类型、记录、集合、泛型和类型别名）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">Flutter/Dart第08天：Dart类型（内置类型、记录、集合、泛型和类型别名）</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%B8%93%E4%B8%9A%E6%8A%80%E6%9C%AF/" >
+                专业技术
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>我们来继续学习Dart语言的类型，包括Dart内置类型、Record记录类型（Dart 3开始支持）、集合类型、泛型和typedef类型别名。在前面的学习中，基础内置类型、集合和泛型都有所涉及和应用，本文我们和其他类型逐一进行介绍……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2023-10-03
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：8 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <h2 id="dart内置类型共10类">Dart内置类型（共10类）</h2>
+<p>Dart官网文档：<a class="link" href="https://dart.dev/language/built-in-types"  target="_blank" rel="noopener"
+    >https://dart.dev/language/built-in-types</a></p>
+<p>Dart内置类型即Dart SDK自带的类型，我们编程过程中可直接使用的类型，主要分为10类：</p>
+<ol>
+<li>数值类型：包括<code>int</code>类、<code>double</code>类等。</li>
+<li>字符串类型：即<code>String</code>类。</li>
+<li>布尔类型：即<code>bool</code>类。</li>
+<li>记录类型：即<code>Record</code>类，Dart 3中开始支持（最新版本的Java 21也支持）。</li>
+<li>列表类型：即<code>List</code>类，同时也是数组。</li>
+<li>Set类型：即<code>Set</code>类。</li>
+<li>映射类型：即<code>Map</code>类。</li>
+<li>字符类型：与字符相关处理。</li>
+<li>符合类型：即Symbol类。</li>
+<li>特殊值：<code>null</code>空值。</li>
+</ol>
+<p>Dart中类型的其他一些规则：</p>
+<ol>
+<li><code>Object</code>类是Dart中除<code>Null</code>之外的所有类的基类。扩展问题：Dart中顶层类是什么呢？</li>
+<li><code>Enum</code>类是Dart中所有枚举类的基类。扩展问题：Enum类是Object的子类吗？答案：是。</li>
+<li><code>dynamic</code>类型Dart的静态检测会失效，容易引发空安全等其他运行时错误，建议使用<code>Object</code>或者<code>Object?</code>代替。</li>
+<li><code>Future</code>和<code>Stream</code>支持异步编程。</li>
+<li><code>Never</code>一般用于总是抛出异常的函数，表明表达式用于无法成功执行。</li>
+<li><code>void</code>表明值不会被再次使用，一般用户函数返回值。</li>
+</ol>
+<h3 id="数字类型int和double">数字类型（int和double）</h3>
+<p>Dart中数字类型类结构如下：</p>
+<p><img src="/p/2023100301/11.jpg"
+	width="283"
+	height="224"
+	srcset="/p/2023100301/11_hu8f5233cc5c268bdfe06f19ca82b6bec5_4965_480x0_resize_q75_box.jpg 480w, /p/2023100301/11_hu8f5233cc5c268bdfe06f19ca82b6bec5_4965_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<p><code>int</code>和<code>double</code>都是<code>num</code>类的子类。<code>int</code>为<b>不超过</b>64位的整数，<code>double</code>为64位双精度浮点数。</p>
+<p><code>num</code>类型支持操作：加<code>+</code>，减<code>-</code>，乘<code>*</code>，除<code>/</code>，<code>abs()</code>绝对值，<code>ceil()</code>向上取整，<code>floor()</code>向下取整操作。特别注意：<b>位</b>操作，如<code>&gt;&gt;</code>右移或者<code>&lt;&lt;</code>左移等位操作，仅<code>int</code>类型支持。</p>
+<p><b>代码样例：</b>如下代码，数字类型定义。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="c1">// int类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">x</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">hex</span> <span class="o">=</span> <span class="mh">0xDEADBEEF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// double类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">y</span> <span class="o">=</span> <span class="m">1.1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">exponents</span> <span class="o">=</span> <span class="m">1.42e5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">double</span> <span class="n">z</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span> <span class="c1">// 等同于：double z = 1.0;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// num类型：既可以是整数，又可以是浮点数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">num</span> <span class="n">x</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">+=</span> <span class="m">2.5</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><b>代码样例：</b>如下代码，数字类型和字符串相互转换。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="c1">// String -&gt; int
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">one</span> <span class="o">=</span> <span class="kt">int</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">one</span> <span class="o">==</span> <span class="m">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// String -&gt; double
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">onePointOne</span> <span class="o">=</span> <span class="kt">double</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;1.1&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">onePointOne</span> <span class="o">==</span> <span class="m">1.1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// int -&gt; String
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">String</span> <span class="n">oneAsString</span> <span class="o">=</span> <span class="m">1.</span><span class="n">toString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">oneAsString</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// double -&gt; String
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">String</span> <span class="n">piAsString</span> <span class="o">=</span> <span class="m">3.14159</span><span class="p">.</span><span class="n">toStringAsFixed</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">piAsString</span> <span class="o">==</span> <span class="s1">&#39;3.14&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><b>代码样例：</b>如下代码，<code>int</code>类型<b>位</b>操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="k">assert</span><span class="p">((</span><span class="m">3</span> <span class="o">&lt;&lt;</span> <span class="m">1</span><span class="p">)</span> <span class="o">==</span> <span class="m">6</span><span class="p">);</span> <span class="c1">// 0011 &lt;&lt; 1 == 0110
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">assert</span><span class="p">((</span><span class="m">3</span> <span class="o">|</span> <span class="m">4</span><span class="p">)</span> <span class="o">==</span> <span class="m">7</span><span class="p">);</span> <span class="c1">// 0011 | 0100 == 0111
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">assert</span><span class="p">((</span><span class="m">3</span> <span class="o">&amp;</span> <span class="m">4</span><span class="p">)</span> <span class="o">==</span> <span class="m">0</span><span class="p">);</span> <span class="c1">// 0011 &amp; 0100 == 0000
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><b>代码样例：</b>如下代码，字面量数字属于编译时常量，因此字面量数字表达式也可以作为常量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="kd">const</span> <span class="n">msPerSecond</span> <span class="o">=</span> <span class="m">1000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="n">secondsUntilRetry</span> <span class="o">=</span> <span class="m">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="n">msUntilRetry</span> <span class="o">=</span> <span class="n">secondsUntilRetry</span> <span class="o">*</span> <span class="n">msPerSecond</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="字符串类型string">字符串类型（String）</h3>
+<p>Dart中字符串是一个UTF-16的序列码，我们可以通过<code>'</code>单引号或者<code>&quot;</code>双引号定义一个字符串、通过<code>${}</code>进行字符串插值、通过<b>相邻字符串</b>连接、使用<code>+</code>符号进行连接，通过3个单引号<code>'''</code>或者3个双引号<code>&quot;&quot;&quot;</code>定义多行字符串，还可以通过增加前缀<code>r</code>定义原始字符串。</p>
+<p><b>代码样例：</b>如下代码，字符串的各种定义方式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="c1">// 引号：单引号或双引号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">s1</span> <span class="o">=</span> <span class="s1">&#39;Single quotes work well for string literals.&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">s2</span> <span class="o">=</span> <span class="s2">&#34;Double quotes work just as well.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">s3</span> <span class="o">=</span> <span class="s1">&#39;It</span><span class="se">\&#39;</span><span class="s1">s easy to escape the string delimiter.&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">s4</span> <span class="o">=</span> <span class="s2">&#34;It&#39;s even easier to use the other delimiter.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 插值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">final</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Tom&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">s5</span> <span class="o">=</span> <span class="s1">&#39;My name is </span><span class="si">$</span><span class="n">name</span><span class="s1">.&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">s5</span> <span class="o">==</span> <span class="s1">&#39;My name is Tome.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 相邻字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">s6</span> <span class="o">=</span> <span class="s1">&#39;String &#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;concatenation&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34; works even over line breaks.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">s6</span> <span class="o">==</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;String concatenation works even over &#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;line breaks.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">s7</span> <span class="o">=</span> <span class="s1">&#39;The + operator &#39;</span> <span class="o">+</span> <span class="s1">&#39;works, as well.&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">s7</span> <span class="o">==</span> <span class="s1">&#39;The + operator works, as well.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 多行字符串：3个单引号或3个双引号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">s8</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">My name is Tom.
+</span></span></span><span class="line"><span class="cl"><span class="s1">I am a boy.
+</span></span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">s9</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">My name is Tom.
+</span></span></span><span class="line"><span class="cl"><span class="s2">I am a boy.
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 原始字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">s10</span> <span class="o">=</span> <span class="s1">r&#39;My name is Tome.\nI am a boy.&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><b>特别注意：</b><code>==</code>双等于号操作符在Dart中用于检测2个对象是否相等，如果是字符串，则是校验它们的序列码是否相同（这与Java有很多的区别）。</p>
+<p><b>代码样例：</b>如下代码，字面量字符串是编译时常量，如果字符串插值表达式中的变量是常量，那么插值字符串也是常量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="c1">// 字面量字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">const</span> <span class="n">aConstString</span> <span class="o">=</span> <span class="s1">&#39;a constant string&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 插值字符串常量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">const</span> <span class="n">aConstNum</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="n">aConstBool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="n">validConstString</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">$</span><span class="n">aConstNum</span><span class="s1"> </span><span class="si">$</span><span class="n">aConstBool</span><span class="s1"> </span><span class="si">$</span><span class="n">aConstString</span><span class="s1">&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="布尔类型bool">布尔类型（bool）</h3>
+<p>Dart中只有2个对象是<code>bool</code>类型：<code>true</code>和<code>false</code>，且他们都是常量。</p>
+<p><b>代码样例：</b>如下代码，在表达式中的布尔类型。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="c1">// Check for an empty string.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">fullName</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">fullName</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Check for zero.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">hitPoints</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">hitPoints</span> <span class="o">&lt;=</span> <span class="m">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Check for null.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">unicorn</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">unicorn</span> <span class="o">==</span> <span class="kc">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Check for NaN.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">iMeantToDoThis</span> <span class="o">=</span> <span class="m">0</span> <span class="o">/</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">iMeantToDoThis</span><span class="p">.</span><span class="n">isNaN</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="字符和符号characters">字符和符号（characters）</h3>
+<p>Dart中字符代表字符串中一个Unicode编码单元。Unicode为世界上的每个字母、数字和符合定义了一个唯一数字值。</p>
+<p>由于Dart的字符串是UTF-16编码，因此Dart中表示Unicode有其对应的语法格式，常用的方式为<code>\uXXXX</code>代表一个字符，其中<code>XXXX</code>是<b>4位16进制</b>的值。</p>
+<p><b>举例说明：</b>心形字符♥的值为<code>\u2665</code>，如果少于或者超过4位16禁止值，则用<code>{}</code>包裹起来，如笑脸字符😁的值为<code>\u{1f606}</code></p>
+<p><b>代码样例：</b>如下所示，一般我们用<b>characters</b>库来操作字符。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:characters/characters.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="n">hi</span> <span class="o">=</span> <span class="s1">&#39;Hi 🇩🇰&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">print</span><span class="p">(</span><span class="n">hi</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 结果：Hi 🇩🇰
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl">  <span class="n">print</span><span class="p">(</span><span class="s1">&#39;The end of the string: </span><span class="si">${</span><span class="n">hi</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="n">hi</span><span class="p">.</span><span class="n">length</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 结果：The end of the string: ???
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="kd">final</span> <span class="n">charList</span> <span class="o">=</span> <span class="n">hi</span><span class="p">.</span><span class="n">characters</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">charList</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">print</span><span class="p">(</span><span class="s1">&#39;The character </span><span class="si">$</span><span class="n">i</span><span class="s1"> = </span><span class="si">${</span><span class="n">charList</span><span class="p">.</span><span class="n">elementAt</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 结果：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// The character 0 = H
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// The character 1 = i
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// The character 2 =  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// The character 3 = 🇩🇰
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="n">print</span><span class="p">(</span><span class="s1">&#39;The last character: </span><span class="si">${</span><span class="n">hi</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">last</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// The last character: 🇩🇰
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><b>特别注意：</b>如上代码，因为使用了<b>characters</b>库，因此需要在<code>pubspec.yaml</code>文件中增加依赖（如下完整配置）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">NTopicDart</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l">^3.1.2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">dependencies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">characters</span><span class="p">:</span><span class="w"> </span><span class="l">^1.3.0</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="符号symbol">符号（Symbol）</h3>
+<p>有点类似于HTML中锚，<code>#</code>前缀，后面格式标识符。</p>
+<h2 id="记录类型record">记录类型（Record）</h2>
+<p>Dart官网文档：<a class="link" href="https://dart.dev/language/records"  target="_blank" rel="noopener"
+    >https://dart.dev/language/records</a></p>
+<p><b>特别注意：</b>记录类型需要Dart 3.0才开始支持（Java从JDK 21开始支持）。</p>
+<p>Record记录类型是一个<b>匿名</b>的、<b>不可变</b>的<b>集合</b>类型。有点儿像集合类型，它是多个对象元素的集合，不一样的是，记录大小固定、异构和类型固定的。记录是一个具体的值，因此它可以作为变量、函数入参或结果、也可以嵌套（即记录中的元素是一个记录），也可以作为List/Set/Map等集合类的元素。</p>
+<p><b>记录语法：</b></p>
+<ol>
+<li>用<code>()</code>括号包裹的，<code>,</code>逗号分隔的命名字段或者位置字段列表。</li>
+<li>记录类型注解是用<code>()</code>括号包裹的，<code>,</code>号分隔的字段类型列表，它可以作为方法入参和结果的类型。</li>
+<li>记录如果使用的是命名字段，那么字段名是记录定义的一部分，即2个记录，字段名不一样则是2个不同的记录。</li>
+<li>记录的字段内置<code>getters</code>取值方法，但是没有<code>setters</code>设置方法，因为记录是不可变的。其中命名字段的字段名即取值方法，而位置字段则使用<code>$&lt;position&gt;</code>字段位置取值，并且<b>忽略</b>所有的命名字段。</li>
+<li>记录比较：如果2个记录相对，那么他们必须有相同的字段、相同的字段类型，已经字段具有相同的值。</li>
+<li>记录可作为函数入参和返回值：当作为返回值，其实是一个函数可以返回多个值。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="c1">// 记录定义：位置字段+命名字段
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">record</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="nl">a:</span> <span class="m">2</span><span class="p">,</span> <span class="nl">b:</span> <span class="kc">true</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 记录类型注解 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="n">swap</span><span class="p">((</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="n">record</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">record</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 记录定义和初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="n">record</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">record</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;A string&#39;</span><span class="p">,</span> <span class="m">123</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">({</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">b</span><span class="p">})</span> <span class="n">record</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">record</span> <span class="o">=</span> <span class="p">(</span><span class="nl">a:</span> <span class="m">123</span><span class="p">,</span> <span class="nl">b:</span> <span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 命令字段：字段名不一样，属于不同的记录（recordAB和recordXY是不同类型）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">({</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">})</span> <span class="n">recordAB</span> <span class="o">=</span> <span class="p">(</span><span class="nl">a:</span> <span class="m">1</span><span class="p">,</span> <span class="nl">b:</span> <span class="m">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">({</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">})</span> <span class="n">recordXY</span> <span class="o">=</span> <span class="p">(</span><span class="nl">x:</span> <span class="m">3</span><span class="p">,</span> <span class="nl">y:</span> <span class="m">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 位置字段：类型一样即可，参数名不是记录定义的一部分
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="n">recordAB</span> <span class="o">=</span> <span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="n">recordXY</span> <span class="o">=</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">recordAB</span> <span class="o">=</span> <span class="n">recordXY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 取值方法：位置字段和命名字段的取值方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">record</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="nl">a:</span> <span class="m">2</span><span class="p">,</span> <span class="nl">b:</span> <span class="kc">true</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">print</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">$1</span><span class="p">);</span> <span class="c1">// 结果：first
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">print</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>  <span class="c1">// 结果：2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">print</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">b</span><span class="p">);</span>  <span class="c1">// 结果：true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">print</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">$2</span><span class="p">);</span> <span class="c1">// 结果：last
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 记录比较：相同字段、字段类型和字段值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">)</span> <span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">g</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">print</span><span class="p">(</span><span class="n">point</span> <span class="o">==</span> <span class="n">color</span><span class="p">);</span> <span class="c1">// 结果：true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 记录比较：命名字段名称不同
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">({</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">})</span> <span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="nl">x:</span> <span class="m">1</span><span class="p">,</span> <span class="nl">y:</span> <span class="m">2</span><span class="p">,</span> <span class="nl">z:</span> <span class="m">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">({</span><span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">g</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">})</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="nl">r:</span> <span class="m">1</span><span class="p">,</span> <span class="nl">g:</span> <span class="m">2</span><span class="p">,</span> <span class="nl">b:</span> <span class="m">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">print</span><span class="p">(</span><span class="n">point</span> <span class="o">==</span> <span class="n">color</span><span class="p">);</span> <span class="c1">// 结果：false
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="集合类型listsetmap">集合类型（list/set/map）</h2>
+<p>Dart官方文档：<a class="link" href="https://dart.dev/language/collections"  target="_blank" rel="noopener"
+    >https://dart.dev/language/collections</a></p>
+<p>list、set、map的定义和用法：<a class="link" href="https://ntopic.cn/p/2023092701"  target="_blank" rel="noopener"
+    >Flutter/Dart第03天：Dart可迭代集合</a></p>
+<p><b>代码样例：</b>如下代码，通过<code>...list</code>的方式可以展开一个集合；定义集合时，可增加<b>控制流</b>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="c1">// 展开非null的集合
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="m">0</span><span class="p">,</span> <span class="p">...</span><span class="n">list</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">list2</span><span class="p">.</span><span class="n">length</span> <span class="o">==</span> <span class="m">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 展开为null的集合
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">list3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="m">0</span><span class="p">,</span> <span class="p">...</span><span class="o">?</span><span class="n">list3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">list2</span><span class="p">.</span><span class="n">length</span> <span class="o">==</span> <span class="m">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 条件判断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="n">nav</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="s1">&#39;Furniture&#39;</span><span class="p">,</span> <span class="s1">&#39;Plants&#39;</span><span class="p">,</span> <span class="k">if</span> <span class="p">(</span><span class="n">promoActive</span><span class="p">)</span> <span class="s1">&#39;Outlet&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">nav</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="s1">&#39;Furniture&#39;</span><span class="p">,</span> <span class="s1">&#39;Plants&#39;</span><span class="p">,</span> <span class="k">if</span> <span class="p">(</span><span class="n">login</span> <span class="k">case</span> <span class="s1">&#39;Manager&#39;</span><span class="p">)</span> <span class="s1">&#39;Inventory&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">listOfInts</span> <span class="o">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">listOfStrings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#0&#39;</span><span class="p">,</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="n">i</span> <span class="k">in</span> <span class="n">listOfInts</span><span class="p">)</span> <span class="s1">&#39;#</span><span class="si">$</span><span class="n">i</span><span class="s1">&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">listOfStrings</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#1&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="泛型类型">泛型类型</h2>
+<p>Dart官网文档：<a class="link" href="https://dart.dev/language/generics"  target="_blank" rel="noopener"
+    >https://dart.dev/language/generics</a></p>
+<p>泛型是编码中最常见的编码方式，本文不在赘述。</p>
+<h2 id="类型别名typedef">类型别名（typedef）</h2>
+<p>Dart官网文档：<a class="link" href="https://dart.dev/language/typedefs"  target="_blank" rel="noopener"
+    >https://dart.dev/language/typedefs</a></p>
+<p><b>类型别名：</b>通过<code>typedef</code>关键字，可以给一个类型增加一个别名类型（目前还没有看到<b>别名</b>存在的必要🐶）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="c1">// 类型别名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">typedef</span> <span class="n">IntList</span> <span class="o">=</span> <span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">IntList</span> <span class="n">il</span> <span class="o">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 类型别名：感觉简短
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">typedef</span> <span class="n">ListMapper</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">X</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;&gt;</span> <span class="n">m1</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="n">ListMapper</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="n">m2</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 类型别名：`不建议`把内联函数定义别名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">typedef</span> <span class="n">Compare</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt">int</span> <span class="n">Function</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">sort</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">assert</span><span class="p">(</span><span class="n">sort</span> <span class="k">is</span> <span class="n">Compare</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span> <span class="c1">// True
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>我的本博客原地址：<a class="link" href="https://ntopic.cn/p/2023100301/"  target="_blank" rel="noopener"
+    >https://ntopic.cn/p/2023100301</a></p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/dart/">Dart</a>
+        
+            <a href="/tags/flutter/">Flutter</a>
+        
+            <a href="/tags/%E8%B7%A8%E5%B9%B3%E5%8F%B0/">跨平台</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2023112001/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023112001/00.b31e8cb86581e961c1da3409fadf5f3d_huc7364261a6c3c41a27a56f1135847b5b_18512_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post FlutterApp实战·第01天：Flutter安装和配置"
+                        data-key="2023112001" 
+                        data-hash="md5-sx6MuGWB6WHB2jQJ&#43;t9fPQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">FlutterApp实战·第01天：Flutter安装和配置</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023111801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023111801/00.4961349850238d81166e1bffe7c5488b_hua251d1ea2589f24e4f220f2de00fe773_52076_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Flutter/Dart第21天：Dart异步编程（Future/Stream）"
+                        data-key="2023111801" 
+                        data-hash="md5-SWE0mFAjjYEWbhv/58VIiw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter/Dart第21天：Dart异步编程（Future/Stream）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023110501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023110501/00.4961349850238d81166e1bffe7c5488b_hua251d1ea2589f24e4f220f2de00fe773_52076_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Flutter/Dart第20天：Dart 3.0新特性之类型修饰符"
+                        data-key="2023110501" 
+                        data-hash="md5-SWE0mFAjjYEWbhv/58VIiw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter/Dart第20天：Dart 3.0新特性之类型修饰符</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023110401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023110401/00.4961349850238d81166e1bffe7c5488b_hua251d1ea2589f24e4f220f2de00fe773_52076_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Flutter/Dart第19天：Dart高级特性之扩展方法（Extension methods）"
+                        data-key="2023110401" 
+                        data-hash="md5-SWE0mFAjjYEWbhv/58VIiw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter/Dart第19天：Dart高级特性之扩展方法（Extension methods）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2023102801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2023102801/00.4961349850238d81166e1bffe7c5488b_hua251d1ea2589f24e4f220f2de00fe773_52076_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Flutter/Dart第18天：Dart特性之可调用对象"
+                        data-key="2023102801" 
+                        data-hash="md5-SWE0mFAjjYEWbhv/58VIiw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter/Dart第18天：Dart特性之可调用对象</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

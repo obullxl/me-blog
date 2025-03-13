@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文是“新春“码”启 | 从零开始开发微信小游戏”第2天的学习历程，包括如何设计一个适合小朋友玩的游戏创意和使用Cocos Creator进行初步开发的过程。虽然在游戏创意上遇到了一些挑战，但通过不断尝试和学习Cocos的基础操作，逐渐找到了方向。同时，我们还探讨了TypeScript的基础知识，为后续开发打下坚实基础……'>
+<title>新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第2天）</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2025012401/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第2天）'>
+<meta property='og:description' content='本文是“新春“码”启 | 从零开始开发微信小游戏”第2天的学习历程，包括如何设计一个适合小朋友玩的游戏创意和使用Cocos Creator进行初步开发的过程。虽然在游戏创意上遇到了一些挑战，但通过不断尝试和学习Cocos的基础操作，逐渐找到了方向。同时，我们还探讨了TypeScript的基础知识，为后续开发打下坚实基础……'>
+<meta property='og:url' content='https://ntopic.cn/p/2025012401/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Cocos' /><meta property='article:tag' content='小游戏' /><meta property='article:published_time' content='2025-01-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-01-24T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2025012401/00.jpg' />
+<meta name="twitter:title" content="新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第2天）">
+<meta name="twitter:description" content="本文是“新春“码”启 | 从零开始开发微信小游戏”第2天的学习历程，包括如何设计一个适合小朋友玩的游戏创意和使用Cocos Creator进行初步开发的过程。虽然在游戏创意上遇到了一些挑战，但通过不断尝试和学习Cocos的基础操作，逐渐找到了方向。同时，我们还探讨了TypeScript的基础知识，为后续开发打下坚实基础……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2025012401/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2025012401/">
+                <img src="/p/2025012401/00_hu66848577af15ce3ec1fae86582ec8951_95362_800x0_resize_q75_box.jpg"
+                        srcset="/p/2025012401/00_hu66848577af15ce3ec1fae86582ec8951_95362_800x0_resize_q75_box.jpg 800w, /p/2025012401/00_hu66848577af15ce3ec1fae86582ec8951_95362_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第2天）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第2天）</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>本文是“新春“码”启 | 从零开始开发微信小游戏”第2天的学习历程，包括如何设计一个适合小朋友玩的游戏创意和使用Cocos Creator进行初步开发的过程。虽然在游戏创意上遇到了一些挑战，但通过不断尝试和学习Cocos的基础操作，逐渐找到了方向。同时，我们还探讨了TypeScript的基础知识，为后续开发打下坚实基础……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2025-01-24
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：5 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>我们在新春小游戏计划的第 1 天确定了技术选型，并通读了微信小游戏的研发手册，了解了一些游戏研发的基本概念：<a class="link" href="https://mp.weixin.qq.com/s/TlgNKvGYMuGMmU0dIBPn4A"  target="_blank" rel="noopener"
+    >新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 + AI 辅助编程（第 1 天）</a></p>
+<p>今天是第 2 天，老牛同学开始正式进入研发了，主要包括以下 2 部分：</p>
+<ul>
+<li>精心设计一个游戏创意：明确我们最终的交付物是什么</li>
+<li>熟悉 Cocos 游戏研发流程</li>
+</ul>
+<h1 id="设计游戏创意">设计游戏创意</h1>
+<p>说实话，我目前还不知道该给小朋友们研发一款什么主题的游戏。我还是优先选择腾讯元宝来帮忙，针对这款小游戏，我有如下要求：</p>
+<ol>
+<li>无损身心健康：不能出现暴力、杀戮、血腥、战争、死亡、打斗等场景和画面。</li>
+<li>禁止破坏环境：不能出现砍伐树木、践踏草地、采摘花朵、挖矿挖煤等场景和画面。</li>
+<li>生命必须平等：游戏中，无论是人类还是动物，生命面前人人平等，禁止出现以大欺小、恃强凌弱、大鱼吃小鱼等场景和画面。</li>
+<li>有益生长发育：最好是 3D 游戏，能培养小朋友们的空间立体感；最好不要出现竞争排名、打榜等场景和界面，避免小朋友争强好胜。</li>
+<li>游戏场景设计：游戏场景需要足够简单，便于初学者 1 周之内完成研发；需要设计 3 个场景，难度由易到难，逐步升级；单人游戏，游戏中不需要互动，同时单手即可进行游戏操作。</li>
+</ol>
+<p><img src="/p/2025012401/11.jpg"
+	width="1341"
+	height="919"
+	srcset="/p/2025012401/11_hu2bb2ef909f3551ac038c7bda5fb747a0_146699_480x0_resize_q75_box.jpg 480w, /p/2025012401/11_hu2bb2ef909f3551ac038c7bda5fb747a0_146699_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="游戏创意"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="350px"
+	
+></p>
+<p>在和元宝来来回回对话了好几次，感觉都不太满意，要么就是游戏场景太复杂，要么就是任务过于简单，不具备挑战性。</p>
+<p>对于游戏创意，老牛同学感觉一时半会儿也无法确定，因此先暂时放放，优先熟悉一下 Cocos 研发界面。</p>
+<h1 id="cocos-研发体验">Cocos 研发体验</h1>
+<p><strong>建议</strong>：现在就去买个鼠标吧，TouchPad 操作很不方便。</p>
+<p>首先去官网下载 Cocos Creator：<a class="link" href="https://www.cocos.com/creator-download"  target="_blank" rel="noopener"
+    >https://www.cocos.com/creator-download</a></p>
+<p>安装之后打开后是一个 Cocos Dashboard，也就是它只是一个壳。接着就去安装编辑器，老牛同学选择的是最新版本：<strong>3.8.5</strong></p>
+<p><img src="/p/2025012401/21.jpg"
+	width="1488"
+	height="991"
+	srcset="/p/2025012401/21_hu70ce5e9a34859c0c1f4564d4f9abf817_87845_480x0_resize_q75_box.jpg 480w, /p/2025012401/21_hu70ce5e9a34859c0c1f4564d4f9abf817_87845_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="安装Cocos编辑器"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="360px"
+	
+></p>
+<p>Cocos 编辑器安装好之后，就可以创建项目了，也就是我们的小游戏了：</p>
+<p><img src="/p/2025012401/22.jpg"
+	width="1567"
+	height="829"
+	srcset="/p/2025012401/22_hu0b5f6083ad68871d87e7fa38fd1f7c1d_66589_480x0_resize_q75_box.jpg 480w, /p/2025012401/22_hu0b5f6083ad68871d87e7fa38fd1f7c1d_66589_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="创建Cocos空3D项目"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="453px"
+	
+></p>
+<p>进入小游戏编辑器之后，我们就可以放飞自我了，先瞎点一通在说：左键、右键、中键、滚动、上下左右移动、界面上的小图标等等，先看看都有什么效果。</p>
+<p>天旋地转，一顿操作猛如虎之后，老牛同学发现自己有点晕乎了，不知道到底在哪儿了！</p>
+<p>只要快速浏览一遍 Cocos 官方文档，找到了编辑器的使用文档，一定要先好好熟悉一下：<a class="link" href="https://docs.cocos.com/creator/3.8/manual/zh/editor/scene/"  target="_blank" rel="noopener"
+    >https://docs.cocos.com/creator/3.8/manual/zh/editor/scene/</a></p>
+<p><img src="/p/2025012401/23.jpg"
+	width="1612"
+	height="1290"
+	srcset="/p/2025012401/23_hu83f99f1671239c11dffbe524397d0a94_81640_480x0_resize_q75_box.jpg 480w, /p/2025012401/23_hu83f99f1671239c11dffbe524397d0a94_81640_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Cocos编程界面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="124"
+		data-flex-basis="299px"
+	
+></p>
+<p>其实所有的操作，主要就是上图的红框部分内容，根据官网文档介绍和我的实际操作，总结如下：</p>
+<ul>
+<li>视图：分为 2D 和 3D，可相互切换，<code>2</code>为快捷键。</li>
+<li>变换工具组： 包括平移（<code>W</code>）、旋转（<code>E</code>）、缩放（<code>R</code>）、矩形（<code>T</code>）、吸附、位置（锚点/中心）、坐标系（本地/世界坐标系）这些操作工具，快捷键<code>Q</code>则退出这些变换工具。
+<ul>
+<li>平移：可以沿着<code>X</code>/<code>Y</code>/<code>Z</code>轴上移动，每个轴的颜色都不一样。</li>
+<li>旋转：和平移类似，可以分别沿着 3 个轴进行 360° 旋转。</li>
+<li>缩放：和平移类似，可以分别沿着 3 个轴放大和缩小。</li>
+<li>矩形：只适合于 UI 节点，也可以放大和缩小，它和缩放的<strong>区别</strong>是啥？</li>
+<li>吸附：在使用移动/旋转/缩放变换工具时，按照设定的步长进行操作；或者矩阵工具对齐操作。</li>
+<li>位置：变换工具的操作锚点是在中心还是坐标系，操作下来没有看出有啥效果，暂时先忽略。</li>
+<li>坐标系：有参照物的相对坐标系还是绝对的世界坐标系。</li>
+</ul>
+</li>
+<li>Gizmo：显示场景相机的方向，可以点击切换观察角度（6 个角度：上下左右前后）。</li>
+</ul>
+<p><img src="/p/2025012401/24.jpg"
+	width="1494"
+	height="1275"
+	srcset="/p/2025012401/24_hud55503d30b95a0c4cd42b80ae23dce41_244433_480x0_resize_q75_box.jpg 480w, /p/2025012401/24_hud55503d30b95a0c4cd42b80ae23dce41_244433_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="旋转和矩阵工具区别"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="117"
+		data-flex-basis="281px"
+	
+></p>
+<p><strong>总的来说</strong>：缩放只是改变节点尺寸大小，而矩形既可以改变节点尺寸大小、还可以调整对象和位置和旋转，它是一个复合操作。</p>
+<p><strong>经验之谈</strong>：以下是老牛同学在不断瞎操作后得出的经验，可以借鉴一下。</p>
+<ul>
+<li>牢记 Gizmo 的设置（默认：Y 垂直向上，X 右下角，Z 左下角）：当我们转晕了，不知道在哪儿了的时候，首先把 Gizmo 的坐标还原。</li>
+<li>在左边“层级管理器”中，随便选择一个节点，然后按一下<code>F</code>键（Focus 聚焦），你就会发现，我们又回来了，又可以瞎点瞎按了。</li>
+<li>用鼠标吧，TouchPad 操作是真的不方便，建议前期把鼠标的灵活度稍微调低一点，这样能保证你晕得慢一点。</li>
+</ul>
+<p>对于老牛同学来说，0 基础就直接上手开发 3D 游戏，感觉起点有点高，有点 Hold 不住了~</p>
+<h1 id="typescript-了解">TypeScript 了解</h1>
+<p>微信小游戏采用 TypeScript 编程语言，提前去了解一下：<a class="link" href="https://www.runoob.com/typescript/ts-tutorial.html"  target="_blank" rel="noopener"
+    >https://www.runoob.com/typescript/ts-tutorial.html</a></p>
+<p>总体来说，TypeScript 是 JavaScript 的超集，扩展了 JavaScript 的语法，因此如果熟悉 JavaScript 语音的话，学习起来问题不大：</p>
+<p><img src="/p/2025012401/31.jpg"
+	width="241"
+	height="241"
+	srcset="/p/2025012401/31_hu96636d7e56ca88add5f3f8afc7658c49_6084_480x0_resize_q75_box.jpg 480w, /p/2025012401/31_hu96636d7e56ca88add5f3f8afc7658c49_6084_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="TypeScript与JavaScript关系"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<p>今天的分享就先到这里，主要是熟悉 Cocos 编辑器，它是后续研发的关键。同时小游戏的创意，目前还没有头绪，还得好好想想！</p>
+<hr>
+<p>Transformers 框架序列：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw"  target="_blank" rel="noopener"
+    >01.包和对象加载中的设计巧思与实用技巧</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow"  target="_blank" rel="noopener"
+    >02.AutoModel 初始化及 Qwen2.5 模型加载全流程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg"  target="_blank" rel="noopener"
+    >03.Qwen2.5 大模型的 AutoTokenizer 技术细节</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w"  target="_blank" rel="noopener"
+    >04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA"  target="_blank" rel="noopener"
+    >05.嵌入（Embedding）机制和 Word2Vec 实战</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA"  target="_blank" rel="noopener"
+    >06.位置嵌入（Positional Embedding）</a></small></p>
+<p>Pipeline NLP 任务序列：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA"  target="_blank" rel="noopener"
+    >零·概述</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg"  target="_blank" rel="noopener"
+    >01.文本转音频</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w"  target="_blank" rel="noopener"
+    >02.文本分类</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ"  target="_blank" rel="noopener"
+    >03.词元分类和命名实体识别</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg"  target="_blank" rel="noopener"
+    >04.问答</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw"  target="_blank" rel="noopener"
+    >05.表格问答</a> | <a class="link" href="https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw"  target="_blank" rel="noopener"
+    >06.填充蒙版</a></small></p>
+<p>往期推荐文章：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/F-CUuaZwmqt6X7QkI_IrVA"  target="_blank" rel="noopener"
+    >Cline 免费插件 + Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ"  target="_blank" rel="noopener"
+    >使用Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ"  target="_blank" rel="noopener"
+    >Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/cocos/">Cocos</a>
+        
+            <a href="/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/">小游戏</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2025020501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020501/00.0e5cb41ccb45ab8d173277e89ab7b650_hu3d13c3dc5e08d50d569ae0711661da61_112189_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | Cocos 3D 微信小游戏（第5天）：分包构建和上传发布（完美收官）"
+                        data-key="2025020501" 
+                        data-hash="md5-Dly0HMtFq40XMnfomre2UA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">新春“码”启 | Cocos 3D 微信小游戏（第5天）：分包构建和上传发布（完美收官）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025020101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020101/00.ba812bf1a8db7e99d8a3ccc3676095c0_hu5ecad2161246203fe21cd9171930b608_109873_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | Cocos 3D 开发微信小游戏（第4天）：游戏资源设计和框架核心源代码"
+                        data-key="2025020101" 
+                        data-hash="md5-uoEr8ajbfpnYo8zDZ2CVwA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">新春“码”启 | Cocos 3D 开发微信小游戏（第4天）：游戏资源设计和框架核心源代码</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025012501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025012501/00.29bffc3ec965f0237aa5ebf3e600fca3_huaacfb4a4b3954e1274812d81e3c089e7_94172_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | Cocos 3D 开发微信小游戏（第3天）：场景搭建与游戏链路基础开发"
+                        data-key="2025012501" 
+                        data-hash="md5-Kb/8Psll8CN6pevz5gD8ow==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">新春“码”启 | Cocos 3D 开发微信小游戏（第3天）：场景搭建与游戏链路基础开发</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025012301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025012301/00.2298611e64cd661ff0cbbda1405816d5_hu801d7d4a91fbb4a30826d045c1c4223f_166408_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第1天）"
+                        data-key="2025012301" 
+                        data-hash="md5-IphhHmTNZh/wy72hQFgW1Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第1天）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

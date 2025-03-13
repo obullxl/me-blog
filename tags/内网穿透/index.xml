@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>内网穿透 on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
+        <description>Recent content in 内网穿透 on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sat, 22 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ngrok内网穿透，实现外网访问ChatTTS/Qwen2等大模型应用</title>
+        <link>https://ntopic.cn/p/2024062201/</link>
+        <pubDate>Sat, 22 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024062201/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024062201/00.jpg" alt="Featured image of post ngrok内网穿透，实现外网访问ChatTTS/Qwen2等大模型应用" /&gt;&lt;p&gt;老牛同学在前面的几篇博文中，和大家一起在个人电脑本地部署和体验了&lt;strong&gt;ChatTTS&lt;/strong&gt;、&lt;strong&gt;Qwen2&lt;/strong&gt;、&lt;strong&gt;GLM4&lt;/strong&gt;和&lt;strong&gt;Llama3&lt;/strong&gt;等大模型，由于是个人电脑部署，只能在局域网内使用，无法分享到外网。今天我们通过&lt;strong&gt;ngrok&lt;/strong&gt;软件，免费把我们的大模型应用分享出去。&lt;/p&gt;
+&lt;h2 id=&#34;什么是内网穿透&#34;&gt;什么是内网穿透&lt;/h2&gt;
+&lt;p&gt;运营商（如：电信、联通等）拉了一根网线到家里路由器并接入互联网（比如IP是：10.25.12.6，它是&lt;strong&gt;公网IP&lt;/strong&gt;），我们个人电脑通过路由器间接接入互联网（比如IP是：192.168.3.27，它是&lt;strong&gt;局域网IP&lt;/strong&gt;），这个通过路由器建立的网络，也就局域网或者内网。外网通过&lt;strong&gt;公网IP&lt;/strong&gt;是无法访问到局域网中的某台计算机，也就是我们个人电脑上部署的应用无法通过外网分享出去。&lt;/p&gt;
+&lt;p&gt;如果我们在局域网和外网之间，增加一个桥接器，它的作用是类似于链接局域网和外网的通道，外网可通过这通道直接访问到局域网的服务器，这个操作也就是&lt;strong&gt;内网穿透&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;今天我们要介绍的&lt;strong&gt;ngrok&lt;/strong&gt;正是这个桥接通道：我们首先在个人电脑通过&lt;strong&gt;ngrok&lt;/strong&gt;客户端链接&lt;strong&gt;ngrok&lt;/strong&gt;服务器，把我们端口（即应用程序）和&lt;strong&gt;ngrok&lt;/strong&gt;某个域名建立链接；外网访问&lt;strong&gt;ngrok&lt;/strong&gt;的域名，即访问&lt;strong&gt;ngrok&lt;/strong&gt;服务器，服务器请求下发给客户端，即可以实现互相通信。&lt;/p&gt;
+&lt;h2 id=&#34;内网穿透的应用场景&#34;&gt;内网穿透的应用场景&lt;/h2&gt;
+&lt;p&gt;一般情况下，我们想发布我们应用到外网，需要以下步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在外网有一台服务器（自己拉网线建机房、或者买服务器、或者租云服务器等）&lt;/li&gt;
+&lt;li&gt;服务器上安装操作系统，搭建应用程序的运行环境&lt;/li&gt;
+&lt;li&gt;在服务器上部署应用程序&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这一通操作下来，费用和时间成本都比较高。如果我们只是想&lt;strong&gt;短期&lt;/strong&gt;内把应用程序分享到外网的话，就需要&lt;strong&gt;内网穿透&lt;/strong&gt;了：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;外网&lt;strong&gt;临时&lt;/strong&gt;访问，无长期访问需求，如&lt;strong&gt;ChatTTS&lt;/strong&gt;、&lt;strong&gt;Qwen2&lt;/strong&gt;、&lt;strong&gt;GLM4&lt;/strong&gt;和&lt;strong&gt;Llama3&lt;/strong&gt;等我们大模型临时演示&lt;/li&gt;
+&lt;li&gt;外面访问的&lt;strong&gt;域名&lt;/strong&gt;无要求，域名只作为每次访问的入口即可&lt;/li&gt;
+&lt;li&gt;访问&lt;strong&gt;速度&lt;/strong&gt;要求不高、&lt;strong&gt;并发&lt;/strong&gt;较小，因为注意是应用功能体验&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;ngrok配置内网穿透临时域名&#34;&gt;ngrok配置内网穿透（临时域名）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;第一步：&lt;/strong&gt; 登录&lt;strong&gt;ngrok&lt;/strong&gt;官网（&lt;a class=&#34;link&#34; href=&#34;https://ngrok.com/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ngrok.com/download&lt;/a&gt;），下载客户端：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062201/01.jpg&#34;
+	width=&#34;1660&#34;
+	height=&#34;1122&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062201/01_hu257e3d79c256a80b42bb88ca617c070c_273297_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062201/01_hu257e3d79c256a80b42bb88ca617c070c_273297_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;下载客户端&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;355px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;老牛同学是Mac电脑，可通过&lt;strong&gt;brew&lt;/strong&gt;直接安装包：&lt;code&gt;brew install ngrok/ngrok/ngrok&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;安装完成之后，我们就可以用&lt;code&gt;ngrok&lt;/code&gt;命令进行后续操作了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二步：&lt;/strong&gt; 登录或者注册&lt;strong&gt;ngrok&lt;/strong&gt;账号（&lt;a class=&#34;link&#34; href=&#34;https://dashboard.ngrok.com/login&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://dashboard.ngrok.com/login&lt;/a&gt;），获取授权码：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062201/02.jpg&#34;
+	width=&#34;730&#34;
+	height=&#34;1252&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062201/02_hu50abd14ce1c4fdbac61a7813a6d25d6a_149977_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062201/02_hu50abd14ce1c4fdbac61a7813a6d25d6a_149977_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;登录或者注册&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;58&#34;
+		data-flex-basis=&#34;139px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第三步：&lt;/strong&gt; 登录&lt;strong&gt;ngrok&lt;/strong&gt;后台（&lt;a class=&#34;link&#34; href=&#34;https://dashboard.ngrok.com/get-started/your-authtoken&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://dashboard.ngrok.com/get-started/your-authtoken&lt;/a&gt;），获取和配置&lt;strong&gt;ngrok&lt;/strong&gt;授权码 &lt;code&gt;ngrok config add-authtoken 授权码&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062201/03.jpg&#34;
+	width=&#34;1936&#34;
+	height=&#34;1187&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062201/03_hu85f9bec42d9a515be165f5df0b27fd02_416615_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062201/03_hu85f9bec42d9a515be165f5df0b27fd02_416615_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;配置和重置授权码&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;391px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;Your Authtoken&lt;/strong&gt;页面，我们可以看到当前&lt;strong&gt;授权码&lt;/strong&gt;、2种&lt;strong&gt;配置&lt;/strong&gt;方式和&lt;strong&gt;重置&lt;/strong&gt;授权码等操作！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第四步：&lt;/strong&gt; 启动应用程序（老牛同学以&lt;strong&gt;ChatTTS&lt;/strong&gt;文本转语音大模型为例）：&lt;code&gt;python ChatTTS-WebUI.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API使用和搭建WebUI界面&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 前面输出省略&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Running on &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; URL:  http://127.0.0.1:8089
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 后面输出省略&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动成功，可以看到应用程序的端口号：&lt;strong&gt;8089&lt;/strong&gt;（端口号在接下来启动&lt;strong&gt;ngrok&lt;/strong&gt;需要用到）&lt;/p&gt;
+&lt;p&gt;浏览器打开WebUI：&lt;a class=&#34;link&#34; href=&#34;http://127.0.0.1:8089&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://127.0.0.1:8089&lt;/a&gt;，确认&lt;strong&gt;ChatTTS&lt;/strong&gt;正常启动&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062201/04.jpg&#34;
+	width=&#34;1430&#34;
+	height=&#34;1342&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062201/04_hu7b6a4df8cab0db9e8a7d72b3ef865ed5_292198_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062201/04_hu7b6a4df8cab0db9e8a7d72b3ef865ed5_292198_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ChatTTS启动成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;106&#34;
+		data-flex-basis=&#34;255px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第五步：&lt;/strong&gt; 启动&lt;strong&gt;ngrok&lt;/strong&gt;客户端，对外分享&lt;strong&gt;ChatTTS&lt;/strong&gt;大模型应用程序：&lt;/p&gt;
+&lt;p&gt;上面启动&lt;strong&gt;ChatTTS&lt;/strong&gt;是Web应用（即&lt;code&gt;http&lt;/code&gt;协议），且端口号是&lt;code&gt;8089&lt;/code&gt;，我们打开Terminal终端，启动&lt;strong&gt;ngrok&lt;/strong&gt;客户端：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ngrok http http://127.0.0.1:8089
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062201/05.jpg&#34;
+	width=&#34;1812&#34;
+	height=&#34;518&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062201/05_huf9210a678a44311cdd696184f06d9566_262773_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062201/05_huf9210a678a44311cdd696184f06d9566_262773_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ngrok客户端&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;349&#34;
+		data-flex-basis=&#34;839px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看到，&lt;strong&gt;ngrok&lt;/strong&gt;客户端，把我们内网的端口，映射到一个临时域名：&lt;code&gt;https://7715-112-64-61-112.ngrok-free.app&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;到此，我们就可以在外网通过这个临时域名，来访问我们内网&lt;strong&gt;ChatTTS&lt;/strong&gt;大模型！&lt;/p&gt;
+&lt;p&gt;每次打开这个域名，均会有如下确认页面，直接点击&lt;strong&gt;Visit Site&lt;/strong&gt;即可，我们也可以通过底部的3种方式消除这个确认页面：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062201/06.jpg&#34;
+	width=&#34;1936&#34;
+	height=&#34;951&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062201/06_hu069e449f949fa3847c9a12b9f8dc54cd_457193_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062201/06_hu069e449f949fa3847c9a12b9f8dc54cd_457193_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ngrok确认页面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;488px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ngrok固定域名内网穿透&#34;&gt;ngrok固定域名内网穿透&lt;/h2&gt;
+&lt;p&gt;通过上面的步骤，我们可以通过临时域名，实现了内网穿透。每次启动&lt;strong&gt;ngrok&lt;/strong&gt;客户端，临时域名都会发生变化，我们也可以进一步通过&lt;strong&gt;固定域名&lt;/strong&gt;实现内网穿透，提升外网访问体验。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一步：&lt;/strong&gt; 申请免费的固定域名（每个用户可申请一个免费固定域名），登录&lt;strong&gt;ngrok&lt;/strong&gt;后台，选择&lt;strong&gt;Domains&lt;/strong&gt;菜单；然后点击**+ New Domain**按钮，&lt;strong&gt;ngrok&lt;/strong&gt;分配一个固定的域名，一般为：&lt;code&gt;xxxx.ngrok-free.app&lt;/code&gt;格式：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062201/07.jpg&#34;
+	width=&#34;1936&#34;
+	height=&#34;806&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062201/07_hucc372560a2f443f0dab520dfad9224c1_363077_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062201/07_hucc372560a2f443f0dab520dfad9224c1_363077_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ngrok固定域名&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;240&#34;
+		data-flex-basis=&#34;576px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二步：&lt;/strong&gt; 首先&lt;strong&gt;终止&lt;/strong&gt;临时域名启动的客户端，然后通过&lt;strong&gt;固定&lt;/strong&gt;域名启动&lt;strong&gt;ngrok&lt;/strong&gt;客户端：&lt;code&gt;ngrok http --domain=xxxx.ngrok-free.app 8089&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;最后，我们可以在外网通过固定域名访问内网应用程序了！&lt;/p&gt;
+&lt;h2 id=&#34;ngrok内网穿透的用法&#34;&gt;ngrok内网穿透的用法&lt;/h2&gt;
+&lt;p&gt;上面章节，我们通过&lt;strong&gt;ngrok&lt;/strong&gt;把&lt;strong&gt;ChatTTS&lt;/strong&gt;的WebUI分享到了外网，除了&lt;strong&gt;http&lt;/strong&gt;协议之外，&lt;strong&gt;ngrok&lt;/strong&gt;还可以支持&lt;code&gt;TLS&lt;/code&gt;和&lt;code&gt;TCP&lt;/code&gt;以下协议：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# TLS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ngrok tls &lt;span class=&#34;m&#34;&gt;80&lt;/span&gt; --terminate-at edge --domain your-name.ngrok.app
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# TCP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ngrok tcp &lt;span class=&#34;m&#34;&gt;22&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;欢迎大家尝试，后续若有对应的使用场景，老牛同学在进行分享！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Qwen2-7B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API调用和WebUI对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Llama-3-8B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLM-4-9B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署GLM-4-9B清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ChatTTS 文本转语音模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API使用和搭建WebUI界面&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stable Diffusion 3 文生图模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Sax4z2k8Dvn82h15jf51Hw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stable Diffusion 3 文生图“开源英雄”大模型本地部署和使用教程，轻松实现AI绘图自由&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;大模型应用案例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助AI大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Python 小游戏&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI已来，我与AI一起用Python编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python游戏编程：一步步用Python打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

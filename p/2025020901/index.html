@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='通过实际使用体验，对DeepSeek和Qwen大模型在价格、Web页面、Python、微信小程序和Cocos小游戏编程等方面进行了详细评测。结果显示，Qwen编程能力更胜一筹。特别是Web和Python编程测试中，Qwen的表现明显优于DeepSeek。文章还分享了具体的编程测试案例和源码，供读者参考和验证……'>
+<title>DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2025020901/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？'>
+<meta property='og:description' content='通过实际使用体验，对DeepSeek和Qwen大模型在价格、Web页面、Python、微信小程序和Cocos小游戏编程等方面进行了详细评测。结果显示，Qwen编程能力更胜一筹。特别是Web和Python编程测试中，Qwen的表现明显优于DeepSeek。文章还分享了具体的编程测试案例和源码，供读者参考和验证……'>
+<meta property='og:url' content='https://ntopic.cn/p/2025020901/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='DeepSeek' /><meta property='article:tag' content='Qwen' /><meta property='article:tag' content='大模型' /><meta property='article:published_time' content='2025-02-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-09T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2025020901/00.jpg' />
+<meta name="twitter:title" content="DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？">
+<meta name="twitter:description" content="通过实际使用体验，对DeepSeek和Qwen大模型在价格、Web页面、Python、微信小程序和Cocos小游戏编程等方面进行了详细评测。结果显示，Qwen编程能力更胜一筹。特别是Web和Python编程测试中，Qwen的表现明显优于DeepSeek。文章还分享了具体的编程测试案例和源码，供读者参考和验证……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2025020901/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#web-页面编程qwen-胜出">Web 页面编程（Qwen 胜出）</a></li>
+    <li><a href="#python-编程qwen-胜出">Python 编程（Qwen 胜出）</a></li>
+    <li><a href="#微信小程序编程势均力敌">微信小程序编程（势均力敌）</a></li>
+    <li><a href="#cocos-小游戏编程qwen-略胜">Cocos 小游戏编程（Qwen 略胜）</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2025020901/">
+                <img src="/p/2025020901/00_hu8a5434afd7142d25bc7a2119bc98b479_227024_800x0_resize_q75_box.jpg"
+                        srcset="/p/2025020901/00_hu8a5434afd7142d25bc7a2119bc98b479_227024_800x0_resize_q75_box.jpg 800w, /p/2025020901/00_hu8a5434afd7142d25bc7a2119bc98b479_227024_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="397" 
+                        loading="lazy"
+                        alt="Featured image of post DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">DeepSeek vs. Qwen 大模型编程能力比拼，谁更适合作为你的 AI 辅助编程助手？</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>通过实际使用体验，对DeepSeek和Qwen大模型在价格、Web页面、Python、微信小程序和Cocos小游戏编程等方面进行了详细评测。结果显示，Qwen编程能力更胜一筹。特别是Web和Python编程测试中，Qwen的表现明显优于DeepSeek。文章还分享了具体的编程测试案例和源码，供读者参考和验证……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2025-02-09
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：7 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>整个春节假期，DeepSeek 与《哪吒 2》的消息接连不断，看完我总有种莫名的激动。一边是 DeepSeek 在基础技术领域的深耕细作，另一边则是《哪吒 2》对用户产品的精心打磨，两者多年来的默默努力和不懈追求，终于在今年春节实现了一飞冲天、一鸣惊人的突破！</p>
+<p>老牛同学作为一名长期使用 Qwen 大模型Token服务的用户，目前余额所剩无几了，对购买的服务主要就三个追求：<strong>价格</strong>、<strong>效率</strong>、<strong>效果</strong>。</p>
+<p>接下来，老牛同学将根据自己使用大模型的实际情况，对<strong>DeepSeek</strong>和<strong>Qwen</strong>分别进行以下几个方面的测验，哪个得分高，老牛同学后续就用哪个的 Token 服务。</p>
+<ol>
+<li>价格：说实话，现在大模型厂商都很卷，价格都很实惠。同时，Token 数量与分词算法相关，因此价格只要不超过 50%，老牛同学觉得都差多不。</li>
+<li>效率：敢作为服务拿出来卖，老牛同学觉得效率都不会差；同时，模型产出内容不一样，这里就没有一个严格标准，因此暂不做比较。</li>
+<li><strong>效果</strong>，这是老牛同学最关心的点，只有满足需求的服务，才是需要的服务。<strong>编程</strong>是老牛同学使用大模型服务最多的地方，因此将通过<strong>Web 页面</strong>、<strong>Python</strong>、<strong>微信小程序</strong>和<strong>Cocos 小游戏</strong>这 4 个方面编程结果进行评测。</li>
+</ol>
+<ul>
+<li>为了消除历史消息对上下文的影响，每次编程老牛同学都使用全新的会话。</li>
+<li>本次编程评测编程代码结果，老牛同学全部上传共享，大家可通过打开“<strong>老牛同学</strong>”微信小程序-&gt;点击“<strong>更多</strong>”Tab-&gt;“<strong>源代码</strong>”获取下载链接进行复验：</li>
+</ul>
+<p><img src="/CX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信小程序：老牛同学"
+	
+	
+></p>
+<h1 id="qwen-和-deepseek-服务价格deepseek-更实惠">Qwen 和 DeepSeek 服务价格（DeepSeek 更实惠）</h1>
+<p>老牛同学将以<strong>Qwen-Max-Latest</strong>和<strong>DeepSeek-Chat</strong>进行比较（Token 数量统一为<strong>百万</strong>），以下是 2 个大模型官网公布的价格：</p>
+<ul>
+<li>Qwen 价格：输入**¥2.4**，输出**¥9.6**</li>
+<li>DeepSeek 价格：输入缓存命中**¥0.5**，缓存未命中**¥2**，输出**¥8**</li>
+</ul>
+<p><img src="/p/2025020901/11.jpg"
+	width="1515"
+	height="444"
+	srcset="/p/2025020901/11_huff2a968c98514115d4d9f452a168360f_60221_480x0_resize_q75_box.jpg 480w, /p/2025020901/11_huff2a968c98514115d4d9f452a168360f_60221_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Qwen价格"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="341"
+		data-flex-basis="818px"
+	
+></p>
+<p><img src="/p/2025020901/12.jpg"
+	width="1446"
+	height="456"
+	srcset="/p/2025020901/12_hu9c2f94a349e6a4fca04046005ae8131a_55994_480x0_resize_q75_box.jpg 480w, /p/2025020901/12_hu9c2f94a349e6a4fca04046005ae8131a_55994_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="DeepSeek价格"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="317"
+		data-flex-basis="761px"
+	
+></p>
+<p>虽然 Qwen 和 DeepSeek 采用的分词算法可能不一样，但是考虑到都是以<strong>百万</strong>为单位，这些差异基本可以忽略。</p>
+<p>从上述官网价格来看：<strong>DeepSeek 更实惠</strong>！</p>
+<h1 id="qwen-和-deepseek-编程能力">Qwen 和 DeepSeek 编程能力</h1>
+<p>接下来，我们开始进行编程评测，分别通过<strong>Web 页面</strong>、<strong>Python</strong>、<strong>微信小程序</strong>和<strong>Cocos 小游戏</strong>这 4 个方面编程进行评测。</p>
+<h2 id="web-页面编程qwen-胜出">Web 页面编程（Qwen 胜出）</h2>
+<p><strong>计算器</strong>是一个很好的 Web 程序样例，老牛同学就选择它作为考题，提示词如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">写一个**计算器**静态Web页面，计算器的风格参考Apple手机自带的计算器App。
+</span></span><span class="line"><span class="cl">对于CSS样式，请尽量复用现有的CSS框架，比如BootStrap、Tailwind CSS等等。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2025020901/21.jpg"
+	width="2515"
+	height="1533"
+	srcset="/p/2025020901/21_hu22433e8b365837e2e9acfcad8e77a004_334410_480x0_resize_q75_box.jpg 480w, /p/2025020901/21_hu22433e8b365837e2e9acfcad8e77a004_334410_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="计算器编程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="164"
+		data-flex-basis="393px"
+	
+></p>
+<p>最终，老牛同学复制 2 个模型的输出 HTML 代码，通过浏览器打开：</p>
+<p><img src="/p/2025020901/22.jpg"
+	width="1947"
+	height="1044"
+	srcset="/p/2025020901/22_hue657b10ee68a78495654889aef0ad2de_106452_480x0_resize_q75_box.jpg 480w, /p/2025020901/22_hue657b10ee68a78495654889aef0ad2de_106452_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Web编程结果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="186"
+		data-flex-basis="447px"
+	
+></p>
+<p>2 个模型的 Web 编程结果分析：</p>
+<ul>
+<li>风格：Qwen 更接近 Apple 手机自带的计算器。</li>
+<li>功能：对于基本的加、减、乘、除功能，Qwen 输入框只展示了计算结果，没有显示过程算式；而 DeepSeek 点击无反应，也没有结果。</li>
+</ul>
+<p>总结，老牛同学对 Web 页面编程评测结论：<strong>Qwen 胜出</strong>！</p>
+<h2 id="python-编程qwen-胜出">Python 编程（Qwen 胜出）</h2>
+<p><strong>贪吃蛇</strong>是一款经典的单机游戏，也是很多一部分学习 Python 编程技术的第一个完整程序，我们就以它作为考题，提示词如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">使用Python，写一个带有GUI界面的**贪吃蛇**小游戏，要求：
+</span></span><span class="line"><span class="cl">1. 游戏开始，有“开始”操作界面，用户点击开始游戏
+</span></span><span class="line"><span class="cl">2. 游戏过程中，在界面底部中间，展示当前分数
+</span></span><span class="line"><span class="cl">3. 游戏结束，有一个结束页面，页面展示游戏分数，并有“重新开始”操作界面
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2025020901/23.jpg"
+	width="2512"
+	height="1152"
+	srcset="/p/2025020901/23_hu9312c8f69ceb477329a51b83f01c6c46_264351_480x0_resize_q75_box.jpg 480w, /p/2025020901/23_hu9312c8f69ceb477329a51b83f01c6c46_264351_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="贪吃蛇编程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="218"
+		data-flex-basis="523px"
+	
+></p>
+<p>最终，老牛同学在本机分别运行这 2 个小游戏，界面如下：</p>
+<p><img src="/p/2025020901/24.jpg"
+	width="1506"
+	height="694"
+	srcset="/p/2025020901/24_hu5b7b15ae4d69d6baf970768e158dc115_51961_480x0_resize_q75_box.jpg 480w, /p/2025020901/24_hu5b7b15ae4d69d6baf970768e158dc115_51961_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Python编程结果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="217"
+		data-flex-basis="520px"
+	
+></p>
+<p>对于最终编程结果，评测分析如下：</p>
+<ul>
+<li>功能：2 个大模型的结果，均能跑起来，有开始界面，正常展示。</li>
+<li>游戏：Qwen 蛇的速度比较适中，基本还能玩起来。而 DeepSeek 蛇速度则很快，老牛同学手速没有那么快，基本玩不起来。</li>
+<li>结果：Qwen 能正常展示中文，而 DeepSeek 展示就是乱码了（缺少<code>ttf</code>字体文件）。</li>
+</ul>
+<p>总结，Python 编程评测结果：<strong>Qwen 胜出</strong>！</p>
+<h2 id="微信小程序编程势均力敌">微信小程序编程（势均力敌）</h2>
+<p>接下来，我们进行微信小程序编程评测，老牛同学感觉比上面 2 个编程要稍微难一点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">写一个微信小程序页面，页面样式参考**微信**手机App中“我”Tab的样式。
+</span></span><span class="line"><span class="cl">对于页面样式，请尽量复用现有成熟的框架，比如weui等。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2025020901/25.jpg"
+	width="2520"
+	height="1473"
+	srcset="/p/2025020901/25_hu9edad9e84aa6f83b43c441e07c46e144_323929_480x0_resize_q75_box.jpg 480w, /p/2025020901/25_hu9edad9e84aa6f83b43c441e07c46e144_323929_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="小程序代码"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="171"
+		data-flex-basis="410px"
+	
+></p>
+<p>对于<strong>weui</strong>框架的<code>app.wxss</code>文件：Qwen 给的地址文件不存在，而 DeepSeek 给的是一个样例地址。老牛同学修复这个问题之后，最终小程序页面样式如下：</p>
+<p><img src="/p/2025020901/26.jpg"
+	width="1278"
+	height="1011"
+	srcset="/p/2025020901/26_hu0ad3ba640c3aee1c0a609406fa1cb591_102800_480x0_resize_q75_box.jpg 480w, /p/2025020901/26_hu0ad3ba640c3aee1c0a609406fa1cb591_102800_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="小程序页面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<p>从最终小程序页面效果来看：<strong>Qwen</strong>和<strong>DeepSeek</strong>表现基本一致！</p>
+<p>但有个<strong>问题</strong>：Qwen 和 DeepSeek 都是直接引用<strong>weui</strong>框架样式，这样势必会增加小程序包大小<strong>170KB</strong>左右。而<strong>weui</strong>最佳使用方式是作为扩展组件库的方式引入，这样就不会增加包大小了。</p>
+<h2 id="cocos-小游戏编程qwen-略胜">Cocos 小游戏编程（Qwen 略胜）</h2>
+<p>最后，来一个 Cocos 小游戏编程。今年春节，老牛同学从 0 基础开始学习，使用 Cocos Creator 做了一款微信小游戏。过程中遇到了不少问题，我把其中一个问题拿出来作为考题：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">我正在使用Cocos Creator 3.8.5研发一款微信小游戏，在一个`ts`组件类中，我需要一个名为`prefabMap`、类型是`{[key: string]:Prefab}`映射的属性，如下TypeScript代码：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@ccclass(&#39;WallView&#39;)
+</span></span><span class="line"><span class="cl">export class WallView extends Component {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    // 预制体映射
+</span></span><span class="line"><span class="cl">    private prefabMap: { [key: string]: Prefab } = {};
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">我希望可以通过“属性管理器”来设置**prefabMap**这个属性，包括映射`string`类型的Key和映射`Prefab`类型的Value，请帮忙实现这个代码。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2025020901/27.jpg"
+	width="2490"
+	height="1387"
+	srcset="/p/2025020901/27_hu230c4bdbae45f4e4cc6ad90de7a9346d_287255_480x0_resize_q75_box.jpg 480w, /p/2025020901/27_hu230c4bdbae45f4e4cc6ad90de7a9346d_287255_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Cocos小游戏代码"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="179"
+		data-flex-basis="430px"
+	
+></p>
+<p>从上面代码来看，<strong>Qwen</strong>和<strong>DeepSeek</strong>大模型思路基本一致：先定义一个 KeyValue 类/接口，通过“属性管理器”设置这个 KeyValue 列表，然后再组件启动<code>start</code>之后把 KeyValue 列表转化为映射对象。</p>
+<p>它们两者的编程思路没有问题，可是编写的代码却是不生效的，均存在问题：</p>
+<ol>
+<li><strong>Qwen</strong>的问题：代码已经非常接近目标，一步之遥，可 Cocos 无法识别<code>KeyValuePair</code>这个类。有两种办法可以解决：<code>KeyValuePair</code>类增加注解<code>@ccclass('KeyValuePair')</code>，或者增加一行代码<code>@ccclass('KeyValuePair')(KeyValuePair)</code>均可。</li>
+<li><strong>DeepSeek</strong>的问题：相比 Qwen 来说，问题就多一些了，离目标也就更远一些：<code>PrefabKeyValue</code>是一个接口，Cocos 根本无法识别，同时内部的<code>key</code>和<code>value</code>没有<code>@property</code>注解，在“属性管理器”中也无法做到嵌套配置，<code>prefabList</code>也就无法达成目标了。</li>
+</ol>
+<p>从上面分析来看，Qwen 更接近目标，因此 <strong>Qwen 略胜一筹</strong>！</p>
+<h1 id="最后简单总结">最后，简单总结</h1>
+<p>综合上面分析和评测，我们可以看出：<strong>DeepSeek</strong>在价格上更优惠，而<strong>Qwen</strong>在编程效果上更胜一筹！</p>
+<p>看到这儿，我相信大家和老牛同学一样，开始犯嘀咕：当前火爆全球、如日中天、大红大紫的<strong>DeepSeek</strong>大模型，竟然在编程效果上不及<strong>Qwen</strong>大模型？</p>
+<p>从结果看，是的。也许是<strong>DeepSeek</strong>火爆点并不在编程效果上，也行是的提示词待优化，也许是所举样例不具备代表性，也许是需要我们再给 DeepSeek 一些时日……</p>
+<p>但无论如何，老牛同学目前已经明确，接下来续费大模型 Token 调用费用，该往哪个平台了。</p>
+<p><strong>提示：</strong> 以上 2 个大模型辅助编程的源码，老牛同学已经上传（除微信小程序中，除修正了<code>app.wxss</code>样式文件的路径之外，老牛同学承诺对大模型编程结果未做任何一个字符的修改），大家可以下载复验（打开“<strong>老牛同学</strong>”微信小程序-&gt;点击“<strong>更多</strong>”Tab-&gt;“<strong>源代码</strong>”获取下载链接）。</p>
+<hr>
+<p>Cocos 3D 小游戏：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/TlgNKvGYMuGMmU0dIBPn4A"  target="_blank" rel="noopener"
+    >01.技术选型</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/qlOYpjREXBKb7vl1kuujlg"  target="_blank" rel="noopener"
+    >02.研发流程</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/V3CIhswW3CVcTY1aPaALTw"  target="_blank" rel="noopener"
+    >03.小游戏框架</a>丨 <a class="link" href="https://mp.weixin.qq.com/s/8f3GZNd7qjwIhfTcsVruYQ"  target="_blank" rel="noopener"
+    >04.核心架构设计</a>丨 <a class="link" href="https://mp.weixin.qq.com/s/8jxPxJ2-9UnFsLMGh9h0fQ"  target="_blank" rel="noopener"
+    >05.分包构建发布</a></small></p>
+<p>Transformers 框架序列：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw"  target="_blank" rel="noopener"
+    >01.包和对象加载中的设计巧思与实用技巧</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow"  target="_blank" rel="noopener"
+    >02.AutoModel 初始化及 Qwen2.5 模型加载全流程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg"  target="_blank" rel="noopener"
+    >03.Qwen2.5 大模型的 AutoTokenizer 技术细节</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w"  target="_blank" rel="noopener"
+    >04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA"  target="_blank" rel="noopener"
+    >05.嵌入（Embedding）机制和 Word2Vec 实战</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA"  target="_blank" rel="noopener"
+    >06.位置嵌入（Positional Embedding）</a></small></p>
+<p>Pipeline NLP 任务序列：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA"  target="_blank" rel="noopener"
+    >零·概述</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg"  target="_blank" rel="noopener"
+    >01.文本转音频</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w"  target="_blank" rel="noopener"
+    >02.文本分类</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ"  target="_blank" rel="noopener"
+    >03.词元分类和命名实体识别</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg"  target="_blank" rel="noopener"
+    >04.问答</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw"  target="_blank" rel="noopener"
+    >05.表格问答</a> | <a class="link" href="https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw"  target="_blank" rel="noopener"
+    >06.填充蒙版</a></small></p>
+<p>往期推荐文章：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/F-CUuaZwmqt6X7QkI_IrVA"  target="_blank" rel="noopener"
+    >Cline 免费插件 + Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ"  target="_blank" rel="noopener"
+    >使用 Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ"  target="_blank" rel="noopener"
+    >Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/deepseek/">DeepSeek</a>
+        
+            <a href="/tags/qwen/">Qwen</a>
+        
+            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024070401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024070401/00.8e63c02979f9360873529614dac8414b_huce067645ed24a619e3f9931314bcd87c_717911_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 阿里Qwen2-72B大模型已是开源榜的王者，为什么还要推出其他参数模型，被其他模型打榜？"
+                        data-key="2024070401" 
+                        data-hash="md5-jmPAKXn5NghzUpYU2shBSw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">阿里Qwen2-72B大模型已是开源榜的王者，为什么还要推出其他参数模型，被其他模型打榜？</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025011201/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025011201/00.5d0cfc3bb62e18d88e6e74f2a54f2d78_hu883d5e381d46374d51c67d277ad5095c_219525_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序"
+                        data-key="2025011201" 
+                        data-hash="md5-XQz8O7YuGNiObnTypU8teA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025010301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025010301/01.89d74cead58d6664c5af2c8bb70b6e23_hu5b4a41f27c7fe518c1493f019fcc5463_79100_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 使用Cursor &#43; Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战"
+                        data-key="2025010301" 
+                        data-hash="md5-iddM6tWNZmTFryyLtwtuIw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Cursor &#43; Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

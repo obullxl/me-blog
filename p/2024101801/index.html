@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文详细讲解 transformers 推理大语言模型的初始化过程，包括 Python 包搜索、LazyModule 延迟模块、模块搜索和 Python 包 API 设计美学……'>
+<title>transformers 推理 Qwen2.5 等大模型技术细节详解(一)transformers 初始化和对象加载（文末免费送书）</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024101801/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='transformers 推理 Qwen2.5 等大模型技术细节详解(一)transformers 初始化和对象加载（文末免费送书）'>
+<meta property='og:description' content='本文详细讲解 transformers 推理大语言模型的初始化过程，包括 Python 包搜索、LazyModule 延迟模块、模块搜索和 Python 包 API 设计美学……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024101801/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Qwen2.5' /><meta property='article:tag' content='transformers' /><meta property='article:tag' content='LazyModule' /><meta property='article:published_time' content='2024-10-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-10-18T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024101801/00.jpg' />
+<meta name="twitter:title" content="transformers 推理 Qwen2.5 等大模型技术细节详解(一)transformers 初始化和对象加载（文末免费送书）">
+<meta name="twitter:description" content="本文详细讲解 transformers 推理大语言模型的初始化过程，包括 Python 包搜索、LazyModule 延迟模块、模块搜索和 Python 包 API 设计美学……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024101801/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024101801/">
+                <img src="/p/2024101801/00_hu0fbce01b01350acd5184d40c8b394d68_277717_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024101801/00_hu0fbce01b01350acd5184d40c8b394d68_277717_800x0_resize_q75_box.jpg 800w, /p/2024101801/00_hu0fbce01b01350acd5184d40c8b394d68_277717_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post transformers 推理 Qwen2.5 等大模型技术细节详解(一)transformers 初始化和对象加载（文末免费送书）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">transformers 推理 Qwen2.5 等大模型技术细节详解(一)transformers 初始化和对象加载（文末免费送书）</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>本文详细讲解 transformers 推理大语言模型的初始化过程，包括 Python 包搜索、LazyModule 延迟模块、模块搜索和 Python 包 API 设计美学……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-10-18
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：14 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>上周收到一位网友的私信，希望老牛同学写一篇有关<strong>使用 transformers 框架推理大模型的技术细节</strong>的文章。</p>
+<p>老牛同学刚开始以为这类的文章网上应该会有很多，于是想着百度几篇质量稍高一点的回复这位网友。结果，老牛同学搜索后发现，类似文章确实不少，但是总觉得不太满意，要么细节深度不够，要么介绍不够全面，感觉达不到网友希望的<strong>技术细节</strong>要求。为了不辜负这位网友的期望，老牛同学决定自己动手，丰衣足食。</p>
+<p>其实，我们使用 transformers 框架推理大模型的技术细节非常多，仅主链路就包括了模型加载、数据预处理、数据转换、模型推理、解码输出等。老牛同学本着宁缺毋滥尽善尽美的原则，期望能把这些技术细节完整全面介绍一遍，考虑到文章篇幅长度，计划共分为<strong>3 篇</strong>完成，希望能启动抛砖引玉之用：</p>
+<ol>
+<li>第 1 篇：也就是本文，核心介绍<strong>transformers</strong>包 API 设计美学、如何初始化、LazyModule 模块、按需导入指定对象等</li>
+<li>第 2 篇：基于 Qwen2.5 大模型，核心介绍<strong>AutoModel</strong>模型初始化<code>from_pretrained</code>过程细节（PyTorch/TensorFlow/Flax 深度学习框架的其他模型也类似）</li>
+<li>第 3 篇：同样基于 Qwen2.5 大模型，核心介绍<strong>AutoTokenizer</strong>初始化<code>from_pretrained</code>，和结合 Qwen2.5 大模型的完整推理过程技术细节</li>
+</ol>
+<p>请原谅老牛同学水平有限，文中难免会出现遗漏和错误之处，恳请大家及时留言指出，以帮助老牛同学和其他阅读到本文的网友，让我们共同学习进步，在此万分感谢。</p>
+<p>下面截图的寥寥几行代码，相信大家已经比较熟悉，因为它们经常出现在老牛同学的文章中。也就是这么几行代码，却涵盖了使用 transformers 框架进行大模型推理的核心代码框架。本系列的 3 篇文章，也将围绕这几行代码逐步展开：</p>
+<p><img src="/p/2024101801/01.jpg"
+	width="1366"
+	height="1354"
+	srcset="/p/2024101801/01_hu381ec97f98686c3612cac686645cde4c_122750_480x0_resize_q75_box.jpg 480w, /p/2024101801/01_hu381ec97f98686c3612cac686645cde4c_122750_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Transformers推理核心流程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="242px"
+	
+></p>
+<p>要想详细介绍 Transformers 推理技术细节，我们就从 transformers 推理框架本身开始，老牛同学觉得这行代码就已足够：<code>from transformers import XXX</code>，代码中的<strong>XXX</strong>具体是哪个对象其实并不太重要，但为了后续介绍和演示方便，在本文中老牛同学就以<strong>AutoModelForCausalLM</strong>代替<strong>XXX</strong>。</p>
+<p>是的，你没有看错，本文主要就只介绍这 1 行代码，这行在我们看来在简单熟悉不过的代码。想想看，对于 Transformers 这个大模型研究者和使用者们首选的框架来说，按理我们使用起来应该会很复杂，但从上面推理程序代码可以看到，我们使用这个框架时却似乎很简单，那么可能的解释是：<strong>Transformers 框架设计得特别的精妙</strong>！</p>
+<p>老牛同学可以这么说：如果能把这行看似简单的代码真正读懂，在我们目前或将来设计像 transformers 这种超级 Python 包时，我们将会得心应手、游刃有余！</p>
+<p>我们把本文分为以下几个主要章节部分，最终完成这行代码的介绍：</p>
+<ol>
+<li>前期环境准备，主要是下载 transformers 包代码，包括环境配置和包安装</li>
+<li><strong>transformers 包</strong>的初始化过程，即代码前半部分：<code>from transformers</code>，我们可以看到<strong>transformers 包</strong>的设计和我们日常研发很不一样</li>
+<li><strong>transformers 包</strong>导入类过程，即代码后半部分：<code>import AutoModelForCausalLM</code>，让我们看看 transformers 包在设计上的精妙之处</li>
+<li>在最后，老牛同学又来搞个小活动，免费包邮送几本新书给大家，期望大家踊跃参与</li>
+</ol>
+<h1 id="环境准备下载-transformers-包代码">环境准备，下载 transformers 包代码</h1>
+<p>我们依然使用<strong>Miniconda</strong>来管理 Python 虚拟环境，<strong>Miniconda</strong>的安装和使用可以参考老牛同学之前的文章：<a class="link" href="https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w"  target="_blank" rel="noopener"
+    >大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）</a></p>
+<p>首先，我们配置虚拟环境：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Python虚拟环境名：Qwen2.5，版本号：3.10</span>
+</span></span><span class="line"><span class="cl">conda create -n Qwen2.5 <span class="nv">python</span><span class="o">=</span>3.10 -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 激活虚拟环境</span>
+</span></span><span class="line"><span class="cl">conda activate Qwen2.5
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，在虚拟环境中下载依赖包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install torch
+</span></span><span class="line"><span class="cl">pip install <span class="s2">&#34;transformers&gt;=4.37.0&#34;</span>
+</span></span><span class="line"><span class="cl">pip install <span class="s2">&#34;accelerate&gt;=0.26.0&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>环境准备好了，我们接下来就来看前半部分代码了~</p>
+<h1 id="代码行from-transformers-代码详解">代码行：from transformers 代码详解</h1>
+<p>这行代码意思是引入 transformers 模块，它是 Python 从一个模块导入指定模块或对象的标准语法。</p>
+<p>那么，Python 怎么知道去哪里找到<strong>transformers</strong>这个模块呢？</p>
+<ol>
+<li>首先，Python 检查<code>sys.modules</code>模块字典中是否存在名<strong>transformers</strong>的模块，这个字典存放着内置模块和已经导入过的模块，如果存在则直接返回，否则</li>
+<li>进一步搜索模块，逐一遍历<code>sys.path</code>目录列表，最后在<strong>site-packages</strong>目录下找到<strong>transformers</strong>包（文件夹）</li>
+</ol>
+<p>我们可以通过以下代码，查看 Python 解释器启动时，默认的搜索模块目录列表，和获取<strong>site-packages</strong>目录位置的方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 包或者模块搜索目录列表</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看 site-packages 目录的位置</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">site</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="n">site</span><span class="o">.</span><span class="n">getsitepackages</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2024101801/02.jpg"
+	width="1362"
+	height="382"
+	srcset="/p/2024101801/02_hu7c1939a73f871ccfa9f9e39ff556ae14_84039_480x0_resize_q75_box.jpg 480w, /p/2024101801/02_hu7c1939a73f871ccfa9f9e39ff556ae14_84039_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Python启动的系统目录"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="356"
+		data-flex-basis="855px"
+	
+></p>
+<p><strong>site-packages</strong>目录作用：它存放我们安装的第三方包和模块，我们通过<code>pip install 模块名</code>命令安装包和模块，默认都存放在该目录中。</p>
+<blockquote>
+<p>Python 研发<strong>小技巧</strong>：
+当我们希望动态改变模块搜索目录，用于加载自定义模块时，我们可以在<code>sys.path</code>列表中添加自定义的模块目录即可实现
+如：把自定义模块目录添加模块搜索目录列表中：<code>sys.path.append('/a/b/c/my-modules')</code></p>
+</blockquote>
+<p>接下来，Python 会对<strong>transformers</strong>包进行初始化，即执行目录下面的<code>__init__.py</code>文件代码。对于 Python 来说，<code>__init__.py</code>代码文件主要有 2 个作用：</p>
+<ol>
+<li>告诉 Python 该目录不是一个普通目录，它是一个 Python 包</li>
+<li>该文件内容是这个包的初始化代码，第一次加载包时需要执行这些代码</li>
+</ol>
+<p>接下来，我们来看看<strong>transformers 包</strong>的初始化<code>__init__.py</code>代码文件内容（开始进入主题了）：</p>
+<ol>
+<li>文件内容总共有<strong>9 千多行</strong>代码，前面是一些普通的变量定义和对象导入等代码，和我们日常研发无异，无需过多关注，直到<code>_import_structure</code>变量首次出现：</li>
+</ol>
+<p><img src="/p/2024101801/10.jpg"
+	width="927"
+	height="1228"
+	srcset="/p/2024101801/10_hu901a7271fd6fe943b2f966194d303d3c_95937_480x0_resize_q75_box.jpg 480w, /p/2024101801/10_hu901a7271fd6fe943b2f966194d303d3c_95937_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="模块路径和对象字典"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="75"
+		data-flex-basis="181px"
+	
+></p>
+<p><code>_import_structure</code>变量是一个字典，它其实是在<strong>收集</strong>模块名和对象（类型、方法和变量）关系的字典。字典的键是模块名（包名和模块名），字典值是对象名。</p>
+<ol start="2">
+<li>我们前面有提到，Transformer 支持 PyTorch/TensorFlow/Flax 这 3 个深度学习框架，对于每个框架它都有对应着收集不同的对象：</li>
+</ol>
+<p><img src="/p/2024101801/11.jpg"
+	width="1831"
+	height="850"
+	srcset="/p/2024101801/11_huf7853a20900fceaa65e115a57ece02b8_88845_480x0_resize_q75_box.jpg 480w, /p/2024101801/11_huf7853a20900fceaa65e115a57ece02b8_88845_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="不同深度学习框架模块"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="215"
+		data-flex-basis="516px"
+	
+></p>
+<p>Transformer 根据当前环境支持的不同深度学习框架，<strong>收集</strong>不同的字典内容，三个框架是否支持的判断条件：<code>is_torch_available()</code>、<code>is_torch_available()</code>和<code>is_flax_available()</code></p>
+<p>同时，通过<code>try/except/else</code>的方式，如果当前环境支持某个深度学习框架，那么在<strong>else</strong>代码块里<strong>收集</strong>该框架对应的字典内容；否则抛出<code>OptionalDependencyNotAvailable</code>错误，然后通过<strong>except</strong>代码块捕获错误，并通过<code>utils.dummy_XX_objects</code>模块<strong>收集</strong>字典内容，保证最终字典内容包含了完整模块对象。</p>
+<p>我们打开<strong>dummy</strong>模块（如：<code>dummy_pt_objects.py</code>）代码可以看到，它定义了<strong>else</strong>块中的对象，但是没有任何方法，简单理解它其实就是一个<strong>占位符</strong>！</p>
+<p><strong>问题 1</strong>：当我们使用 Transformer 框框推理某个预训练模型（如 Qwen2.5），它使用的深度学习框架只会属于某一个，我们只<strong>收集</strong>当前所支持的对象不可以吗，为什么还需要设置<strong>dummy</strong>模块，一定要保证完整的收集到所有对象呢，并且这些<strong>dummy</strong>对象也没有实际可用的方法？</p>
+<p><strong>解读 1</strong>：Transformers 框架是一个功能齐全的超级库，它除了数据集、模型、训练等常用功能之外，还有很多其他功能和模块，比如配置、分词器等。如果我们程序只需要其他模块（如：与框架无关的工具类），但是因不小心或者代码注解的需要，引入了与框架相关的类（即<strong>else</strong>块中或者<strong>dummy</strong>中的那些模型或对象），如果没有<strong>dummy</strong>中对象定义，就直接<strong>ImportError</strong>了，而有了<strong>dummy</strong>我们就可以正常使用。同时，而当我们实际使用了 dummy 对象时，我们也可以收到一个明确的错误提示，进而帮助我们进一步排查处理。</p>
+<p>收集<code>_import_structure</code>字典的代码行非常多，模式都一样，基本都是<code>try/except/else</code>代码块。接下来，我们以<strong>AutoModel</strong>类为例，来看看 3 个深度学习框架它们对应的类名：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># PyTorch框架</span>
+</span></span><span class="line"><span class="cl"><span class="n">_import_structure</span><span class="p">[</span><span class="s2">&#34;models.auto&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ....</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;AutoModel&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;AutoModelForCausalLM&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># TensorFlow框架</span>
+</span></span><span class="line"><span class="cl"><span class="n">_import_structure</span><span class="p">[</span><span class="s2">&#34;models.auto&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ....</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;TFAutoModel&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;TFAutoModelForCausalLM&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Flax框架</span>
+</span></span><span class="line"><span class="cl"><span class="n">_import_structure</span><span class="p">[</span><span class="s2">&#34;models.auto&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ....</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;FlaxAutoModel&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;FlaxAutoModelForCausalLM&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从上面代码可以看出，它们的模块名都是<code>models.auto</code>，但是它们的类名却不一样，TensorFlow 和 Flax 分别增加了<strong>TF</strong>和<strong>Flax</strong>前缀。其实这可以理解，否则就有 3 个或更多重名的类了，下一节我们还会看到，<code>_LazyModule</code>初始化时会反转键值对，因此必须<strong>不能重名</strong>。</p>
+<p><strong>问题 2</strong>：在<code>__init__.py</code>代码文件中，还有个重要常量<code>TYPE_CHECKING</code>，在<code>if TYPE_CHECKING:</code>代码块中，它显示的导入了和<code>_import_structure</code>收集的一样的所有对象，一个显示导入，一个只是字符串收集，这又是为什么呢？</p>
+<p><strong>解读 2</strong>：<code>TYPE_CHECKING</code>是在 Python 内置的<code>typing.py</code>模块中定义的常量（Python 一般约定：变量名大写则称该变量为常量），当 PyCharm/mypy 等工具进行类型检查时，该常量的值为<code>True</code>，而当程序执行时，它的值为<code>False</code>。Transformer 包非常大，功能非常多，如果我们默认导入全部的模块和对象，势必会大大增加程序的启动时间，而通过<code>if/else</code>条件判断，即保证了类型检查能正常运行，又可以节省程序运行的启动时间和提高执行效率。</p>
+<p>我们继续<code>__init__.py</code>代码文件，<code>_import_structure</code>字典收集完模块和对象之后，又出现了一段有段有意思的代码：</p>
+<p><img src="/p/2024101801/12.jpg"
+	width="1320"
+	height="982"
+	srcset="/p/2024101801/12_hu190660fccec63094ac7e33490e771c00_77918_480x0_resize_q75_box.jpg 480w, /p/2024101801/12_hu190660fccec63094ac7e33490e771c00_77918_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="初始化LazyModule模块"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="134"
+		data-flex-basis="322px"
+	
+></p>
+<p><strong>transformers 包</strong>竟然在自己初始化的时候，自己把自己设置到<code>sys.modules</code>中缓存起来：<code>sys.modules[__name__] = _LazyModule(...)</code></p>
+<p><strong>问题 3</strong>：我们一般在设计包的初始化<code>__init__.py</code>代码文件时，在完成模块导入或对象定义之后，代码正常结束即可，Python 自动把我们的模块放到<code>sys.modules</code>中缓存起来。为什么<strong>transformers 包</strong>需要自己设置呢？</p>
+<p><strong>解读 3</strong>：从上面的 9 千行代码看到，初始化过程只是在收集<code>_import_structure</code>字典内容，并没有导入实际对象。如果<code>__init__.py</code>就此结束，<code>from transformers import XXX</code>必然会报错。其实，Transformer 包设计的核心就在<code>_LazyModule(...)</code>里，下面我们就揭开它的就是细节。</p>
+<h1 id="代码行import-automodelforcausallm-代码详解">代码行：import AutoModelForCausalLM 代码详解</h1>
+<p><strong>transformers</strong>模块初始化<code>__init__.py</code>代码文件的结果，就是自定义模块类<code>_LazyModule</code>，其中<code>_import_structure</code>作为<strong>非常重要</strong>的初始化参数，它的定义如下：</p>
+<p><img src="/p/2024101801/21.jpg"
+	width="1714"
+	height="1071"
+	srcset="/p/2024101801/21_hu15b74c76199612a05f2b9dedc4bebad3_97426_480x0_resize_q75_box.jpg 480w, /p/2024101801/21_hu15b74c76199612a05f2b9dedc4bebad3_97426_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="LazyModuel类结构"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="384px"
+	
+></p>
+<ol>
+<li>_LazyModuel 继承自<strong>ModuleType</strong>类，说明它是一个模块类型，这也是为什么它可以放入<code>sys.modules</code>的原因</li>
+<li>_LazyModuel 有 3 个非常关键的方法，下面会逐一介绍：<code>__init__</code>、<code>__getattr__</code>和<code>_get_module</code></li>
+</ol>
+<p>【<code>__init__</code>初始化方法：把<code>_import_structure</code>字典进行键值反转】</p>
+<p><img src="/p/2024101801/22.jpg"
+	width="1542"
+	height="1086"
+	srcset="/p/2024101801/22_hua7a4852a2f34d7d8fff101d3652b3073_114698_480x0_resize_q75_box.jpg 480w, /p/2024101801/22_hua7a4852a2f34d7d8fff101d3652b3073_114698_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="模型路径和对象反转"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="340px"
+	
+></p>
+<p>前面<code>_import_structure</code>字典收集的模块和对象，在_LazyModuel 进行了反转<code>self._class_to_module</code>，在这个字典中，我们可以通过<strong>对象名</strong>获取到它所在模块名。</p>
+<p>【<code>__getattr__</code>属性获取魔法方法：为动态加载模块提供了机会】</p>
+<p><img src="/p/2024101801/23.jpg"
+	width="1791"
+	height="1048"
+	srcset="/p/2024101801/23_hu886a2725316cc30900598b4ad2c254fe_116365_480x0_resize_q75_box.jpg 480w, /p/2024101801/23_hu886a2725316cc30900598b4ad2c254fe_116365_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="对象属性动态获取魔法方法"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="170"
+		data-flex-basis="410px"
+	
+></p>
+<p>我们回到最开始的 Python 语句<code>from transformers import AutoModelForCausalLM</code>，在<strong>transformers</strong>模块初始化的结果是一个自定义的<code>_LazyModule</code>类型模块。我们需要从<code>_LazyModule</code>中查找<strong>AutoModelForCausalLM</strong>信息：</p>
+<ol>
+<li>首先，Python 在<code>_LazyModule</code>实例的字典<code>__dict__</code>中查找，很明显没有<strong>AutoModelForCausalLM</strong>属性</li>
+<li>然后，Python 在<code>_LazyModule</code>类本身中查找，很明显也没有</li>
+<li>最终，若对象实现了<code>__getattr__</code>魔法方法，Python 会调用这个魔法方法获取属性（如果还找不到则会抛出<code>AttributeError</code>异常）</li>
+</ol>
+<p>在<code>__getattr__</code>魔方方法中，通过刚才键值反转的字典<code>_class_to_module</code>获取到模块路径，然后调用<code>self._get_module</code>私有方法动态加载<strong>模块</strong>。在这个私有方法中，通过<code>importlib.import_module</code>动态导入模块。</p>
+<p><strong>问题 4</strong>：动态导入模块，又是怎么实现的呢？</p>
+<p><strong>解读 4</strong>：我们打开<strong>models.auto</strong>包的<code>__init__.py</code>初始化文件，可以看到，它的处理方式，和<strong>transformers 包</strong>的初始化方式同出一辙，也是<code>_LazyModule</code>延迟模块，它们是通过<strong>递归</strong>的方式，最终获取到了实际的对象：</p>
+<p><img src="/p/2024101801/24.jpg"
+	width="1744"
+	height="1308"
+	srcset="/p/2024101801/24_hu5b7b15ae4d69d6baf970768e158dc115_112257_480x0_resize_q75_box.jpg 480w, /p/2024101801/24_hu5b7b15ae4d69d6baf970768e158dc115_112257_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="models.auto包初始化方式"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+<p>下面老牛同学抽取了三个不同框架，<strong>AutoModel</strong>类的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># PyTorch框架</span>
+</span></span><span class="line"><span class="cl"><span class="n">_import_structure</span><span class="p">[</span><span class="s2">&#34;modeling_auto&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ....</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;AutoModel&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;AutoModelForCausalLM&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># TensorFlow框架</span>
+</span></span><span class="line"><span class="cl"><span class="n">_import_structure</span><span class="p">[</span><span class="s2">&#34;modeling_tf_auto&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ....</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;TFAutoModel&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;TFAutoModelForCausalLM&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Flax框架</span>
+</span></span><span class="line"><span class="cl"><span class="n">_import_structure</span><span class="p">[</span><span class="s2">&#34;modeling_flax_auto&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ....</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;FlaxAutoModel&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;FlaxAutoModelForCausalLM&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>也就是说：最终<strong>AutoModel</strong>在文件<code>./models/auto/modeling_auto.py</code>中定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># ./models/auto/modeling_auto.py</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AutoModelForCausalLM</span><span class="p">(</span><span class="n">_BaseAutoModelClass</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_model_mapping</span> <span class="o">=</span> <span class="n">MODEL_FOR_CAUSAL_LM_MAPPING</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">AutoModelForCausalLM</span> <span class="o">=</span> <span class="n">auto_class_update</span><span class="p">(</span><span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">head_doc</span><span class="o">=</span><span class="s2">&#34;causal language modeling&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后一步，也是<strong>非常重要</strong>的一步：<code>setattr(self, name, value)</code>把对象放入了<code>transformers</code>模块属性列表中，它把本不是<code>transformers</code>模块中的对象，与自己建立了关联！</p>
+<p><strong>问题 5</strong>：到这里，<code>transformers包</code>的初始化流程基本完成了，它为什么要搞这么复杂呢？直接使用<code>from transformers.models.auto.modeling_auto import AutoModelForCausalLM</code>不可以吗？</p>
+<p><strong>解答 5</strong>：老牛同学认为在使用上完全可以，但是 Transformers 作为一个有望一统天下的大模型推理框架，如果它把 API 设计得越简单、越<strong>方便使用</strong>，就越容易被使用者接受；同时，内部代码调整对已有的程序也没有任何的影响。是的，它就在提高我们使用的<strong>便利性</strong>和升级的影响最小化，它处处在为使用者着想，老牛同学觉得这也许就是超级框架的大格局！</p>
+<p>最后，老牛同学试着用一张图，把上面流程总结一下（为了展示方便，把递归给拆开了）：</p>
+<p><img src="/p/2024101801/25.jpg"
+	width="1195"
+	height="1315"
+	srcset="/p/2024101801/25_hue5e584bd7bb2f45cbe7e17581351ad99_98645_480x0_resize_q75_box.jpg 480w, /p/2024101801/25_hue5e584bd7bb2f45cbe7e17581351ad99_98645_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Transformers包对象加载流程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="90"
+		data-flex-basis="218px"
+	
+></p>
+<p>我们可以看到，虽然只是一行代码，但是却有着很多值得参考的设计技巧：</p>
+<ol>
+<li>设计<strong>dummy</strong>对象，让对象的导入能顺序进行，让报错延迟，尽可能让程序能执行</li>
+<li><code>_LazyModule</code>延迟动态模块，按需加载对象，在节省启动时间的同时，减少内存使用</li>
+<li>API 设计简单化，把困难留给自己，把便利留给使用者，这样才能得到用户的认可，也只有这样才能走的更稳更远</li>
+</ol>
+<h1 id="最后又来给大家免费包邮送几本新书">最后：又来给大家免费包邮送几本新书</h1>
+<p>前面我们已经举办过 2 次面试包邮送书活动：</p>
+<ol>
+<li><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程（文末有福利）</a></li>
+<li><a class="link" href="https://mp.weixin.qq.com/s/6yKkaCZU_XXec9mVBMmc1Q"  target="_blank" rel="noopener"
+    >使用世界领先的 Qwen2.5-Math 开源模型当 AI 数学老师，让奥数解题辅导父慈子孝（文末有福利）</a></li>
+</ol>
+<p>老牛同学继续和出版社朋友合作，举办第 3 次送书福利小活动，新书名为：《<strong>硅谷 Python 工程师面试指南</strong>》</p>
+<p><img src="/p/2024101801/book.jpg"
+	width="899"
+	height="1131"
+	srcset="/p/2024101801/book_huc1d0d32a1d4ff9c6a73fb7a5637be2fc_92640_480x0_resize_q75_box.jpg 480w, /p/2024101801/book_huc1d0d32a1d4ff9c6a73fb7a5637be2fc_92640_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="硅谷Python工程师面试指南"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="79"
+		data-flex-basis="190px"
+	
+></p>
+<p>大模型应用固然重要，但是 Python 基础知识不容忽视，这本书作者根据亲身经历，讲解了面试技巧、流程和策略等。同时，针对 Python 的数据结构、算法等基础知识，通过丰富的实例，帮忙我们逐步完成系统设计。</p>
+<p>本期送书小活动的规则和之前类似，总体如下：</p>
+<ol>
+<li>关注<strong>老牛同学</strong>微信公众号，因为这是老牛同学公众号关注者的小福利</li>
+<li>在本文的评论区进行<strong>留言</strong>，留言的<strong>点赞</strong>数排名<strong>前 3 名</strong>的朋友，<strong>免费</strong>且<strong>包邮</strong>获得 1 本书（即：默认送 3 本书）</li>
+<li>若本文的<strong>阅读量</strong>和<strong>老牛同学</strong> CSDN 同文的阅读量之和达到了<strong>2000</strong>（含<strong>2000</strong>），则留言的<strong>点赞</strong>数排名<strong>前 6 名</strong>的朋友均免费包邮送书（即：最多送 6 本书）</li>
+<li>活动时间：2024 年 10 月 18 日到 2024 年 10 月 24 号上午 12 点整（正好 1 周，周末可寄送新书）</li>
+<li>老牛同学不参与本次活动（因为老牛同学默认就有 1 本）</li>
+</ol>
+<p>为方便大家购买本书，老牛同学贴上京东商品链接（大家也可在购书网站搜索“硅谷 Python 工程师面试指南”直接购买）：</p>
+<p>【书籍购买链接】</p>
+<hr>
+<p>往期推荐文章：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/qwen2.5/">Qwen2.5</a>
+        
+            <a href="/tags/transformers/">Transformers</a>
+        
+            <a href="/tags/lazymodule/">LazyModule</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024110801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024110801/00.0b639c15742216190bc149fdbd8e2857_huaf4d4384d74399782110fa538598e630_129596_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 深入解析 Transformers 框架（四）：Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解"
+                        data-key="2024110801" 
+                        data-hash="md5-C2OcFXQiFhkLwUn9vY4oVw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">深入解析 Transformers 框架（四）：Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024103101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024103101/00.9016b1687260f6995bfe07e2c09b016b_huc89b245422ea1f5d6529b8e431bfaabe_174035_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 深入解析 Transformers 框架（三）：Qwen2.5 大模型的 AutoTokenizer 技术细节"
+                        data-key="2024103101" 
+                        data-hash="md5-kBaxaHJg9plb/gfiwJsBaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">深入解析 Transformers 框架（三）：Qwen2.5 大模型的 AutoTokenizer 技术细节</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024102601/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024102601/00.2e8f89f3e07816384b3b60f7180a39df_hu9af697bca531050727e02c25c2fd1c01_132520_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post transformers 推理 Qwen2.5 等大模型技术细节详解(二)AutoModel 初始化和模型加载（免费送新书）"
+                        data-key="2024102601" 
+                        data-hash="md5-Lo&#43;J8&#43;B4FjhLO2D3GAo53w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">transformers 推理 Qwen2.5 等大模型技术细节详解(二)AutoModel 初始化和模型加载（免费送新书）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024122701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024122701/00.13aafaa32f89d8de999cc3887ee4218e_huf0c8e788e888de2aa4eff4cdd05ec712_142546_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 深度解析 Transformer 模型中的位置嵌入（Positional Embedding）"
+                        data-key="2024122701" 
+                        data-hash="md5-E6r6oy&#43;J2N6ZnMOIfuQhjg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">深度解析 Transformer 模型中的位置嵌入（Positional Embedding）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024122501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024122501/00.e55a6c6f8512ddf00de5caa1c4d0d7b0_hu9ae0166db6d19f69e9ac797994b0da33_118198_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解（六）：填充蒙版（fill-mask）"
+                        data-key="2024122501" 
+                        data-hash="md5-5Vpsb4US3fAN5cqhxNDXsA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解（六）：填充蒙版（fill-mask）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

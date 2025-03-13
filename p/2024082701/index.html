@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='GLM-4-Flash 大模型API免费了，我们本文基于免费API构建一个“儿童绘本”应用，包括使用文生图产出绘本故事插图……'>
+<title>GLM-4-Flash 大模型API免费了，手把手构建“儿童绘本”应用实战（附源码）</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024082701/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='GLM-4-Flash 大模型API免费了，手把手构建“儿童绘本”应用实战（附源码）'>
+<meta property='og:description' content='GLM-4-Flash 大模型API免费了，我们本文基于免费API构建一个“儿童绘本”应用，包括使用文生图产出绘本故事插图……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024082701/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='GLM-4' /><meta property='article:tag' content='CogView' /><meta property='article:tag' content='AI应用' /><meta property='article:published_time' content='2024-08-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-27T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024082701/00.jpg' />
+<meta name="twitter:title" content="GLM-4-Flash 大模型API免费了，手把手构建“儿童绘本”应用实战（附源码）">
+<meta name="twitter:description" content="GLM-4-Flash 大模型API免费了，我们本文基于免费API构建一个“儿童绘本”应用，包括使用文生图产出绘本故事插图……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024082701/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024082701/">
+                <img src="/p/2024082701/00_hua0f417586d7fd1a3944a298dab07c6c1_47981_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024082701/00_hua0f417586d7fd1a3944a298dab07c6c1_47981_800x0_resize_q75_box.jpg 800w, /p/2024082701/00_hua0f417586d7fd1a3944a298dab07c6c1_47981_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="430" 
+                        loading="lazy"
+                        alt="Featured image of post GLM-4-Flash 大模型API免费了，手把手构建“儿童绘本”应用实战（附源码）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">GLM-4-Flash 大模型API免费了，手把手构建“儿童绘本”应用实战（附源码）</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>GLM-4-Flash 大模型API免费了，我们本文基于免费API构建一个“儿童绘本”应用，包括使用文生图产出绘本故事插图……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-08-27
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：14 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>老牛同学刚刷到了一条劲爆的消息，<strong>GLM-4-Flash</strong>大模型推理 API 免费了：<a class="link" href="https://bigmodel.cn/pricing"  target="_blank" rel="noopener"
+    >https://bigmodel.cn/pricing</a></p>
+<p><img src="/p/2024082701/free.jpg"
+	width="1636"
+	height="712"
+	srcset="/p/2024082701/free_hucb72e37a6ac11ca78ea6bf848b9cb497_88722_480x0_resize_q75_box.jpg 480w, /p/2024082701/free_hucb72e37a6ac11ca78ea6bf848b9cb497_88722_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="GLM-4-Flash免费"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="229"
+		data-flex-basis="551px"
+	
+></p>
+<p>老牛同学一直觉得上次阿里云百炼平台为期 1 个月免费额度的“羊毛”已经够大了（<a class="link" href="https://mp.weixin.qq.com/s/xclHiuy7gFPUlWZW5oOBSg"  target="_blank" rel="noopener"
+    >太卷了，阿里云免费 1 个月大模型算力额度，玩转 Llama3.1/Qwen2 等训练推理</a>），但经过老牛同学在智谱 AI 官网反复确认之后，竟然不是标题党，它是真的<strong>免费</strong>，感觉大模型厂商的“羊毛”简直是没有最大，只有更大（老牛同学这次要站智谱 AI 这边）！</p>
+<p>老牛同学本地部署推理和体验的大模型有很多，且第一个就是<strong>GLM-4-9B</strong>（是的，比<strong>Qwen2-7B</strong>还要早一些），也一直关注着智谱 AI 推出的大模型：</p>
+<ul>
+<li>第一次是 6 月 8 号：<strong>GLM-4-9B</strong>大模型开源，且推理能力亮点突出，老牛还写了一篇本地部署推理的文章（<a class="link" href="https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg"  target="_blank" rel="noopener"
+    >本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验</a>），由于当时<strong>GLM-4</strong>本地部署门槛还有点高，因此这篇文章还获得了不少网友的关注，老牛同学也收到不少网友的关于部署过程的私信和留言</li>
+<li>第二次是 7 月 9 号（1 个月后）：<strong>GLM-4-9B</strong>支持通过 Ollama 部署（<a class="link" href="https://ollama.com/library/glm4"  target="_blank" rel="noopener"
+    >https://ollama.com/library/glm4</a>），本地部署和推理的门槛降低不少，因此老牛同学顺势写了一篇普及 Ollama 使用的文章，文章中案例就是用<strong>GLM-4-9B</strong>（<a class="link" href="https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q"  target="_blank" rel="noopener"
+    >Ollama 完整教程：本地 LLM 管理、WebUI 对话、Python/Java 客户端 API 应用</a>）</li>
+<li>第三次是 8 月 27 号也就是今天（差不多也是 1 个月后）：智谱 AI 大模型开放平台官网（<a class="link" href="https://bigmodel.cn"  target="_blank" rel="noopener"
+    >https://bigmodel.cn/</a>）宣布<strong>GLM-4-Flash</strong>大模型 API 免费使用，这不又激起老牛同学的兴致，也因此有了本文</li>
+</ul>
+<p>从老牛同学微观视角我们可以看到，智谱 AI 从开放开源大模型、到降低大模型使用门槛、在到面向大众免费，不段在诠释着<strong>技术进步</strong>和<strong>普惠 AI</strong>，就如智谱 AI 的愿景那样：实现“让机器像人一样思考”，让技术更好地服务社会，打造支持不同场景、不同方向的智能应用程序的底层人工智能架构，不断开拓努力实现人工智能的行业普惠。</p>
+<p><strong>GLM-4-Flash</strong>免费了，我们除了高兴和感慨之外，<strong>羊毛</strong>不常有，我们总得要“薅”一把。这次老牛同学就不做微调了，咱们来做一个我们生活场景：<strong>儿童绘本</strong>应用！</p>
+<p>大家可能会问，为什么选择<strong>儿童绘本</strong>这个方向呢？其实原因一点都不复杂：老牛同学一时半会儿也没有想到好的创意（特别期待大家留言新创意，老牛同学愿意协助实现）；再者老牛同学家绘本要又更新了（存量的绘本小孩都读腻了）；并且这个应用不是很复杂，不至于一篇文章还写不完，还要有续集。如果我们能基于免费的大模型 API 能力，随时生成不同的儿童绘本，岂不是妙哉？</p>
+<p>针对“儿童绘本”应用，老牛同学的构思如下：</p>
+<ol>
+<li>面向<strong>7~10</strong>小朋友，绘本构思由大模型产出，最好能与当前热点相关（如：最近火爆天的<strong>黑神话·悟空</strong>游戏）</li>
+<li>绘本故事内容也由大模型产出，需要积极向上，饱含正能量</li>
+<li>绘本情节结构分为 4 个段，每个段 300 个汉字左右，整个绘本不超过 1500 个汉字</li>
+<li>每一段绘本情节均需要配一张插图</li>
+<li>最后：绘本内容和图片存储到电脑本地磁盘</li>
+</ol>
+<p>在<strong>儿童绘本</strong>应用中，我们需要用到 2 个大模型：</p>
+<ul>
+<li><strong>GLM-4-Flash</strong>大语音模型，主要是提供绘本构思和产出绘本内容</li>
+<li><strong>CogView-3</strong>文生图大模型，主要是生成绘本插图</li>
+</ul>
+<p><img src="/p/2024082701/01.jpg"
+	width="1119"
+	height="631"
+	srcset="/p/2024082701/01_hu8266611b8090e5a4bd2ab38008cf2199_53563_480x0_resize_q75_box.jpg 480w, /p/2024082701/01_hu8266611b8090e5a4bd2ab38008cf2199_53563_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="儿童绘本应用流程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="425px"
+	
+></p>
+<p>确定了应用内容，我们就开始行动了~</p>
+<h1 id="注册申请-api-key">注册&amp;申请 API Key</h1>
+<p>想要使用大模型推理 API，我们首先得拿到 API Key，打开智谱 AI 开放平台官网：<a class="link" href="https://bigmodel.cn/"  target="_blank" rel="noopener"
+    >https://bigmodel.cn/</a></p>
+<p>完成注册和实名认证后，我们打开<strong>控制台</strong>，即可复制 API Key 了：<a class="link" href="https://bigmodel.cn/usercenter/apikeys"  target="_blank" rel="noopener"
+    >https://bigmodel.cn/usercenter/apikeys</a></p>
+<p><img src="/p/2024082701/02.jpg"
+	width="1621"
+	height="921"
+	srcset="/p/2024082701/02_huebb76accf81dd5cfb89d2f3dd4193453_87532_480x0_resize_q75_box.jpg 480w, /p/2024082701/02_huebb76accf81dd5cfb89d2f3dd4193453_87532_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="新增和复制API Key"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="422px"
+	
+></p>
+<p>我们可以把复制的 API Key 放到环境变量中（老牛同学的环境变量名：<code>ZhipuAI-APIKey</code>），免费在代码里硬编码，下面老牛同学代码演示均从环境变量获取！</p>
+<h1 id="api-调用前置准备和配置">API 调用前置准备和配置</h1>
+<p>这部分包括 Python 环境准备、SDK 依赖包安装和 API 验证：</p>
+<p>【<strong>Python 研发环境</strong>】</p>
+<p><strong>工欲善其事，必先利其器</strong>，我们通过<strong>Miniconda</strong>管理 Python 虚拟环境，<strong>Miniconda</strong>的安装和使用可以参考老牛同学之前的文章：<a class="link" href="https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w"  target="_blank" rel="noopener"
+    >大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）</a></p>
+<p>第一步：设置 Python 虚拟环境：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Python虚拟环境名：ZhipuAI，版本号：3.10</span>
+</span></span><span class="line"><span class="cl">conda create --name ZhipuAI <span class="nv">python</span><span class="o">=</span>3.10 -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 激活虚拟环境</span>
+</span></span><span class="line"><span class="cl">conda activate ZhipuAI
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第二步：安装 Python SDK 依赖包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install zhipuai -U
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上简单的 2 步，我们即完成了前期环境准备工作了，接下来我们简单验证一下准备工作是否达标：</p>
+<p>【<strong>开放平台 API 验证</strong>】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># GLM-4-Flash-Test.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">zhipuai</span> <span class="kn">import</span> <span class="n">ZhipuAI</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 环境变量中获取API Key内容</span>
+</span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">ZhipuAI</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ZhipuAI-APIKey&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用GLM-4-Flash大模型进行验证</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;glm-4-flash&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;你好，我是老牛同学，请问你是谁？&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 流式输出</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行验证代码，可以看到如果输出：<code>python GLM-4-Flash-Test.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;python GLM-4-Flash-Test.py
+</span></span><span class="line"><span class="cl">你好，老牛同学！我是人工智能助手智谱清言，很高兴为您服务，有什么可以帮助您的吗？
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>原来<strong>智谱清言</strong>就是<strong>GLM-4</strong>的应用端名，又涨了一点姿势~</p>
+<p>最后，我们可以查看 API 接口文档，准备我们的<strong>儿童绘本</strong>应用的研发了：</p>
+<p>【<strong>大模型接口文档</strong>】</p>
+<p><strong>GLM-4-Flash</strong>接口文档：<a class="link" href="https://bigmodel.cn/dev/api#glm-4"  target="_blank" rel="noopener"
+    >https://bigmodel.cn/dev/api#glm-4</a></p>
+<p><strong>CogView-3</strong>接口文档：<a class="link" href="https://bigmodel.cn/dev/api#cogview"  target="_blank" rel="noopener"
+    >https://bigmodel.cn/dev/api#cogview</a></p>
+<h1 id="儿童绘本实战-1绘本构思">“儿童绘本”实战 1：绘本构思</h1>
+<p>“儿童绘本”应用实战的第一步，就是我们给大模型提供一个主题（如：黑神话·悟空），让大模型产出绘本构思：<code>GLM-4-Flash-Idea.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># GLM-4-Flash-Idea.py</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 构造客户端</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_client</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">ZhipuAI</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ZhipuAI-APIKey&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 第一步：使用GLM-4-Flash大模型产出创意</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_idea</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">  <span class="n">response</span> <span class="o">=</span> <span class="n">make_client</span><span class="p">()</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;glm-4-flash&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;你是一位儿童绘本的内容创意专家，你的任务是根据用户提供的主题，提供适合7岁到10岁小学生阅读的、专业的、有见地的绘本内容创意。&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;请以“黑神话·悟空”这款最近热门的游戏为主题，提供儿童绘本创意。要求：绘本分为4个小段，每个小段需要有插图。&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 流式输出</span>
+</span></span><span class="line"><span class="cl">  <span class="n">idea</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="n">idea</span> <span class="o">+=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">content</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">idea</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">idea</span> <span class="o">=</span> <span class="n">make_idea</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>和大模型推理 API 验证的代码相比，就只是 Prompt 提示不一样。有关 Prompt 提示词编写小技巧，可以查看老牛同学之前的文章：<a class="link" href="https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw"  target="_blank" rel="noopener"
+    >高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能</a></p>
+<p>运行以上绘本创意代码的结果如下：<code>python GLM-4-Flash-Idea.py</code></p>
+<p><img src="/p/2024082701/03.jpg"
+	width="1687"
+	height="994"
+	srcset="/p/2024082701/03_hu69b5f6cf5bf47708232636f5dca9e5e2_201574_480x0_resize_q75_box.jpg 480w, /p/2024082701/03_hu69b5f6cf5bf47708232636f5dca9e5e2_201574_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="黑神话·悟空绘本创意"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="407px"
+	
+></p>
+<p>从提供的创意结果来看，<strong>GLM-4-Flash</strong>还是有 2 把刷子，产出的创意非常完整，包括：绘本名称、绘本简介、绘本内容、故事内容和绘本特点。面面俱到，比老牛同学的设想要丰富多了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">绘本名称：《悟空探秘之旅》
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">绘本简介：
+</span></span><span class="line"><span class="cl">这是一本以热门游戏《黑神话·悟空》为背景的儿童绘本，通过四个小故事，带领孩子们进入一个充满神话色彩的西游记世界，体验悟空 的英勇与智慧。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">绘本内容创意：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">第一段：《悟空的起源》
+</span></span><span class="line"><span class="cl">插图：孙悟空石破天惊地从石头中蹦出来，周围是五彩斑斓的花草和神秘的森林。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">故事简介：绘本开始讲述孙悟空的诞生，描述了石猴如何从一块神奇的石头中蹦出来，开始了他的奇幻之旅。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">第二段：《猴王争霸》
+</span></span><span class="line"><span class="cl">插图：孙悟空挥舞金箍棒，与群猴比试，最终成为猴王。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">故事简介：孙悟空在花果山与众猴比试，凭借智慧和力量，成为猴王，得到众猴的尊敬。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">第三段：《取经之路》
+</span></span><span class="line"><span class="cl">插图：孙悟空带领唐僧、猪八戒和沙僧四人西行取经，路上遇到妖魔鬼怪。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">故事简介：孙悟空带着唐僧师徒四人踏上取经之路，他们历经九九八十一难，勇敢地战胜了各种妖魔鬼怪，保护师傅安全。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">第四段：《悟空归来》
+</span></span><span class="line"><span class="cl">插图：孙悟空在取得真经后，回到花果山，与众猴欢聚一堂。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">故事简介：孙悟空取得真经后，回到花果山，与众猴庆祝胜利，展示了他英勇无畏、智慧过人的品质。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">绘本特点：
+</span></span><span class="line"><span class="cl">1. 故事情节紧凑，富有想象力，吸引孩子们阅读。
+</span></span><span class="line"><span class="cl">2. 插图色彩鲜艳，画面生动，有助于培养孩子们的审美观。
+</span></span><span class="line"><span class="cl">3. 故事融入了传统神话元素，传承了中华民族的优秀文化。
+</span></span><span class="line"><span class="cl">4. 通过孙悟空的成长历程，教育孩子们勇敢、智慧、团结的重要性。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="儿童绘本实战-2绘本内容">“儿童绘本”实战 2：绘本内容</h1>
+<p>“儿童绘本”应用实战的第二步，就是根据第一步提供的创意，完善故事内容情节：<code>GLM-4-Flash-Content.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># GLM-4-Flash-Content.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ..... 前面省略</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 第二步：使用GLM-4-Flash大模型生成故事内容</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_content</span><span class="p">(</span><span class="n">idea</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="n">response</span> <span class="o">=</span> <span class="n">make_client</span><span class="p">()</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;glm-4-flash&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;你是一位儿童绘本的故事内容编写专家，你编写的故事幽默有趣，特别适合7岁到10岁的小学生阅读，你的任务是根据用户提供的儿童绘本创意，完成编写的整个故事内容。&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;请根据儿童绘本创意，完成编写整个故事内容。</span><span class="se">\n\n</span><span class="s1">故事内容要求：</span><span class="se">\n</span><span class="s1">故事内容分为4个小段，每个小段500个汉字左右，故事总长度不得超过2000个汉字。</span><span class="se">\n\n</span><span class="s1">儿童绘本创意：</span><span class="se">\n</span><span class="si">{</span><span class="n">idea</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 流式输出</span>
+</span></span><span class="line"><span class="cl">  <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="n">content</span> <span class="o">+=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">content</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">content</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">idea</span> <span class="o">=</span> <span class="n">make_idea</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">content</span> <span class="o">=</span> <span class="n">make_content</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>和第一步的代码类似，我们主要是调整了 Prompt 提示词。Prompt 提示中，创意的内容完全复制第一步的内容，一个字都不需要修改。</p>
+<p>运行以上绘本故事内容代码的结果如下：<code>python GLM-4-Flash-Content.py</code></p>
+<p><img src="/p/2024082701/04.jpg"
+	width="1708"
+	height="976"
+	srcset="/p/2024082701/04_huaff5875ccf98a1ffff70fcd6dad216e9_245232_480x0_resize_q75_box.jpg 480w, /p/2024082701/04_huaff5875ccf98a1ffff70fcd6dad216e9_245232_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="黑神话·悟空绘本故事内容"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="420px"
+	
+></p>
+<p>还别说，故事内容还算有模有样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl"># 《悟空探秘之旅》
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">这是一本以热门游戏《黑神话·悟空》为背景的儿童绘本，通过四个小故事，带领孩子们进入一个充满神话色彩的西游记世界，体验悟空 的英勇与智慧。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 第一段：《悟空的起源》
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">在一个遥远的时代，有一块五彩斑斓的石头，静静地躺在花果山的山顶上。这石头非同小可，它吸收了天地精华，蕴含着无尽的能量。一天，石头突然炸裂开来，从中蹦出一个石猴，他的眼睛里闪烁着好奇的光芒。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">石猴出生后，就与周围的猴子们玩得不亦乐乎。他聪明伶俐，机智过人，很快便成为了猴群中的领袖。有一天，石猴突发奇想，他想要找到自己的起源，于是开始了他的奇幻之旅。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 第二段：《猴王争霸》
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">石猴带着对未知的渴望，来到了一座神秘的山洞。他发现这个山洞里隐藏着许多宝藏，于是便决定在这里建立自己的家园。然而，这座山洞并不容易占据，其他猴子也觊觎着这里的宝藏。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">石猴决定与这些猴子们一较高下，他挥舞着金箍棒，与群猴比试。凭借着过人的智慧和力量，石猴最终战胜了所有对手，成为了猴王。众猴们纷纷向他致敬，花果山也因此成为了猴子们的乐土。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 第三段：《取经之路》
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">时光荏苒，石猴渐渐长大，他渴望着更多的冒险。一日，石猴在山林中遇到了一位云游四方的和尚唐僧。唐僧受佛祖旨意，要前往西天取经。石猴决定跟随唐僧，一同踏上取经之路。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">在这条路上，他们遇到了无数妖魔鬼怪。孙悟空凭借着他的智慧和勇气，带领着唐僧、猪八戒和沙僧四人，战胜了一个又一个的困难。他们历经九九八十一难，终于来到了西天，取得了真经。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 第四段：《悟空归来》
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">孙悟空取得真经后，带着唐僧师徒四人回到了花果山。猴群们为他们举行了盛大的庆祝活动，欢声笑语充斥着整个山林。孙悟空在这次冒险中，不仅收获了真经，更赢得了众猴的尊敬和爱戴。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">孙悟空的成长历程，让所有孩子都为之动容。他英勇无畏、智慧过人的品质，成为了孩子们心中的英雄。而《悟空探秘之旅》这本书，也成为了孩子们传承中华民族优秀文化的瑰宝。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="儿童绘本实战-3绘本插图">“儿童绘本”实战 3：绘本插图</h1>
+<p>绘本插图我们需要用到另外一个大模型：<strong>CogView-3</strong>，它可以根据文本生成图片。可惜的是，它并不免费，它的收费标准如下：</p>
+<p><img src="/p/2024082701/price.jpg"
+	width="1629"
+	height="610"
+	srcset="/p/2024082701/price_hu5976b2967c37c9407854b1807cc77368_93776_480x0_resize_q75_box.jpg 480w, /p/2024082701/price_hu5976b2967c37c9407854b1807cc77368_93776_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="CogView文生图收费标准"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="267"
+		data-flex-basis="640px"
+	
+></p>
+<p>我们本次需要四张插图，因此预计收费<strong>0.4 元</strong>，为了能更好的演示如何构建绘本应用，老牛同学觉得收费是值得的。</p>
+<p>在插图图片生成之后，我们需要保存到本地，因此我们需要安装一下 Python 依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install requests -U
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面，我们通过调用<strong>CogView-3</strong>文生图大模型，生成故事每小段的插图：<code>GLM-4-Flash-Illustration.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># GLM-4-Flash-Illustration.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">zhipuai</span> <span class="kn">import</span> <span class="n">ZhipuAI</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ..... 前面省略</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 存储图片到本地</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">download_image</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">save_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;开始下载图片: </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 发送 HTTP 请求</span>
+</span></span><span class="line"><span class="cl">  <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 检查请求是否成功</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 以二进制模式打开文件</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># 将图片内容写入文件</span>
+</span></span><span class="line"><span class="cl">      <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;图片下载成功: </span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;图片下载失败.&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 生成图片</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_illustration</span><span class="p">(</span><span class="n">idea</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="n">item_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;第一段&#39;</span><span class="p">,</span> <span class="s1">&#39;第二段&#39;</span><span class="p">,</span> <span class="s1">&#39;第三段&#39;</span><span class="p">,</span> <span class="s1">&#39;第四段&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">item_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">make_client</span><span class="p">()</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">generations</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model</span><span class="o">=</span><span class="s1">&#39;cogview-3&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">prompt</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;你是一位儿童绘本插图绘画专家，你画的插图紧贴绘本的创意，插图色彩鲜艳，画面生动，有助于培养7岁到10岁的小学生的审美观。</span><span class="se">\n\n</span><span class="s1">下面是一个儿童绘本的创意，共有4个小段，请为“</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s1">”画一张插图：</span><span class="se">\n\n</span><span class="si">{</span><span class="n">idea</span><span class="si">}</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">image_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">url</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s1">插图地址：</span><span class="si">{</span><span class="n">image_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 图片目录</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;assets&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">image_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 图片路径</span>
+</span></span><span class="line"><span class="cl">    <span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">image_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 下载存储图片</span>
+</span></span><span class="line"><span class="cl">    <span class="n">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">idea</span> <span class="o">=</span> <span class="n">make_idea</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">make_illustration</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2024082701/05.jpg"
+	width="1647"
+	height="396"
+	srcset="/p/2024082701/05_hu194f2b07ca2952ad5c136099806c6d21_155984_480x0_resize_q75_box.jpg 480w, /p/2024082701/05_hu194f2b07ca2952ad5c136099806c6d21_155984_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="黑神话·悟空绘本故事插图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="415"
+		data-flex-basis="998px"
+	
+></p>
+<p>最终，我们可以看到本地磁盘，有 4 张绘本插图：</p>
+<p><img src="/p/2024082701/06.jpg"
+	width="1147"
+	height="301"
+	srcset="/p/2024082701/06_hu64b421177742f2fead6c9406541d5d24_61005_480x0_resize_q75_box.jpg 480w, /p/2024082701/06_hu64b421177742f2fead6c9406541d5d24_61005_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="黑神话·悟空绘本故事插图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="381"
+		data-flex-basis="914px"
+	
+></p>
+<h1 id="儿童绘本实战-4绘本存储">“儿童绘本”实战 4：绘本存储</h1>
+<p>最后，我们只要把绘本故事内容和插图组织起来，就是一本完整的绘本了。老牛同学使用 Markdown 格式，然后用网上 Markdown 渲染，可以看到最终绘本内容：</p>
+<p>我们把以上代码实例编织起来，就是一个完整的基于大模型的儿童绘本应用程序了，整体结构如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># GLM-4-Flash.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">zhipuai</span> <span class="kn">import</span> <span class="n">ZhipuAI</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 构造客户端</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_client</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># ...略</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 第一步：使用GLM-4-Flash大模型产出创意</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_idea</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># ...略</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 第二步：使用GLM-4-Flash大模型生成故事内容</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_content</span><span class="p">(</span><span class="n">idea</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># ...略</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 第三步：使用CogView-3大模型生成故事插图</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 存储图片到本地</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">download_image</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">save_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># ...略</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 生成图片</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_illustration</span><span class="p">(</span><span class="n">idea</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># ...略</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 1. 绘本构思</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------- STRT：绘本构思 -----------------------------&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">idea</span> <span class="o">=</span> <span class="n">make_idea</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------- 绘本构思：END ------------------------------&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 2. 绘本内容</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------- STRT：绘本内容 -----------------------------&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">content</span> <span class="o">=</span> <span class="n">make_content</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------- 绘本内容：END ------------------------------&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 3. 绘本插图</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------- STRT：绘本插图 -----------------------------&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">make_illustration</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------- 绘本插图：END ------------------------------&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们的儿童小绘本应用到此总体就完成了，老牛同学主要是介绍如何使用 AI 完成我们的构思，因此整体有点粗糙，请大家见谅，我们接下来可以进一步优化：</p>
+<ol>
+<li>能否自动生成 Markdown 文件，并且把 Markdown 自动转换为其他格式文件（如：PDF 文件）</li>
+<li>能否对接我们的智能家居设备，自动读我们生成的故事（如：天猫精灵、小爱同学等）</li>
+<li>更进一步，智能家居读故事的音色，能否模拟我们自己，让孩子们在听故事时，就感觉是自己的爸爸妈妈在读一样？</li>
+<li>在进一步，能否设计一款 APP，支持只需一个主题，自动完成绘本创作、并且能播放？</li>
+</ol>
+<p>以上几点，老牛同学后续有机会，在发文介绍，大家如果感兴趣，也可以与老牛同学私信，我们可以探讨完成！</p>
+<h1 id="最后智谱-ai-为什么要第一个吃免费螃蟹">最后：智谱 AI 为什么要第一个吃“免费”螃蟹？</h1>
+<p>据老牛同学所知，<strong>GLM-4-Flash</strong>是第一个免费的大模型 API，从前面我们模型部署经验来看，大模型部署和推理对资源的要求较高，那么智谱 AI 为什么要这么做呢？老牛同学觉得有以下几点：</p>
+<ol>
+<li>智谱 AI 技术进步，让<strong>GLM-4-Flash</strong>大模型推理成本降到了一个足够低的水平，以至于收费也赚不到什么钱，还不如干脆大方一点全免费，在国内大模型发展的初期，抢占先发优势，给自己赚个好口碑的同时，吸引更多的大模型使用者、爱好者、研究者。</li>
+<li>智谱 AI 不忘初心，坚持自己的愿景，让 AI 普惠所有人。前期的开源、降门槛粒度还不够，免费有可能是终极手段。</li>
+<li>智谱 AI 自信于自己技术，通过自己的免费举措，逐步带动其他大模型厂商降低大模型的门槛，争做 AI 大模型的弄潮儿。</li>
+</ol>
+<p>本文实例源代码：<a class="link" href="https://gitee.com/obullxl/SunningTX/tree/master/PythonTX/GLM-4-Flash"  target="_blank" rel="noopener"
+    >https://gitee.com/obullxl/SunningTX/tree/master/PythonTX/GLM-4-Flash</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/x2RKTvFeKgRvi982X5cymA"  target="_blank" rel="noopener"
+    >MiniCPM-V 2.6 面壁“小钢炮”，多图、视频理解多模态模型，部署和推理实战教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/glm-4/">GLM-4</a>
+        
+            <a href="/tags/cogview/">CogView</a>
+        
+            <a href="/tags/ai%E5%BA%94%E7%94%A8/">AI应用</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024083101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024083101/00.d423a8e1367fa094a322bd98443edbbf_huf868185b9ea8f4868876dfd4ab61d1fc_93264_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post ChatTTS 长音频合成和本地部署2种方式，让你的“儿童绘本”发声的实战教程（文末有福利）"
+                        data-key="2024083101" 
+                        data-hash="md5-1COo4TZ/oJSjIr2YRD7bvw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ChatTTS 长音频合成和本地部署2种方式，让你的“儿童绘本”发声的实战教程（文末有福利）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024082501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024082501/assets/%E7%AC%AC%E4%B8%80%E6%AE%B5.27659e0bd3b519c6ad02d2fa55968ff7_hu1266b15c2c3b0f5178c4b89f32b11593_116518_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 《悟空探秘之旅》"
+                        data-key="2024082501" 
+                        data-hash="md5-J2WeC9O1GcatAtL6VZaP9w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">《悟空探秘之旅》</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030301/00.ea08cfef206e5f94acfff72f27329886_hu42cdc8535b0a762ff23c72abe3e7986b_81971_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！"
+                        data-key="2025030301" 
+                        data-hash="md5-6gjP7yBuX5Ss//cvJzKYhg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

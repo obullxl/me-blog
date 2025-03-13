@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Continue on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/continue/</link>
+        <description>Recent content in Continue on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sun, 12 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/continue/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</title>
+        <link>https://ntopic.cn/p/2025011201/</link>
+        <pubDate>Sun, 12 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2025011201/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2025011201/00.jpg" alt="Featured image of post Cline 免费插件 &#43; Qwen2.5 大模型，零经验也能开发“对联王”微信小程序" /&gt;&lt;p&gt;小朋友即将放寒假了，意味着春节就不远了。在我们湖北老家，当我还是学生的时候，每年临近春节，写春联、贴春联和对春联是读书人一件乐事。&lt;/p&gt;
+&lt;p&gt;如今，老牛同学早已不是读书人，但还是怀念那时快乐时光，因此想在春节前撸一个“对联王”微信小程序，专门用于创作春联和对春联。&lt;/p&gt;
+&lt;p&gt;上次零经验的我们，借助 Cursor 写了一个“节拍器”小程序，本次我们来用免费的 Cline 插件，辅助完成“对联王”微信小程序编程。下面是已发布的小程序，欢迎大家来体验：&lt;/p&gt;
+&lt;p&gt;【对联王微信小程序】&lt;/p&gt;
+&lt;p&gt;大家也可以在微信中搜索“老牛同学”找到“对联王”小程序：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025011201/01.jpg&#34;
+	width=&#34;1161&#34;
+	height=&#34;781&#34;
+	srcset=&#34;https://ntopic.cn/p/2025011201/01_hu5b4a41f27c7fe518c1493f019fcc5463_77943_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025011201/01_hu5b4a41f27c7fe518c1493f019fcc5463_77943_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;老牛同学·小程序&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;148&#34;
+		data-flex-basis=&#34;356px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;同时，本次借助 Cline 插件完成的“对联王”小程序的演示录屏如下：&lt;/p&gt;
+&lt;p&gt;【对联王演示视频，请到公众号或视频号查看】&lt;/p&gt;
+&lt;p&gt;接下来，老牛同学就把 Cline 插件的使用主要过程，与大家分享。&lt;/p&gt;
+&lt;h1 id=&#34;1-cline-与-cursor-区别&#34;&gt;1. Cline 与 Cursor 区别&lt;/h1&gt;
+&lt;p&gt;老牛同学根据自己编写 2 个小程序页面的经验，先说说两者的区别、使用感受和建议：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工具形态：Cline 是一个 VS Code 插件，在 VS Code 直接安装或卸载，无需注册即可使用，灵活方便；而 Cursor 则是一个专门的 IDE，需要单独下载并安装，还需要用户注册和登陆方可使用，稍微笨重一些。&lt;/li&gt;
+&lt;li&gt;费用：Cline 是开源免费的插件（&lt;a class=&#34;link&#34; href=&#34;https://github.com/cline/cline&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cline/cline&lt;/a&gt;）；而 Cursor 则是闭源的，且是收费的，它为新注册用户提供 2 周 2000 次调用的免费试用期。&lt;/li&gt;
+&lt;li&gt;支持的大模型：Cline 支持多种大模型，只需要兼容 OpenAI 接口规范且支持 Stream 流式输出即可，比如 Qwen 大模型；而 Cursor 内置了几种大模型，对兼容模型的支持并不很友好，比如总是有一些警告等。&lt;/li&gt;
+&lt;li&gt;功能和体验：两者在功能上感觉差不太多，Cline 在请求上下文、文件 Diff 比较界面稍逊 Cursor 一筹，但其实对编程影响并不大，总体来说 Cursor 体验上更优一点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;总体体感&lt;/strong&gt;：这 2 个工具的功能都差不多，那么它对我们的实际帮助，其实还是依赖于底层大模型的能力，好马还得配好鞍。老牛同学之前常用 Continue 插件，在体验上，感觉 Cline 有点像增强版的 Continue 插件，只是它额外提供了文件生成、差异比对、系统调用的能力。在“对联王”小程序的整个研发过程中，老牛同学其实同时使用了这 2 个插件。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cline 主要用于页面框架搭建、页面主要元素的布局、小程序主要逻辑代码等生成。&lt;/li&gt;
+&lt;li&gt;Continue 则用于细节部分调优，主要是对 Cline 生成的代码进行微调，比如：右下角“收藏夹”悬浮按钮的上下移动细节逻辑、悬浮按钮最后移动位置存储等逻辑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用建议&lt;/strong&gt;：如果大家预算充裕，且使用比较频繁，建议直接上付费的 Cursor IDE（20 美元每月和 40 美元每人每月两种收费价格）；如果使用免费的 Cline，建议搭配 Continue 一起使用。&lt;/p&gt;
+&lt;p&gt;关于 Continue 的使用教程，可以参考老牛同学之前文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Code Copilot 和使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;2-cline-插件配置&#34;&gt;2. Cline 插件配置&lt;/h1&gt;
+&lt;h2 id=&#34;安装插件&#34;&gt;安装插件&lt;/h2&gt;
+&lt;p&gt;安装好 VS Code 软件之后，Cline 插件安装就比较简单了，搜索“Cline”安装即可：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025011201/21.jpg&#34;
+	width=&#34;1720&#34;
+	height=&#34;766&#34;
+	srcset=&#34;https://ntopic.cn/p/2025011201/21_hu81a56b380717190502fcb94d67f822b7_145225_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025011201/21_hu81a56b380717190502fcb94d67f822b7_145225_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;安装Cline插件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;224&#34;
+		data-flex-basis=&#34;538px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;安装成功之后，我们可以看到再左侧有个“机器人”的小图标。&lt;/p&gt;
+&lt;h2 id=&#34;配置插件&#34;&gt;配置插件&lt;/h2&gt;
+&lt;p&gt;首次点击安装好的 Cline 插件图标，或者后续点击 Cline 插件的齿轮状的配置按钮，均可进入配置页面：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025011201/22.jpg&#34;
+	width=&#34;658&#34;
+	height=&#34;1027&#34;
+	srcset=&#34;https://ntopic.cn/p/2025011201/22_huee4bc1fa93267e39283fe32600294df0_88352_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025011201/22_huee4bc1fa93267e39283fe32600294df0_88352_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;配置Cline插件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;64&#34;
+		data-flex-basis=&#34;153px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;几个配置项比较简单，其中&lt;code&gt;API Provider&lt;/code&gt;如果选择的是&lt;strong&gt;OpenAI Compatible&lt;/strong&gt;，则需要保证接口符合 OpenAI 规范且支持 Stream 流式输出。&lt;/p&gt;
+&lt;h2 id=&#34;其他配置&#34;&gt;其他配置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;微信开发者工具：和上次“节拍器”小程序一样，我们需要下载&lt;strong&gt;微信开发者工具&lt;/strong&gt;，用于实时预览和调试小程序，确保代码可以在微信环境中正常运行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方下载链接&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Continue 插件：关于插件的配置和详细使用方法，可以参考老牛同学之前文章。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-对联王实战&#34;&gt;3. “对联王”实战&lt;/h1&gt;
+&lt;p&gt;准备就绪，现在，让我们一起探索如何利用 AI 的力量来加速开发进程，让基本零经验的新书也能开发一个小程序等应用。&lt;/p&gt;
+&lt;p&gt;打开 Chat 面板，输入精心设计的 Prompt 提示词。以下是老牛同学首次尝试时所用的提示内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;在春节活动中，创作对联或者对对联是一项有趣的活动：请帮忙研发一个名为“对联王”的微信小程序页面，文件名为&amp;#34;couplet&amp;#34;，目录为“pages/couplet”，实现以下功能：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. 用户输入上联，或者用户输入创意，回车或点击发送按钮，生成下联或者创作一副对联
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. 回车后的函数名为`sendMessage`，这个函数逻辑由用户实现
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. 整个页面的布局与微信App的聊天界面一致，布局如下：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; - 用户输入的消息，头像在右边
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; - API返回的消息，头像在左边
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; - 每一条消息的下面，均展示收藏、复制和删除操作按钮，同时展示消息的时间，时间格式为`小时:分钟:秒钟`，如`12:07:05`。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2025011201/31.jpg&#34;
+	width=&#34;2248&#34;
+	height=&#34;1611&#34;
+	srcset=&#34;https://ntopic.cn/p/2025011201/31_hu2966dc89f05f49264ef9d15235fe5b11_462693_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2025011201/31_hu2966dc89f05f49264ef9d15235fe5b11_462693_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Prompt提示词&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;提交后，等待 Cline 生成代码文件（一般为 3 个文件），对于每个文件代码差异，我们可以选择“&lt;strong&gt;Save&lt;/strong&gt;”接受或者“&lt;strong&gt;Reject&lt;/strong&gt;”操作。&lt;/p&gt;
+&lt;p&gt;之后，我们切换回&lt;strong&gt;微信开发者工具&lt;/strong&gt;界面，默认会自动刷新，或者按&lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;r&lt;/code&gt;强制刷新页面，即可查看最新的页面效果。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果页面布局和我们期望差异较大，那么我们继续使用 Cline 插件生成代码&lt;/li&gt;
+&lt;li&gt;如果页面布局和我们期望差不多，需要进行局部微调，就可以使用 Continue 插件进行部分调整&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不断迭代上述过程，直到小程序完全符合预期为止。&lt;/p&gt;
+&lt;p&gt;由于提示老牛同学提示词太多了，后面调整的提示词没有保存，就不一一展示了，期望大家均能快速研发出满意的小程序。&lt;/p&gt;
+&lt;h1 id=&#34;4-结语&#34;&gt;4. 结语&lt;/h1&gt;
+&lt;p&gt;最后，当我们使用外部 API 服务时，对于涉及敏感数据或有较高保密需求的项目，请务必注意保护用户隐私和数据安全。&lt;/p&gt;
+&lt;p&gt;通过上述步骤，即使是没有专业背景的人也能轻松上手，借助现代 AI 工具的力量，快速且高效地开发出属于自己的微信小程序。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Transformers 框架序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.包和对象加载中的设计巧思与实用技巧&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.AutoModel 初始化及 Qwen2.5 模型加载全流程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.Qwen2.5 大模型的 AutoTokenizer 技术细节&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.嵌入（Embedding）机制和 Word2Vec 实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.位置嵌入（Positional Embedding）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Pipeline NLP 任务序列：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;零·概述&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;01.文本转音频&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;02.文本分类&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;03.词元分类和命名实体识别&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;04.问答&lt;/a&gt; 丨 &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;05.表格问答&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;06.填充蒙版&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程</title>
+        <link>https://ntopic.cn/p/2024062901/</link>
+        <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024062901/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024062901/02.png" alt="Featured image of post 使用Llama3/Qwen2等开源大模型，部署团队私有化Code Copilot和使用教程" /&gt;&lt;p&gt;目前市面上有不少基于大模型的 Code Copilot 产品，部分产品对于个人开发者来说可免费使用，比如阿里的&lt;strong&gt;通义灵码&lt;/strong&gt;、百度的&lt;strong&gt;文心快码&lt;/strong&gt;等。这些免费的产品均通过 API 的方式提供服务，因此调用时均必须&lt;strong&gt;联网&lt;/strong&gt;、同时需要把&lt;strong&gt;代码&lt;/strong&gt;、&lt;strong&gt;提示词&lt;/strong&gt;等内容作为 API 的入参在网络中传输和 API 服务器中进行处理，这里就涉及到一个比较重要的问题：&lt;strong&gt;隐私安全&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/01.png&#34;
+	width=&#34;1330&#34;
+	height=&#34;505&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/01_hu8dd8e27267ebf087ef85497c46878453_47149_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/01_hu8dd8e27267ebf087ef85497c46878453_47149_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code Copilot的公网API调用&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;263&#34;
+		data-flex-basis=&#34;632px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;针对小团队私有保密项目、创新团队孵化新产品，隐私安全问题就显得格外重要。因此，团队内部部署私有的&lt;strong&gt;Code Copilot&lt;/strong&gt;方案就应运而出了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/02.png&#34;
+	width=&#34;1206&#34;
+	height=&#34;525&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/02_hu1fa0aae459ee14b2d05b63839e018423_44026_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/02_hu1fa0aae459ee14b2d05b63839e018423_44026_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code Copilot的内部API服务&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;229&#34;
+		data-flex-basis=&#34;551px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;今天老牛同学和大家一起来使用&lt;strong&gt;Qwen2-7&lt;/strong&gt;构建个人或者团队专属的私有化 &lt;strong&gt;Code Copilot&lt;/strong&gt;，除了&lt;strong&gt;代码生成&lt;/strong&gt;之外，还可以是支持 &lt;strong&gt;AI 问答&lt;/strong&gt;、&lt;strong&gt;代码解释&lt;/strong&gt;、&lt;strong&gt;语言转换&lt;/strong&gt;、生成单元&lt;strong&gt;测试用例&lt;/strong&gt;等功能。不但可以提高我们的研发效率，还可以保护我们的代码隐私。&lt;/p&gt;
+&lt;h2 id=&#34;第一步部署私有的大模型qwen2-7b&#34;&gt;第一步：部署私有的大模型（Qwen2-7B）&lt;/h2&gt;
+&lt;p&gt;前面老牛同学介绍了本地部署大模型和使用教程，包括&lt;strong&gt;Llama3-8B&lt;/strong&gt;、&lt;strong&gt;Qwen2-7B&lt;/strong&gt;、&lt;strong&gt;GLM4-9B&lt;/strong&gt;、和&lt;strong&gt;Phi3&lt;/strong&gt;等。大家可以看一下之前的部署教程，老牛同学今天使用&lt;strong&gt;Qwen2-7B&lt;/strong&gt;作为我们 Copilot 底层大模型，对于本文&lt;strong&gt;Code Copilot&lt;/strong&gt;的部署和使用，其他大模型都是一样的，看大家的喜好，没有特殊要求。&lt;/p&gt;
+&lt;p&gt;老牛同学这里简单列一下部署教程：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;环境安装：&lt;/strong&gt; 主要是&lt;strong&gt;Miniconda&lt;/strong&gt;包管理安装，参见教程，注意只需要安装&lt;strong&gt;Miniconda&lt;/strong&gt;和&lt;strong&gt;Python&lt;/strong&gt;即可，其他非必须：大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Code Copilot&lt;/strong&gt;底层大模型的部署方式，老牛同学验证主要以下 2 种，任选一种即可：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方式一&lt;/strong&gt; 基于 Ollama 部署：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载并安装&lt;strong&gt;Ollama&lt;/strong&gt;本地模型管理软件（Windows/Mac/Linux 均支持）：&lt;a class=&#34;link&#34; href=&#34;https://ollama.com/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ollama.com/download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;通过 Ollama 下载并启动大模型：&lt;code&gt;ollama run qwen2:7b&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通过以上 2 步，即完成了大模型的部署。特别注意的是：&lt;strong&gt;GLM&lt;/strong&gt;系列大模型还不支持 Ollama 管理！因此如果你希望用 GLM 系列（如：&lt;strong&gt;GLM4-9B&lt;/strong&gt;）大模型，那么请看方式二。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方式二&lt;/strong&gt; 通过 Python 部署：通用方法，所有模型都支持，以下是老牛同学验证过的部署教程&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Phi3&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/bNxHM3B7HOLNvJtjwvt8iw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Phi-3 模型手机部署教程（微软发布的可与 GPT-3.5 媲美的小模型）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Qwen2-7B&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API 调用和 WebUI 对话机器人&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Llama3-8B&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GLM4-9B&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;第二步ide-安装和配置-continue-插件&#34;&gt;第二步：IDE 安装和配置 Continue 插件&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Code Copilot Continue&lt;/strong&gt;是目前最受欢迎的插件之一，它插件的形式使用，目前支持&lt;strong&gt;VS Code&lt;/strong&gt;和&lt;strong&gt;JetBrains 全家桶&lt;/strong&gt;这 2 个主流 IDE 的扩展，可以在对应的插件市场中直接搜索&lt;strong&gt;Continue&lt;/strong&gt;下载安装。&lt;strong&gt;Continue&lt;/strong&gt;插件的一个最大优势在于它可以指定连接本地或者局域网内的大模型，所以对于信息安全高的项目，我们完全可以在本地或者局域网内部署大模型，然后用&lt;strong&gt;Continue&lt;/strong&gt;插件连接使用，在提高开发生产效率同时保护了研发代码的隐私。目前&lt;strong&gt;Continue&lt;/strong&gt;插件的社区活跃，GitHub 仓库已达&lt;strong&gt;12K&lt;/strong&gt;星，插件版本更新频繁，越来越成熟。&lt;/p&gt;
+&lt;p&gt;因为老牛同学日常使用&lt;strong&gt;VS Code&lt;/strong&gt;较多，因此下面的安装和配置，基于&lt;strong&gt;VS Code&lt;/strong&gt;完成，&lt;strong&gt;JetBrains&lt;/strong&gt;（如：PyCharm 等）的方式类同。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装 Continue 插件：&lt;/strong&gt; 插件管理器中，搜索&lt;strong&gt;Continue&lt;/strong&gt;，点击安装，安装成功之后重启 IDE 即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/03.png&#34;
+	width=&#34;1150&#34;
+	height=&#34;229&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/03_hu8cc20be909358df9055e7c51ec9bc751_47783_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/03_hu8cc20be909358df9055e7c51ec9bc751_47783_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;安装Continue插件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;502&#34;
+		data-flex-basis=&#34;1205px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Continue 插件状态：&lt;/strong&gt; 安装成功并重启之后，可以看到&lt;strong&gt;VS Code&lt;/strong&gt;的左侧多了一个&lt;strong&gt;Continue&lt;/strong&gt;按钮。同时，右下角也多了一个&lt;strong&gt;Continue&lt;/strong&gt;状态图标：&lt;strong&gt;√ Continue&lt;/strong&gt;则代表&lt;strong&gt;Continue&lt;/strong&gt;在 IDE 中生效了，&lt;strong&gt;🚫Continue&lt;/strong&gt;则代表&lt;strong&gt;Continue&lt;/strong&gt;在 IDE 未启用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/04.png&#34;
+	width=&#34;1477&#34;
+	height=&#34;928&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/04_huc87a0c471c6d34f1cf27f2e24755b5ff_191124_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/04_huc87a0c471c6d34f1cf27f2e24755b5ff_191124_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Continue插件状态&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;381px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;配置 Continue 插件：&lt;/strong&gt; 点击左下角启用&lt;strong&gt;Continue&lt;/strong&gt;插件，然后点击左侧的&lt;strong&gt;Continue&lt;/strong&gt;按钮，可以看到一个对话界面，点击左下角&lt;strong&gt;齿轮&lt;/strong&gt;形状的&lt;strong&gt;配置&lt;/strong&gt;图标，则打开了一个 JSON 格式的配置文件，在这里可以配置&lt;strong&gt;Continue&lt;/strong&gt;底层使用的大模型信息：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/05.png&#34;
+	width=&#34;1477&#34;
+	height=&#34;933&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/05_hu6f91a15c2ce200f1e8bbb3ef90337f69_131417_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/05_hu6f91a15c2ce200f1e8bbb3ef90337f69_131417_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Continue插件配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;379px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;models&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Qwen2:7B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;provider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ollama&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;qwen2:7b&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Llama3-8B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;provider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;openai&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Local-Model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;apiBase&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:8000/v1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;apiKey&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;EMPTY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;completionOptions&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;#34;stop&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;|eot_id|&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;customCommands&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;prompt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;{{{ input }}}\n\nWrite a comprehensive set of unit tests for the selected code. It should setup, run tests that check for correctness including important edge cases, and teardown. Ensure that the tests are complete and sophisticated. Give the tests just as chat output, don&amp;#39;t edit any file.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Write unit tests for highlighted code&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// &amp;#34;tabAutocompleteModel&amp;#34;: {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//   &amp;#34;title&amp;#34;: &amp;#34;Qwen2:7B&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//   &amp;#34;provider&amp;#34;: &amp;#34;ollama&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//   &amp;#34;model&amp;#34;: &amp;#34;qwen2:7b&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// },
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;tabAutocompleteModel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Llama3-8B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Local-Model&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;apiBase&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:8000/v1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;provider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;openai&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;apiKey&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;EMPTY&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;allowAnonymousTelemetry&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;embeddingsProvider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;provider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;transformers.js&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Continue&lt;/strong&gt;插件的配置信息主要分为 3 块：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;models&lt;/strong&gt; 代表所有的模型列表：上面样例配置文件，老牛同学分别配置了基于&lt;strong&gt;Ollama&lt;/strong&gt;部署的&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型和基于&lt;strong&gt;OpenAI&lt;/strong&gt;客户端部署的&lt;strong&gt;Llama3-7B&lt;/strong&gt;大模型（也就是涵盖了上面大模型的 2 种不同部署方式的不同配置方式）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;customCommands&lt;/strong&gt; 自定义给大模型的提示词格式，&lt;strong&gt;input&lt;/strong&gt;代表输入内容（代码或者文本等），可以按照实际需求进行调整&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tabAutocompleteModel&lt;/strong&gt; 代码编写过程中，当按下代码生成快捷键时，&lt;strong&gt;Continue&lt;/strong&gt;生成代码的大模型，从&lt;strong&gt;models&lt;/strong&gt;列表里面指定一个即可，当然也可以设置一个其他的大模型（&lt;strong&gt;注意：&lt;/strong&gt; 只能选择一个模型，上面样例配置注释掉了一个，在实际使用时需要删除掉，因为 JSON 不支持注释！）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;第三步使用-code-copilot-continue-插件&#34;&gt;第三步：使用 Code Copilot Continue 插件&lt;/h2&gt;
+&lt;p&gt;首先，启动大模型（如：&lt;strong&gt;Qwen2-7B&lt;/strong&gt;）；其次，点击 IDE 左下角图标，以启用&lt;strong&gt;Continue&lt;/strong&gt;插件；然后，选择一个对话大模型（默认选中第 1 个大模型）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/06.png&#34;
+	width=&#34;1477&#34;
+	height=&#34;933&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/06_hu32bbbaf1d8b6c886e87e2f972712a733_110476_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/06_hu32bbbaf1d8b6c886e87e2f972712a733_110476_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;启动Continue插件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;379px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;使用方式一：&lt;/strong&gt; 我们可以选择不同的大模型进行对话，相当于&lt;strong&gt;Continue&lt;/strong&gt;插件提供了一个可视化对话客户端&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;使用方式二：&lt;/strong&gt; 代码生成，也是本文的重点，下面老牛同学以&lt;strong&gt;快速排序算法&lt;/strong&gt;为例，来如何利用&lt;strong&gt;Continue&lt;/strong&gt;完成代码编写：&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;场景一：AI 对话代码同步&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用大模型对话能力，写出快速排序算法代码，Prompt 提示词：&lt;strong&gt;请提供一下功能代码：Python 实现快速排序算法函数&lt;/strong&gt;，大模型很好的实现了算法逻辑，并且给了很多的说明和解释&lt;/li&gt;
+&lt;li&gt;选中快速排序算法函数的代码，然后按下&lt;code&gt;CTRL+Shift+L&lt;/code&gt;快捷键，或者点击代码框右上角的&lt;strong&gt;Apply to current file&lt;/strong&gt;按钮，Python 自动同步到了编辑器中了：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/07.png&#34;
+	width=&#34;2124&#34;
+	height=&#34;1510&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/07_hufc4e9c4011f804afba2d1ba127ac905a_306886_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/07_hufc4e9c4011f804afba2d1ba127ac905a_306886_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI对话代码同步&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;337px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;场景二：代码自动补全&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在编辑器中，只需要输入注释内容（不要按回车键）：&lt;code&gt;# Python实现快速排序算法函数&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;然后按下&lt;code&gt;CTRL+Shift+L&lt;/code&gt;快捷键，然后在按下&lt;strong&gt;回车键&lt;/strong&gt;，可以看到代码已经生成，可以按&lt;code&gt;Tab键&lt;/code&gt;使用代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/08.png&#34;
+	width=&#34;1228&#34;
+	height=&#34;414&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/08_hu70348972b6750d9e206a140f2874073a_45269_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/08_hu70348972b6750d9e206a140f2874073a_45269_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;代码自动补全&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;296&#34;
+		data-flex-basis=&#34;711px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;场景三：增加单元测试代码&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在编辑器中，选中一段代码函数，然后按下&lt;code&gt;CTRL+I&lt;/code&gt;快捷键&lt;/li&gt;
+&lt;li&gt;然后，在弹出的&lt;strong&gt;Ctrl+I&lt;/strong&gt;指令框中输入：&lt;code&gt;增加代码测试代码&lt;/code&gt;，然后按下&lt;strong&gt;回车键&lt;/strong&gt;，可以看到生成了测试用例代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/09.png&#34;
+	width=&#34;2107&#34;
+	height=&#34;456&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/09_hu93aa817444527a6f197704379570d9db_106042_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/09_hu93aa817444527a6f197704379570d9db_106042_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;输入选中代码指令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;462&#34;
+		data-flex-basis=&#34;1108px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/10.png&#34;
+	width=&#34;1222&#34;
+	height=&#34;1209&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/10_huf962071a436f95d62b7df4759f420cea_160720_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/10_huf962071a436f95d62b7df4759f420cea_160720_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;增加单元测试用例代码&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;101&#34;
+		data-flex-basis=&#34;242px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;场景四：代码自动填充对话框&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在编辑器中，选中一段代码，然后按下&lt;code&gt;Ctrl+L&lt;/code&gt;快捷键，代码&lt;strong&gt;自动填充&lt;/strong&gt;到了左侧的对话框中&lt;/li&gt;
+&lt;li&gt;可以在对话框中继续输入指令，如：&lt;code&gt;请解释一下这段代码&lt;/code&gt;，然后按&lt;strong&gt;回车键&lt;/strong&gt;提交大模型：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062901/11.png&#34;
+	width=&#34;2101&#34;
+	height=&#34;1404&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062901/11_huffed8460599e222dc21ace10c23a4f2e_353205_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024062901/11_huffed8460599e222dc21ace10c23a4f2e_353205_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;代码填充对话框和解释&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;其他场景&lt;/strong&gt;】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;增加注释&lt;/li&gt;
+&lt;li&gt;代码异常堆栈分析&lt;/li&gt;
+&lt;li&gt;…… 其他请大家补充&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;最后&#34;&gt;最后：&lt;/h2&gt;
+&lt;p&gt;使用开源大模型作为团队的 Code Copilot 工具，可以提高团队的开发效率，同时也可以保护团队的代码隐私。虽然目前开源的 LLM 相比闭源商用的 LLM 还有一些差距，但是随着开源 LLM 的不断发展，相信两者的差距以后会越来越小。以上就是今天介绍的内容，希望对大家有所帮助。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习交流进步 👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Phi-3 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/bNxHM3B7HOLNvJtjwvt8iw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Phi-3 模型手机部署教程（微软发布的可与 GPT-3.5 媲美的小模型）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Qwen2-7B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API 调用和 WebUI 对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Llama-3-8B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Llama 3 搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLM-4-9B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ChatTTS 文本转语音模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stable Diffusion 3 文生图模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Sax4z2k8Dvn82h15jf51Hw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stable Diffusion 3 文生图“开源英雄”大模型本地部署和使用教程，轻松实现 AI 绘图自由&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;大模型应用案例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助 AI 大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Python 小游戏&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI 已来，我与 AI 一起用 Python 编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python 游戏编程：一步步用 Python 打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

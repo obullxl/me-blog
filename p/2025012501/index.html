@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='新春开发 Cocos 3D 微信小游戏计划的第3天，包括总体设计方案，包括关卡模式、时间限制、复活机制等。接着详细展示基础框架研发，如开始场景和游戏场景（关卡一）的开发，包括创建场景、画布、立方体、材质，以及按钮的功能实现和场景切换等……'>
+<title>新春“码”启 | Cocos 3D 开发微信小游戏（第3天）：场景搭建与游戏链路基础开发</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2025012501/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='新春“码”启 | Cocos 3D 开发微信小游戏（第3天）：场景搭建与游戏链路基础开发'>
+<meta property='og:description' content='新春开发 Cocos 3D 微信小游戏计划的第3天，包括总体设计方案，包括关卡模式、时间限制、复活机制等。接着详细展示基础框架研发，如开始场景和游戏场景（关卡一）的开发，包括创建场景、画布、立方体、材质，以及按钮的功能实现和场景切换等……'>
+<meta property='og:url' content='https://ntopic.cn/p/2025012501/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Cocos' /><meta property='article:tag' content='小游戏' /><meta property='article:published_time' content='2025-01-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-01-28T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2025012501/00.jpg' />
+<meta name="twitter:title" content="新春“码”启 | Cocos 3D 开发微信小游戏（第3天）：场景搭建与游戏链路基础开发">
+<meta name="twitter:description" content="新春开发 Cocos 3D 微信小游戏计划的第3天，包括总体设计方案，包括关卡模式、时间限制、复活机制等。接着详细展示基础框架研发，如开始场景和游戏场景（关卡一）的开发，包括创建场景、画布、立方体、材质，以及按钮的功能实现和场景切换等……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2025012501/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#场景一开始场景">场景一：开始场景</a></li>
+    <li><a href="#场景二游戏场景关卡一">场景二：游戏场景（关卡一）</a></li>
+    <li><a href="#其他场景和问题">其他场景和问题</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2025012501/">
+                <img src="/p/2025012501/00_huaacfb4a4b3954e1274812d81e3c089e7_94172_800x0_resize_q75_box.jpg"
+                        srcset="/p/2025012501/00_huaacfb4a4b3954e1274812d81e3c089e7_94172_800x0_resize_q75_box.jpg 800w, /p/2025012501/00_huaacfb4a4b3954e1274812d81e3c089e7_94172_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | Cocos 3D 开发微信小游戏（第3天）：场景搭建与游戏链路基础开发" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">新春“码”启 | Cocos 3D 开发微信小游戏（第3天）：场景搭建与游戏链路基础开发</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>新春开发 Cocos 3D 微信小游戏计划的第3天，包括总体设计方案，包括关卡模式、时间限制、复活机制等。接着详细展示基础框架研发，如开始场景和游戏场景（关卡一）的开发，包括创建场景、画布、立方体、材质，以及按钮的功能实现和场景切换等……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2025-01-25
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：7 分钟
+                </time>
+            </div>
+        <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    更新于： 2025-01-28
+                </time>
+            </div></footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>今天是实施新春小游戏计划的第 3 天，前面 2 天主要是入门和了解，我们对微信小游戏以及 Cocos 编辑器有了初步的认识。</p>
+<ul>
+<li>第 1 天：<a class="link" href="https://mp.weixin.qq.com/s/TlgNKvGYMuGMmU0dIBPn4A"  target="_blank" rel="noopener"
+    >新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 + AI 辅助编程（第 1 天）</a></li>
+<li>第 2 天：<a class="link" href="https://mp.weixin.qq.com/s/qlOYpjREXBKb7vl1kuujlg"  target="_blank" rel="noopener"
+    >新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 + AI 辅助编程（第 2 天）</a></li>
+</ul>
+<p>接下来，现在我们就开始正式实战研发小游戏了：</p>
+<ul>
+<li>设计小游戏的总体方案，包括场景及其内容等方面。</li>
+<li>开发小游戏基础框架，跑通整个游戏链路，细节部分就后续逐步完善补充。</li>
+</ul>
+<h1 id="总体设计方案">总体设计方案</h1>
+<p>到现在，老牛同学还尚未确定小游戏的创意，这时候大模型好像没什么用了，给的想法总是达不到要求。</p>
+<p>虽然没有明确的创意，但是老牛同学玩了几款热门的微信小游戏，再结合自己的经验，初步设计出了这个小游戏：</p>
+<p><img src="/p/2025012501/11.jpg"
+	width="1851"
+	height="1071"
+	srcset="/p/2025012501/11_hue1e11d96ebf5f41e862a129e6ce322ad_178398_480x0_resize_q75_box.jpg 480w, /p/2025012501/11_hue1e11d96ebf5f41e862a129e6ce322ad_178398_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="总体设计方案"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="414px"
+	
+></p>
+<p>老牛同学的设计思路是这样的：</p>
+<ul>
+<li>游戏采用通关模式，最少有 1 个关卡，关卡难度由易到难递增。</li>
+<li>明确每个关卡的通关时间限制，如果时间用完或者工具用完（像子弹、生命等），就算通关失败。</li>
+<li>要是通关成功了，就进入下一个关卡；如果失败了，还可以选择复活，不过复活需要玩家参与互动（比如学习游戏操作手册等）。</li>
+</ul>
+<p>由于这个游戏不允许有杀戮、战争等场景，所以通关的方式就不能是用子弹之类的了。</p>
+<h1 id="研发基础框架">研发基础框架</h1>
+<p>接下来，开始用 Cocos 研发基础框架，目的是串联整个游戏流程，那些不明确的部分就先跳过。例如，我们可以通过点击“成功”和“失败”这两个按钮，分别代表通关成功和失败。</p>
+<p>今天核心目标完成前面 3 个场景的研发：</p>
+<h2 id="场景一开始场景">场景一：开始场景</h2>
+<p>开始场景主要表达角色设定、背景介绍、任务说明，还有进入游戏或者退出游戏的操作按钮。</p>
+<p>在“资源管理器”面板中，在<code>assets</code>目录右键新建目录<code>scenes</code>，用于存放小游戏场景内容，我们新建一个名为<code>SceneStart</code>的场景并双击打开它。</p>
+<p>由于小游戏主要在手机端运行，需要设置小游戏的宽度和高度：</p>
+<ul>
+<li>打开项目设置面板，路径：“项目” - “项目设置”</li>
+<li>在“项目数据”配置项中，调整参数：“设计宽度”为<code>720</code>（像素），“设计高度”为<code>1280</code>（像素），同时勾选“适配屏幕宽度”和“适配屏幕高度”复选框</li>
+</ul>
+<p><img src="/p/2025012501/21.jpg"
+	width="1486"
+	height="1114"
+	srcset="/p/2025012501/21_hu8ddd296f200a7a4af9fff6410436a3fb_113718_480x0_resize_q75_box.jpg 480w, /p/2025012501/21_hu8ddd296f200a7a4af9fff6410436a3fb_113718_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="项目设置"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+<p>我们在“场景一”中，创建一个“开始游戏”按钮，点击按钮则进入“场景二”：</p>
+<ol>
+<li>在“层级管理器”中创建画布：右键 - “创建” - “UI 组件” - “Canvas (画布)”，并重命名为“CavansStart”</li>
+<li>在“场景编辑器”中，切换到“2D”视图，点击“3D”或者按下<code>2</code>快捷键</li>
+<li>在“层级管理器”中空接口，UI 节点都放到这个节点下：“Canvas”右键 - “创建” - “空节点”，并命名为“MenuView”，代表一个菜单</li>
+<li>在“层级管理器”中创建按钮：“Canvas”右键 - “创建” - “2D 对象” - “Sprite (精灵)”，主要是用于设置背景</li>
+<li>在精灵的“属性检测器”中，调整精灵的大小、背景和组件：</li>
+</ol>
+<ul>
+<li>大小：“Content Size”中，宽<code>600</code>（像素），高<code>700</code>（像素）</li>
+<li>背景：“Sprite Frame”中，选择“default_panel”；“type”中，选择“SLICED”</li>
+<li>增加“cc.Widget”组件，并设置为“水平居中”、“垂直居中”</li>
+</ul>
+<ol start="5">
+<li>在“层级管理器”中创建按钮：“Canvas”右键 - “创建” - “UI 组件” - “Button (按钮)”，并重命名为“BtnStart”</li>
+<li>在按钮的“属性检测器”中，调整按钮大小和文案（“Label”的内容）</li>
+</ol>
+<p><img src="/p/2025012501/22.jpg"
+	width="2520"
+	height="1288"
+	srcset="/p/2025012501/22_hu8ddd296f200a7a4af9fff6410436a3fb_262258_480x0_resize_q75_box.jpg 480w, /p/2025012501/22_hu8ddd296f200a7a4af9fff6410436a3fb_262258_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="场景一布局"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="195"
+		data-flex-basis="469px"
+	
+></p>
+<p>接下来，对“开始游戏”按钮增加点击事件，点击则切换到“场景二”界面：</p>
+<ul>
+<li>在“资源管理器”面板中，在<code>assets</code>中右键新建目录<code>scripts</code>，用户存放小游戏 TypeScript 脚本文件，我们新建一个名为<code>BtnStart</code>的脚本并双击打开它。</li>
+<li>在<code>BtnStart</code>的脚本内容如下：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">_decorator</span><span class="p">,</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">director</span><span class="p">,</span> <span class="nx">Node</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;cc&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">{</span> <span class="nx">ccclass</span><span class="p">,</span> <span class="nx">property</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">_decorator</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">@ccclass</span><span class="p">(</span><span class="s1">&#39;BtnStart&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">BtnStart</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">start() {</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">Node</span><span class="p">.</span><span class="nx">EventType</span><span class="p">.</span><span class="nx">TOUCH_END</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">toScene1</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">protected</span> <span class="nx">onDestroy</span><span class="p">()</span><span class="o">:</span> <span class="k">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="nx">Node</span><span class="p">.</span><span class="nx">EventType</span><span class="p">.</span><span class="nx">TOUCH_END</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">toScene1</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">private</span> <span class="nx">toScene1() {</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">director</span><span class="p">.</span><span class="nx">loadScene</span><span class="p">(</span><span class="s1">&#39;SceneLevel1&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>我们用<code>director.loadScene</code>方法切换不同的场景，从脚本可以看出：点击开始按钮，则切换到<code>SceneLevel1</code>场景。</li>
+<li>接下来，在“层级管理器”中选择“BtnStart”按钮，在“属性检查器”中，绑定点击事件：
+<ul>
+<li>点击事件：设置“Click Events”为<code>1</code>，即代表只有 1 个事件</li>
+<li>点击函数：选择“BtnStart”节点，选择“BtnStart”脚本，最后选择“toScene1”函数</li>
+</ul>
+</li>
+</ul>
+<p><img src="/p/2025012501/23.jpg"
+	width="2520"
+	height="1611"
+	srcset="/p/2025012501/23_hu8ddd296f200a7a4af9fff6410436a3fb_322766_480x0_resize_q75_box.jpg 480w, /p/2025012501/23_hu8ddd296f200a7a4af9fff6410436a3fb_322766_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="按钮点击事件"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="156"
+		data-flex-basis="375px"
+	
+></p>
+<p>最终，我们运行“场景一”，就可以看到场景切换效果了。</p>
+<h2 id="场景二游戏场景关卡一">场景二：游戏场景（关卡一）</h2>
+<p>在“资源管理器”面板中，在<code>assets</code>中右键新建目录<code>scenes</code>，用户存放小游戏场景内容，我们新建一个名为<code>SceneLevel1</code>的场景并双击打开它。</p>
+<p>然后，在“层级管理器”中创建画布：右键 - “创建” - “3D 对象” - “Cube (立方体)”，并命名为<code>cube</code></p>
+<p>为了使“场景二”中“立方体”的效果更明确，我们给他创建红色材质：</p>
+<ul>
+<li>在“资源管理器”面板中，在<code>assets</code>中右键新建目录<code>materials</code>，用户存放小游戏节点的材质</li>
+<li>在<code>materials</code>创建材质：右键 - “创建” - “材质”，并命名为<code>cube</code></li>
+<li>在<code>cube</code>材质的“属性检测器”中，设置“Albedo”颜色为红色（或者：其他颜色，只要看起来有效果即可），并保存材质</li>
+<li>拖动<code>cube</code>材质到<code>cube</code>立方体上，可以看到，立方体变成了红色</li>
+</ul>
+<p><img src="/p/2025012501/31.jpg"
+	width="2520"
+	height="1438"
+	srcset="/p/2025012501/31_hubaf2102ebf3ba538d5ee0b5c1c387a35_197033_480x0_resize_q75_box.jpg 480w, /p/2025012501/31_hubaf2102ebf3ba538d5ee0b5c1c387a35_197033_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="场景二内容"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="420px"
+	
+></p>
+<h2 id="其他场景和问题">其他场景和问题</h2>
+<p>我们可以采用同样的方式，创建“场景三”、“场景四”和“场景五”，保证我们的场景之间就能串联起来。</p>
+<p>各个场景串联是正常的了，但是老牛同学发现个问题：在点击按钮，即使用<code>director.loadScene()</code>进行场景切换时有点生硬，老牛同学感觉有应该有更好的方案解决。</p>
+<p>老牛同学一个新的想法：一个关卡一个场景，UI 通过显示和隐藏的方式呈现，包括开始菜单 UI、游戏失败提示 UI 和游戏成功提示 UI 等。比如“场景一”包含了开始菜单，点击“开始游戏”之后，隐藏菜单。</p>
+<p>若大家有其他想法或经验，特别欢迎大家与老牛同学进行交流，非常感谢~</p>
+<h1 id="总结">总结</h1>
+<p>今天的分享先到这里，在小游戏的创意没有明确之前，我们就先搭建小游戏的整体流程，同时在过程中不断进行优化，因为无论小游戏的创意如何，这些流程和优化经验都是比不可少的。</p>
+<p>最后，给大家拜个早年，祝大家：新年快乐，🐍 蛇年吉祥～ 😆 笑口常开～ 🎉 好运连连～心想事成～ 🧧 福气满满！</p>
+<p>老牛同学友情提示：新春写对联、对下联，就用“对联王”小程序 ↓↓↓</p>
+<p>【微信搜索“老牛同学”小程序，即可打开“对联王”页面】</p>
+<hr>
+<p>Cocos 0基础小游戏：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/TlgNKvGYMuGMmU0dIBPn4A"  target="_blank" rel="noopener"
+    >01.技术选型</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/qlOYpjREXBKb7vl1kuujlg"  target="_blank" rel="noopener"
+    >02.研发流程</a></small></p>
+<p>Transformers 框架序列：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw"  target="_blank" rel="noopener"
+    >01.包和对象加载中的设计巧思与实用技巧</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow"  target="_blank" rel="noopener"
+    >02.AutoModel 初始化及 Qwen2.5 模型加载全流程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg"  target="_blank" rel="noopener"
+    >03.Qwen2.5 大模型的 AutoTokenizer 技术细节</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w"  target="_blank" rel="noopener"
+    >04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节详解</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA"  target="_blank" rel="noopener"
+    >05.嵌入（Embedding）机制和 Word2Vec 实战</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/B0__TRnlI7zgwn0OhguvXA"  target="_blank" rel="noopener"
+    >06.位置嵌入（Positional Embedding）</a></small></p>
+<p>Pipeline NLP 任务序列：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA"  target="_blank" rel="noopener"
+    >零·概述</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg"  target="_blank" rel="noopener"
+    >01.文本转音频</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w"  target="_blank" rel="noopener"
+    >02.文本分类</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ"  target="_blank" rel="noopener"
+    >03.词元分类和命名实体识别</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg"  target="_blank" rel="noopener"
+    >04.问答</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/Q0fWdw3ACVzQFldBScZ2Fw"  target="_blank" rel="noopener"
+    >05.表格问答</a> | <a class="link" href="https://mp.weixin.qq.com/s/hMFCgYovHPVFOjOoihaUHw"  target="_blank" rel="noopener"
+    >06.填充蒙版</a></small></p>
+<p>往期推荐文章：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/F-CUuaZwmqt6X7QkI_IrVA"  target="_blank" rel="noopener"
+    >Cline 免费插件 + Qwen2.5 大模型，零经验也能开发“对联王”微信小程序</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vraegr_5AJG7bPo6mBgvbQ"  target="_blank" rel="noopener"
+    >使用Cursor + Qwen2.5 大模型 零经验研发微信小程序：自由构建个性化节拍器应用实战</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ"  target="_blank" rel="noopener"
+    >Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/cocos/">Cocos</a>
+        
+            <a href="/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/">小游戏</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2025020501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020501/00.0e5cb41ccb45ab8d173277e89ab7b650_hu3d13c3dc5e08d50d569ae0711661da61_112189_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | Cocos 3D 微信小游戏（第5天）：分包构建和上传发布（完美收官）"
+                        data-key="2025020501" 
+                        data-hash="md5-Dly0HMtFq40XMnfomre2UA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">新春“码”启 | Cocos 3D 微信小游戏（第5天）：分包构建和上传发布（完美收官）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025020101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025020101/00.ba812bf1a8db7e99d8a3ccc3676095c0_hu5ecad2161246203fe21cd9171930b608_109873_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | Cocos 3D 开发微信小游戏（第4天）：游戏资源设计和框架核心源代码"
+                        data-key="2025020101" 
+                        data-hash="md5-uoEr8ajbfpnYo8zDZ2CVwA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">新春“码”启 | Cocos 3D 开发微信小游戏（第4天）：游戏资源设计和框架核心源代码</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025012401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025012401/00.22d4ccbcda35f898bb82ebc83d491fa1_hu66848577af15ce3ec1fae86582ec8951_95362_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第2天）"
+                        data-key="2025012401" 
+                        data-hash="md5-ItTMvNo1&#43;Ji7guvIPUkfoQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第2天）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025012301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025012301/00.2298611e64cd661ff0cbbda1405816d5_hu801d7d4a91fbb4a30826d045c1c4223f_166408_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第1天）"
+                        data-key="2025012301" 
+                        data-hash="md5-IphhHmTNZh/wy72hQFgW1Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">新春“码”启 | 0 基础开发微信小游戏，Cocos 游戏引擎 &#43; AI 辅助编程（第1天）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

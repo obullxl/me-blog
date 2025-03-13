@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文全面介绍了 Transformers 框架中的 table-question-answering 任务，从基础概念到实际应用，再到如何构建和部署一个交互式的表格问答系统。无论是在商业智能、教育辅导还是金融分析等领域，Transformers 框架都能为我们提供强有力的支持，助力我们快速实现高效的表格问答解决方案……'>
+<title>Transformers 框架 Pipeline 任务详解（五）：表格问答（table-question-answering）</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024122201/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='Transformers 框架 Pipeline 任务详解（五）：表格问答（table-question-answering）'>
+<meta property='og:description' content='本文全面介绍了 Transformers 框架中的 table-question-answering 任务，从基础概念到实际应用，再到如何构建和部署一个交互式的表格问答系统。无论是在商业智能、教育辅导还是金融分析等领域，Transformers 框架都能为我们提供强有力的支持，助力我们快速实现高效的表格问答解决方案……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024122201/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='transformers' /><meta property='article:tag' content='Pipeline' /><meta property='article:tag' content='表格问答' /><meta property='article:published_time' content='2024-12-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024122201/00.jpg' />
+<meta name="twitter:title" content="Transformers 框架 Pipeline 任务详解（五）：表格问答（table-question-answering）">
+<meta name="twitter:description" content="本文全面介绍了 Transformers 框架中的 table-question-answering 任务，从基础概念到实际应用，再到如何构建和部署一个交互式的表格问答系统。无论是在商业智能、教育辅导还是金融分析等领域，Transformers 框架都能为我们提供强有力的支持，助力我们快速实现高效的表格问答解决方案……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024122201/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#方法一自动下载模型">方法一：自动下载模型</a></li>
+    <li><a href="#方法二自主下载模型">方法二：自主下载模型</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024122201/">
+                <img src="/p/2024122201/00_hua2f92f56a371a9250c7ce7c705f4b06c_77473_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024122201/00_hua2f92f56a371a9250c7ce7c705f4b06c_77473_800x0_resize_q75_box.jpg 800w, /p/2024122201/00_hua2f92f56a371a9250c7ce7c705f4b06c_77473_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="398" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解（五）：表格问答（table-question-answering）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">Transformers 框架 Pipeline 任务详解（五）：表格问答（table-question-answering）</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>本文全面介绍了 Transformers 框架中的 table-question-answering 任务，从基础概念到实际应用，再到如何构建和部署一个交互式的表格问答系统。无论是在商业智能、教育辅导还是金融分析等领域，Transformers 框架都能为我们提供强有力的支持，助力我们快速实现高效的表格问答解决方案……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-12-22
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：7 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>在自然语言处理领域，表格问答是一项能够从结构化数据中提取信息的关键技术。它结合了自然语言理解和表格数据处理的能力，使得用户可以通过自然语言提问来获取表格中的特定信息。Hugging Face 的 Transformers 框架通过其 Pipeline API 提供了强大的<code>table-question-answering</code>功能，允许开发者和研究者轻松构建高效的表格问答系统。本文将详细介绍 Transformers 框架中的<code>table-question-answering</code>任务，涵盖任务描述、应用场景、配置指南以及实战案例。</p>
+<p><img src="/p/2024122201/01.jpg"
+	width="1281"
+	height="817"
+	srcset="/p/2024122201/01_hu645ec10a94d59d765077d15abf8656e2_75172_480x0_resize_q75_box.jpg 480w, /p/2024122201/01_hu645ec10a94d59d765077d15abf8656e2_75172_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Hugging Face任务介绍"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="156"
+		data-flex-basis="376px"
+	
+></p>
+<h1 id="1-任务简介">1. 任务简介</h1>
+<p><code>table-question-answering</code>任务旨在根据用户提供的问题，从给定的表格数据中找出最准确的答案。例如：</p>
+<ul>
+<li><strong>财务分析</strong>：询问“2023 年第四季度的净利润是多少？”，系统应当能够从财务报表中找到对应数值。</li>
+<li><strong>体育统计</strong>：当问到“谁是 2022 年世界杯的最佳射手？”时，系统应能回答出具体球员的名字。</li>
+</ul>
+<p>为了完成这一任务，通常需要以下步骤：</p>
+<ol>
+<li><strong>问题解析</strong>：理解问题的意图，并确定所需的数据字段。</li>
+<li><strong>表格分析</strong>：识别表格中的行、列以及可能存在的关联关系。</li>
+<li><strong>答案生成</strong>：基于对表格的理解，生成或抽取符合问题要求的答案。</li>
+</ol>
+<p>根据 Hugging Face 官网的数据，当前已有<strong>133</strong>个<code>table-question-answering</code>模型，这些模型已经在大量的表格数据上进行了微调，以更好地适应特定的任务需求。</p>
+<p><img src="/p/2024122201/11.jpg"
+	width="1713"
+	height="991"
+	srcset="/p/2024122201/11_hue3e6484bf14d70ba29ed67bbe71815ba_178939_480x0_resize_q75_box.jpg 480w, /p/2024122201/11_hue3e6484bf14d70ba29ed67bbe71815ba_178939_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Hugging Face模型列表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="414px"
+	
+></p>
+<h1 id="2-应用场景">2. 应用场景</h1>
+<p>表格问答系统广泛应用于各个行业，以下是几个典型的应用实例：</p>
+<ul>
+<li><strong>商业智能</strong>：企业可以利用表格问答工具快速查询销售数据、市场趋势等关键指标，辅助决策制定。</li>
+<li><strong>教育辅导</strong>：教师可以使用该技术帮助学生理解复杂的数据集，如历史事件的时间线、科学实验结果等。</li>
+<li><strong>金融分析</strong>：投资者和分析师可以借助表格问答系统分析股票行情、公司财报等信息，支持投资决策。</li>
+<li><strong>医疗健康</strong>：研究人员和医护人员可以利用表格问答来查找临床试验结果、药物效果等医学数据。</li>
+<li><strong>政府服务</strong>：政府部门可以通过表格问答提供公共服务信息，如人口统计数据、公共支出明细等。</li>
+</ul>
+<h1 id="3-任务配置">3. 任务配置</h1>
+<p>在 Transformers 框架中，<code>table-question-answering</code>任务的配置同样直观易懂。下面是配置示例代码片段（位于<code>./transformers/pipelines/__init__.py</code>文件）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">SUPPORTED_TASKS</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 其他省略......</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;table-question-answering&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;impl&#34;</span><span class="p">:</span> <span class="n">TableQuestionAnsweringPipeline</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="n">AutoModelForTableQuestionAnswering</span><span class="p">,)</span> <span class="k">if</span> <span class="n">is_torch_available</span><span class="p">()</span> <span class="k">else</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;tf&#34;</span><span class="p">:</span> <span class="p">(</span><span class="n">TFAutoModelForTableQuestionAnswering</span><span class="p">,)</span> <span class="k">if</span> <span class="n">is_tf_available</span><span class="p">()</span> <span class="k">else</span> <span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;default&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;model&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;pt&#34;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&#34;google/tapas-base-finetuned-wtq&#34;</span><span class="p">,</span> <span class="s2">&#34;e3dde19&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;tf&#34;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&#34;google/tapas-base-finetuned-wtq&#34;</span><span class="p">,</span> <span class="s2">&#34;e3dde19&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 其他省略......</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>默认情况下，Transformers 框架会使用<code>tapas-base-finetuned-wtq</code>作为<code>table-question-answering</code>任务的预训练模型。这个模型是在 WebTables 数据集上进行过微调的 TAPAS 版本，特别适用于英文的表格问答任务。</p>
+<h1 id="4-表格问答实战">4. 表格问答实战</h1>
+<p>确保您已经安装了 Transformers 库和其他必要的依赖包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install transformers torch
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="方法一自动下载模型">方法一：自动下载模型</h2>
+<p>如果您的网络环境允许，可以直接从 Hugging Face 下载模型并创建 Pipeline 任务。如下老牛同学使用 Hugging Face 镜像网站自动下载模型：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置代理</span>
+</span></span><span class="line"><span class="cl"><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&#34;HF_ENDPOINT&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;https://hf-mirror.com&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置本地缓存目录</span>
+</span></span><span class="line"><span class="cl"><span class="n">cache_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;D:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s1">&#39;ModelSpace&#39;</span><span class="p">,</span> <span class="s1">&#39;Cache&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HF_HOME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cache_dir</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建Pipeline任务</span>
+</span></span><span class="line"><span class="cl"><span class="n">nlp</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&#34;table-question-answering&#34;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&#34;google/tapas-base-finetuned-wtq&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 执行表格问答任务</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 表格数据</span>
+</span></span><span class="line"><span class="cl">    <span class="n">table</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s2">&#34;Year&#34;</span><span class="p">:</span> <span class="s2">&#34;2020&#34;</span><span class="p">,</span> <span class="s2">&#34;Quarter&#34;</span><span class="p">:</span> <span class="s2">&#34;Q1&#34;</span><span class="p">,</span> <span class="s2">&#34;Revenue&#34;</span><span class="p">:</span> <span class="s2">&#34;500M&#34;</span><span class="p">,</span> <span class="s2">&#34;Profit&#34;</span><span class="p">:</span> <span class="s2">&#34;100M&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s2">&#34;Year&#34;</span><span class="p">:</span> <span class="s2">&#34;2020&#34;</span><span class="p">,</span> <span class="s2">&#34;Quarter&#34;</span><span class="p">:</span> <span class="s2">&#34;Q2&#34;</span><span class="p">,</span> <span class="s2">&#34;Revenue&#34;</span><span class="p">:</span> <span class="s2">&#34;550M&#34;</span><span class="p">,</span> <span class="s2">&#34;Profit&#34;</span><span class="p">:</span> <span class="s2">&#34;110M&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s2">&#34;Year&#34;</span><span class="p">:</span> <span class="s2">&#34;2020&#34;</span><span class="p">,</span> <span class="s2">&#34;Quarter&#34;</span><span class="p">:</span> <span class="s2">&#34;Q3&#34;</span><span class="p">,</span> <span class="s2">&#34;Revenue&#34;</span><span class="p">:</span> <span class="s2">&#34;600M&#34;</span><span class="p">,</span> <span class="s2">&#34;Profit&#34;</span><span class="p">:</span> <span class="s2">&#34;120M&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s2">&#34;Year&#34;</span><span class="p">:</span> <span class="s2">&#34;2020&#34;</span><span class="p">,</span> <span class="s2">&#34;Quarter&#34;</span><span class="p">:</span> <span class="s2">&#34;Q4&#34;</span><span class="p">,</span> <span class="s2">&#34;Revenue&#34;</span><span class="p">:</span> <span class="s2">&#34;650M&#34;</span><span class="p">,</span> <span class="s2">&#34;Profit&#34;</span><span class="p">:</span> <span class="s2">&#34;130M&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 更多行...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 执行任务</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s2">&#34;What was the profit in Q4 of 2020?&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 输出：{&#39;answer&#39;: &#39;130M&#39;, &#39;coordinates&#39;: [(3, 3)], &#39;cells&#39;: [&#39;130M&#39;], &#39;aggregator&#39;: &#39;NONE&#39;}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">{&#39;answer&#39;: &#39;130M&#39;, &#39;coordinates&#39;: [(3, 3)], &#39;cells&#39;: [&#39;130M&#39;], &#39;aggregator&#39;: &#39;NONE&#39;}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出结果直接给出了模型认为的答案文本，在这个例子中，答案是“<strong>130M</strong>”。</p>
+<p>对于输出结果对象的元素，详细说明如下：</p>
+<ol>
+<li><code>answer</code>：模型给出的答案文本，在这个例子中是“130M”，表示 2020 年第四季度的利润。</li>
+<li><code>coordinates</code>：是一个列表，其中每个元素是一个元组，代表了表格中与答案相关的单元格的位置。元组的第一个值是行索引，第二个值是列索引，都是从 0 开始计数。在这个例子中，<code>(3, 3)</code>意味着答案位于表格的第 4 行（因为索引从 0 开始，所以 3 代表的是第四行）和第 4 列。</li>
+<li><code>cells</code>：列出所有参与构建答案的单元格内容。在这个例子中，只有单个单元格的内容“130M”被用作答案，因此列表中只有一个元素。</li>
+<li><code>aggregator</code>：指明了是否以及如何对多个单元格或数值进行了聚合操作以生成答案。可能的值包括但不限于<code>&quot;NONE&quot;</code>、<code>&quot;SUM&quot;</code>、<code>&quot;AVERAGE&quot;</code>、<code>&quot;COUNT&quot;</code>等。在这个例子中，<code>&quot;NONE&quot;</code>表示没有执行任何聚合操作，答案直接来自单个单元格的内容。</li>
+</ol>
+<h2 id="方法二自主下载模型">方法二：自主下载模型</h2>
+<p>如果您希望使用本地模型文件，可以按照以下步骤操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForTableQuestionAnswering</span><span class="p">,</span> <span class="n">pipeline</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 下载模型目录</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_dir</span> <span class="o">=</span> <span class="s1">&#39;/models/table_question_answering&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 加载分词器和模型</span>
+</span></span><span class="line"><span class="cl"><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_dir</span><span class="p">,</span> <span class="n">local_files_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForTableQuestionAnswering</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_dir</span><span class="p">,</span> <span class="n">torch_dtype</span><span class="o">=</span><span class="s2">&#34;auto&#34;</span><span class="p">,</span> <span class="n">device_map</span><span class="o">=</span><span class="s2">&#34;auto&#34;</span><span class="p">,</span> <span class="n">local_files_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建Pipeline任务</span>
+</span></span><span class="line"><span class="cl"><span class="n">nlp</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&#34;table-question-answering&#34;</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 后续用法与自动下载相同</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="5-webui-界面">5. WebUI 界面</h1>
+<p>为了使<code>table-question-answering</code> Pipeline 任务更易于使用或演示，我们可以使用 Gradio 创建一个直观的 WebUI 界面。以下是创建界面的代码示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 直接复用Pipeline实例</span>
+</span></span><span class="line"><span class="cl"><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;./&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pipeline</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s2">&#34;05-table-question-answering&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 定义表格问答函数</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">answer_table_question</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 将字符串形式的表格转换为列表字典</span>
+</span></span><span class="line"><span class="cl">    <span class="n">table_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">),</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)))</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">nlp</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="n">table_list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;答案: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;answer&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建Gradio界面</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Blocks</span><span class="p">()</span> <span class="k">as</span> <span class="n">demo</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gr</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&#34;# 表格问答系统&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gr</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;这是一个基于Transformers框架的表格问答工具。您可以输入一个问题和一段CSV格式的表格文本，点击“提交”按钮后，系统将尝试从中找到答案。&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Row</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">input_table</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">placeholder</span><span class="o">=</span><span class="s2">&#34;请输入表格数据（CSV格式）...&#34;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&#34;表格&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Row</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">input_query</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">placeholder</span><span class="o">=</span><span class="s2">&#34;请输入您的问题...&#34;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&#34;问题&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Row</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">submit_button</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&#34;提交&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Row</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_answer</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&#34;答案&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 设置按钮点击事件，触发表格问答函数</span>
+</span></span><span class="line"><span class="cl">    <span class="n">submit_button</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">answer_table_question</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input_query</span><span class="p">,</span> <span class="n">input_table</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">output_answer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动Gradio应用</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">demo</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行上述代码，我们可以看到 URL 信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">* Running on <span class="nb">local</span> URL:  http://127.0.0.1:7860
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">To create a public link, <span class="nb">set</span> <span class="sb">`</span><span class="nv">share</span><span class="o">=</span>True<span class="sb">`</span> in <span class="sb">`</span>launch<span class="o">()</span><span class="sb">`</span>.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过浏览器打开地址，就可以通过可视化的方式进行表格问答了。</p>
+<p><img src="/p/2024122201/51.jpg"
+	width="862"
+	height="1069"
+	srcset="/p/2024122201/51_hue8b3f2d666234fe1e25ca7de1c90ce99_86162_480x0_resize_q75_box.jpg 480w, /p/2024122201/51_hue8b3f2d666234fe1e25ca7de1c90ce99_86162_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="WebUI界面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="80"
+		data-flex-basis="193px"
+	
+></p>
+<p>我们可以用如下表格样例数据来测试 Table QA：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Year,Quarter,Revenue,Profit
+</span></span><span class="line"><span class="cl">2020,Q1,500M,100M
+</span></span><span class="line"><span class="cl">2020,Q2,550M,110M
+</span></span><span class="line"><span class="cl">2020,Q3,600M,120M
+</span></span><span class="line"><span class="cl">2020,Q4,650M,130M
+</span></span><span class="line"><span class="cl">2021,Q1,700M,140M
+</span></span><span class="line"><span class="cl">2021,Q2,750M,150M
+</span></span><span class="line"><span class="cl">2021,Q3,800M,160M
+</span></span><span class="line"><span class="cl">2021,Q4,850M,170M
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>问题：<code>Which quarter had the highest profit in 2021?</code></p>
+<p>预期答案：<code>Q4</code> (因为 2021 年第四季度的利润最高，为 170M)</p>
+<p>如果想要分享给更多人，可以在 <code>launch()</code> 函数中设置 <code>share=True</code> 参数，Gradio 将生成一个公开链接供他人访问。</p>
+<h1 id="6-总结">6. 总结</h1>
+<p>本文全面介绍了 Transformers 框架中的<code>table-question-answering</code>任务，从基础概念到实际应用，再到如何构建和部署一个交互式的表格问答系统。无论是在商业智能、教育辅导还是金融分析等领域，Transformers 框架都能为我们提供强有力的支持，助力我们快速实现高效的表格问答解决方案。</p>
+<p>老牛同学将持续为大家带来更多有关 Pipeline 任务的文章（共<strong>28</strong>篇）。如果您有任何疑问或建议，请随时在评论区留言交流！</p>
+<p><img src="/p/2024122201/91.jpg"
+	width="1203"
+	height="1284"
+	srcset="/p/2024122201/91_hu6992cce4621aca55beaaafdbc862b4e3_208990_480x0_resize_q75_box.jpg 480w, /p/2024122201/91_hu6992cce4621aca55beaaafdbc862b4e3_208990_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Transformers 框架 Pipeline 任务"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="93"
+		data-flex-basis="224px"
+	
+></p>
+<hr>
+<p>Transformers 框架：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/lAAIfl0YJRNrppp5-Vuusw"  target="_blank" rel="noopener"
+    >01.包和对象加载中的设计巧思与实用技巧</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/WIbbrkf1HjVC1CtBNcU8Ow"  target="_blank" rel="noopener"
+    >02.AutoModel 初始化及 Qwen2.5 模型加载全流程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Shg30uUFByM0tKTi0rETfg"  target="_blank" rel="noopener"
+    >03.Qwen2.5 大模型的 AutoTokenizer 技术细节</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/GnoHXsIYKYFU1Xo4u5sE1w"  target="_blank" rel="noopener"
+    >04.Qwen2.5/GPT 分词流程与 BPE 分词算法技术细节</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/qL9vpmNIM1eO9_lQq7QwlA"  target="_blank" rel="noopener"
+    >05.嵌入（Embedding）机制和 Word2Vec 实战</a></small></p>
+<p>Pipeline NLP 任务：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/FR4384AZV2FE2xtweSh9bA"  target="_blank" rel="noopener"
+    >零·概述</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/uN2BFIOxDFEh4T-W7tsPbg"  target="_blank" rel="noopener"
+    >01.文本转音频</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/9ccEDNfeGNf_Q9pO0Usg2w"  target="_blank" rel="noopener"
+    >02.文本分类</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/r2uFCwPZaMeDL_eiQsEmIQ"  target="_blank" rel="noopener"
+    >03.词元分类和命名实体识别</a> 丨 <a class="link" href="https://mp.weixin.qq.com/s/vOLVxRircw5wM1_rCqoAfg"  target="_blank" rel="noopener"
+    >04.问答</a></small></p>
+<p>往期推荐文章：</p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/Mq8CvZKdpokbj3mK-h_SAQ"  target="_blank" rel="noopener"
+    >Bolt.new 用一句话快速构建全栈应用：本地部署与应用实战（Ollama/Qwen2.5 等）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q"  target="_blank" rel="noopener"
+    >基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></small></p>
+<p><small><a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程</a></small></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/transformers/">Transformers</a>
+        
+            <a href="/tags/pipeline/">Pipeline</a>
+        
+            <a href="/tags/%E8%A1%A8%E6%A0%BC%E9%97%AE%E7%AD%94/">表格问答</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024122501/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024122501/00.e55a6c6f8512ddf00de5caa1c4d0d7b0_hu9ae0166db6d19f69e9ac797994b0da33_118198_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解（六）：填充蒙版（fill-mask）"
+                        data-key="2024122501" 
+                        data-hash="md5-5Vpsb4US3fAN5cqhxNDXsA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解（六）：填充蒙版（fill-mask）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024121801/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024121801/00.0482825aac740c79b35a69ccde2c333c_hude2f169f0297ce1d5a001841fdf5521a_78453_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解（四）：问答（question-answering）"
+                        data-key="2024121801" 
+                        data-hash="md5-BIKCWqx0DHmzWmnM3iwzPA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解（四）：问答（question-answering）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024121101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024121101/00.b6b30e2f436fb7e2262bcf7f8d7f5eee_hu9de955f945922937b4d2ba40cf097258_80533_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解（三）：词元分类（token-classification）和命名实体识别"
+                        data-key="2024121101" 
+                        data-hash="md5-trMOL0Nvt&#43;ImK89/jX9e7g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解（三）：词元分类（token-classification）和命名实体识别</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024120401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024120401/00.06c35d5d5e2ee0432d699a21cf56474f_huaabab090f83155d3b38f36ae12d9a15a_81387_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解：文本分类（text-classification 或 sentiment-analysis）"
+                        data-key="2024120401" 
+                        data-hash="md5-BsNdXV4u4EMtaZohz1ZHTw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解：文本分类（text-classification 或 sentiment-analysis）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024120101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024120101/00.b6b79c8ec4c8fbb46c1b2c422c703bd8_hubfb6e18fd0e7a280cb3d55a3ec77bd99_85933_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Transformers 框架 Pipeline 任务详解：文本转音频（text-to-audio 或 text-to-speech）"
+                        data-key="2024120101" 
+                        data-hash="md5-trecjsTI&#43;7RsGyxCLHA72A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Transformers 框架 Pipeline 任务详解：文本转音频（text-to-audio 或 text-to-speech）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

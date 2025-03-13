@@ -1,0 +1,50 @@
+Hi 推荐2篇应用实战文章：
+
+ChatTTS最新版本地部署，合成长时音频，让“儿童绘本”转长音频详细教程（含源码）：https://blog.csdn.net/obullxl/article/details/141757256
+
+GLM-4-Flash 大模型 API 免费了，手把手构建“儿童绘本”应用实战（附源码）：https://blog.csdn.net/obullxl/article/details/141585056
+
+
+
+笔记本电脑安装属于自己的Llama 3 8B大模型：https://blog.csdn.net/obullxl/article/details/138755287
+
+基于Ollama工具的Web可视化对话机器人部署指南：https://blog.csdn.net/obullxl/article/details/139030636
+
+基于Llama 3搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人：https://blog.csdn.net/obullxl/article/details/139102576
+
+
+https://markdown.com.cn/editor/
+
+/*自定义样式，实时生效*/
+#nice {
+  padding: 0;
+  font-family: YaHei;
+}
+
+#nice a {
+  font-weight: 90%;
+  text-decoration: none;
+}
+/*自定义样式，实时生效*/
+
+
+【兰青】
+/*自定义样式，实时生效*/
+#nice {
+  padding: 0;
+  font-weight: normal;
+  font-family: 'Microsoft YaHei', Arial, sans-serif;
+}
+
+#nice a {
+  font-size: 90%;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+#nice hr {
+  margin: 20px 0;
+  border-top: 1px dotted #3e3e3e;
+}
+/*自定义样式，实时生效*/
+

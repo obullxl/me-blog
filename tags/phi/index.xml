@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Phi on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/phi/</link>
+        <description>Recent content in Phi on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sun, 23 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/phi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Phi-3 模型手机部署教程（微软发布的可与GPT-3.5媲美的小模型）</title>
+        <link>https://ntopic.cn/p/2024062301/</link>
+        <pubDate>Sun, 23 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024062301/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024062301/00.jpg" alt="Featured image of post Phi-3 模型手机部署教程（微软发布的可与GPT-3.5媲美的小模型）" /&gt;&lt;p&gt;前面几篇博文，老牛同学和大家一起在个人电脑部署了&lt;strong&gt;Qwen2&lt;/strong&gt;、&lt;strong&gt;GLM4&lt;/strong&gt;、&lt;strong&gt;Llama3&lt;/strong&gt;、&lt;strong&gt;ChatTTS&lt;/strong&gt;和&lt;strong&gt;Stable Diffusion&lt;/strong&gt;等 LLM 大模型，也通过 API 和 WebUI 的方式完成了体验。&lt;/p&gt;
+&lt;p&gt;但是这些大模型因为部署在个人电脑本地，不能够随时携带。如果能在手机上部署大模型的话，老牛同学感觉很有意义，手机与我们的生活更为密切相关，并且手机上也有大量的个人数据，与大模型交互起来也更加方便。同时，在手机上跑个大模型，还是很酷！&lt;/p&gt;
+&lt;p&gt;老牛同学期望能通过本文，和大家一起完成这项很酷且有意义的事情。老牛同学用的是&lt;strong&gt;小米 10 Pro&lt;/strong&gt;手机，其配置参数如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062301/01.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062301/01_huf9de8c070f651996b22bfe488baf7e14_274937_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062301/01_huf9de8c070f651996b22bfe488baf7e14_274937_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;老牛同学手机配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;选择-phi-3-微软开源模型&#34;&gt;选择 Phi-3 微软开源模型&lt;/h2&gt;
+&lt;p&gt;受限于手机 CPU 和内存等硬件配置，我们要选择小语言模型（SLM）。其中，阿里开源了&lt;strong&gt;Qwen2-0.5B&lt;/strong&gt;和&lt;strong&gt;Qwen2-1.5B&lt;/strong&gt;两款小尺寸模型，微软了开源&lt;strong&gt;Phi-3 Mini&lt;/strong&gt;（&lt;strong&gt;3.8B&lt;/strong&gt;）和&lt;strong&gt;Phi-3 medium&lt;/strong&gt;（&lt;strong&gt;14B&lt;/strong&gt;）两款尺寸模型。&lt;/p&gt;
+&lt;p&gt;由于之前我们在笔记本部署了&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型，本次我们就在手机部署&lt;strong&gt;Phi-3 Mini&lt;/strong&gt;模型，顺便也体验一下不同科技公司的大模型产品，其效果可以媲美&lt;strong&gt;GPT-3.5&lt;/strong&gt;大模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062301/11.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;1136&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062301/11_hufca9c8e53812d6de8d893ed0b898ab7f_336127_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062301/11_hufca9c8e53812d6de8d893ed0b898ab7f_336127_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Phi-3性能评测报告&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;95&#34;
+		data-flex-basis=&#34;228px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Qwen2-7B&lt;/strong&gt;本地部署：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API 调用和 WebUI 对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;手机配置-linux-环境termux-应用&#34;&gt;手机配置 Linux 环境（Termux 应用）&lt;/h2&gt;
+&lt;p&gt;小米等安卓手机的基于 Linux 内核的操作系统，但是我们无法像在 Linux 那样执行 Linux 命令，因此我首先得配置一下 Linux 环境。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Termux&lt;/strong&gt;是一个 Android 的终端模拟器，可以在 Android 设备上运行 Linux 命令和工具。&lt;strong&gt;Termux&lt;/strong&gt;的 Android APP 可通过官网下载并安装：&lt;a class=&#34;link&#34; href=&#34;https://github.com/termux/termux-app/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/termux/termux-app/releases&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;当前官网的最新稳定版本：&lt;code&gt;v0.118.1 - 2024-06-18 00.05&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062301/02.jpg&#34;
+	width=&#34;1792&#34;
+	height=&#34;1368&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062301/02_hu8929c3d33f0597ba0060fb44fae62288_262616_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062301/02_hu8929c3d33f0597ba0060fb44fae62288_262616_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Termux安装文件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;314px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;请根据手机情况，下载对应的 apk 文件。老牛同学下载的 apk 文件：&lt;strong&gt;termux-app_v0.118.1+github-debug_universal.apk&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;apk 安装成功后，打开&lt;strong&gt;Termux&lt;/strong&gt;应用后，默认展示如下，就可以开始输入 Linux 命令了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062301/03.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062301/03_hu38b15bc0bda6dc964e79f04dbde22382_304569_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062301/03_hu38b15bc0bda6dc964e79f04dbde22382_304569_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Termux应用界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;手机上安装-linux-操作系统&#34;&gt;手机上安装 Linux 操作系统&lt;/h2&gt;
+&lt;p&gt;首先，我们安装&lt;strong&gt;proot-distro&lt;/strong&gt;系统管理工具，&lt;strong&gt;proot-distro&lt;/strong&gt;可以非常方便在 Termux 中&lt;strong&gt;安装&lt;/strong&gt;、&lt;strong&gt;卸载&lt;/strong&gt;和&lt;strong&gt;运行&lt;/strong&gt;Linux 的发行版本（包括：Ubuntu、Debian、Arch Linux 等）：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;友情提示：&lt;/strong&gt; 在手机中输入以下命令效率比较低，我们可以把命令发到微信，然后一条一条复制粘贴！&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pkg install proot-distro
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;proot-distro&lt;/strong&gt; 安装成功之后，我们安装&lt;strong&gt;Debian&lt;/strong&gt;操作系统：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;proot-distro install debian
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062301/04.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062301/04_huea1eb21800f85aa4f475e6e988978d89_1188837_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062301/04_huea1eb21800f85aa4f475e6e988978d89_1188837_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Debian安装成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最后，登录新安装的&lt;strong&gt;Debian&lt;/strong&gt;操作系统：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;proot-distro login debian
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;登录之后，自动启动了&lt;strong&gt;Shell&lt;/strong&gt;命令行终端：&lt;code&gt;root@localhost:~#&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以执行相关的 Linux 命令了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062301/05.jpg&#34;
+	width=&#34;2340&#34;
+	height=&#34;1080&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062301/05_hu503792de75c28e8bf910255688f0d100_334989_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062301/05_hu503792de75c28e8bf910255688f0d100_334989_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Debian系统命令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;520px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;通过-termux-安装-phi-3-模型&#34;&gt;通过 Termux 安装 Phi-3 模型&lt;/h2&gt;
+&lt;p&gt;通过上面的操作，我们已经在手机上安装好了&lt;strong&gt;Debian&lt;/strong&gt;操作系统，接下来在&lt;strong&gt;Debian&lt;/strong&gt;操作系统中安装&lt;strong&gt;Phi-3 Mini&lt;/strong&gt;模型。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一步：&lt;/strong&gt; 在&lt;strong&gt;Debian&lt;/strong&gt;系统中安装&lt;strong&gt;Ollama&lt;/strong&gt;软件，没错，就是之前在个人电脑部署&lt;strong&gt;Llama3&lt;/strong&gt;、&lt;strong&gt;Qwen2&lt;/strong&gt;等大模型时，用于管理本地大模型的&lt;strong&gt;Ollama&lt;/strong&gt;软件。由于我们在手机上安装了&lt;strong&gt;Debian&lt;/strong&gt;系统，那么和电脑一样，&lt;strong&gt;Ollama&lt;/strong&gt;也可以管理&lt;strong&gt;Debian&lt;/strong&gt;系统本地部署的大模型：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装Ollama软件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -fsSL https://ollama.com/install.sh &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Ollama&lt;/strong&gt;安装成功输出信息如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062301/06.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062301/06_hu7a830a0b321e84a755d8d7c217322a1c_2010366_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062301/06_hu7a830a0b321e84a755d8d7c217322a1c_2010366_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ollama安装成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二步：&lt;/strong&gt; 通过&lt;strong&gt;后台&lt;/strong&gt;启动&lt;strong&gt;Ollama&lt;/strong&gt;服务：&lt;code&gt;nohup ollama serve &amp;amp;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我们用&lt;strong&gt;Ollama&lt;/strong&gt;命令，查看 Ollama 信息，如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查看版本：&lt;code&gt;ollama -v&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看本地模型列表：&lt;code&gt;ollama list&lt;/code&gt;（目前还没有部署模型，因此结果列表为&lt;strong&gt;空&lt;/strong&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;第三步：&lt;/strong&gt; 通过&lt;strong&gt;Ollama&lt;/strong&gt;安装并启动&lt;strong&gt;Phi-3 Mini&lt;/strong&gt;模型：&lt;code&gt;ollama run phi3:mini&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Phi-3 Mini&lt;/strong&gt;模型文件总大小为&lt;strong&gt;2.4GB&lt;/strong&gt;左右，因此下载需要一点时间：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062301/07.jpg&#34;
+	width=&#34;1080&#34;
+	height=&#34;2340&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062301/07_hu3cf50d426911112bcdb0ac26d4ee1b8e_565757_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062301/07_hu3cf50d426911112bcdb0ac26d4ee1b8e_565757_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Phi-3 Mini安装成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;46&#34;
+		data-flex-basis=&#34;110px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;到此，&lt;strong&gt;Phi-3 Mini&lt;/strong&gt;模型部署成功，我们可以体验手机上的大模型，比如：&lt;strong&gt;请用 100 个汉字解释一下，天空为什么是蓝色的？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024062301/08.jpg&#34;
+	width=&#34;1144&#34;
+	height=&#34;1160&#34;
+	srcset=&#34;https://ntopic.cn/p/2024062301/08_hua04b28422bbb4c6a12cc5f607adbb1af_300229_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024062301/08_hua04b28422bbb4c6a12cc5f607adbb1af_300229_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Phi-3 Mini模型推理&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;98&#34;
+		data-flex-basis=&#34;236px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;相比电脑端，手机的算力弱太多，就算老牛同学用的是最小尺寸的模型（&lt;strong&gt;Phi-3 Mini&lt;/strong&gt;），其推理的速度还是慢得多。其内容的输出速度，比我手机打字都要慢。盯着屏幕，看着模型一个字一个字的输出，感觉也挺有趣 😁&lt;/p&gt;
+&lt;p&gt;目前 AI 是大热门，各大公司推出的大模型参数一个比一个大，能力一个比一个厉害。但大模型训练和推理成本均比较高昂，在很大程度上限制了其发展，因此大模型 AI 应用相对较少，或者说对我们生活影响还很小，因此其还有很大的发展空间。&lt;/p&gt;
+&lt;p&gt;而反观针对特定业务场景定制的小模型（比如&lt;strong&gt;Phi&lt;/strong&gt;定制等），其成本就低得多，就能更有效地应用于各种垂直场景。&lt;/p&gt;
+&lt;p&gt;老牛同学觉得这种“&lt;strong&gt;小而美&lt;/strong&gt;”的 AI 模型将会越来越多，也会越来越受欢迎！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习进步 👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Qwen2-7B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/u_Uw88dpQRgbtfI4_1OOwQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen2 阿里最强开源大模型（Qwen2-7B）本地部署、API 调用和 WebUI 对话机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Llama-3-8B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/2DVYO75h0o5EHN_K_GF4Eg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一文彻底整明白，基于 Ollama 工具的 LLM 大语言模型 Web 可视化对话机器人部署指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/idcdIr8mMWDQ_iZU5r_UEQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Llama 3 搭建中文版（Llama3-Chinese-Chat）大模型对话聊天机器人&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLM-4-9B 开源大模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ChatTTS 文本转语音模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stable Diffusion 3 文生图模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/Sax4z2k8Dvn82h15jf51Hw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stable Diffusion 3 文生图“开源英雄”大模型本地部署和使用教程，轻松实现 AI 绘图自由&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;大模型应用案例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/m_O2OSoXWLL0PJurLCdzng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;借助 AI 大模型，三分钟原创一部儿童故事短视频（附完整操作步骤）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/gaLw3yP-oANvQyjRSkVjyw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;高效编写大模型 Prompt 提示词，解锁 AI 无限创意潜能&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Python 小游戏&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI 已来，我与 AI 一起用 Python 编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/tkTlt4rbFKQ73zudluPO1A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python 游戏编程：一步步用 Python 打造经典贪吃蛇小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

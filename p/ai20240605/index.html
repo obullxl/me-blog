@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='AI资讯 1毛钱1百万token，写2遍红楼梦！国产大模型下一步还想卷什么？ AI「末日」突然来临，公司同事集体变蠢！只因四大聊天机器人同时宕机'>
+<title>[AI资讯·0605] 智谱AI发布MaaS平台2.0和GLM-4系列开源模型，提升中文学科能力；四大聊天机器人同时宕机引发网络猜测；OpenAI安全疑云，前员工揭露内部问题；Arm推出终端计算子系统，支持生成式AI时代的布局；猿辅导看云大模型备案成功，教育应用潜力展现；商业智能领域迎来新变革，帆软FineChatBI利用AI大模型实现对话式业务分析。</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/ai20240605/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='[AI资讯·0605] 智谱AI发布MaaS平台2.0和GLM-4系列开源模型，提升中文学科能力；四大聊天机器人同时宕机引发网络猜测；OpenAI安全疑云，前员工揭露内部问题；Arm推出终端计算子系统，支持生成式AI时代的布局；猿辅导看云大模型备案成功，教育应用潜力展现；商业智能领域迎来新变革，帆软FineChatBI利用AI大模型实现对话式业务分析。'>
+<meta property='og:description' content='AI资讯 1毛钱1百万token，写2遍红楼梦！国产大模型下一步还想卷什么？ AI「末日」突然来临，公司同事集体变蠢！只因四大聊天机器人同时宕机'>
+<meta property='og:url' content='https://ntopic.cn/p/ai20240605/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='AI资讯' /><meta property='article:tag' content='人工智能' /><meta property='article:tag' content='大模型' /><meta property='article:published_time' content='2024-06-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-06-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/ai20240605/ai20240605-89.jpg' />
+<meta name="twitter:title" content="[AI资讯·0605] 智谱AI发布MaaS平台2.0和GLM-4系列开源模型，提升中文学科能力；四大聊天机器人同时宕机引发网络猜测；OpenAI安全疑云，前员工揭露内部问题；Arm推出终端计算子系统，支持生成式AI时代的布局；猿辅导看云大模型备案成功，教育应用潜力展现；商业智能领域迎来新变革，帆软FineChatBI利用AI大模型实现对话式业务分析。">
+<meta name="twitter:description" content="AI资讯 1毛钱1百万token，写2遍红楼梦！国产大模型下一步还想卷什么？ AI「末日」突然来临，公司同事集体变蠢！只因四大聊天机器人同时宕机"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/ai20240605/ai20240605-89.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+
+<section class="widget archives">
+    <div class="widget-icon">
+        <img width="100%" src="/WX-21.png" />
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="widget--toc" style="margin-top:15px;">
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#ai资讯">AI资讯</a></li>
+    <li><a href="#1毛钱1百万token写2遍红楼梦国产大模型下一步还想卷什么">1毛钱1百万token，写2遍红楼梦！国产大模型下一步还想卷什么？</a></li>
+    <li><a href="#ai末日突然来临公司同事集体变蠢只因四大聊天机器人同时宕机">AI「末日」突然来临，公司同事集体变蠢！只因四大聊天机器人同时宕机</a></li>
+    <li><a href="#openai员工们开始反抗了">OpenAI员工们开始反抗了！</a></li>
+    <li><a href="#ai手机pc大爆发arm从软硬件到生态发力打造行业ai百宝箱">AI手机PC大爆发，Arm从软硬件到生态发力，打造行业AI百宝箱</a></li>
+    <li><a href="#glm-4开源版本超越llama3多模态比肩gpt4vmaas平台也大升级">GLM-4开源版本：超越Llama3，多模态比肩GPT4V，MaaS平台也大升级</a></li>
+    <li><a href="#猿辅导竟然是一家ai公司大模型全家桶曝光甲子光年">猿辅导竟然是一家AI公司？大模型全家桶曝光｜甲子光年</a></li>
+    <li><a href="#finechatbi帆软在ai方向的新阳谋">FineChatBI，帆软在AI方向的新阳谋</a></li>
+    <li><a href="#大模型免费送厂商们图什么">大模型“免费”送，厂商们图什么？</a></li>
+    <li><a href="#openai前员工预测2027年agi降临gpt智商飙升4年从幼儿园蹿到高中生">OpenAI前员工预测：2027年AGI降临！GPT智商飙升，4年从幼儿园蹿到高中生</a></li>
+    <li><a href="#北京9岁小学生已经用ai出书了罗永浩围观有事找不到我找ai">北京9岁小学生，已经用AI出书了！罗永浩围观：有事找不到我找AI</a></li>
+    <li><a href="#openai-ceo豪投400多家公司持股200亿ai芯片成重点">OpenAI CEO豪投400多家公司，持股200亿，AI芯片成重点</a></li>
+  </ol>
+</nav>
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/ai20240605/">
+                <img src="/p/ai20240605/ai20240605-89_huc08d4ca5bae557d6e8f55b67d929882e_56617_800x0_resize_q75_box.jpg"
+                        srcset="/p/ai20240605/ai20240605-89_huc08d4ca5bae557d6e8f55b67d929882e_56617_800x0_resize_q75_box.jpg 800w, /p/ai20240605/ai20240605-89_huc08d4ca5bae557d6e8f55b67d929882e_56617_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="500" 
+                        loading="lazy"
+                        alt="Featured image of post [AI资讯·0605] 智谱AI发布MaaS平台2.0和GLM-4系列开源模型，提升中文学科能力；四大聊天机器人同时宕机引发网络猜测；OpenAI安全疑云，前员工揭露内部问题；Arm推出终端计算子系统，支持生成式AI时代的布局；猿辅导看云大模型备案成功，教育应用潜力展现；商业智能领域迎来新变革，帆软FineChatBI利用AI大模型实现对话式业务分析。" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">[AI资讯·0605] 智谱AI发布MaaS平台2.0和GLM-4系列开源模型，提升中文学科能力；四大聊天机器人同时宕机引发网络猜测；OpenAI安全疑云，前员工揭露内部问题；Arm推出终端计算子系统，支持生成式AI时代的布局；猿辅导看云大模型备案成功，教育应用潜力展现；商业智能领域迎来新变革，帆软FineChatBI利用AI大模型实现对话式业务分析。</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/ai%E8%B5%84%E8%AE%AF/" >
+                AI资讯
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-06-05
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：9 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <h2 id="ai资讯">AI资讯</h2>
+<ul>
+<li>1毛钱1百万token，写2遍红楼梦！国产大模型下一步还想卷什么？</li>
+<li>AI「末日」突然来临，公司同事集体变蠢！只因四大聊天机器人同时宕机</li>
+<li>OpenAI员工们开始反抗了！</li>
+<li>AI手机PC大爆发，Arm从软硬件到生态发力，打造行业AI百宝箱</li>
+<li>GLM-4开源版本：超越Llama3，多模态比肩GPT4V，MaaS平台也大升级</li>
+<li>猿辅导竟然是一家AI公司？大模型全家桶曝光｜甲子光年</li>
+<li>FineChatBI，帆软在AI方向的新阳谋</li>
+<li>大模型“免费”送，厂商们图什么？</li>
+<li>OpenAI前员工预测：2027年AGI降临！GPT智商飙升，4年从幼儿园蹿到高中生</li>
+<li>北京9岁小学生，已经用AI出书了！罗永浩围观：有事找不到我找AI</li>
+<li>OpenAI CEO豪投400多家公司，持股200亿，AI芯片成重点</li>
+</ul>
+<h2 id="1毛钱1百万token写2遍红楼梦国产大模型下一步还想卷什么">1毛钱1百万token，写2遍红楼梦！国产大模型下一步还想卷什么？</h2>
+<p>智谱AI发布了新一代MaaS平台2.0，并推出GLM-4系列开源模型，包括GLM-49B，这是目前最强大的国产大模型之一，其参数规模从6B升级至9B，同时具备多模态能力。新模型在中文学科方面实现了50%的提升，并且能够处理1M长度的上下文输入，相当于一次读完2本《红楼梦》。此外，智谱AI还提供了AllTools平台，支持开发者轻松训练私有模型，降低成本。随着大规模开源和商业化模式的推进，智谱AI正朝着AGI愿景前进，其MaaS平台2.0将进一步扩大生态圈。（<a class="link" href="https://www.163.com/dy/article/J3UP1OB60511ABV6.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="ai末日突然来临公司同事集体变蠢只因四大聊天机器人同时宕机">AI「末日」突然来临，公司同事集体变蠢！只因四大聊天机器人同时宕机</h2>
+<p>昨日，四大聊天机器人ChatGPT、Claude、Gemini和Perplexity同时宕机，引发网友猜测。AI崩溃可能导致生产力下降，对部分依赖它们的人造成影响。宕机原因未明，有可能是DDOS攻击或巧合。OpenAI的ChatGPT先行宕机，其它两个在短时间内解决问题，而Gemini则出现不稳定情况。宕机事件显示了AI对社会的重要性和脆弱性，预示着未来生活中AI不可或缺的角色。此次宕机可能是由于基础设施问题或流量激增引起，也可能与ChatGPT宕机有关。四家公司尚未公布具体原因，但事件已成为对人类依赖AI生活方式的一次警醒。（<a class="link" href="https://www.163.com/dy/article/J3UP000L0511ABV6.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="openai员工们开始反抗了">OpenAI员工们开始反抗了！</h2>
+<p>OpenAI安全疑云再起，前员工揭露内部问题。阿申布伦纳因向董事会分享安全备忘录被解雇，指出公司对AGI发展的热情与利润追求并重。13位前OpenAI和GoogleDeepMind员工联名信呼吁建立开放批评文化、匿名举报机制，警告AI公司避免监管和负责任地推动技术。OpenAI回应称，已有内部安全措施，但被指责为不当。（<a class="link" href="https://www.163.com/dy/article/J3UNK3QN051180F7.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="ai手机pc大爆发arm从软硬件到生态发力打造行业ai百宝箱">AI手机PC大爆发，Arm从软硬件到生态发力，打造行业AI百宝箱</h2>
+<p><img src="/p/ai20240605/ai20240605-89.jpg"
+	width="528"
+	height="330"
+	srcset="/p/ai20240605/ai20240605-89_huc08d4ca5bae557d6e8f55b67d929882e_56617_480x0_resize_q75_box.jpg 480w, /p/ai20240605/ai20240605-89_huc08d4ca5bae557d6e8f55b67d929882e_56617_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="AI手机PC大爆发，Arm从软硬件到生态发力，打造行业AI百宝箱"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="384px"
+	
+></p>
+<p>随着&quot;Gen-AI&quot;时代的到来，生成式AI与移动设备紧密结合，深刻影响生活和工作。Arm作为移动计算基础提供者，在架构、硬件、软件全面布局，为产业带来新的解决方案。Arm推出终端计算子系统（CSS），结合最新Armv9架构，CPU和GPU性能大幅提升。此次智东西对话Arm终端事业部产品管理副总裁JamesMcNiven，深入探讨了Arm在生成式AI时代的布局和思考。Arm通过完整解决方案让合作伙伴快速实现AI结合，为行业打造&quot;AI百宝箱&quot;。Arm的DNA与生成式AI契合，提供高性能、高能效的计算平台。新终端CSS基于3nm工艺，CPU和GPU物理实现，提升了30%的计算和图形性能，59%的AI推理速度。此外，ArmKleidi开发工具为开发者提供了快速开发生成式AI应用的解决方案。Arm生态系统迎来新的增长高潮，与微软合作，推动Windows与Arm架构的融合，加速WoA生态系统的发展。随着越来越多的应用成为Arm原生应用，ArmPC体验将更加完善。Arm通过技术创新保持核心竞争力，继续壮大生态，为生成式AI未来提供坚实基础。（<a class="link" href="https://www.163.com/dy/article/J3ULRRCM051180F7.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="glm-4开源版本超越llama3多模态比肩gpt4vmaas平台也大升级">GLM-4开源版本：超越Llama3，多模态比肩GPT4V，MaaS平台也大升级</h2>
+<p>智谱AI宣布其大模型开放平台已获得30万注册用户，日调用量达400亿Tokens，API每日消费量增长50倍。GLM-4模型性能强劲，过去4个月内增长90倍。大型App中活跃智能体超过30万，包括生产力工具等。新技术侧，GLM-4-9B超越Llama3.8B，大模型保持开源。商业成果和技术突破令人瞩目。MaaS平台升级2.0，降低大模型应用门槛，国内大模型竞争加剧。智谱AICEO张鹏表示，通过技术创新实现成本持续下降，不怕价格战。API最高折扣达6折，GLM-4-9B版本仅需6分/100万token。智谱AI推出MaaS开放平台2.0，升级新模型、成本和安全等方面。在OpenDay活动中，智谱AI介绍了其开放平台最新进展，模型微调平台简化企业构建私有模型过程，全系列GLM-4大模型支持三步部署。（<a class="link" href="https://www.163.com/dy/article/J3ULD7JK0511AQHO.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="猿辅导竟然是一家ai公司大模型全家桶曝光甲子光年">猿辅导竟然是一家AI公司？大模型全家桶曝光｜甲子光年</h2>
+<p><img src="/p/ai20240605/ai20240605-91.jpg"
+	width="950"
+	height="600"
+	srcset="/p/ai20240605/ai20240605-91_hua327b430cfde24a1d73d59036c4b6456_169000_480x0_resize_q75_box.jpg 480w, /p/ai20240605/ai20240605-91_hua327b430cfde24a1d73d59036c4b6456_169000_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="猿辅导竟然是一家AI公司？大模型全家桶曝光｜甲子光年"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="158"
+		data-flex-basis="380px"
+	
+></p>
+<p>猿辅导旗下看云大模型成功通过大模型备案，引起教育界热议。尽管在“百模大战”中相对不占优势，但猿辅导凭借多年积累的数据资源和技术实力，以AI为核心的产品逐步展开了大模型的应用。其自研大模型并非作为单一产品，而是技术底座，通过与现有产品结合，为教育场景提供个性化服务。猿辅导的大模型落地速度快，涵盖家庭教育、作业批改、答疑系统等多个方面，其AI技术在教材识别、批改、生成反馈等环节发挥作用。通过大模型，学生可以享受到更为丰富的学习体验，教师则有助于提高教学效率。猿辅导的教育“全家桶”展现了大模型在教育中的潜力和应用前景，预示着将来AI技术会彻底改变传统教育模式，使得每个学生都能拥有专属的学习体验。（<a class="link" href="https://www.163.com/dy/article/J3PDRSQ90512MLBG.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="finechatbi帆软在ai方向的新阳谋">FineChatBI，帆软在AI方向的新阳谋</h2>
+<p>在AI大模型技术的推动下，商业智能（BI）领域正迎来新的变革。帆软产品研发中心总经理陈敏表示，希望通过AI技术降低数据分析门槛，让更多人成为数据分析师。微软率先将Copilot整合进PowerBI，而全球知名BI服务提供商也开始注入AI大模型计划。国内BI厂商也紧跟趋势，推出类似功能。过去的问答式BI产品受限于技术，无法满足用户需求，帆软FineChatBI通过利用AI大模型的泛化能力，实现了对话式业务分析，让非专业人员能够进行数据分析。FineChatBI不仅能理解用户问题，还能拆解、查询数据，并提供异常检测和趋势预测功能。未来，FineChatBI有望进一步成为业务决策入口，直接将分析结果转化为业务指令。这将是BI领域的一个巨大变革，使得BI从辅助工具转变为实现业务闭环的核心。虽然AI技术进步迅速，但帆软认为，AI与BI不是简单相加，而是“AIforBI”，通过AI提升BI效率和降低使用门槛，让更多人能更好地利用BI工具。（<a class="link" href="https://www.163.com/dy/article/J3UBA9L30512MLBG.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="大模型免费送厂商们图什么">大模型“免费”送，厂商们图什么？</h2>
+<p>2024年618期间，大模型市场爆发了激烈的“价格战”，部分企业甚至开始免费提供服务。字节跳动宣布其豆包主力模型定价为0.0008元/千Tokens，远低于行业平均水平；阿里云则将通义千问GPT-4级主力模型Qwen-Long的API输入价格降至0.0005元/千Tokens。百度、腾讯云和科大讯飞也相继跟进，降低了自己的大模型定价。尽管如此，大部分企业的大模型业务仍面临高算力和人力成本的挑战，未能盈利。这种非理性的价格战反映出上游企业希望通过让利来打通大模型商业闭环的内在焦虑。然而，大模型商业模式不健全，成本高、落地难等问题仍然存在。由于训练和部署成本较高，一些企业对此保持观望态度。目前，大部分大模型仅推理用的token降价，而训练和部署成本依然不低。虽然价格战可能吸引了更多下游企业，但实际上，使用大模型服务的成本远未达到“免费”的程度。此次价格战或许能引起下游企业对大模型技术的关注，并有望探索出良性的商业模式。（<a class="link" href="https://www.163.com/dy/article/J3TP1HOJ05118O92.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="openai前员工预测2027年agi降临gpt智商飙升4年从幼儿园蹿到高中生">OpenAI前员工预测：2027年AGI降临！GPT智商飙升，4年从幼儿园蹿到高中生</h2>
+<p>文章作者LeopoldAschenbrenner预测2027年可能实现强人工智能（AGI），引发了对其可行性的讨论。虽然他提供了多种数据和分析，但结论仍然存在争议，尤其是考虑到算力、算法效率与解开收益的叠加，以及未来四年的发展预测。同时，文章也提出了AGI实现可能面临的挑战，如幻觉问题等。（<a class="link" href="https://www.163.com/dy/article/J3UP1O070511ABV6.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="北京9岁小学生已经用ai出书了罗永浩围观有事找不到我找ai">北京9岁小学生，已经用AI出书了！罗永浩围观：有事找不到我找AI</h2>
+<p>智谱AI举办OpenDay活动，展示了其AI智能体与小学生许萌萌合作出版的科普小说《AI少年——火星生存大挑战》。智谱清言AI智能体可以协助用户完成多项任务，如速读论文、生成PPT和流程图等。新发布的大型模型GLM-4-9B在综合能力上比ChatGLM3-6B提升40%，中文学科方面提升50%。同时，智谱AI开放平台升级至MaaS2.0，价格下降，性能提升。活动还展示了儿童使用智谱清言APP创作的画作，显示大模型应用的普及趋势。（<a class="link" href="https://www.163.com/dy/article/J3UL5EP30511DSSR.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<h2 id="openai-ceo豪投400多家公司持股200亿ai芯片成重点">OpenAI CEO豪投400多家公司，持股200亿，AI芯片成重点</h2>
+<p><img src="/p/ai20240605/ai20240605-96.jpg"
+	width="950"
+	height="600"
+	srcset="/p/ai20240605/ai20240605-96_hu1a6771bf538b263257bc0307cd7119fd_266981_480x0_resize_q75_box.jpg 480w, /p/ai20240605/ai20240605-96_hu1a6771bf538b263257bc0307cd7119fd_266981_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="OpenAI CEO豪投400多家公司，持股200亿，AI芯片成重点"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="158"
+		data-flex-basis="380px"
+	
+></p>
+<p>1.OpenAICEOSamAltman拥有至少28亿美元的隐秘投资帝国，涉及400多家企业，其中包括知名AI公司。2.Altman的投资风格激进，曾在未完成介绍前即做出决定，他利用个人信贷对初创公司进行高风险投资。3.Altman在AI领域有显著投资，如CerebrasSystems、Humane和RainAI等。其中，Stripe是他最成功的投资之一，其估值为650亿美元。4.Altman与OpenAI的利益关系引发关注，他同时持股多家与OpenAI合作的公司，可能存在利益冲突。5.尽管如此，Altman表示会遵循政策，并对其投资保持透明。（<a class="link" href="https://www.163.com/dy/article/J3UNK4EO051180F7.html"  target="_blank" rel="noopener"
+    >报道详情</a>）</p>
+<hr>
+<p>关注本公众号，我们共同学习进步👇🏻👇🏻👇🏻</p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+<hr>
+<p>我的本博客原地址：<a class="link" href="https://mp.weixin.qq.com/s/q8B0sgyv8uu5cuYQmJy4lQ"  target="_blank" rel="noopener"
+    >https://mp.weixin.qq.com/s/q8B0sgyv8uu5cuYQmJy4lQ</a></p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/ai%E8%B5%84%E8%AE%AF/">AI资讯</a>
+        
+            <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+        
+            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/ai20240622/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ai20240622/00.7551b6b889fc57d6b6c7963105abfe8e_hu4c5979059c1785fc93bc1b6be5c73863_14050_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [AI资讯·0622] Claude3.5超越GPT-4o，360推出AI搜索，OpenAI收购Rockset，华为发布大模型"
+                        data-key="ai20240622" 
+                        data-hash="md5-dVG2uIn8V9a2x5YxBav&#43;jg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[AI资讯·0622] Claude3.5超越GPT-4o，360推出AI搜索，OpenAI收购Rockset，华为发布大模型</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai20240618/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ai20240618/ai20240618-156.8b515076b2a789384b0e5464df31b03e_hu39aaad0348e76c82767de365e5ef36d5_46223_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [AI资讯·0618] 快手AI模型可灵在质量优于Sora，OpenAI和谷歌发布新技术推动AI视频推理发展，Gemini1.5Pro在该榜单中表现突出"
+                        data-key="ai20240618" 
+                        data-hash="md5-i1FQdrKniThLDlRk3zGwPg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[AI资讯·0618] 快手AI模型可灵在质量优于Sora，OpenAI和谷歌发布新技术推动AI视频推理发展，Gemini1.5Pro在该榜单中表现突出</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai20240612/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ai20240612/ai20240612-125.28acfcf0872520b6c4cd6601c1cc0c6d_hu4697c1f87f561bff2a15f9ead133bd06_63496_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post AI测试高考物理题，最高准确率100%，OpenAI与苹果合作，将ChatGPT融入系统中，大模型在物理领域应用潜力显现"
+                        data-key="ai20240612" 
+                        data-hash="md5-KKz88IclILbEzWYBwcwMbQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AI测试高考物理题，最高准确率100%，OpenAI与苹果合作，将ChatGPT融入系统中，大模型在物理领域应用潜力显现</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai20240609/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ai20240609/ai20240609-107.c8006f90fae628b7c6cd1f48b1ee4020_hue0ce09b87426ee90fba054f860e0888d_40075_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [AI资讯·0609] SamAltman建立了庞大投资帝国，但不持OpenAI股票；个人资产包括房产和多家公司股权。他曾在YCombinator担任总裁，并投资40家公司，有五家估值增长100倍以上。尽管他不参与OpenAI决策，但其利益与公司业务存在复杂关系，引发监督和透明度争议。"
+                        data-key="ai20240609" 
+                        data-hash="md5-yABvkPrmKLfGzR9Ise5AIA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[AI资讯·0609] SamAltman建立了庞大投资帝国，但不持OpenAI股票；个人资产包括房产和多家公司股权。他曾在YCombinator担任总裁，并投资40家公司，有五家估值增长100倍以上。尽管他不参与OpenAI决策，但其利益与公司业务存在复杂关系，引发监督和透明度争议。</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai20240604/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ai20240604/ai20240604-75.a3cb3cbf272f134fb7353de84c99e932_hu8b59891c0bca1d923dd986d947b3c7ef_230599_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [AI资讯·0604] AI将取代某些工作，Anthropic致力于解决安全性和可解释性问题；AI搜索产品改变信息检索，百度应对挑战；AMD挑战NVIDIA市场领导地位；版权保护问题日益凸显，Shapley值框架提出解决方案；强化学习方法超越GPT-4v；Octopusv4模型优化多模态查询；李飞飞强调空间智能对AI发展的重要性。"
+                        data-key="ai20240604" 
+                        data-hash="md5-o8s8vycvE0&#43;3NT3oTJnpMg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[AI资讯·0604] AI将取代某些工作，Anthropic致力于解决安全性和可解释性问题；AI搜索产品改变信息检索，百度应对挑战；AMD挑战NVIDIA市场领导地位；版权保护问题日益凸显，Shapley值框架提出解决方案；强化学习方法超越GPT-4v；Octopusv4模型优化多模态查询；李飞飞强调空间智能对AI发展的重要性。</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

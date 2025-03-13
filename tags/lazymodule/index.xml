@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>LazyModule on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/lazymodule/</link>
+        <description>Recent content in LazyModule on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Fri, 18 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/lazymodule/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>transformers 推理 Qwen2.5 等大模型技术细节详解(一)transformers 初始化和对象加载（文末免费送书）</title>
+        <link>https://ntopic.cn/p/2024101801/</link>
+        <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024101801/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024101801/00.jpg" alt="Featured image of post transformers 推理 Qwen2.5 等大模型技术细节详解(一)transformers 初始化和对象加载（文末免费送书）" /&gt;&lt;p&gt;上周收到一位网友的私信，希望老牛同学写一篇有关&lt;strong&gt;使用 transformers 框架推理大模型的技术细节&lt;/strong&gt;的文章。&lt;/p&gt;
+&lt;p&gt;老牛同学刚开始以为这类的文章网上应该会有很多，于是想着百度几篇质量稍高一点的回复这位网友。结果，老牛同学搜索后发现，类似文章确实不少，但是总觉得不太满意，要么细节深度不够，要么介绍不够全面，感觉达不到网友希望的&lt;strong&gt;技术细节&lt;/strong&gt;要求。为了不辜负这位网友的期望，老牛同学决定自己动手，丰衣足食。&lt;/p&gt;
+&lt;p&gt;其实，我们使用 transformers 框架推理大模型的技术细节非常多，仅主链路就包括了模型加载、数据预处理、数据转换、模型推理、解码输出等。老牛同学本着宁缺毋滥尽善尽美的原则，期望能把这些技术细节完整全面介绍一遍，考虑到文章篇幅长度，计划共分为&lt;strong&gt;3 篇&lt;/strong&gt;完成，希望能启动抛砖引玉之用：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第 1 篇：也就是本文，核心介绍&lt;strong&gt;transformers&lt;/strong&gt;包 API 设计美学、如何初始化、LazyModule 模块、按需导入指定对象等&lt;/li&gt;
+&lt;li&gt;第 2 篇：基于 Qwen2.5 大模型，核心介绍&lt;strong&gt;AutoModel&lt;/strong&gt;模型初始化&lt;code&gt;from_pretrained&lt;/code&gt;过程细节（PyTorch/TensorFlow/Flax 深度学习框架的其他模型也类似）&lt;/li&gt;
+&lt;li&gt;第 3 篇：同样基于 Qwen2.5 大模型，核心介绍&lt;strong&gt;AutoTokenizer&lt;/strong&gt;初始化&lt;code&gt;from_pretrained&lt;/code&gt;，和结合 Qwen2.5 大模型的完整推理过程技术细节&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;请原谅老牛同学水平有限，文中难免会出现遗漏和错误之处，恳请大家及时留言指出，以帮助老牛同学和其他阅读到本文的网友，让我们共同学习进步，在此万分感谢。&lt;/p&gt;
+&lt;p&gt;下面截图的寥寥几行代码，相信大家已经比较熟悉，因为它们经常出现在老牛同学的文章中。也就是这么几行代码，却涵盖了使用 transformers 框架进行大模型推理的核心代码框架。本系列的 3 篇文章，也将围绕这几行代码逐步展开：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/01.jpg&#34;
+	width=&#34;1366&#34;
+	height=&#34;1354&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/01_hu381ec97f98686c3612cac686645cde4c_122750_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/01_hu381ec97f98686c3612cac686645cde4c_122750_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Transformers推理核心流程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;242px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;要想详细介绍 Transformers 推理技术细节，我们就从 transformers 推理框架本身开始，老牛同学觉得这行代码就已足够：&lt;code&gt;from transformers import XXX&lt;/code&gt;，代码中的&lt;strong&gt;XXX&lt;/strong&gt;具体是哪个对象其实并不太重要，但为了后续介绍和演示方便，在本文中老牛同学就以&lt;strong&gt;AutoModelForCausalLM&lt;/strong&gt;代替&lt;strong&gt;XXX&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;是的，你没有看错，本文主要就只介绍这 1 行代码，这行在我们看来在简单熟悉不过的代码。想想看，对于 Transformers 这个大模型研究者和使用者们首选的框架来说，按理我们使用起来应该会很复杂，但从上面推理程序代码可以看到，我们使用这个框架时却似乎很简单，那么可能的解释是：&lt;strong&gt;Transformers 框架设计得特别的精妙&lt;/strong&gt;！&lt;/p&gt;
+&lt;p&gt;老牛同学可以这么说：如果能把这行看似简单的代码真正读懂，在我们目前或将来设计像 transformers 这种超级 Python 包时，我们将会得心应手、游刃有余！&lt;/p&gt;
+&lt;p&gt;我们把本文分为以下几个主要章节部分，最终完成这行代码的介绍：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;前期环境准备，主要是下载 transformers 包代码，包括环境配置和包安装&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;transformers 包&lt;/strong&gt;的初始化过程，即代码前半部分：&lt;code&gt;from transformers&lt;/code&gt;，我们可以看到&lt;strong&gt;transformers 包&lt;/strong&gt;的设计和我们日常研发很不一样&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;transformers 包&lt;/strong&gt;导入类过程，即代码后半部分：&lt;code&gt;import AutoModelForCausalLM&lt;/code&gt;，让我们看看 transformers 包在设计上的精妙之处&lt;/li&gt;
+&lt;li&gt;在最后，老牛同学又来搞个小活动，免费包邮送几本新书给大家，期望大家踊跃参与&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;环境准备下载-transformers-包代码&#34;&gt;环境准备，下载 transformers 包代码&lt;/h1&gt;
+&lt;p&gt;我们依然使用&lt;strong&gt;Miniconda&lt;/strong&gt;来管理 Python 虚拟环境，&lt;strong&gt;Miniconda&lt;/strong&gt;的安装和使用可以参考老牛同学之前的文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;首先，我们配置虚拟环境：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Python虚拟环境名：Qwen2.5，版本号：3.10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda create -n Qwen2.5 &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;3.10 -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 激活虚拟环境&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda activate Qwen2.5
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后，在虚拟环境中下载依赖包：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install torch
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install &lt;span class=&#34;s2&#34;&gt;&amp;#34;transformers&amp;gt;=4.37.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install &lt;span class=&#34;s2&#34;&gt;&amp;#34;accelerate&amp;gt;=0.26.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;环境准备好了，我们接下来就来看前半部分代码了~&lt;/p&gt;
+&lt;h1 id=&#34;代码行from-transformers-代码详解&#34;&gt;代码行：from transformers 代码详解&lt;/h1&gt;
+&lt;p&gt;这行代码意思是引入 transformers 模块，它是 Python 从一个模块导入指定模块或对象的标准语法。&lt;/p&gt;
+&lt;p&gt;那么，Python 怎么知道去哪里找到&lt;strong&gt;transformers&lt;/strong&gt;这个模块呢？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先，Python 检查&lt;code&gt;sys.modules&lt;/code&gt;模块字典中是否存在名&lt;strong&gt;transformers&lt;/strong&gt;的模块，这个字典存放着内置模块和已经导入过的模块，如果存在则直接返回，否则&lt;/li&gt;
+&lt;li&gt;进一步搜索模块，逐一遍历&lt;code&gt;sys.path&lt;/code&gt;目录列表，最后在&lt;strong&gt;site-packages&lt;/strong&gt;目录下找到&lt;strong&gt;transformers&lt;/strong&gt;包（文件夹）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们可以通过以下代码，查看 Python 解释器启动时，默认的搜索模块目录列表，和获取&lt;strong&gt;site-packages&lt;/strong&gt;目录位置的方式：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 包或者模块搜索目录列表&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;sys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 查看 site-packages 目录的位置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;site&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;directory&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;site&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getsitepackages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;directory&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/02.jpg&#34;
+	width=&#34;1362&#34;
+	height=&#34;382&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/02_hu7c1939a73f871ccfa9f9e39ff556ae14_84039_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/02_hu7c1939a73f871ccfa9f9e39ff556ae14_84039_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Python启动的系统目录&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;356&#34;
+		data-flex-basis=&#34;855px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;site-packages&lt;/strong&gt;目录作用：它存放我们安装的第三方包和模块，我们通过&lt;code&gt;pip install 模块名&lt;/code&gt;命令安装包和模块，默认都存放在该目录中。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Python 研发&lt;strong&gt;小技巧&lt;/strong&gt;：
+当我们希望动态改变模块搜索目录，用于加载自定义模块时，我们可以在&lt;code&gt;sys.path&lt;/code&gt;列表中添加自定义的模块目录即可实现
+如：把自定义模块目录添加模块搜索目录列表中：&lt;code&gt;sys.path.append(&#39;/a/b/c/my-modules&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接下来，Python 会对&lt;strong&gt;transformers&lt;/strong&gt;包进行初始化，即执行目录下面的&lt;code&gt;__init__.py&lt;/code&gt;文件代码。对于 Python 来说，&lt;code&gt;__init__.py&lt;/code&gt;代码文件主要有 2 个作用：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;告诉 Python 该目录不是一个普通目录，它是一个 Python 包&lt;/li&gt;
+&lt;li&gt;该文件内容是这个包的初始化代码，第一次加载包时需要执行这些代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接下来，我们来看看&lt;strong&gt;transformers 包&lt;/strong&gt;的初始化&lt;code&gt;__init__.py&lt;/code&gt;代码文件内容（开始进入主题了）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;文件内容总共有&lt;strong&gt;9 千多行&lt;/strong&gt;代码，前面是一些普通的变量定义和对象导入等代码，和我们日常研发无异，无需过多关注，直到&lt;code&gt;_import_structure&lt;/code&gt;变量首次出现：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/10.jpg&#34;
+	width=&#34;927&#34;
+	height=&#34;1228&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/10_hu901a7271fd6fe943b2f966194d303d3c_95937_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/10_hu901a7271fd6fe943b2f966194d303d3c_95937_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;模块路径和对象字典&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;75&#34;
+		data-flex-basis=&#34;181px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;_import_structure&lt;/code&gt;变量是一个字典，它其实是在&lt;strong&gt;收集&lt;/strong&gt;模块名和对象（类型、方法和变量）关系的字典。字典的键是模块名（包名和模块名），字典值是对象名。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;我们前面有提到，Transformer 支持 PyTorch/TensorFlow/Flax 这 3 个深度学习框架，对于每个框架它都有对应着收集不同的对象：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/11.jpg&#34;
+	width=&#34;1831&#34;
+	height=&#34;850&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/11_huf7853a20900fceaa65e115a57ece02b8_88845_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/11_huf7853a20900fceaa65e115a57ece02b8_88845_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不同深度学习框架模块&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;215&#34;
+		data-flex-basis=&#34;516px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Transformer 根据当前环境支持的不同深度学习框架，&lt;strong&gt;收集&lt;/strong&gt;不同的字典内容，三个框架是否支持的判断条件：&lt;code&gt;is_torch_available()&lt;/code&gt;、&lt;code&gt;is_torch_available()&lt;/code&gt;和&lt;code&gt;is_flax_available()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;同时，通过&lt;code&gt;try/except/else&lt;/code&gt;的方式，如果当前环境支持某个深度学习框架，那么在&lt;strong&gt;else&lt;/strong&gt;代码块里&lt;strong&gt;收集&lt;/strong&gt;该框架对应的字典内容；否则抛出&lt;code&gt;OptionalDependencyNotAvailable&lt;/code&gt;错误，然后通过&lt;strong&gt;except&lt;/strong&gt;代码块捕获错误，并通过&lt;code&gt;utils.dummy_XX_objects&lt;/code&gt;模块&lt;strong&gt;收集&lt;/strong&gt;字典内容，保证最终字典内容包含了完整模块对象。&lt;/p&gt;
+&lt;p&gt;我们打开&lt;strong&gt;dummy&lt;/strong&gt;模块（如：&lt;code&gt;dummy_pt_objects.py&lt;/code&gt;）代码可以看到，它定义了&lt;strong&gt;else&lt;/strong&gt;块中的对象，但是没有任何方法，简单理解它其实就是一个&lt;strong&gt;占位符&lt;/strong&gt;！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题 1&lt;/strong&gt;：当我们使用 Transformer 框框推理某个预训练模型（如 Qwen2.5），它使用的深度学习框架只会属于某一个，我们只&lt;strong&gt;收集&lt;/strong&gt;当前所支持的对象不可以吗，为什么还需要设置&lt;strong&gt;dummy&lt;/strong&gt;模块，一定要保证完整的收集到所有对象呢，并且这些&lt;strong&gt;dummy&lt;/strong&gt;对象也没有实际可用的方法？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解读 1&lt;/strong&gt;：Transformers 框架是一个功能齐全的超级库，它除了数据集、模型、训练等常用功能之外，还有很多其他功能和模块，比如配置、分词器等。如果我们程序只需要其他模块（如：与框架无关的工具类），但是因不小心或者代码注解的需要，引入了与框架相关的类（即&lt;strong&gt;else&lt;/strong&gt;块中或者&lt;strong&gt;dummy&lt;/strong&gt;中的那些模型或对象），如果没有&lt;strong&gt;dummy&lt;/strong&gt;中对象定义，就直接&lt;strong&gt;ImportError&lt;/strong&gt;了，而有了&lt;strong&gt;dummy&lt;/strong&gt;我们就可以正常使用。同时，而当我们实际使用了 dummy 对象时，我们也可以收到一个明确的错误提示，进而帮助我们进一步排查处理。&lt;/p&gt;
+&lt;p&gt;收集&lt;code&gt;_import_structure&lt;/code&gt;字典的代码行非常多，模式都一样，基本都是&lt;code&gt;try/except/else&lt;/code&gt;代码块。接下来，我们以&lt;strong&gt;AutoModel&lt;/strong&gt;类为例，来看看 3 个深度学习框架它们对应的类名：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# PyTorch框架&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_import_structure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;models.auto&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ....&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;AutoModel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;AutoModelForCausalLM&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# TensorFlow框架&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_import_structure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;models.auto&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ....&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;TFAutoModel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;TFAutoModelForCausalLM&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Flax框架&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_import_structure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;models.auto&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ....&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;FlaxAutoModel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;FlaxAutoModelForCausalLM&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;从上面代码可以看出，它们的模块名都是&lt;code&gt;models.auto&lt;/code&gt;，但是它们的类名却不一样，TensorFlow 和 Flax 分别增加了&lt;strong&gt;TF&lt;/strong&gt;和&lt;strong&gt;Flax&lt;/strong&gt;前缀。其实这可以理解，否则就有 3 个或更多重名的类了，下一节我们还会看到，&lt;code&gt;_LazyModule&lt;/code&gt;初始化时会反转键值对，因此必须&lt;strong&gt;不能重名&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题 2&lt;/strong&gt;：在&lt;code&gt;__init__.py&lt;/code&gt;代码文件中，还有个重要常量&lt;code&gt;TYPE_CHECKING&lt;/code&gt;，在&lt;code&gt;if TYPE_CHECKING:&lt;/code&gt;代码块中，它显示的导入了和&lt;code&gt;_import_structure&lt;/code&gt;收集的一样的所有对象，一个显示导入，一个只是字符串收集，这又是为什么呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解读 2&lt;/strong&gt;：&lt;code&gt;TYPE_CHECKING&lt;/code&gt;是在 Python 内置的&lt;code&gt;typing.py&lt;/code&gt;模块中定义的常量（Python 一般约定：变量名大写则称该变量为常量），当 PyCharm/mypy 等工具进行类型检查时，该常量的值为&lt;code&gt;True&lt;/code&gt;，而当程序执行时，它的值为&lt;code&gt;False&lt;/code&gt;。Transformer 包非常大，功能非常多，如果我们默认导入全部的模块和对象，势必会大大增加程序的启动时间，而通过&lt;code&gt;if/else&lt;/code&gt;条件判断，即保证了类型检查能正常运行，又可以节省程序运行的启动时间和提高执行效率。&lt;/p&gt;
+&lt;p&gt;我们继续&lt;code&gt;__init__.py&lt;/code&gt;代码文件，&lt;code&gt;_import_structure&lt;/code&gt;字典收集完模块和对象之后，又出现了一段有段有意思的代码：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/12.jpg&#34;
+	width=&#34;1320&#34;
+	height=&#34;982&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/12_hu190660fccec63094ac7e33490e771c00_77918_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/12_hu190660fccec63094ac7e33490e771c00_77918_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;初始化LazyModule模块&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;322px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;transformers 包&lt;/strong&gt;竟然在自己初始化的时候，自己把自己设置到&lt;code&gt;sys.modules&lt;/code&gt;中缓存起来：&lt;code&gt;sys.modules[__name__] = _LazyModule(...)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题 3&lt;/strong&gt;：我们一般在设计包的初始化&lt;code&gt;__init__.py&lt;/code&gt;代码文件时，在完成模块导入或对象定义之后，代码正常结束即可，Python 自动把我们的模块放到&lt;code&gt;sys.modules&lt;/code&gt;中缓存起来。为什么&lt;strong&gt;transformers 包&lt;/strong&gt;需要自己设置呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解读 3&lt;/strong&gt;：从上面的 9 千行代码看到，初始化过程只是在收集&lt;code&gt;_import_structure&lt;/code&gt;字典内容，并没有导入实际对象。如果&lt;code&gt;__init__.py&lt;/code&gt;就此结束，&lt;code&gt;from transformers import XXX&lt;/code&gt;必然会报错。其实，Transformer 包设计的核心就在&lt;code&gt;_LazyModule(...)&lt;/code&gt;里，下面我们就揭开它的就是细节。&lt;/p&gt;
+&lt;h1 id=&#34;代码行import-automodelforcausallm-代码详解&#34;&gt;代码行：import AutoModelForCausalLM 代码详解&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;transformers&lt;/strong&gt;模块初始化&lt;code&gt;__init__.py&lt;/code&gt;代码文件的结果，就是自定义模块类&lt;code&gt;_LazyModule&lt;/code&gt;，其中&lt;code&gt;_import_structure&lt;/code&gt;作为&lt;strong&gt;非常重要&lt;/strong&gt;的初始化参数，它的定义如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/21.jpg&#34;
+	width=&#34;1714&#34;
+	height=&#34;1071&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/21_hu15b74c76199612a05f2b9dedc4bebad3_97426_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/21_hu15b74c76199612a05f2b9dedc4bebad3_97426_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;LazyModuel类结构&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;_LazyModuel 继承自&lt;strong&gt;ModuleType&lt;/strong&gt;类，说明它是一个模块类型，这也是为什么它可以放入&lt;code&gt;sys.modules&lt;/code&gt;的原因&lt;/li&gt;
+&lt;li&gt;_LazyModuel 有 3 个非常关键的方法，下面会逐一介绍：&lt;code&gt;__init__&lt;/code&gt;、&lt;code&gt;__getattr__&lt;/code&gt;和&lt;code&gt;_get_module&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;【&lt;code&gt;__init__&lt;/code&gt;初始化方法：把&lt;code&gt;_import_structure&lt;/code&gt;字典进行键值反转】&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/22.jpg&#34;
+	width=&#34;1542&#34;
+	height=&#34;1086&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/22_hua7a4852a2f34d7d8fff101d3652b3073_114698_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/22_hua7a4852a2f34d7d8fff101d3652b3073_114698_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;模型路径和对象反转&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;340px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;前面&lt;code&gt;_import_structure&lt;/code&gt;字典收集的模块和对象，在_LazyModuel 进行了反转&lt;code&gt;self._class_to_module&lt;/code&gt;，在这个字典中，我们可以通过&lt;strong&gt;对象名&lt;/strong&gt;获取到它所在模块名。&lt;/p&gt;
+&lt;p&gt;【&lt;code&gt;__getattr__&lt;/code&gt;属性获取魔法方法：为动态加载模块提供了机会】&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/23.jpg&#34;
+	width=&#34;1791&#34;
+	height=&#34;1048&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/23_hu886a2725316cc30900598b4ad2c254fe_116365_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/23_hu886a2725316cc30900598b4ad2c254fe_116365_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;对象属性动态获取魔法方法&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;170&#34;
+		data-flex-basis=&#34;410px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们回到最开始的 Python 语句&lt;code&gt;from transformers import AutoModelForCausalLM&lt;/code&gt;，在&lt;strong&gt;transformers&lt;/strong&gt;模块初始化的结果是一个自定义的&lt;code&gt;_LazyModule&lt;/code&gt;类型模块。我们需要从&lt;code&gt;_LazyModule&lt;/code&gt;中查找&lt;strong&gt;AutoModelForCausalLM&lt;/strong&gt;信息：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先，Python 在&lt;code&gt;_LazyModule&lt;/code&gt;实例的字典&lt;code&gt;__dict__&lt;/code&gt;中查找，很明显没有&lt;strong&gt;AutoModelForCausalLM&lt;/strong&gt;属性&lt;/li&gt;
+&lt;li&gt;然后，Python 在&lt;code&gt;_LazyModule&lt;/code&gt;类本身中查找，很明显也没有&lt;/li&gt;
+&lt;li&gt;最终，若对象实现了&lt;code&gt;__getattr__&lt;/code&gt;魔法方法，Python 会调用这个魔法方法获取属性（如果还找不到则会抛出&lt;code&gt;AttributeError&lt;/code&gt;异常）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在&lt;code&gt;__getattr__&lt;/code&gt;魔方方法中，通过刚才键值反转的字典&lt;code&gt;_class_to_module&lt;/code&gt;获取到模块路径，然后调用&lt;code&gt;self._get_module&lt;/code&gt;私有方法动态加载&lt;strong&gt;模块&lt;/strong&gt;。在这个私有方法中，通过&lt;code&gt;importlib.import_module&lt;/code&gt;动态导入模块。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题 4&lt;/strong&gt;：动态导入模块，又是怎么实现的呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解读 4&lt;/strong&gt;：我们打开&lt;strong&gt;models.auto&lt;/strong&gt;包的&lt;code&gt;__init__.py&lt;/code&gt;初始化文件，可以看到，它的处理方式，和&lt;strong&gt;transformers 包&lt;/strong&gt;的初始化方式同出一辙，也是&lt;code&gt;_LazyModule&lt;/code&gt;延迟模块，它们是通过&lt;strong&gt;递归&lt;/strong&gt;的方式，最终获取到了实际的对象：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/24.jpg&#34;
+	width=&#34;1744&#34;
+	height=&#34;1308&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/24_hu5b7b15ae4d69d6baf970768e158dc115_112257_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/24_hu5b7b15ae4d69d6baf970768e158dc115_112257_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;models.auto包初始化方式&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;下面老牛同学抽取了三个不同框架，&lt;strong&gt;AutoModel&lt;/strong&gt;类的配置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# PyTorch框架&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_import_structure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;modeling_auto&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ....&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;AutoModel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;AutoModelForCausalLM&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# TensorFlow框架&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_import_structure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;modeling_tf_auto&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ....&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;TFAutoModel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;TFAutoModelForCausalLM&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Flax框架&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_import_structure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;modeling_flax_auto&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ....&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;FlaxAutoModel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;FlaxAutoModelForCausalLM&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;也就是说：最终&lt;strong&gt;AutoModel&lt;/strong&gt;在文件&lt;code&gt;./models/auto/modeling_auto.py&lt;/code&gt;中定义：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ./models/auto/modeling_auto.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;AutoModelForCausalLM&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_BaseAutoModelClass&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;_model_mapping&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MODEL_FOR_CAUSAL_LM_MAPPING&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;AutoModelForCausalLM&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;auto_class_update&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AutoModelForCausalLM&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;head_doc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;causal language modeling&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最后一步，也是&lt;strong&gt;非常重要&lt;/strong&gt;的一步：&lt;code&gt;setattr(self, name, value)&lt;/code&gt;把对象放入了&lt;code&gt;transformers&lt;/code&gt;模块属性列表中，它把本不是&lt;code&gt;transformers&lt;/code&gt;模块中的对象，与自己建立了关联！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题 5&lt;/strong&gt;：到这里，&lt;code&gt;transformers包&lt;/code&gt;的初始化流程基本完成了，它为什么要搞这么复杂呢？直接使用&lt;code&gt;from transformers.models.auto.modeling_auto import AutoModelForCausalLM&lt;/code&gt;不可以吗？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解答 5&lt;/strong&gt;：老牛同学认为在使用上完全可以，但是 Transformers 作为一个有望一统天下的大模型推理框架，如果它把 API 设计得越简单、越&lt;strong&gt;方便使用&lt;/strong&gt;，就越容易被使用者接受；同时，内部代码调整对已有的程序也没有任何的影响。是的，它就在提高我们使用的&lt;strong&gt;便利性&lt;/strong&gt;和升级的影响最小化，它处处在为使用者着想，老牛同学觉得这也许就是超级框架的大格局！&lt;/p&gt;
+&lt;p&gt;最后，老牛同学试着用一张图，把上面流程总结一下（为了展示方便，把递归给拆开了）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/25.jpg&#34;
+	width=&#34;1195&#34;
+	height=&#34;1315&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/25_hue5e584bd7bb2f45cbe7e17581351ad99_98645_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/25_hue5e584bd7bb2f45cbe7e17581351ad99_98645_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Transformers包对象加载流程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;90&#34;
+		data-flex-basis=&#34;218px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们可以看到，虽然只是一行代码，但是却有着很多值得参考的设计技巧：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;设计&lt;strong&gt;dummy&lt;/strong&gt;对象，让对象的导入能顺序进行，让报错延迟，尽可能让程序能执行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_LazyModule&lt;/code&gt;延迟动态模块，按需加载对象，在节省启动时间的同时，减少内存使用&lt;/li&gt;
+&lt;li&gt;API 设计简单化，把困难留给自己，把便利留给使用者，这样才能得到用户的认可，也只有这样才能走的更稳更远&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;最后又来给大家免费包邮送几本新书&#34;&gt;最后：又来给大家免费包邮送几本新书&lt;/h1&gt;
+&lt;p&gt;前面我们已经举办过 2 次面试包邮送书活动：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程（文末有福利）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/6yKkaCZU_XXec9mVBMmc1Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用世界领先的 Qwen2.5-Math 开源模型当 AI 数学老师，让奥数解题辅导父慈子孝（文末有福利）&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;老牛同学继续和出版社朋友合作，举办第 3 次送书福利小活动，新书名为：《&lt;strong&gt;硅谷 Python 工程师面试指南&lt;/strong&gt;》&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024101801/book.jpg&#34;
+	width=&#34;899&#34;
+	height=&#34;1131&#34;
+	srcset=&#34;https://ntopic.cn/p/2024101801/book_huc1d0d32a1d4ff9c6a73fb7a5637be2fc_92640_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024101801/book_huc1d0d32a1d4ff9c6a73fb7a5637be2fc_92640_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;硅谷Python工程师面试指南&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;79&#34;
+		data-flex-basis=&#34;190px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;大模型应用固然重要，但是 Python 基础知识不容忽视，这本书作者根据亲身经历，讲解了面试技巧、流程和策略等。同时，针对 Python 的数据结构、算法等基础知识，通过丰富的实例，帮忙我们逐步完成系统设计。&lt;/p&gt;
+&lt;p&gt;本期送书小活动的规则和之前类似，总体如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;关注&lt;strong&gt;老牛同学&lt;/strong&gt;微信公众号，因为这是老牛同学公众号关注者的小福利&lt;/li&gt;
+&lt;li&gt;在本文的评论区进行&lt;strong&gt;留言&lt;/strong&gt;，留言的&lt;strong&gt;点赞&lt;/strong&gt;数排名&lt;strong&gt;前 3 名&lt;/strong&gt;的朋友，&lt;strong&gt;免费&lt;/strong&gt;且&lt;strong&gt;包邮&lt;/strong&gt;获得 1 本书（即：默认送 3 本书）&lt;/li&gt;
+&lt;li&gt;若本文的&lt;strong&gt;阅读量&lt;/strong&gt;和&lt;strong&gt;老牛同学&lt;/strong&gt; CSDN 同文的阅读量之和达到了&lt;strong&gt;2000&lt;/strong&gt;（含&lt;strong&gt;2000&lt;/strong&gt;），则留言的&lt;strong&gt;点赞&lt;/strong&gt;数排名&lt;strong&gt;前 6 名&lt;/strong&gt;的朋友均免费包邮送书（即：最多送 6 本书）&lt;/li&gt;
+&lt;li&gt;活动时间：2024 年 10 月 18 日到 2024 年 10 月 24 号上午 12 点整（正好 1 周，周末可寄送新书）&lt;/li&gt;
+&lt;li&gt;老牛同学不参与本次活动（因为老牛同学默认就有 1 本）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;为方便大家购买本书，老牛同学贴上京东商品链接（大家也可在购书网站搜索“硅谷 Python 工程师面试指南”直接购买）：&lt;/p&gt;
+&lt;p&gt;【书籍购买链接】&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;往期推荐文章：&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/8f3xna9TRmxMDaY_cQhy8Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

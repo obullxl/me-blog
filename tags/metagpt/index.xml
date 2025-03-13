@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>MetaGPT on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/metagpt/</link>
+        <description>Recent content in MetaGPT on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sat, 14 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/metagpt/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>基于 CrewAI 多智能体框架，手把手构建一个自动化写作应用实战</title>
+        <link>https://ntopic.cn/p/2024091401/</link>
+        <pubDate>Sat, 14 Sep 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024091401/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024091401/00.jpg" alt="Featured image of post 基于 CrewAI 多智能体框架，手把手构建一个自动化写作应用实战" /&gt;&lt;center&gt;&lt;strong&gt;明月皓皓，星河灿烂，中秋佳节，团圆美满。祝大家中秋节快乐！&lt;/strong&gt;听说台风要来了，也不知道还能不能吃着月饼赏个月？&lt;/center&gt;
+&lt;hr&gt;
+&lt;p&gt;老牛同学在上文（&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/ZfyCnCOqjtLGcPUfPq7JLQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码&lt;/a&gt;）和大家一起初步理解了什么是 Agent(智能体)、它具备哪些特性等基础知识，然后想着使用 MetaGPT 这个国内开源的多智能体系统，用一句话让它帮忙写一个贪吃蛇小游戏程序，体验一把当“老板”的乐趣。我们的需求确实是用一句话给了 MetaGPT，只可惜“老板”的乐趣是没有体验到，MetaGPT 倒是给我们留了一个有 Bug 的程序，老牛同学又得做回程序员，修 Bug 去！&lt;/p&gt;
+&lt;p&gt;MetaGPT 这种端到端的多智能体系统设计本身很有吸引力，但是对它所依赖的基础大语言模型（大模型）有很强的诉求，否则根据一句话的需求产出的结果很难尽人意。老牛同学感觉大模型参数量得 &lt;strong&gt;100B&lt;/strong&gt; 起步才会较好的效果，且需求越复杂，对大模型的要求就会越高。&lt;/p&gt;
+&lt;p&gt;今天，老牛同学和大家一起看看另外一个多智能体框架 &lt;strong&gt;CrewAI&lt;/strong&gt;，我们使用它，可以像搭乐高积木一样，搭建自己工作流。与 &lt;strong&gt;MetaGPT&lt;/strong&gt; 相比，&lt;strong&gt;CrewAI&lt;/strong&gt; 更加轻量化，定制的灵活性更高，因此老牛同学称它为框架。&lt;/p&gt;
+&lt;p&gt;大语言模型最擅长的是自然语言生成，那么我们本次就来使用 &lt;strong&gt;CrewAI&lt;/strong&gt; 搭建一个自动化写作系统，本文主要包括以下内容：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;CrewAI&lt;/strong&gt; 框架基本介绍&lt;/li&gt;
+&lt;li&gt;本地安装 &lt;strong&gt;CrewAI&lt;/strong&gt; 框架依赖&lt;/li&gt;
+&lt;li&gt;使用 &lt;strong&gt;CrewAI&lt;/strong&gt; 逐步地搭建我们的自动化写作系统&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;本文所有涉及到的源代码，不出意外的话，源代码地址老牛同学会放在评论区~&lt;/p&gt;
+&lt;h1 id=&#34;crewai-框架基本介绍&#34;&gt;CrewAI 框架基本介绍&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;CrewAI&lt;/strong&gt; 官方开源地址：&lt;a class=&#34;link&#34; href=&#34;https://github.com/crewAIInc/crewAI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crewAIInc/crewAI&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CrewAI&lt;/strong&gt; 是一个多智能体框架，主要为角色扮演中的智能体提供自动化配置，以促进智能体之间的合作，共同解决复杂问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CrewAI&lt;/strong&gt; 主要由&lt;strong&gt;Agent&lt;/strong&gt;(智能体)、&lt;strong&gt;Task&lt;/strong&gt;(任务)、&lt;strong&gt;Tool&lt;/strong&gt;(工具)和&lt;strong&gt;Crew&lt;/strong&gt;(团队)模块组成。&lt;strong&gt;智能体&lt;/strong&gt;是具有角色和背景故事、目标和记忆的团队成员；&lt;strong&gt;任务&lt;/strong&gt;是智能体需要完成的任务；&lt;strong&gt;工具&lt;/strong&gt;是智能体使用的设备，用于辅助完成任务；&lt;strong&gt;团队&lt;/strong&gt;则是智能体和任务相结合的容器，是智能体协调合作执行任务的实际场所，智能体由它共同完成实际任务。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024091401/01.jpg&#34;
+	width=&#34;1374&#34;
+	height=&#34;943&#34;
+	srcset=&#34;https://ntopic.cn/p/2024091401/01_hu8e63bde16161d5fd6ec33b6c2d20f047_87370_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024091401/01_hu8e63bde16161d5fd6ec33b6c2d20f047_87370_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CrewAI&lt;/strong&gt; 框架比较灵活，它不仅支持&lt;strong&gt;OpenAI&lt;/strong&gt;标准 API，还支持&lt;strong&gt;Ollama&lt;/strong&gt;标准 API，它具备如下核心特征：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;角色定制代理：可以根据不同的角色、目标和工具来量身定制代理。&lt;/li&gt;
+&lt;li&gt;自动任务委派：代理之间能够自主地分配任务和进行交流，有效提升解题效率。&lt;/li&gt;
+&lt;li&gt;任务管理灵活性：可以根据需要自定义任务和工具，并灵活地指派给不同代理。&lt;/li&gt;
+&lt;li&gt;流程导向：目前系统仅支持按顺序执行任务，但更加复杂的如基于共识和层级的流程正在研发中。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;本地安装-crewai-框架依赖&#34;&gt;本地安装 CrewAI 框架依赖&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;工欲善其事，必先利其器&lt;/strong&gt;，我们通过&lt;strong&gt;Miniconda&lt;/strong&gt;管理 Python 虚拟环境，&lt;strong&gt;Miniconda&lt;/strong&gt;的安装和使用可以参考老牛同学之前的文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Python虚拟环境名：CrewAI，版本号：3.10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda create -n CrewAI &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;3.10 -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 激活虚拟环境&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda activate CrewAI
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下来，我们就可以安装 CrewAI 框架依赖了：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install crewai
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;至此，&lt;strong&gt;CrewAI&lt;/strong&gt; 框架依赖就安装好了，我们接下来使用它来构建一个自动化协作应用。&lt;/p&gt;
+&lt;h1 id=&#34;使用-crewai-搭建自动化写作系统&#34;&gt;使用 CrewAI 搭建自动化写作系统&lt;/h1&gt;
+&lt;p&gt;前面提到，智能体依赖的大模型既支持 OpenAI 标准接口，也支持 Ollama 标准接口。老牛同学为了方便演示，使用 Ollama 本地部署&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型，有关 Ollama 详细介绍和使用，参见老牛同学之前的文章，本文不在赘述：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ollama 完整教程：本地 LLM 管理、WebUI 对话、Python/Java 客户端 API 应用&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第一步：&lt;/strong&gt; 明确我们的需求】&lt;/p&gt;
+&lt;p&gt;我们在来想当一次“老板”，还是以&lt;strong&gt;儿童绘本故事&lt;/strong&gt;为例，我们只提供一个&lt;strong&gt;主题&lt;/strong&gt;：由第 1 个智能体根据主题产出绘本故事的&lt;strong&gt;构思&lt;/strong&gt;内容，然后由第 2 个智能体根据第 1 个智能体的构思内容，产出&lt;strong&gt;故事&lt;/strong&gt;内容。&lt;/p&gt;
+&lt;p&gt;因此，我们需要有 2 个&lt;strong&gt;智能体&lt;/strong&gt;（即：需要定义 2 个角色），分别是：故事内容&lt;strong&gt;构思者&lt;/strong&gt;，和故事内容&lt;strong&gt;协作者&lt;/strong&gt;；他们各自都有一个&lt;strong&gt;任务&lt;/strong&gt;，分别是：产出故事内容&lt;strong&gt;构思&lt;/strong&gt;，和根据构思编写&lt;strong&gt;故事&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;接下来，我们就开始实现我们的智能体了，在此之前，我们先引入&lt;strong&gt;CrewAI&lt;/strong&gt;核心模块类，同时配置大模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024091401/11.jpg&#34;
+	width=&#34;1088&#34;
+	height=&#34;342&#34;
+	srcset=&#34;https://ntopic.cn/p/2024091401/11_hudf9f5d71066a7d320ce307e003fafb2e_29868_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024091401/11_hudf9f5d71066a7d320ce307e003fafb2e_29868_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;318&#34;
+		data-flex-basis=&#34;763px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第二步：&lt;/strong&gt; 定义&lt;strong&gt;构思者&lt;/strong&gt;角色的智能体】&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024091401/12.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;227&#34;
+	srcset=&#34;https://ntopic.cn/p/2024091401/12_hu75e42e860516b447d9bb4dd5ec3147df_27265_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024091401/12_hu75e42e860516b447d9bb4dd5ec3147df_27265_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;615&#34;
+		data-flex-basis=&#34;1478px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于&lt;strong&gt;构思者&lt;/strong&gt;智能体，它的定义如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我们要给它设定一个与任务相符的角色（&lt;code&gt;role&lt;/code&gt;）：为了简单，我们就设定为构思者&lt;/li&gt;
+&lt;li&gt;我们为这个智能体设定了一个目标（&lt;code&gt;goal&lt;/code&gt;）：要根据给定的主题（&lt;code&gt;{topic}&lt;/code&gt;），产出儿童绘本故事内容创意&lt;/li&gt;
+&lt;li&gt;我们再为规划者智能体设定一个背景故事（&lt;code&gt;backstory&lt;/code&gt;）：我们尽可能多地设定相关的上下文，比如它的职责、对它产出物的要求等。&lt;/li&gt;
+&lt;li&gt;我们还要设置一些其它属性：&lt;code&gt;allow_delegation&lt;/code&gt; 代表这个智能体不允许把工作委托给其他的智能体；&lt;code&gt;verbose&lt;/code&gt; 代表把它的工作详细记录下来，这样我们可以看到它在执行内部任务时是如何运行的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;【&lt;strong&gt;第三步：&lt;/strong&gt; 定义&lt;strong&gt;写作者&lt;/strong&gt;角色的智能体】&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024091401/13.jpg&#34;
+	width=&#34;1334&#34;
+	height=&#34;337&#34;
+	srcset=&#34;https://ntopic.cn/p/2024091401/13_hub3a3d7c58b53ee7a324eebb07abf6bfd_41473_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024091401/13_hub3a3d7c58b53ee7a324eebb07abf6bfd_41473_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;395&#34;
+		data-flex-basis=&#34;950px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于&lt;strong&gt;写作者&lt;/strong&gt;智能体来说，它的目标就是：根据构思者所提供的儿童绘本故事创意来编写故事内容。&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第四步：&lt;/strong&gt; 定义每个智能体的任务】&lt;/p&gt;
+&lt;p&gt;上面我们定义了 2 个智能体角色，现在给他们分别定义 1 个任务：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024091401/14.jpg&#34;
+	width=&#34;1184&#34;
+	height=&#34;513&#34;
+	srcset=&#34;https://ntopic.cn/p/2024091401/14_hu97c7bbae3344c5156fc296d78136ac2f_50316_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024091401/14_hu97c7bbae3344c5156fc296d78136ac2f_50316_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;230&#34;
+		data-flex-basis=&#34;553px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;构思者&lt;/strong&gt;和&lt;strong&gt;写作者&lt;/strong&gt;的任务，均包含了描述、期望输出和分配的智能体等 3 个属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;描述（&lt;code&gt;description&lt;/code&gt;）：期望智能体能做什么&lt;/li&gt;
+&lt;li&gt;预期的输出（&lt;code&gt;expected_output&lt;/code&gt;）：类似一种强制机制，明确任务的产出结果&lt;/li&gt;
+&lt;li&gt;智能体（&lt;code&gt;agent&lt;/code&gt;）：即为这个任务分配智能体&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;【&lt;strong&gt;第五步：&lt;/strong&gt; 让智能体和任务协同工作】&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024091401/15.jpg&#34;
+	width=&#34;1310&#34;
+	height=&#34;570&#34;
+	srcset=&#34;https://ntopic.cn/p/2024091401/15_hub5da6065747c063ec90d7bb898338bce_39759_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024091401/15_hub5da6065747c063ec90d7bb898338bce_39759_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;229&#34;
+		data-flex-basis=&#34;551px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;智能体是按照顺序执行任务的，上一个任务的输出，会被作为下一个任务的输入。&lt;strong&gt;特别注意&lt;/strong&gt;：我们提供了&lt;code&gt;topic&lt;/code&gt;上下文参数，它在智能体和任务中可以通过&lt;code&gt;{topic}&lt;/code&gt;使用。&lt;/p&gt;
+&lt;p&gt;运行程序，我们可以逐步看到&lt;strong&gt;构思者&lt;/strong&gt;智能体的运行过程内容：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024091401/16.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;787&#34;
+	srcset=&#34;https://ntopic.cn/p/2024091401/16_hu72722154947b1f295744e8d52d1018de_106052_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024091401/16_hu72722154947b1f295744e8d52d1018de_106052_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来，可以看到&lt;strong&gt;写作者&lt;/strong&gt;智能体的运行过程内容：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024091401/17.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;842&#34;
+	srcset=&#34;https://ntopic.cn/p/2024091401/17_hu44d88795d1e3b2ca9099b9ed91cabdef_125995_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024091401/17_hu44d88795d1e3b2ca9099b9ed91cabdef_125995_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最终，所有的智能体执行完成，产出的目标故事内容：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024091401/18.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;837&#34;
+	srcset=&#34;https://ntopic.cn/p/2024091401/18_hu761b2a5799999eaa3d3a51fbef19690f_132321_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024091401/18_hu761b2a5799999eaa3d3a51fbef19690f_132321_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;最后crewai-总结说明&#34;&gt;最后：CrewAI 总结说明&lt;/h1&gt;
+&lt;p&gt;通过以上示例，我们了解了 &lt;strong&gt;CrewAI&lt;/strong&gt; 的三个核心模块：&lt;strong&gt;Agent&lt;/strong&gt;智能体，&lt;strong&gt;Task&lt;/strong&gt;任务，&lt;strong&gt;Crew&lt;/strong&gt;团体或者称容器，容器把他们组合在一起。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Agent：&lt;/strong&gt; 一般情况下，一个&lt;strong&gt;Agent&lt;/strong&gt;只做一件事，明确智能体的目标和期望；当然，一个&lt;strong&gt;Agent&lt;/strong&gt;可以执行多项任务。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Task：&lt;/strong&gt; 无论是创建 Agent 还是 Task 都需要明确自己的职责，以及对自己的期望。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Crew：&lt;/strong&gt; 最终把任务，按照串行或并行的方式组织起来。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/x2RKTvFeKgRvi982X5cymA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MiniCPM-V 2.6 面壁“小钢炮”，多图、视频理解多模态模型，部署和推理实战教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码</title>
+        <link>https://ntopic.cn/p/2024090701/</link>
+        <pubDate>Sat, 07 Sep 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024090701/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024090701/00.jpg" alt="Featured image of post Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码" /&gt;&lt;p&gt;前面 2 篇文章，我们使用&lt;strong&gt;文生文&lt;/strong&gt;、&lt;strong&gt;文生图&lt;/strong&gt;和&lt;strong&gt;文生音频&lt;/strong&gt;三个大模型共同实现了图文并茂的&lt;strong&gt;儿童绘本故事&lt;/strong&gt;和&lt;strong&gt;绘本故事音频&lt;/strong&gt;需求：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一篇 根据&lt;strong&gt;主题&lt;/strong&gt;生成儿童&lt;strong&gt;绘本故事&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/K3wv1K8b-k0EsPu70fmAJg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GLM-4-Flash 大模型 API 免费了，手把手构建“儿童绘本”应用实战（附源码）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;第二篇 根据儿童绘本故事生成&lt;strong&gt;长音频&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程（文末有福利）&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;友情提示&lt;/strong&gt;：第二篇有送书活动，活动还在继续，欢迎大家参与~&lt;/p&gt;
+&lt;p&gt;我们可以看出，儿童绘本故事的整个流程如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/01.jpg&#34;
+	width=&#34;1696&#34;
+	height=&#34;826&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/01_hu2d31230e318a3d67d0fc0f59d79c7886_83272_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/01_hu2d31230e318a3d67d0fc0f59d79c7886_83272_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;儿童绘本故事应用整体流程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;492px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在整个流程中，其实我们核心就做了 2 件事：设定主题明确&lt;strong&gt;需求&lt;/strong&gt;、编排整个&lt;strong&gt;流程&lt;/strong&gt;让应用跑起来。而其他的包括构思文案、故事内容、图片生成、长音频合并等，其实都是围绕大模型不同阶段的交付物（构思和故事内容）进一步的交付物，即我们的需求&lt;strong&gt;目标&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;假如我们有一个基于大模型的程序，它能准确地理解我们的需求内涵，然后进一步把需求拆分成小任务，最终组织整个任务的流程和依赖，并执行达成我们的需求目标。那么这个应用就是我们常说的大模型&lt;strong&gt;Agent&lt;/strong&gt;（或者叫&lt;strong&gt;智能体&lt;/strong&gt;）：大模型 Agent 是基于大语音模型（LLM）之上构建的、具备&lt;strong&gt;环境感知&lt;/strong&gt;、&lt;strong&gt;自主理解&lt;/strong&gt;、&lt;strong&gt;决策制定&lt;/strong&gt;和&lt;strong&gt;执行&lt;/strong&gt;能力的智能体。&lt;/p&gt;
+&lt;p&gt;大模型 Agent 能够模拟独立思考过程、调用各类工具，逐步达成我们的需求目标。从我们应用架构设计上讲，大模型 Agent 从原来面向过程的架构（如：儿童绘本应用）转变为面向目标的架构（提交需求后静待结果），它可以实现复杂的目标任务。&lt;/p&gt;
+&lt;p&gt;一般来说，大模型 Agent 主要由四个部分组成：&lt;strong&gt;规划&lt;/strong&gt;、&lt;strong&gt;记忆&lt;/strong&gt;、&lt;strong&gt;工具&lt;/strong&gt;和&lt;strong&gt;行动&lt;/strong&gt;，分别负责任务拆解与策略评估、信息存储与回忆、环境感知与决策辅助、和将思维转换为实际行动。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/02.jpg&#34;
+	width=&#34;1032&#34;
+	height=&#34;664&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/02_hu6ef40820c69e6ac209cb426fa14b1033_35074_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/02_hu6ef40820c69e6ac209cb426fa14b1033_35074_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;大模型Agent组成模块&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们还是以&lt;strong&gt;儿童绘本故事应用&lt;/strong&gt;来举例：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;规划（Planning）：我们通过儿童绘本故事主题，期望大模型给我们生成一本儿童绘本故事；那么大模型 Agent 需要准确识别我们的意图，然后进行任务拆分（包括：构思、故事内容、插图、音频等），制定整个处理流程。&lt;/li&gt;
+&lt;li&gt;记录（Memory）：包括我们的主题、构思、故事等内容，分为短期记忆和长期记忆；短期记忆主要是上下文信息，包括多轮对话（如：绘本故事是面向多大年龄、插入风格等）；长期记忆可能包括用户特征，需要使用特征数据库存储。&lt;/li&gt;
+&lt;li&gt;工具（Tools）：包括 API 调用、图片存储等，是 Agent 执行决策的辅助手段。&lt;/li&gt;
+&lt;li&gt;行动（Action）：将规划、记忆转化为具体输出过程，在这个过程中可能需要使用到不同的工具与外部环境交互。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接下来，老牛同学和大家看看，一些常见的大模型 Agent 框架和应用：&lt;/p&gt;
+&lt;h1 id=&#34;agent-框架简单介绍&#34;&gt;Agent 框架简单介绍&lt;/h1&gt;
+&lt;p&gt;目前，开源和闭源大模型 Agent 可谓是百家争鸣、百花齐放：&lt;a class=&#34;link&#34; href=&#34;https://github.com/e2b-dev/awesome-ai-agents&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/e2b-dev/awesome-ai-agents&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;根据业务需求复杂度和大模型 Agent 的实现方式的差异，目前 Agent 框架可以简单分为单 Agent 和多 Agent 框架。单 Agent 框架包括如：BabyAGI 和 AutoGPT 等。&lt;/p&gt;
+&lt;p&gt;接下来，老牛同学主要介绍一个多 Agent 框架：&lt;strong&gt;MetaGPT&lt;/strong&gt;，它是一个国内研发开源的多 Agent 框架（&lt;a class=&#34;link&#34; href=&#34;https://github.com/geekan/MetaGPT&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/geekan/MetaGPT&lt;/a&gt;）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/04.jpg&#34;
+	width=&#34;2511&#34;
+	height=&#34;913&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/04_hu162a4d39e085a7b73db8d26873b121f4_131425_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/04_hu162a4d39e085a7b73db8d26873b121f4_131425_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;软件公司多角色架构&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;275&#34;
+		data-flex-basis=&#34;660px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MetaGPT&lt;/strong&gt;以软件公司方式组成多个 Agent，实现了一个软件公司的全过程与精心调配的标准流程；它的目的是根据老板的一句话需求，完成一个软件研发整体流程（包括：用户故事、竞品分析、需求、数据结构 API 等）；内部多个 Agent 划分为多个角色（包括：产品经理、架构师、项目经理、研发工程师等），他们按照标准流程实现业务需求。&lt;/p&gt;
+&lt;h1 id=&#34;metagpt-多智能体框架应用&#34;&gt;MetaGPT 多智能体框架应用&lt;/h1&gt;
+&lt;p&gt;接下来，我们来当一回&lt;strong&gt;老板&lt;/strong&gt;：我们输入一句话需求，让&lt;strong&gt;MetaGPT&lt;/strong&gt;实现我们的目标。&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第一步&lt;/strong&gt;：&lt;strong&gt;MetaGPT&lt;/strong&gt;环境准备】&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;工欲善其事，必先利其器&lt;/strong&gt;，我们通过&lt;strong&gt;Miniconda&lt;/strong&gt;管理 Python 虚拟环境，&lt;strong&gt;Miniconda&lt;/strong&gt;的安装和使用可以参考老牛同学之前的文章：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Python虚拟环境名：MetaGPT，版本号：3.10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda create --name MetaGPT &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;3.10 -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 激活虚拟环境&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda activate MetaGPT
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;【&lt;strong&gt;第二步&lt;/strong&gt;：安装&lt;strong&gt;MetaGPT&lt;/strong&gt;依赖】&lt;/p&gt;
+&lt;p&gt;我们可以安装&lt;strong&gt;MetaGPT&lt;/strong&gt;的稳定版本和最新的研发版本（老牛同学使用的是&lt;strong&gt;稳定版本&lt;/strong&gt;）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;稳定版本：&lt;code&gt;pip install metagpt&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;研发版本：&lt;code&gt;pip install --upgrade git+https://github.com/geekan/MetaGPT.git&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果我们想保留&lt;strong&gt;MetaGPT&lt;/strong&gt;画的设计图（如：类图、序列图等），那么还需要安装 Node.js 包：&lt;code&gt;sudo npm install -g @mermaid-js/mermaid-cli&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/05.jpg&#34;
+	width=&#34;521&#34;
+	height=&#34;581&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/05_huebb76accf81dd5cfb89d2f3dd4193453_29874_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/05_huebb76accf81dd5cfb89d2f3dd4193453_29874_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;MetaGPT产出的类图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;89&#34;
+		data-flex-basis=&#34;215px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第三步&lt;/strong&gt;：配置&lt;strong&gt;MetaGPT&lt;/strong&gt;大模型】&lt;/p&gt;
+&lt;p&gt;前面已经介绍，大模型 Agent 是基于大模型的，因此我们需要配置一下&lt;strong&gt;MetaGPT&lt;/strong&gt;的大语言模型。&lt;/p&gt;
+&lt;p&gt;我们可以通过命令初始化配置文件：&lt;code&gt;metagpt --init-config&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;默认情况下，&lt;strong&gt;MetaGPT&lt;/strong&gt;自动创建默认配置文件：&lt;code&gt;~/.metapgt/config2.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我们修改这个配置文件，配置我们自己的大语言模型信息（老牛同学使用的是 Ollama，其它的配置类同）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;llm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;api_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ollama&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;qwen2:7b&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;base_url&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:11434/api&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;api_key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;EMPTY&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;有关 Ollama 详细介绍和使用，参见老牛同学之前的文章，本文不在赘述：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ollama 完整教程：本地 LLM 管理、WebUI 对话、Python/Java 客户端 API 应用&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第四步&lt;/strong&gt;：当&lt;strong&gt;老板&lt;/strong&gt;，提供一句话需求，静候结果】&lt;/p&gt;
+&lt;p&gt;老牛同学之前使用大模型，一步一步通过 Prompt 提示词，完成了&lt;strong&gt;消消乐&lt;/strong&gt;小游戏研发：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI 已来，我与 AI 一起用 Python 编写了一个消消乐小游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;今天老牛同学想玩一玩&lt;strong&gt;贪吃蛇&lt;/strong&gt;小游戏，体验一下当&lt;strong&gt;老板&lt;/strong&gt;的乐趣，需求就一句话：&lt;strong&gt;write a cli snake game&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;MetaGPT&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; $ metagpt &lt;span class=&#34;s2&#34;&gt;&amp;#34;write a cli snake game&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下来，我们就开始等待了，在&lt;strong&gt;MetaGPT&lt;/strong&gt;实现需求的标准流程中，我们也可以看到它的每一步的输出：&lt;/p&gt;
+&lt;p&gt;首先，名为 Alice 的&lt;strong&gt;产品经理&lt;/strong&gt;登场：他根据老板的需求，产出产品需求文档&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/11.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;765&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/11_huc829eb49876cdb2ad2f9c4fb148aff63_73398_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/11_huc829eb49876cdb2ad2f9c4fb148aff63_73398_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;产品经理的需求文档&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;438px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;有了 PRD，接下来是名为 Bob 的&lt;strong&gt;架构师&lt;/strong&gt;来了：他根据需求文档，完成产品架构设计&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/12.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;441&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/12_hu8ebe77f3f7d4c9f78b2b82714cf78743_84601_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/12_hu8ebe77f3f7d4c9f78b2b82714cf78743_84601_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;架构师的设计文档&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;317&#34;
+		data-flex-basis=&#34;760px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来，名为 Eve 的&lt;strong&gt;项目经理&lt;/strong&gt;上场：他根据架构设计，整理研发任务&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/13.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;806&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/13_huad45f9fb3d4ace6cbdee15d3f6724604_86931_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/13_huad45f9fb3d4ace6cbdee15d3f6724604_86931_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;项目经理整理任务清单&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;416px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;有了研发任务，进行排期锁定资源，研发工程师开始研发了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/14.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/14_hu38a65289c66c15c6a210717c40328fe1_119338_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/14_hu38a65289c66c15c6a210717c40328fe1_119338_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;snake.py 代码实现&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;代码研发完成，就需要进行代码 Review 了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/15.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;334&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/15_hu4a1aaf60a601f63b93b30e7bb5d78a29_65232_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/15_hu4a1aaf60a601f63b93b30e7bb5d78a29_65232_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Code Review第1轮&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;418&#34;
+		data-flex-basis=&#34;1004px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;其它研发的截图，老牛同学就省略了。经过多轮的研发任务和 CR，终于完成了整个需求，可以把代码、文件等存档：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/16.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;394&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/16_hu8b027ea476fcf201ca684f64b7786c18_62291_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/16_hu8b027ea476fcf201ca684f64b7786c18_62291_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;项目存档&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;354&#34;
+		data-flex-basis=&#34;851px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最后，我们就可以看到最终的产出物了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;代码源文件目录：&lt;code&gt;./workspace/cli_snake_game/cli_snake_game&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;MetaGPT&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; $ tree
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── food.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── game.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── main.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── snake.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;项目实现文档目录：&lt;code&gt;./workspace/cli_snake_game/docs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;项目实现资源目录：&lt;code&gt;./workspace/cli_snake_game/resources&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们运行一下小游戏：&lt;code&gt;python main.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以看到，还真能跑起来了，可是有 Bug（如：蛇吃食物自动退出，蛇撞墙异常退出）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024090701/17.jpg&#34;
+	width=&#34;1398&#34;
+	height=&#34;636&#34;
+	srcset=&#34;https://ntopic.cn/p/2024090701/17_hue4ff4e1b783827bdc2f49f1c96c386b9_21921_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2024090701/17_hue4ff4e1b783827bdc2f49f1c96c386b9_21921_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;贪吃蛇小游戏&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;219&#34;
+		data-flex-basis=&#34;527px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;至此，&lt;strong&gt;MetaGPT&lt;/strong&gt;按照标准流程，确实帮我们完成了项目，可是我们当&lt;strong&gt;老板&lt;/strong&gt;的并没有享受到什么乐趣，因为我们还得去改 Bug！&lt;/p&gt;
+&lt;h1 id=&#34;最后多大模型-agent-到底能解决什么问题&#34;&gt;最后，(多)大模型 Agent 到底能解决什么问题？&lt;/h1&gt;
+&lt;p&gt;上面&lt;strong&gt;MetaGPT&lt;/strong&gt;帮我们写了一个有 Bug 的程序，这肯定不是我们所期望的，分析其背后原因，其实也并不是大模型 Agent 的错：&lt;/p&gt;
+&lt;p&gt;我们可以查看&lt;strong&gt;MetaGPT&lt;/strong&gt;源代码：&lt;code&gt;https://github.com/geekan/MetaGPT/tree/main/metagpt/roles&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;期核心逻辑都在&lt;code&gt;role.py&lt;/code&gt;文件中：&lt;code&gt;https://github.com/geekan/MetaGPT/blob/main/metagpt/roles/role.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;它的核心还是通过 Prompt 提示词和大模型进行交互，大模型产出质量的好坏，决定了需求结构的优劣！&lt;/p&gt;
+&lt;p&gt;那么，大模型 Agent 到底在什么场景能更有优势呢？首先能肯定的是：那些底层大模型擅长的领域！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;复杂问题场景，大模型的初衷就是用来解决复杂问题的&lt;/li&gt;
+&lt;li&gt;需要多角色交互场景（如：游戏故事生成、素材生成），内容生成，部分工作提效（如：项目代码框架等）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/x2RKTvFeKgRvi982X5cymA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MiniCPM-V 2.6 面壁“小钢炮”，多图、视频理解多模态模型，部署和推理实战教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

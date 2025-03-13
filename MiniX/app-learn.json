@@ -1,0 +1,26 @@
+{
+  "useGradeList": [
+    {
+      "id": 100012,
+      "text": "一年级（下）"
+    }
+  ],
+  "useSubjectList": {
+    "100052": {
+      "LEARN": [
+        "YW-POEM"
+      ],
+      "EXAM": [
+        "YW-POEM"
+      ]
+    },
+    "100012": {
+      "LEARN": [
+        "YW-POEM"
+      ],
+      "EXAM": [
+        "YW-POEM"
+      ]
+    }
+  }
+}

@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Docker on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/docker/</link>
+        <description>Recent content in Docker on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sat, 06 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>基于Qwen2/Lllama3等大模型，部署团队私有化RAG知识库系统的详细教程（Docker&#43;AnythingLLM）</title>
+        <link>https://ntopic.cn/p/2024070601/</link>
+        <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2024070601/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2024070601/00.png" alt="Featured image of post 基于Qwen2/Lllama3等大模型，部署团队私有化RAG知识库系统的详细教程（Docker&#43;AnythingLLM）" /&gt;&lt;p&gt;自 ChatGPT 发布以来，大型语言模型（Large Language Model，&lt;strong&gt;LLM&lt;/strong&gt;，大模型）得到了飞速发展，它在处理复杂任务、增强自然语言理解和生成类人文本等方面的能力让人惊叹，几乎各行各业均可从中获益。&lt;/p&gt;
+&lt;p&gt;然而，在一些垂直领域，这些开源或闭源的通用基础大模型也暴露了一些问题，主要体现在以下 3 个方面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;知识的局限性：&lt;/strong&gt; 大模型的知识源于训练数据，目前主流大模型（如：通义千问、文心一言等）的训练数据基本来源于网络公开的数据。因此，非公开的、离线的、实时的数据大模型是无法获取到（如：团队内部实时业务数据、私有的文档资料等），这些数据相关的知识也就无从具备。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;幻觉问题：&lt;/strong&gt; 大模型生成人类文本底层原理是基于概率（目前还无法证明大模型有意识），所以它有时候会&lt;strong&gt;一本正经地胡说八道&lt;/strong&gt;，特别是在不具备某方面的知识情况下。当我们也因缺乏这方面知识而咨询大模型时，大模型的幻觉问题会各我们造成很多困扰，因为我们也无法区分其输出的正确性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据的安全性：&lt;/strong&gt; 对于个人、创新团队、企业来说，&lt;strong&gt;数据安全&lt;/strong&gt;至关重要，老牛同学相信没有谁会愿意承担数据泄露的风险，把自己内部私有数据上传到第三方平台进行模型训练。这是一个矛盾：我们既要借助通用大模型能力，又要保障数据的安全性！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;为了解决以上通用大模型问题，&lt;strong&gt;检索增强生成&lt;/strong&gt;（Retrieval-Augmented Generation，&lt;strong&gt;RAG&lt;/strong&gt;）方案就应运而生了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/01.png&#34;
+	width=&#34;1317&#34;
+	height=&#34;606&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/01_hubda65f563eaca1269a4ab16adc424432_58919_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/01_hubda65f563eaca1269a4ab16adc424432_58919_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RAG主要流程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;521px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RAG&lt;/strong&gt; 的主要流程主要包含以下 2 个阶段：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;数据准备阶段：&lt;/strong&gt; 管理员将内部私有数据向量化后入库的过程，&lt;strong&gt;向量化&lt;/strong&gt;是一个将文本数据转化为向量矩阵的过程，该过程会直接影响到后续检索的效果；&lt;strong&gt;入库&lt;/strong&gt;即将向量数据构建索引，并存储到向量数据库的过程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用户应用阶段：&lt;/strong&gt; 根据用户的 Prompt 提示词，通过检索召回与 Prompt 提示词相关联的知识，并融入到原 Prompt 提示词中，作为大模型的输入 Prompt 提示词，通用大模型因此生成相应的输出。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从上面 RAG 方案我们可以看出，通过与通用大模型相结合，我们可搭建团队私有的内部本地知识库，并能有效的解决通用大模型存在的&lt;strong&gt;知识局限性&lt;/strong&gt;、&lt;strong&gt;幻觉问题&lt;/strong&gt;和&lt;strong&gt;隐私数据安全&lt;/strong&gt;等问题。&lt;/p&gt;
+&lt;p&gt;目前市面上已经有多个开源 RAG 框架，老牛同学将选择&lt;strong&gt;AnythingLLM&lt;/strong&gt;框架（&lt;strong&gt;16.8K ☆&lt;/strong&gt;，&lt;a class=&#34;link&#34; href=&#34;https://github.com/Mintplex-Labs/anything-llm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Mintplex-Labs/anything-llm&lt;/a&gt;）与大家一起来部署我们自己或者团队内部的本地知识库。整个部署过程将涉及以下几个方面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;环境准备：&lt;/strong&gt; &lt;strong&gt;AnythingLLM&lt;/strong&gt;框架推荐使用 Docker 部署，因此我们需要提前把 Docker 安装和配置好&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;大模型准备：&lt;/strong&gt; 老牛同学继续使用&lt;strong&gt;Qwen2-7B&lt;/strong&gt;大模型，大家可以根据自己实际情况选择，无特殊要求&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RAG 部署和使用：&lt;/strong&gt; 即 AnythingLLM 安装和配置，并最终使用我们大家的 RAG 系统&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;环境准备windows-打开虚拟化功能hyper-v-和-wsl&#34;&gt;环境准备：Windows 打开虚拟化功能（Hyper-V 和 WSL）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;友情提示：&lt;/strong&gt; 老牛同学用的是 Windows 操作系统，因此下面是 Windows 的配置方式。&lt;/p&gt;
+&lt;p&gt;安装 Docker 需要用到虚拟化，因此需要 Windows 系统打开&lt;strong&gt;Hyper-V&lt;/strong&gt;和&lt;strong&gt;WSL 子系统&lt;/strong&gt;功能。如果是 &lt;strong&gt;Windows 11 家庭版&lt;/strong&gt;，默认并没有安装&lt;strong&gt;Hyper-V&lt;/strong&gt;功能，可以通过以下方式进行安装：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/02.png&#34;
+	width=&#34;1374&#34;
+	height=&#34;951&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/02_huaa4604baf83c1d40d70bfe532386980a_94185_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/02_huaa4604baf83c1d40d70bfe532386980a_94185_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Windows家庭版&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【第一步（&lt;strong&gt;家庭版&lt;/strong&gt;）：安装 Hyper-V 依赖包】&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新建一个 txt 临时文本，并复制以下代码并保存，之后把该临时文件重命名为&lt;code&gt;Hyper-V.bat&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;右键&lt;/strong&gt;以管理员方式运行&lt;code&gt;Hyper-V.bat&lt;/code&gt;，本代码自动安装相关包，完成之后输入&lt;code&gt;Y&lt;/code&gt;重启电脑后即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;pushd&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%~dp0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dir /b %SystemRoot%&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ervicing&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;ackages&lt;span class=&#34;se&#34;&gt;\*&lt;/span&gt;Hyper-V*.mum &amp;gt;hyper-v.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; /f %%i in &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;findstr /i . hyper-v.txt 2^&amp;gt;nul&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; dism /online /norestart /add-package:&lt;span class=&#34;s2&#34;&gt;&amp;#34;%SystemRoot%\servicing\Packages\%%i&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;del hyper-v.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;【第二步：开启虚拟化功能】&lt;/p&gt;
+&lt;p&gt;首先，打开 Windows 功能（即：控制面板）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/03.png&#34;
+	width=&#34;1159&#34;
+	height=&#34;1084&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/03_hu225c1518dc74802b5eaf065abd77fd7f_88600_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/03_hu225c1518dc74802b5eaf065abd77fd7f_88600_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Windows功能&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;106&#34;
+		data-flex-basis=&#34;256px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后，勾选以下 3 个选项（&lt;strong&gt;Hyper-V&lt;/strong&gt;、&lt;strong&gt;适用于 Linux 的 Windows 子系统&lt;/strong&gt;和&lt;strong&gt;虚拟机平台&lt;/strong&gt;），打开虚拟化功能：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/04.png&#34;
+	width=&#34;790&#34;
+	height=&#34;921&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/04_hu2df9e01ea13779eba809f0148cac02bf_84226_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/04_hu2df9e01ea13779eba809f0148cac02bf_84226_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;打开虚拟化功能&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;205px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;确定&lt;/strong&gt;之后重启电脑即可！&lt;/p&gt;
+&lt;h2 id=&#34;环境准备docker-安装和配置&#34;&gt;环境准备：Docker 安装和配置&lt;/h2&gt;
+&lt;p&gt;Docker 安装和配置主要包含以下 2 个步骤：&lt;/p&gt;
+&lt;p&gt;【第一步：下载 Docker 软件】&lt;/p&gt;
+&lt;p&gt;下载和安装 Docker 软件：&lt;a class=&#34;link&#34; href=&#34;https://www.docker.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.docker.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果大家和老牛同学一样，出现无法打开 Docker 官网的情况，则也可以通过以下方式下载最新的版本：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开 Docker 中文网站：&lt;a class=&#34;link&#34; href=&#34;https://docker.github.net.cn/desktop/release-notes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docker.github.net.cn/desktop/release-notes/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;选择对应的安装软件，如果直接点击下载，可能还是无法下载。可以右键复制下载链接，然后通过&lt;strong&gt;迅雷&lt;/strong&gt;进行下载（老牛同学亲测有效）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/05.png&#34;
+	width=&#34;1314&#34;
+	height=&#34;423&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/05_hu282c88f2eb8f06d7dea1f5446d540b80_32527_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/05_hu282c88f2eb8f06d7dea1f5446d540b80_32527_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker下载&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;310&#34;
+		data-flex-basis=&#34;745px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【第二步；Docker 安装和配置】&lt;/p&gt;
+&lt;p&gt;下载完成之后，安装过程与普通的软件没有区别，安装完成之后需要注销电脑：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/06.png&#34;
+	width=&#34;1060&#34;
+	height=&#34;735&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/06_huf0be25c9c8c669eedd84ee52f682f01d_36435_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/06_huf0be25c9c8c669eedd84ee52f682f01d_36435_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker安装完成&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;登录操作系统之后，需要&lt;strong&gt;Accept&lt;/strong&gt;同意 Docker 协议条款，然后注册登录或者&lt;strong&gt;Continue without signing in&lt;/strong&gt;直接跳过，打开 Docker 软件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;设置镜像源：&lt;/strong&gt; 点击右上角&lt;strong&gt;齿轮&lt;/strong&gt;设置按钮，选择&lt;strong&gt;Docker Engine&lt;/strong&gt;，打开设置页面，输入 Docker 镜像文件加速器地址：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;registry-mirrors&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://docker.registry.cyou&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://mirror.baidubce.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果以上加速器地址不可用，可以使用阿里云个人私有的地址：&lt;a class=&#34;link&#34; href=&#34;https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/07.png&#34;
+	width=&#34;1501&#34;
+	height=&#34;1162&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/07_huf0574f72b89daafca56ede6243a5c6a0_121832_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/07_huf0574f72b89daafca56ede6243a5c6a0_121832_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;设置Docker镜像源&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;310px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;Apply &amp;amp; Restart&lt;/strong&gt;按钮即可！&lt;/p&gt;
+&lt;h2 id=&#34;anythingllm-安装和配置&#34;&gt;AnythingLLM 安装和配置&lt;/h2&gt;
+&lt;p&gt;接下来，我们开始安装和部署&lt;strong&gt;AnythingLLM&lt;/strong&gt;框架，包含以下 3 步：&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第一步：&lt;/strong&gt; 下载和启动 AnythingLLM 镜像】&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker pull mintplexlabs/anythingllm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/08.png&#34;
+	width=&#34;1360&#34;
+	height=&#34;778&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/08_hu0dc5b9425e973744f2ea1f19cb8de84b_77870_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/08_hu0dc5b9425e973744f2ea1f19cb8de84b_77870_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker镜像下载&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;419px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以通过以下命令，查看当前 Docker 的镜像列表：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt;docker images
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REPOSITORY                 TAG       IMAGE ID       CREATED      SIZE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mintplexlabs/anythingllm   latest    d950fa3b8011   &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; days ago   2.94GB
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/09.png&#34;
+	width=&#34;1752&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/09_hub8aadc34ed644536646daaef6f2bc307_92128_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/09_hub8aadc34ed644536646daaef6f2bc307_92128_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker镜像列表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;252&#34;
+		data-flex-basis=&#34;605px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第二步：&lt;/strong&gt; 启动 AnythingLLM 框架】&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Windows 系统：&lt;/strong&gt; AnythingLLM 镜像挂载和启动命令（因为命令有多行，需要通过&lt;strong&gt;PowerShell&lt;/strong&gt;执行）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Run this in powershell terminal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;:STORAGE_LOCATION&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;\Documents\anythingllm&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;If&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;!&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Test-Path &lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;:STORAGE_LOCATION&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;New-Item &lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;:STORAGE_LOCATION -ItemType Directory&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;If&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;!&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Test-Path &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:STORAGE_LOCATION\.env&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;New-Item &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:STORAGE_LOCATION\.env&amp;#34;&lt;/span&gt; -ItemType File&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run -d -p 3001:3001 &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--cap-add SYS_ADMIN &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-v &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:STORAGE_LOCATION`:/app/server/storage&amp;#34;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-v &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:STORAGE_LOCATION\.env:/app/server/.env&amp;#34;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-e &lt;span class=&#34;nv&#34;&gt;STORAGE_DIR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/app/server/storage&amp;#34;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mintplexlabs/anythingllm&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者，&lt;strong&gt;Linux/MacOS 系统：&lt;/strong&gt; AnythingLLM 镜像挂载和启动命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;STORAGE_LOCATION&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;/anythingllm &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;mkdir -p &lt;span class=&#34;nv&#34;&gt;$STORAGE_LOCATION&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;touch &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$STORAGE_LOCATION&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/.env&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;docker run -d -p 3001:3001 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--cap-add SYS_ADMIN &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-v &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;STORAGE_LOCATION&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;:/app/server/storage &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-v &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;STORAGE_LOCATION&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/.env:/app/server/.env &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-e &lt;span class=&#34;nv&#34;&gt;STORAGE_DIR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/app/server/storage&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;mintplexlabs/anythingllm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动完成，通过浏览器打开&lt;strong&gt;AnythingLLM&lt;/strong&gt;界面：&lt;a class=&#34;link&#34; href=&#34;http://localhost:3001&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://localhost:3001&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/10.png&#34;
+	width=&#34;1495&#34;
+	height=&#34;931&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/10_hu2784c5e6d51ab4b108467ae591f489d5_224471_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/10_hu2784c5e6d51ab4b108467ae591f489d5_224471_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AnythingLLM初始界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;385px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;【&lt;strong&gt;第三步：&lt;/strong&gt; 配置 AnythingLLM】&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;Get started&lt;/strong&gt; 按钮，进入&lt;strong&gt;LLM 选择&lt;/strong&gt;页面。老牛同学在前面文章中，分别介绍了大模型通过&lt;strong&gt;Ollama&lt;/strong&gt;和&lt;strong&gt;OpenAI&lt;/strong&gt;这 2 种主要的部署方式（包括：&lt;strong&gt;Llama3&lt;/strong&gt;、&lt;strong&gt;Qwen2&lt;/strong&gt;、&lt;strong&gt;Gemma2&lt;/strong&gt;等）。&lt;/p&gt;
+&lt;p&gt;老牛同学在这里选择&lt;strong&gt;Ollama&lt;/strong&gt;方式，如果大家重新设置了端口号，则需要看下 Ollama URL 端口号是否正确，默认值为：&lt;code&gt;http://host.docker.internal:11434&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/11.png&#34;
+	width=&#34;1072&#34;
+	height=&#34;1065&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/11_hucc256284c0239166dff439efac8f7d86_101001_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/11_hucc256284c0239166dff439efac8f7d86_101001_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AnythingLLM确认配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;241px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;AnythingLLM 设置确认，包括：大模型提供方、词嵌入和向量数据库，这些配置后续还可以修改。&lt;/p&gt;
+&lt;p&gt;最后，创建一个工作区，老牛同学设置的名称为：&lt;code&gt;RAG-ClassmateWX&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;anythingllm-导入数据和使用&#34;&gt;AnythingLLM 导入数据和使用&lt;/h2&gt;
+&lt;p&gt;上一步配置完成之后，无需任何其他配置，就可以和大模型对话聊天了，和通过其他客户端与大模型对话没有区别。接下来，我们需要导入我们内部私有数据，并进行验证。&lt;/p&gt;
+&lt;p&gt;【第一步：导入内部数据】&lt;/p&gt;
+&lt;p&gt;我们在电脑本地新建一个 txt 文件，文件名为：&lt;code&gt;为什么个人、团队等均有必要部署私有化的RAG知识库系统.txt&lt;/code&gt;，文件内容就是本文的开头内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;自ChatGPT发布以来，大型语言模型（Large Language Model，LLM，大模型）得到了飞速发展，它在解决复杂任务、增强自然语言理解和生成类人文本等方面的能力让人惊叹，几乎各行各业均可从中获益。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;然而，在一些垂直领域，这些开源或闭源的通用的基础大模型也暴露了一些问题，主要有以下3个方面：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. **知识的局限性：** 大模型的知识源于训练数据，目前主流大模型（如：通义千问、文心一言等）的训练数据基本来源于网络公开的数据。因此，非公开的、离线的、实时的数据大模型是无法获取到（如：团队内部实时业务数据、私有的文档资料等），这些数据相关的知识也就无从具备。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. **幻觉问题：** 大模型生成人类文本底层原理是基于概率（目前还无法证明大模型有意识），所以它有时候会**一本正经地胡说八道**，特别是在不具备某方面的知识情况下。当我们也因缺乏这方面知识而咨询大模型时，大模型的幻觉问题会各我们造成很多困扰，因为我们也无法区分其输出的正确性。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. **数据的安全性：** 对于个人、创新团队、企业来说，**数据安全**至关重要，老牛同学相信没有谁会愿意承担数据泄露的风险，把自己内部私有数据上传到第三方平台进行模型训练。这是一个矛盾：我们既要借助通用大模型能力，又要保障数据的安全性！
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;为了解决以上3个大模型通用问题，**检索增强生成**（Retrieval-Augmented Generation，**RAG**）方案就应运而生了！
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;首先，点击&lt;strong&gt;RAG-ClassmateWX&lt;/strong&gt;工作空间右边的&lt;strong&gt;上传&lt;/strong&gt;图标，准备上传本 txt 文件：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/12.png&#34;
+	width=&#34;514&#34;
+	height=&#34;484&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/12_hu98a778b95c0dbdf2bb8e033364c91812_36178_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/12_hu98a778b95c0dbdf2bb8e033364c91812_36178_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;准备上传文件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;106&#34;
+		data-flex-basis=&#34;254px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后，点击 txt 文件并上传，并点击&lt;strong&gt;Move to workspace&lt;/strong&gt;导入到工作空间：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/13.png&#34;
+	width=&#34;2179&#34;
+	height=&#34;1186&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/13_huca935a886981d4d2aa854a0f54008e70_155046_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/13_huca935a886981d4d2aa854a0f54008e70_155046_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;上传txt外部文件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最后，点击&lt;strong&gt;Save and Embed&lt;/strong&gt;完成 txt 文本文件数据准备步骤（导入、向量化和入库等）。&lt;/p&gt;
+&lt;p&gt;【第二步：内部数据使用和验证】&lt;/p&gt;
+&lt;p&gt;回到主界面，输入刚才 txt 内部文件名：&lt;strong&gt;为什么个人、团队等均有必要部署私有化的 RAG 知识库系统&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/14.png&#34;
+	width=&#34;2184&#34;
+	height=&#34;1410&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/14_hu2dc45aa9fec1f6919603e85532deba6b_393792_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/14_hu2dc45aa9fec1f6919603e85532deba6b_393792_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AnthingLLM的检索和结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;371px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;RAG 的回答感觉比我原文要好多了，大模型在引用了内部数据的同时，还展示自己的创造性！&lt;/p&gt;
+&lt;p&gt;同时，老牛同学用同样的问题，咨询 AnythingLLM 的底层模型，结果就比较普通通用了，大家可以对比看下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2024070601/15.png&#34;
+	width=&#34;1527&#34;
+	height=&#34;871&#34;
+	srcset=&#34;https://ntopic.cn/p/2024070601/15_hu989f0fc1bac16160616ef5772d281c92_209073_480x0_resize_box_3.png 480w, https://ntopic.cn/p/2024070601/15_hu989f0fc1bac16160616ef5772d281c92_209073_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AnythingLLM底层大模型结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;420px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;总结和问题&#34;&gt;总结和问题&lt;/h2&gt;
+&lt;p&gt;和我们之前的大模型部署和应用过程相比，基于 AnythingLLM 的 RAG 实现整个部署过程比较繁琐，包括环境准备、Docker 安装和配置、AnythingLLM 配置等。然而，AnythingLLM 的使用过程却相对比较简单，我们只需要上传我们内部数据文件，AnythingLLM 框架屏蔽了中间的数据提取分割、向量化处理、向量索引和入库、检索召回和重组 Prompt 提示词等过程。&lt;/p&gt;
+&lt;p&gt;同时，我们通过构建本地知识库，做了一个简单的测试验证，测试结果表明，在使用 RAG 的情况下，大模型的回答结果更加有效、更符合我们期望，同时具备了一定的创造性！&lt;/p&gt;
+&lt;p&gt;老牛同学最后提个问题：检索召唤的过程，能否使用搜索引擎（如：Elastic Search）代替？欢迎大家留言讨论，我们共同学习进步！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关注本公众号，我们共同学习交流进步 👇🏻👇🏻👇🏻&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/WX-21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;微信公众号：老牛同学&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/g7lDfnRRGdrHqN7WGMSkAg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;本地部署 GLM-4-9B 清华智谱开源大模型方法和对话效果体验&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/MekCUJDhKzuUnoykkGoH2g&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;玩转 AI，笔记本电脑安装属于自己的 Llama 3 8B 大模型和对话客户端&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rL3vyJ_xEj7GGoKaxUh8_A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatTTS 开源文本转语音模型本地部署、API 使用和搭建 WebUI 界面&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

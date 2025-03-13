@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文介绍了大模型 Agent 定义、组成部分，并以 MetaGPT 多智能体为例，一句话完成贪吃蛇小游戏需求，以介绍整个智能体的工作流程……'>
+<title>Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码</title>
+
+<link rel='canonical' href='https://ntopic.cn/p/2024090701/'>
+
+<link rel="stylesheet" href="/scss/style.min.e4689939e44468db5527f9d43cf9dc35ce02e937069221b39d5bc67c591e5803.css"><meta property='og:title' content='Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码'>
+<meta property='og:description' content='本文介绍了大模型 Agent 定义、组成部分，并以 MetaGPT 多智能体为例，一句话完成贪吃蛇小游戏需求，以介绍整个智能体的工作流程……'>
+<meta property='og:url' content='https://ntopic.cn/p/2024090701/'>
+<meta property='og:site_name' content='奔跑的蜗牛'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Agent' /><meta property='article:tag' content='MetaGPT' /><meta property='article:published_time' content='2024-09-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-09-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://ntopic.cn/p/2024090701/00.jpg' />
+<meta name="twitter:title" content="Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码">
+<meta name="twitter:description" content="本文介绍了大模型 Agent 定义、组成部分，并以 MetaGPT 多智能体为例，一句话完成贪吃蛇小游戏需求，以介绍整个智能体的工作流程……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ntopic.cn/p/2024090701/00.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar-362x362_hufdbc385932b947eb1e296b68aa6ff882_166092_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">奔跑的蜗牛</a></h1>
+            <h2 class="site-description">奔跑的蜗牛，记录的点滴~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/gallery' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 8h.01" />
+  <path d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
+  <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+  <path d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
+</svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://ntopic.cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2024090701/">
+                <img src="/p/2024090701/00_hu7a0c880590782b86405b42d88e695a08_83513_800x0_resize_q75_box.jpg"
+                        srcset="/p/2024090701/00_hu7a0c880590782b86405b42d88e695a08_83513_800x0_resize_q75_box.jpg 800w, /p/2024090701/00_hu7a0c880590782b86405b42d88e695a08_83513_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="601" 
+                        loading="lazy"
+                        alt="Featured image of post Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    <div class="article-title-wrapper">
+        <h2 class="article-title">Agent(智能体)和 MetaGPT，一句话实现整个需求应用代码</h2>
+    </div>
+
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" >
+                人工智能
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        
+        <h3 class="article-subtitle">
+            <b>摘要：</b>本文介绍了大模型 Agent 定义、组成部分，并以 MetaGPT 多智能体为例，一句话完成贪吃蛇小游戏需求，以介绍整个智能体的工作流程……
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">
+                    发表于： 2024-09-07
+                </time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长：7 分钟
+                </time>
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    <div class="widget--toc" style="margin-top:15px;">
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-6s+ed+2g-1n-4q"
+         data-ad-client="ca-pub-2548953017344039"
+         data-ad-slot="5835685264"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    
+    
+    <p>前面 2 篇文章，我们使用<strong>文生文</strong>、<strong>文生图</strong>和<strong>文生音频</strong>三个大模型共同实现了图文并茂的<strong>儿童绘本故事</strong>和<strong>绘本故事音频</strong>需求：</p>
+<ol>
+<li>第一篇 根据<strong>主题</strong>生成儿童<strong>绘本故事</strong>：<a class="link" href="https://mp.weixin.qq.com/s/K3wv1K8b-k0EsPu70fmAJg"  target="_blank" rel="noopener"
+    >GLM-4-Flash 大模型 API 免费了，手把手构建“儿童绘本”应用实战（附源码）</a></li>
+<li>第二篇 根据儿童绘本故事生成<strong>长音频</strong>：<a class="link" href="https://mp.weixin.qq.com/s/9ldLuh3YLvx8oWvwnrSGUA"  target="_blank" rel="noopener"
+    >ChatTTS 长音频合成和本地部署 2 种方式，让你的“儿童绘本”发声的实战教程（文末有福利）</a></li>
+</ol>
+<p><strong>友情提示</strong>：第二篇有送书活动，活动还在继续，欢迎大家参与~</p>
+<p>我们可以看出，儿童绘本故事的整个流程如下：</p>
+<p><img src="/p/2024090701/01.jpg"
+	width="1696"
+	height="826"
+	srcset="/p/2024090701/01_hu2d31230e318a3d67d0fc0f59d79c7886_83272_480x0_resize_q75_box.jpg 480w, /p/2024090701/01_hu2d31230e318a3d67d0fc0f59d79c7886_83272_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="儿童绘本故事应用整体流程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="492px"
+	
+></p>
+<p>在整个流程中，其实我们核心就做了 2 件事：设定主题明确<strong>需求</strong>、编排整个<strong>流程</strong>让应用跑起来。而其他的包括构思文案、故事内容、图片生成、长音频合并等，其实都是围绕大模型不同阶段的交付物（构思和故事内容）进一步的交付物，即我们的需求<strong>目标</strong>。</p>
+<p>假如我们有一个基于大模型的程序，它能准确地理解我们的需求内涵，然后进一步把需求拆分成小任务，最终组织整个任务的流程和依赖，并执行达成我们的需求目标。那么这个应用就是我们常说的大模型<strong>Agent</strong>（或者叫<strong>智能体</strong>）：大模型 Agent 是基于大语音模型（LLM）之上构建的、具备<strong>环境感知</strong>、<strong>自主理解</strong>、<strong>决策制定</strong>和<strong>执行</strong>能力的智能体。</p>
+<p>大模型 Agent 能够模拟独立思考过程、调用各类工具，逐步达成我们的需求目标。从我们应用架构设计上讲，大模型 Agent 从原来面向过程的架构（如：儿童绘本应用）转变为面向目标的架构（提交需求后静待结果），它可以实现复杂的目标任务。</p>
+<p>一般来说，大模型 Agent 主要由四个部分组成：<strong>规划</strong>、<strong>记忆</strong>、<strong>工具</strong>和<strong>行动</strong>，分别负责任务拆解与策略评估、信息存储与回忆、环境感知与决策辅助、和将思维转换为实际行动。</p>
+<p><img src="/p/2024090701/02.jpg"
+	width="1032"
+	height="664"
+	srcset="/p/2024090701/02_hu6ef40820c69e6ac209cb426fa14b1033_35074_480x0_resize_q75_box.jpg 480w, /p/2024090701/02_hu6ef40820c69e6ac209cb426fa14b1033_35074_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="大模型Agent组成模块"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="373px"
+	
+></p>
+<p>我们还是以<strong>儿童绘本故事应用</strong>来举例：</p>
+<ol>
+<li>规划（Planning）：我们通过儿童绘本故事主题，期望大模型给我们生成一本儿童绘本故事；那么大模型 Agent 需要准确识别我们的意图，然后进行任务拆分（包括：构思、故事内容、插图、音频等），制定整个处理流程。</li>
+<li>记录（Memory）：包括我们的主题、构思、故事等内容，分为短期记忆和长期记忆；短期记忆主要是上下文信息，包括多轮对话（如：绘本故事是面向多大年龄、插入风格等）；长期记忆可能包括用户特征，需要使用特征数据库存储。</li>
+<li>工具（Tools）：包括 API 调用、图片存储等，是 Agent 执行决策的辅助手段。</li>
+<li>行动（Action）：将规划、记忆转化为具体输出过程，在这个过程中可能需要使用到不同的工具与外部环境交互。</li>
+</ol>
+<p>接下来，老牛同学和大家看看，一些常见的大模型 Agent 框架和应用：</p>
+<h1 id="agent-框架简单介绍">Agent 框架简单介绍</h1>
+<p>目前，开源和闭源大模型 Agent 可谓是百家争鸣、百花齐放：<a class="link" href="https://github.com/e2b-dev/awesome-ai-agents"  target="_blank" rel="noopener"
+    >https://github.com/e2b-dev/awesome-ai-agents</a></p>
+<p>根据业务需求复杂度和大模型 Agent 的实现方式的差异，目前 Agent 框架可以简单分为单 Agent 和多 Agent 框架。单 Agent 框架包括如：BabyAGI 和 AutoGPT 等。</p>
+<p>接下来，老牛同学主要介绍一个多 Agent 框架：<strong>MetaGPT</strong>，它是一个国内研发开源的多 Agent 框架（<a class="link" href="https://github.com/geekan/MetaGPT"  target="_blank" rel="noopener"
+    >https://github.com/geekan/MetaGPT</a>）</p>
+<p><img src="/p/2024090701/04.jpg"
+	width="2511"
+	height="913"
+	srcset="/p/2024090701/04_hu162a4d39e085a7b73db8d26873b121f4_131425_480x0_resize_q75_box.jpg 480w, /p/2024090701/04_hu162a4d39e085a7b73db8d26873b121f4_131425_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="软件公司多角色架构"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="275"
+		data-flex-basis="660px"
+	
+></p>
+<p><strong>MetaGPT</strong>以软件公司方式组成多个 Agent，实现了一个软件公司的全过程与精心调配的标准流程；它的目的是根据老板的一句话需求，完成一个软件研发整体流程（包括：用户故事、竞品分析、需求、数据结构 API 等）；内部多个 Agent 划分为多个角色（包括：产品经理、架构师、项目经理、研发工程师等），他们按照标准流程实现业务需求。</p>
+<h1 id="metagpt-多智能体框架应用">MetaGPT 多智能体框架应用</h1>
+<p>接下来，我们来当一回<strong>老板</strong>：我们输入一句话需求，让<strong>MetaGPT</strong>实现我们的目标。</p>
+<p>【<strong>第一步</strong>：<strong>MetaGPT</strong>环境准备】</p>
+<p><strong>工欲善其事，必先利其器</strong>，我们通过<strong>Miniconda</strong>管理 Python 虚拟环境，<strong>Miniconda</strong>的安装和使用可以参考老牛同学之前的文章：<a class="link" href="https://mp.weixin.qq.com/s/P_ufvz4MWVSqv_VM-rJp9w"  target="_blank" rel="noopener"
+    >大模型应用研发基础环境配置（Miniconda、Python、Jupyter Lab、Ollama 等）</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Python虚拟环境名：MetaGPT，版本号：3.10</span>
+</span></span><span class="line"><span class="cl">conda create --name MetaGPT <span class="nv">python</span><span class="o">=</span>3.10 -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 激活虚拟环境</span>
+</span></span><span class="line"><span class="cl">conda activate MetaGPT
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>【<strong>第二步</strong>：安装<strong>MetaGPT</strong>依赖】</p>
+<p>我们可以安装<strong>MetaGPT</strong>的稳定版本和最新的研发版本（老牛同学使用的是<strong>稳定版本</strong>）：</p>
+<ul>
+<li>稳定版本：<code>pip install metagpt</code></li>
+<li>研发版本：<code>pip install --upgrade git+https://github.com/geekan/MetaGPT.git</code></li>
+</ul>
+<p>如果我们想保留<strong>MetaGPT</strong>画的设计图（如：类图、序列图等），那么还需要安装 Node.js 包：<code>sudo npm install -g @mermaid-js/mermaid-cli</code></p>
+<p><img src="/p/2024090701/05.jpg"
+	width="521"
+	height="581"
+	srcset="/p/2024090701/05_huebb76accf81dd5cfb89d2f3dd4193453_29874_480x0_resize_q75_box.jpg 480w, /p/2024090701/05_huebb76accf81dd5cfb89d2f3dd4193453_29874_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="MetaGPT产出的类图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="89"
+		data-flex-basis="215px"
+	
+></p>
+<p>【<strong>第三步</strong>：配置<strong>MetaGPT</strong>大模型】</p>
+<p>前面已经介绍，大模型 Agent 是基于大模型的，因此我们需要配置一下<strong>MetaGPT</strong>的大语言模型。</p>
+<p>我们可以通过命令初始化配置文件：<code>metagpt --init-config</code></p>
+<p>默认情况下，<strong>MetaGPT</strong>自动创建默认配置文件：<code>~/.metapgt/config2.yaml</code></p>
+<p>我们修改这个配置文件，配置我们自己的大语言模型信息（老牛同学使用的是 Ollama，其它的配置类同）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">llm</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">api_type</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;ollama&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;qwen2:7b&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">base_url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;http://127.0.0.1:11434/api&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;EMPTY&#34;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>有关 Ollama 详细介绍和使用，参见老牛同学之前的文章，本文不在赘述：<a class="link" href="https://mp.weixin.qq.com/s/majDONtuAUzN2SAaYWxH1Q"  target="_blank" rel="noopener"
+    >Ollama 完整教程：本地 LLM 管理、WebUI 对话、Python/Java 客户端 API 应用</a></p>
+<p>【<strong>第四步</strong>：当<strong>老板</strong>，提供一句话需求，静候结果】</p>
+<p>老牛同学之前使用大模型，一步一步通过 Prompt 提示词，完成了<strong>消消乐</strong>小游戏研发：<a class="link" href="https://mp.weixin.qq.com/s/hv2tE-yot_H04HCezxQWXg"  target="_blank" rel="noopener"
+    >AI 已来，我与 AI 一起用 Python 编写了一个消消乐小游戏</a></p>
+<p>今天老牛同学想玩一玩<strong>贪吃蛇</strong>小游戏，体验一下当<strong>老板</strong>的乐趣，需求就一句话：<strong>write a cli snake game</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>MetaGPT<span class="o">)</span> $ metagpt <span class="s2">&#34;write a cli snake game&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，我们就开始等待了，在<strong>MetaGPT</strong>实现需求的标准流程中，我们也可以看到它的每一步的输出：</p>
+<p>首先，名为 Alice 的<strong>产品经理</strong>登场：他根据老板的需求，产出产品需求文档</p>
+<p><img src="/p/2024090701/11.jpg"
+	width="1398"
+	height="765"
+	srcset="/p/2024090701/11_huc829eb49876cdb2ad2f9c4fb148aff63_73398_480x0_resize_q75_box.jpg 480w, /p/2024090701/11_huc829eb49876cdb2ad2f9c4fb148aff63_73398_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="产品经理的需求文档"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="438px"
+	
+></p>
+<p>有了 PRD，接下来是名为 Bob 的<strong>架构师</strong>来了：他根据需求文档，完成产品架构设计</p>
+<p><img src="/p/2024090701/12.jpg"
+	width="1398"
+	height="441"
+	srcset="/p/2024090701/12_hu8ebe77f3f7d4c9f78b2b82714cf78743_84601_480x0_resize_q75_box.jpg 480w, /p/2024090701/12_hu8ebe77f3f7d4c9f78b2b82714cf78743_84601_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="架构师的设计文档"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="317"
+		data-flex-basis="760px"
+	
+></p>
+<p>接下来，名为 Eve 的<strong>项目经理</strong>上场：他根据架构设计，整理研发任务</p>
+<p><img src="/p/2024090701/13.jpg"
+	width="1398"
+	height="806"
+	srcset="/p/2024090701/13_huad45f9fb3d4ace6cbdee15d3f6724604_86931_480x0_resize_q75_box.jpg 480w, /p/2024090701/13_huad45f9fb3d4ace6cbdee15d3f6724604_86931_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="项目经理整理任务清单"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="173"
+		data-flex-basis="416px"
+	
+></p>
+<p>有了研发任务，进行排期锁定资源，研发工程师开始研发了：</p>
+<p><img src="/p/2024090701/14.jpg"
+	width="1398"
+	height="969"
+	srcset="/p/2024090701/14_hu38a65289c66c15c6a210717c40328fe1_119338_480x0_resize_q75_box.jpg 480w, /p/2024090701/14_hu38a65289c66c15c6a210717c40328fe1_119338_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="snake.py 代码实现"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="346px"
+	
+></p>
+<p>代码研发完成，就需要进行代码 Review 了：</p>
+<p><img src="/p/2024090701/15.jpg"
+	width="1398"
+	height="334"
+	srcset="/p/2024090701/15_hu4a1aaf60a601f63b93b30e7bb5d78a29_65232_480x0_resize_q75_box.jpg 480w, /p/2024090701/15_hu4a1aaf60a601f63b93b30e7bb5d78a29_65232_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Code Review第1轮"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="418"
+		data-flex-basis="1004px"
+	
+></p>
+<p>其它研发的截图，老牛同学就省略了。经过多轮的研发任务和 CR，终于完成了整个需求，可以把代码、文件等存档：</p>
+<p><img src="/p/2024090701/16.jpg"
+	width="1398"
+	height="394"
+	srcset="/p/2024090701/16_hu8b027ea476fcf201ca684f64b7786c18_62291_480x0_resize_q75_box.jpg 480w, /p/2024090701/16_hu8b027ea476fcf201ca684f64b7786c18_62291_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="项目存档"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="354"
+		data-flex-basis="851px"
+	
+></p>
+<p>最后，我们就可以看到最终的产出物了：</p>
+<ul>
+<li>代码源文件目录：<code>./workspace/cli_snake_game/cli_snake_game</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>MetaGPT<span class="o">)</span> $ tree
+</span></span><span class="line"><span class="cl">├── food.py
+</span></span><span class="line"><span class="cl">├── game.py
+</span></span><span class="line"><span class="cl">├── main.py
+</span></span><span class="line"><span class="cl">└── snake.py
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>项目实现文档目录：<code>./workspace/cli_snake_game/docs</code></li>
+<li>项目实现资源目录：<code>./workspace/cli_snake_game/resources</code></li>
+</ul>
+<p>我们运行一下小游戏：<code>python main.py</code></p>
+<p>可以看到，还真能跑起来了，可是有 Bug（如：蛇吃食物自动退出，蛇撞墙异常退出）：</p>
+<p><img src="/p/2024090701/17.jpg"
+	width="1398"
+	height="636"
+	srcset="/p/2024090701/17_hue4ff4e1b783827bdc2f49f1c96c386b9_21921_480x0_resize_q75_box.jpg 480w, /p/2024090701/17_hue4ff4e1b783827bdc2f49f1c96c386b9_21921_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="贪吃蛇小游戏"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="219"
+		data-flex-basis="527px"
+	
+></p>
+<p>至此，<strong>MetaGPT</strong>按照标准流程，确实帮我们完成了项目，可是我们当<strong>老板</strong>的并没有享受到什么乐趣，因为我们还得去改 Bug！</p>
+<h1 id="最后多大模型-agent-到底能解决什么问题">最后，(多)大模型 Agent 到底能解决什么问题？</h1>
+<p>上面<strong>MetaGPT</strong>帮我们写了一个有 Bug 的程序，这肯定不是我们所期望的，分析其背后原因，其实也并不是大模型 Agent 的错：</p>
+<p>我们可以查看<strong>MetaGPT</strong>源代码：<code>https://github.com/geekan/MetaGPT/tree/main/metagpt/roles</code></p>
+<p>期核心逻辑都在<code>role.py</code>文件中：<code>https://github.com/geekan/MetaGPT/blob/main/metagpt/roles/role.py</code></p>
+<p>它的核心还是通过 Prompt 提示词和大模型进行交互，大模型产出质量的好坏，决定了需求结构的优劣！</p>
+<p>那么，大模型 Agent 到底在什么场景能更有优势呢？首先能肯定的是：那些底层大模型擅长的领域！</p>
+<ul>
+<li>复杂问题场景，大模型的初衷就是用来解决复杂问题的</li>
+<li>需要多角色交互场景（如：游戏故事生成、素材生成），内容生成，部分工作提效（如：项目代码框架等）</li>
+</ul>
+<p><a class="link" href="https://mp.weixin.qq.com/s/KM-Z6FtVfaySewRTmvEc6w"  target="_blank" rel="noopener"
+    >vLLM CPU 和 GPU 模式署和推理 Qwen2 等大语言模型详细教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/PpY3k3kReKfQdeOJyrB6aw"  target="_blank" rel="noopener"
+    >基于 Qwen2/Lllama3 等大模型，部署团队私有化 RAG 知识库系统的详细教程（Docker+AnythingLLM）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/vt1EXVWtwm6ltZVYtB4-Tg"  target="_blank" rel="noopener"
+    >使用 Llama3/Qwen2 等开源大模型，部署团队私有化 Code Copilot 和使用教程</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/eq6K8_s9uX459OeUcRPEug"  target="_blank" rel="noopener"
+    >基于 Qwen2 大模型微调技术详细教程（LoRA 参数高效微调和 SwanLab 可视化监控）</a></p>
+<p><a class="link" href="https://mp.weixin.qq.com/s/x2RKTvFeKgRvi982X5cymA"  target="_blank" rel="noopener"
+    >MiniCPM-V 2.6 面壁“小钢炮”，多图、视频理解多模态模型，部署和推理实战教程</a></p>
+<p><img src="/WX-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="微信公众号：老牛同学"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/agent/">Agent</a>
+        
+            <a href="/tags/metagpt/">MetaGPT</a>
+        
+    </section>
+
+
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/2024091401/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024091401/00.ee793013966e032e1a394f63be9732d8_hu25975eb2f329e262091455ae0784f007_16497_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 基于 CrewAI 多智能体框架，手把手构建一个自动化写作应用实战"
+                        data-key="2024091401" 
+                        data-hash="md5-7nkwE5ZuAy4aOU9jvpcy2A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于 CrewAI 多智能体框架，手把手构建一个自动化写作应用实战</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2024092101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2024092101/01.a058ce6764f78fbd961d039febaef4fc_hu4a69ce90e6d0acdf7131434eb5356c98_280965_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程"
+                        data-key="2024092101" 
+                        data-hash="md5-oFjOZ2T3j72WHQOf6670/A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于 Qwen2.5-Coder 模型和 CrewAI 多智能体框架，实现智能编程系统的实战教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030701/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030701/00.d5f133b0dff8aad213fe89b949da2f6b_hue4a04b4c167b755d1cb1f73248022c70_117178_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量"
+                        data-key="2025030701" 
+                        data-hash="md5-1fEzsN/4qtIT/om5Sdovaw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">没有 Manus 邀请码？Qwen &#43; OpenManus 开源替代方案一样能领略 AI 智能体的力量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025030301/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025030301/00.ea08cfef206e5f94acfff72f27329886_hu42cdc8535b0a762ff23c72abe3e7986b_81971_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！"
+                        data-key="2025030301" 
+                        data-hash="md5-6gjP7yBuX5Ss//cvJzKYhg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">让孩子爱上古诗词，用AI把唐诗变成歌曲&#43;视频，诗词本来就是唱的！</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/2025022101/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2025022101/00.8ce7f76c15ba0b620dc0639d3d6341fa_hue009a34f05abb603d67a255367f6def7_210180_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！"
+                        data-key="2025022101" 
+                        data-hash="md5-jOf3bBW6C2INwGOdPWNB&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MNN 手机本地部署 DeepSeek R1 和多模态大模型，告别服务器繁忙！</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cywMgrHqY'; 
+var conf = 'prod_4b5a68ef5204b46d228d0cfdfe46b9c1'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2010 -
+        
+        2025 奔跑的蜗牛
+    </section>
+
+    <section class="powerby">
+        
+        邮箱：obullxl@qq.com <br/>QQ：303630027（老牛啊） <br/>微信：imxulin（奔跑的蜗牛） <br/>支付宝：obullxl@163.com <br/><a href="https://info.flagcounter.com/TkKo" target="_blank"><div style="height:24px;max-height:24px;padding:0;margin:0;background:url(https://s11.flagcounter.com/count2/TkKo/bg_F5F5FA/txt_747474/border_F5F5FA/columns_6/maxflags_6/viewers_3/labels_0/pageviews_0/flags_0/percent_0/) no-repeat -5px 0px;">&nbsp;</div></a>
+        
+
+        
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        const hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d095a3d4dfe9c1c4e8c65d3fe99b2589";
+        hm.async = true;
+        hm.crossorigin = "anonymous"
+
+        const s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2548953017344039" crossorigin="anonymous"></script>
+
+
+<script>
+    function ntopicTask() {
+        var ele = document.querySelector(".section-service-w");
+        if(ele) {
+            ele.style.display = "none";
+            ele.parentNode.removeChild(ele);
+        }
+    }
+
+    (function() {
+         window.setInterval("ntopicTask()", 1000);
+    })();
+</script>
+
+    </body>
+</html>

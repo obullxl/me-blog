@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Google ReCAPTCHA on 奔跑的蜗牛</title>
+        <link>https://ntopic.cn/tags/google-recaptcha/</link>
+        <description>Recent content in Google ReCAPTCHA on 奔跑的蜗牛</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sat, 27 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ntopic.cn/tags/google-recaptcha/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Google reCAPTCHA无效的解放方案</title>
+        <link>https://ntopic.cn/p/2023052701/</link>
+        <pubDate>Sat, 27 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://ntopic.cn/p/2023052701/</guid>
+        <description>&lt;img src="https://ntopic.cn/p/2023052701/images/01.jpg" alt="Featured image of post Google reCAPTCHA无效的解放方案" /&gt;&lt;h2 id=&#34;问题分析&#34;&gt;问题分析&lt;/h2&gt;
+&lt;p&gt;  当我们访问国外网站，特别是在提交注册、登录表单时，经常出现“ReCaptcha is not valid”、“Google recaptcha response is invalid”、“ReCaptcha error”等错误提示文案，导致表单提交失败，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2023052701/images/02.jpg&#34;
+	width=&#34;712&#34;
+	height=&#34;732&#34;
+	srcset=&#34;https://ntopic.cn/p/2023052701/images/02_hufbfafd72477f09c6280b4d95bb3b82d0_63355_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2023052701/images/02_hufbfafd72477f09c6280b4d95bb3b82d0_63355_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;97&#34;
+		data-flex-basis=&#34;233px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;  其原因是该网站采用了Google的人机验证ReCaptcha服务（简单类似于国内的验证码），该服务需要加载的主要JS脚本为：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.google.com/recaptcha/api.js&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.google.com/recaptcha/api.js&lt;/a&gt;&lt;/strong&gt; ，因国内网络屏蔽了Google服务，导致无法加载本JS脚本&lt;/p&gt;
+&lt;h2 id=&#34;解决方案&#34;&gt;解决方案&lt;/h2&gt;
+&lt;p&gt;  Google网络和服务不可用，但是有可用的服务网站，那就是：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://recaptcha.net/recaptcha/api.js&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://recaptcha.net/recaptcha/api.js&lt;/a&gt;&lt;/strong&gt; 。我们可以通过浏览器插件，把访问Google的api.js重定向到recaptcha.net的服务。&lt;/p&gt;
+&lt;h3 id=&#34;安装浏览器插件&#34;&gt;安装浏览器插件&lt;/h3&gt;
+&lt;p&gt;插件有很多，我用的是：Header Editor，还有gooreplacer等插件，都可以使用。请自行在浏览器市场搜索该插件，并完成安装和启用。&lt;/p&gt;
+&lt;h3 id=&#34;配置header-editor插件其他插件类似&#34;&gt;配置Header Editor插件（其他插件类似）&lt;/h3&gt;
+&lt;p&gt;配置内容说明：&lt;br/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;名称：随便取一个名称即可（如：Google reCAPTCHA等）&lt;/li&gt;
+&lt;li&gt;规则类型：选择&lt;strong&gt;重定向请求&lt;/strong&gt; 选项，代表请求Google的服务重定向到可用网络服务&lt;/li&gt;
+&lt;li&gt;匹配类型：选择&lt;strong&gt;正则表达式&lt;/strong&gt; 选项，通过通配符等匹配，我们本次只有1个网站，所以也不需要通配符&lt;/li&gt;
+&lt;li&gt;匹配规则：输入&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.google.com/recaptcha&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.google.com/recaptcha&lt;/a&gt;&lt;/strong&gt; ，代表需要替换这部分内容&lt;/li&gt;
+&lt;li&gt;执行类型：选择&lt;strong&gt;常规&lt;/strong&gt; 选项&lt;/li&gt;
+&lt;li&gt;重定向至：输入&lt;strong&gt;recaptcha.net/recaptcha&lt;/strong&gt; ，代表替换Google的网站内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2023052701/images/03.jpg&#34;
+	width=&#34;2730&#34;
+	height=&#34;1384&#34;
+	srcset=&#34;https://ntopic.cn/p/2023052701/images/03_huc82d7b839fc53b7a5c86bd3cdfedcac6_226447_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2023052701/images/03_huc82d7b839fc53b7a5c86bd3cdfedcac6_226447_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;197&#34;
+		data-flex-basis=&#34;473px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;  配置完成之后，还可以测试一下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;输入：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.google.com/recaptcha/api.js&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.google.com/recaptcha/api.js&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;输出：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://recaptcha.net/recaptcha/api.js&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://recaptcha.net/recaptcha/api.js&lt;/a&gt;&lt;/strong&gt;
+替换成功了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;重新提交表单，就能看到人机校验的弹框了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ntopic.cn/p/2023052701/images/04.jpg&#34;
+	width=&#34;816&#34;
+	height=&#34;1176&#34;
+	srcset=&#34;https://ntopic.cn/p/2023052701/images/04_hu0d29247f98aa7ee850031716c55d7a1b_123830_480x0_resize_q75_box.jpg 480w, https://ntopic.cn/p/2023052701/images/04_hu0d29247f98aa7ee850031716c55d7a1b_123830_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;69&#34;
+		data-flex-basis=&#34;166px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
